@@ -1,0 +1,370 @@
+.card-screen{
+    position:relative;
+    margin-bottom: 60px;
+    @media #{$mobile}{
+        margin-bottom: -2px;
+    }
+
+
+
+    a.card {
+
+        height:85%;
+
+
+        > article {
+            position:relative;
+            height: 368px;
+
+            > figure{
+                width: auto;
+                overflow: hidden;
+
+                @media #{$mobile}{
+                    width: 116px;
+                    height:116px;
+                    flex: 0 0 116px;
+                }
+
+                &.video {
+
+                    &:after{
+                        top: 35%;
+                        left: 40%;
+                        
+                        @media #{$mobile}{
+                            top: 40%;
+                            left: 35%;
+                            width: 40px;
+                            height: 40px;
+                        }
+
+                        @media #{$mobile}{
+                            width: 30px;
+                            height: 30px;
+                        }
+                    }
+
+                }
+
+
+                > img{
+                    max-width: 100%;
+                }
+            }
+
+
+
+
+            > .content{
+                position:relative;
+                background:white;
+                padding: 59px 15px 8px 15px;
+                @media #{$mobile}{
+                    height: auto;
+                    padding: 10px;
+                    border: 0;
+                    width:100%;
+                }
+
+                > .category{
+                    font-size: rem(11);
+                    font-weight: bold;
+                    color: #39bcdc;
+                    display: block;
+                    line-height: 1;
+                    margin-bottom: 8px;
+                    @media #{$mobile}{
+                        font-size: em(12);
+                        text-transform:uppercase;
+                        margin-bottom: 5px;
+                    }
+                }
+
+                > h2{
+                    font-weight: normal;
+                    font-size: em(17);
+
+                }
+
+                > .author{
+                    display: none;
+                }
+
+                > time{
+                    font-size: rem(12);
+                    padding: 0;
+                    border: 0;
+                    color: #333333;
+                    @media #{$mobile}{
+                        color: #6c6c6c;
+                        font-size: em(10);
+                    }
+                }
+
+                p {
+                    display: none;
+                }
+            }
+        }
+
+
+
+        &.article.without__image {
+            .content {
+                padding-top:52px;
+                height:100%;
+
+
+                h2 {
+                    font-size: rem(17);
+                    font-weight:bold;
+                    max-height:52px;
+                }
+
+                > p {
+                    font-size: rem(13);
+                    display: block;
+                    max-height:100px;
+                    margin-bottom: 18px;
+                }
+
+
+            }
+        }
+
+
+        &.social {
+
+            article {
+                height:100%;
+                background: #ea8235;
+
+                // background: rgba(0,0,0,0.8);
+
+
+                .content {
+                    height:100%;
+                    .category {
+                        visibility:hidden;
+                        color:white;
+                        margin-top:0;
+                        margin-bottom:8px;
+                    }
+            
+
+                    time {
+                        font-family:$font-family-serif;
+                        font-style:italic;
+                        position:absolute;
+                        bottom:10px;
+                        color: white;
+                    }
+
+                    > p {
+                        margin-top:20px;
+                        display:block;
+                        line-height:1.3;
+                        font-size: em(22);
+                        font-size: 1.8vw;
+                    }
+                }
+
+            }
+
+
+            
+
+            &.facebook.withImage__content,
+            &.twitter.withImage__content,
+            &.instagram.withImage__content {
+                figure {
+                    position: absolute;
+                    // left: 15px;
+                    // right: 15px;
+                    width: 100%;
+                    height:100%;
+
+                    // &:after{
+                    //     content: '';
+                    //     opacity: 0.4;
+                    //     background-color: #000;
+                    //     width: 100%;
+                    //     height: 100%;
+                    //     position: absolute;
+                    //     top: 0;
+                    //     left: 0;
+                    // }
+                }
+                .content {
+                    padding-top:52px;
+                    background:transparent;
+                    z-index:1;
+
+                    > p {
+                        display:none;
+                        // min-height:85px;
+                        // color:white;
+                    }
+                    time {
+                        color: #dadada;
+                    }
+                }
+            }
+
+            &.without__image {
+
+                .content {
+                    background:transparent;
+                    padding-top: 52px;
+                    height:100%;
+                    position:relative;
+
+                    @media #{$mobile}{
+                        height: 116px;
+                        padding-top: 20px;                
+                    }
+
+            
+
+                    > p { 
+                        // margin-top:100px;
+                        width: 90%;
+                        // font-size:rem(50);
+                        font-size:6vh;
+                        min-height:85px;
+                        color:white;
+                    }
+                }
+            }
+
+
+
+        }
+
+        &.facebook{
+            .category {
+                &:before {
+                    visibility: visible;
+                    content: '';
+                    width:25px;
+                    height:25px;
+                    background-image: url('../images/facebook.svg');
+                    background-position:center;
+                    background-size: contain;
+                    background-repeat:no-repeat;
+                    display:block;
+                    margin-bottom:0;
+                }
+            }
+        }
+        &.vimeo{
+        }
+
+        &.twitter{
+
+            // figure {
+            //     &:before {
+            //       content: '';
+            //       position: absolute;
+            //       top: 0;
+            //       bottom: 0;
+            //       width: 100%;
+            //       opacity: 0.6;
+            //       background-color: #00A4CD;
+            //       z-index: 1;
+            //     }
+            // }
+
+            .content {
+                .author {
+                    position:absolute;
+                    bottom:0;
+
+                    display:inline-block;
+                    float:left;
+                    > p {
+                        color:#dadada;
+                        font-size: rem(15);
+                        display:block;
+                        &:before {
+                            content: '@';
+                        }
+
+
+                    }
+                }
+                time {
+                    right:20px
+                }
+
+                .category {
+                    &:before {
+                        visibility: visible;
+                        content: '';
+                        width:25px;
+                        height:25px;
+                        background-image: url('../images/twitter.svg');
+                        background-position:center;
+                        background-size: contain;
+                        background-repeat:no-repeat;
+                        display:block;
+                        margin-bottom:0;
+                    }
+                }
+            }
+        }
+
+        &.instagram{
+            article {
+
+                .content {
+
+                    > p {
+                        display:none;
+                    }
+
+                    .author {
+                        position:absolute;
+                        bottom:0;
+
+                        display:inline-block;
+                        float:left;
+                        > p {
+                            color:#dadada;
+                            font-size: rem(15);
+                            display:block;
+
+                            &:before {
+                                content: '@';
+                            }
+
+                        }
+                    }
+                    time {
+                        display:none;
+                    }
+
+                    
+
+                    .category {
+                        &:before {
+                            visibility: visible;
+                            content: '';
+                            width:25px;
+                            height:25px;
+                            background-image: url('../images/instagram.svg');
+                            background-position:center;
+                            background-size: contain;
+                            background-repeat:no-repeat;
+                            display:block;
+                            margin-bottom:0;
+                        }
+                    }
+                }
+            }
+        }      
+
+        
+    }
+}

@@ -1,0 +1,122 @@
+{
+    "compressHtml" : false,
+    "module" : {
+        "debug" : {
+            "enabled" : true
+        },
+        "event" : {
+            "enabled" : true
+        },
+        "blog" : {            
+            "endUserAccess" : [
+
+                                    "jobs",    "prop",     "events",
+                    "local",        "",         "426",      "422",    
+                    "Shepparton",   "",         "",         "1203",   
+                    "UAT",          "",         "3337"
+                
+            ],
+            "extendedAttributes": [
+                {
+                    "label": "Content Type",
+                    "type": "inputbox",
+                    "name": "contenttype"
+                },
+                {
+                    "name": "publishto",
+                    "label": "Publish to...",
+                    "type": "inputbox"
+                },
+                {
+                    "name": "propertylistingsid",
+                    "label": "Property listings blog id",
+                    "type": "inputbox"
+                }
+            ]
+        },
+        "article": {
+            "extendedAttributes": [
+                {
+                    "label": "",
+                    "type": "radio",
+                    "name": "premium",
+                    "options": {
+                        "Premium": "Premium",
+                        "Free": "Free"
+                    }
+                },
+                {
+                    "name": "listingclose",
+                    "label": "Listing close",
+                    "type": "inputbox",
+                    "datetimepicker": true
+                },
+                {
+                    "name": "location",
+                    "label": "City",
+                    "type": "inputbox"
+                },
+                {
+                    "name": "contactcompany",
+                    "label": "Company",
+                    "type": "inputbox"
+                },
+                {
+                    "name": "contactname",
+                    "label": "Contact name",
+                    "type": "inputbox"
+                },
+                {
+                    "name": "contactemail",
+                    "label": "Contact email",
+                    "type": "inputbox"
+                },
+                {
+                    "name": "contactphone",
+                    "label": "Contact phone",
+                    "type": "inputbox"
+                },
+                {
+                    "name": "auction_date",
+                    "label": "Auction Date",
+                    "type": "inputbox",
+                    "datetimepicker": true
+                },
+                {
+                    "name": "pricerange",
+                    "label": "Price",
+                    "type": "inputbox"
+                },
+                {
+                    "name": "listing_type",
+                    "label": "Listing Type",
+                    "type": "dropdown",
+                    "options": {
+                        "rent": "Rent",
+                        "buy": "Buy"
+                    }
+                },
+                {
+                    "name": "bedroom_count",
+                    "label": "Number of bedrooms",
+                    "type": "inputbox"
+                },
+                {
+                    "name": "bathroom_count",
+                    "label": "Number of bathrooms",
+                    "type": "inputbox"
+                },
+                {
+                    "name": "car_count",
+                    "label": "Number of car spaces",
+                    "type": "inputbox"
+                },
+                {
+                    "name": "features",
+                    "label": "Features (comma separated)",
+                    "type": "inputbox"
+                }
+            ]
+        }
+    }
+}

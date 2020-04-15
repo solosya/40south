@@ -1,0 +1,43 @@
+{% set articleCount = 0 %}
+{% set cardIndex = 0 %}
+
+<div class="acme-row c-section-head">
+    <div class="acme-col-12">
+        <a href="{{link}}">
+            <div id="section-{{loadmore_id}}" class="c-section-head__title">{{title}}</div>
+        </a> 
+        <div class="c-section-head__rule"></div>
+    </div>
+</div>
+<div class="acme-row">
+    {% for i in 0..2 if articles[i] %}
+        <div class="acme-col-12 acme-col-md-12 acme-col-lg-4">
+            {{this.render('../_single-article.twig', {
+                article: articles[articleCount], 
+                position: (articleCount+1),
+                cardType: "acme-",
+                imageSize: {width: 285, height: 192},
+                contentType: contentType,
+                containerClass: "acme-card-1-mobile acme-card-1-tablet acme-card-1-desktop"
+            }) | raw}}
+            {% set articleCount = (dev) ? articleCount : articleCount + 1 %}
+        </div>
+    {% endfor %}
+</div>
+
+
+{% if articles | length >= 3 %}
+    {{this.render('/partials/_section-loadmore.twig', {
+        sectionNumber: loadmore_id, 
+        limit: 6,
+        blogId: blogData['guid'],
+        imageSize: {width: 285, height: 192},
+        contentType: contentType,
+        cardClass: "acme-col-12 acme-col-md-12 acme-col-lg-4 acme-card-1-mobile acme-card-1-tablet acme-card-1-desktop",
+        cardCount: articleCount,
+        cardType: "acme-"
+    }) | raw}}
+
+{% endif %}
+
+<div class="u-margin-bottom-60"></div>

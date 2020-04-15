@@ -1,0 +1,106 @@
+{% set networkData = _Network.getNetworkData() %}
+{% set config      = _Network.getThemeConfig() %}
+
+{% set blogInfo = _Blog.getBlog() %}
+{{ set(this, 'title', blogInfo.title) }}
+
+{% set logo = '' %}
+
+
+{% set logoWidth = 650 %}
+{% set logoHeight = 144 %}
+
+{% if config['logo']['screen'] is defined %}
+    {% if config['logo']['screen']['width'] is defined %}
+        {% set logoWidth = config['logo']['screen']['width'] %}
+
+        {% if config['logo']['screen']['height'] is not defined %}
+            {% set logoHeight = 0 %}
+        {% endif %}
+    {% endif %}
+
+    {% if config['logo']['screen']['height'] is defined %}
+        {% set logoHeight = config['logo']['screen']['height'] %}
+
+        {% if config['logo']['screen']['width'] is not defined %}
+            {% set logoWidth = 0 %}
+        {% endif %}
+    {% endif %}
+
+{% endif %}
+
+{% if networkData.secondaryLogoMedia | length > 0 %}
+    {% set logo = _Media.getMediaUrl(networkData.secondaryLogoMedia, logoWidth, logoHeight, {'crop': 'fit'} ) %}
+{% endif %}
+
+
+{# {{this.registerJs( weatherJs )}} #}
+{% set articlesArr = _Blog.getBlogFeed({'limit': 15, 'offset': 0}) %}
+{% set blogid = blogInfo.guid %}
+
+
+<style type="text/css">
+html {
+	height:100%
+}
+.advertisment__head{
+    display: none;
+}
+</style>
+
+<main id="main" class="full-height" role="main">
+{# {{_AppHelper.printArray(articlesArr)}} #}
+    
+    <div class="screen-header">
+        <img id="logo" class="logo" height="60px" class="" src="{{logo}}">
+        <time id="screentime" class="screentime"></time>
+        <div id="screenweather" class="screenweather"></div>
+    </div>
+
+    <div class="main-screen flex_col full-height">
+
+        <div class="flex1 u-max-height" style="overflow:hidden;height: 100%;max-height: 100%;min-height: 100%;">
+
+            <div id="ajaxArticles" 
+                 data-offset="0"
+                 data-blogid="{{blogid}}"
+                 data-articlecount="1"
+                 data-card-class="screen-card card-sm-screen u-max-size"
+                 data-existing-nonpinned-count=""
+                 class="full-height u-max-size c-screen-div">
+           </div>
+
+            <a  class="loadMoreArticles" 
+                style="display:none;"
+                data-container="ajaxArticles"
+                data-limit="2"
+                href="#">Load more articles</a>
+                
+        </div>
+    </div>
+
+    <div class="ticker flex1 flex-shrink0">
+        <ul class="ticker__list" id="screenTicker">
+            {% for article in articlesArr.articles %}
+                <li class="ticker__item"><p class="ticker__text">{{article.title}}</p></li>
+            {% endfor %}
+        </ul>
+
+    </div>
+    <div class="j-keyword-cont" data-keywords="{{blogData.keywords}}"></div>
+</main>
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
+        var screencards = new Card();
+        screencards.screen();
+        var clock = new Acme.Clock();
+        $("#screenTicker").liScroll({travelocity:.07});
+
+        function timedRefresh(timeoutPeriod) {
+            setTimeout("location.reload(true);",timeoutPeriod);
+        }
+
+        window.onload = timedRefresh(1800000)
+    });
+</script>
+

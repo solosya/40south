@@ -1,0 +1,151 @@
+{{ set(this, 'title', _Blog.getBlogTitle()) }}
+{% set networkData = _Network.getNetworkData() %}
+{% set blogData    = _Blog.getBlog() %}
+
+{% set limit = 2 %}
+{% set articlesArr = _Blog.getBlogFeed({'limit': limit, 'offset': 0}) %}
+{% set articles = articlesArr.articles %}
+{% set firstCount = articles | length %}
+
+
+
+<!-- used to index each article as we loop over throughout the template -->
+{% set articleCount = 0 %}
+{% set dev = _AppHelper.getApplicationEnv() == 'DEV' ? false : false %}
+
+
+
+
+
+
+<main id="main" class="o-body-container o-body-container-md u-margin-top-60" role="main">
+        
+
+    <div class="container">
+        <div class="c-sectionwrapper">
+            <div class="row">
+                <div class="col-12">
+                    <div class="c-page-head c-page-head-xs">
+                        <div class="u-heading__large u-heading__large-xs u-pr--6 u-bg-white">Real Estate</div>
+                        <a href="javascript:;" class="c-page-head__link"></a> </div>
+                    </div>
+                </div>
+
+
+
+                <div class="row">
+                    <div class="col-12">
+                    <div class="c-property-search">
+                        <form class="c-property-search__formsection c-property-search__formsection-lg">
+                            <div class="c-property-search__formsection-lt c-property-search__formsection-lt-md c-property-search__formsection-lt-lg">
+                                
+                                <div class="c-property-search__selectarea c-property-search__selectarea-md">
+                                    <div id="saleSelect" 
+                                        class=" Acme-pulldown 
+                                                saleSelect" 
+                                        style="margin-bottom:15px;">
+                                    </div>
+                                </div>
+
+                                <div class="c-property-search__searchfield c-property-search__searchfield-md c-property-search__searchfield-lg">
+                                    <div class="c-property-search__searchfield-icon fa fa-search"></div>
+                                    <input id="location" type="text" placeholder="Search by suburb, postcode or city" name="extendedData.location">
+                                </div>
+                            </div>
+
+
+
+                            <div class="c-property-search__formsection-rt c-property-search__formsection-rt-lg">
+                                <input id="searchButton" name="" type="submit"  value="search" class="c-button c-button--rounded c-button--blue" />
+                            </div>
+                        </form>
+                        <a id="clearButton" href="">Clear search</a>
+                        {# <div id="searchResults" class="c-property-search__resulttext"> Showing 8 out of 20 results for ‘Castlemaine’  </div> #}
+                    </div>
+                    </div>
+                </div>
+
+
+                <div id="property-listings" class="row c-cards">
+
+
+
+                    {% for i in 0..4 if articles[articleCount] %}
+                        {{this.render('partials/_single-article.twig', {
+                            article: articles[articleCount], 
+                            position: (articleCount + 1),
+                            template: 'property',
+                            networkData: networkData,
+                            imageSize: {width: 360, height: 270},
+                            containerClass: 'col-12 col-lg-4 card-3-mobile card-3-tablet card-3-desktop design2'
+                        }) | raw}}
+                        {% set articleCount = (dev) ? articleCount : articleCount + 1 %}
+                    {% endfor %}
+
+
+                </div>
+
+                {# <div id="property-listings" class="row c-cards"></div> #}
+
+
+                {{ this.render('partials/ajaxarticles_new.twig', {
+                    name            : "article-load",
+                    label           : "hi!",
+                    buttonClass     : "c-button c-button--rounded c-button--blue-bordered",
+                }) | raw }}
+
+
+                <div class="row">
+                    <div class="col-12 text-right">
+                        <a href="{{networkData.defaultBlogUrl}}/@property-form" class="c-button c-button--inline c-button--rounded c-button--blue c-button--inline">Submit a listing</a>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+            
+
+
+    <div class="j-keyword-cont" data-keywords="{{blogData.keywords}}"></div>
+</main><!-- .site-main -->
+
+
+
+
+
+<script>
+    // main script is defered so event listener makes sure
+    // defered script is loaded before this runs
+    document.addEventListener("DOMContentLoaded", function(event) {
+
+        Acme.cards = new Card();
+        Acme.searchCollection = new Acme.searchCollectionClass([ {{blogData['id']}} ], {  
+            'searchTerms': {
+                'contracttype': 'buy'
+                }
+            });
+
+        Acme.saleTypeFilter = new Acme.saleTypePulldown(
+            {
+                'container' : $('#saleSelect')
+            }
+        );
+
+        Acme.propertyFeed = new Acme.View.articleFeed({
+            model           : Acme.cards,
+            name            : 'article-load',           // name of the button element to click
+            container       : 'property-listings',      // put the articles in this element
+            limit           : 2,                        // how many articles?
+            blogid          : "{{ blogData['guid'] }}", // which blog to load from?
+            cardTemplate    : 'property_card',          // which card template?
+            card_class      : 'card-3-mobile card-3-tablet card-3-desktop col-12 col-lg-4 design2', 
+            non_pinned      : {{articlesArr.existingNonPinnedCount}}, // offset and non_pinned offset are both used.
+        });
+
+
+    });
+</script>
+
+
+

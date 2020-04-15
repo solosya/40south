@@ -1,0 +1,184 @@
+{% import "quotes.twig" as quotes %}
+
+{% set imageSuppress = imageSuppress is defined and imageSuppress == 'true' ? 'true' : 'false'  %}
+{% set swap = swap is defined and swap == 'false' ? '' : 'swap'  %}
+{% set lightbox = ''  %}
+{% set eventImg = '' %}
+
+{% if behaviour is defined %} 
+    {% if behaviour == 'noclick' %}
+        {% set event = event | merge({'url' : 'javascript: void(0)'}) %}
+    {% elseif behaviour == 'lightbox' %}
+        {% set lightbox = behaviour %}
+    {% endif %}
+{% endif %}
+
+{% set imgWidth = 0 %}
+{% set imgHeight = 0 %}
+{% if imageSize is defined %}
+    {% set imgWidth = (imageSize.width is defined) ? imageSize.width : 0 %}
+    {% set imgHeight = (imageSize.height is defined) ? imageSize.height : 0 %}
+{% endif %}
+
+
+{% set placeholder   = "https://place-hold.it/1" %}
+{% set promotedClass = (event.isPromoted) ? 'ad_icon' : '' %}
+{% set hasMedia      = (event.media | length > 0) ? 'withImage__content': 'without__image' %}
+{% set startDay      = _AppHelper.getDefaultTimezoneDateTime(event.startDate, 'd') %}
+{% set startMonth    = _AppHelper.getDefaultTimezoneDateTime(event.startDate, 'M') %}
+{% set startTime     = _AppHelper.getDefaultTimezoneDateTime(event.startDate, 'g:ia') %}
+{% set eventTitle    = quotes.smarten(titleTruncateLength is defined ? event.title | truncate(titleTruncateLength) : event.title)  %}
+{% set figureClass   = event.media['type'] == 'video' ? 'video' : '' %}
+
+{% set publishDate = (event.publishDate is defined) ? event.publishDate : event.publishedDate %}
+{% set publishDateTime = (event.publishDateTime is defined) ? event.publishDateTime : event.publishedDateTime %}
+
+{% set publishDate = _AppHelper.getDefaultTimezoneDateTime(publishDate, 'F Y') %}
+
+{% set publishedAgo = _AppHelper.getSecondsSincePublished(publishDateTime) %}
+
+{% if publishedAgo < 86400 %}
+    {% set publishDate = _AppHelper.getRelativeTime(publishDateTime) ~ " ago" %}
+{% endif %}
+
+
+{% set startDate        = _AppHelper.getDefaultTimezoneDateTime(event.startDate, 'j M') %}
+{% set fullStartDate    = _AppHelper.getDefaultTimezoneDateTime(event.startDate, 'j F') %}
+{% set endDate          = _AppHelper.getDefaultTimezoneDateTime(event.endDate, 'j M') %}
+
+{% set startDay         = _AppHelper.getDefaultTimezoneDateTime(event.startDate, 'd') %}
+{% set endDay           = _AppHelper.getDefaultTimezoneDateTime(event.endDate, 'd') %}
+
+{% set startTime        = _AppHelper.getDefaultTimezoneDateTime(event.startDate, 'g:ia') %}
+{% set endTime          = _AppHelper.getDefaultTimezoneDateTime(event.endDate, 'g:ia') %}
+
+{% set fullStartTime    = _AppHelper.getDefaultTimezoneDateTime(event.startDate, 'g:ia M j') %}
+{% set fullEndTime      = _AppHelper.getDefaultTimezoneDateTime(event.endDate, 'g:ia M j') %}
+
+{% set eventMonth       = _AppHelper.getDefaultTimezoneDateTime(event.startDate, 'F') %}
+
+{% set startMonth       = _AppHelper.getDefaultTimezoneDateTime(event.startDate, 'M') %}
+{% set endMonth         = _AppHelper.getDefaultTimezoneDateTime(event.endDate, 'M') %}
+
+
+
+<div class="{{containerClass}}" data-title="{{ eventTitle | raw }}">
+    {% set eventImgSmall = _Media.getMediaUrl(event.media[0], 500, 500, {'crop': 'fill', 'gravity': 'faces'} ) %}
+    {% set eventImg = _Media.getMediaUrl(event.media[0], imgWidth, imgHeight, {'crop': 'fill', 'gravity': 'faces'} ) %}
+
+    <a  href="{{event.url}}" 
+        class="{{swap}} card event {{hasMedia}}" 
+        data-id="{{event.eventId}}" 
+        data-guid="{{event.eventGuid}}" 
+        data-position="{{position}}" 
+        data-social="0"
+        data-event-image="{{eventImg}}" 
+        data-event-text="{{Helper.htmlToText(event.title, -1) | raw | escape('html')}}">
+
+        <article class="{{lightbox}} {{figureClass}}">
+            
+
+            {% if (hasMedia == 'withImage__content') %}
+                <figure class="{{figureClass}}">
+                    <picture>
+                        <source media="(max-width: 620px)" srcset="{{eventImgSmall}}">
+                        <img class="img-responsive" src="{{eventImg}}" data-original="{{eventImg}}"  {% if eventImg is not empty %} style="background-image:url('{{placeholder}}');" {%endif%}>
+                    </picture>
+                </figure>
+            {% endif %}
+
+            {# <div class="event-date">
+                {% set difference = date(event.endDate).diff(date(event.startDate)) %}
+                {% set leftDays = difference.days %}
+                {% if leftDays > 0 %}                
+                    <div class="event-date__dates">{{ startDay }}&ndash;{{ endDay }}</div>
+                {% else %}
+                    <div class="event-date__dates">{{ startDay }}</div>
+                {% endif %}
+                <div class="event-date__month">{{ eventMonth }}</div>                
+            </div> #}
+
+            <div class="event-date">
+                {% if startMonth != endMonth %}                                   
+                    <span><p class="event-date__dates event-start {{site}}">{{ startDay }}</p> <p class="event-date__month event-start">{{ startMonth }}&ndash;</p></span>  
+                    <span><p class="event-date__dates event-end {{site}}">{{ endDay }}</p> <p class="event-date__month event-end">{{ endMonth }}</p></span>
+                {% else %}
+                    {% if startDay != endDay %}                
+                        <div class="event-date__dates {{site}}">{{ startDay }}&ndash;{{ endDay }}</div>
+                    {% else %}
+                        <div class="event-date__dates {{site}}">{{ startDay }}</div>
+                    {% endif %} 
+                    <div class="event-date__month hidden-xs">{{ eventMonth }}</div>
+                    <div class="event-date__month visible-xs">{{ startMonth }}</div>
+                {% endif %}
+                               
+            </div>
+
+
+            <div class="content">
+                <div class="category {{site}}">Events</div>
+                
+                <h2 class="j-truncate {{figureClass}}">{{ quotes.smarten(event.title) }}</h2>
+                
+                <p class="j-truncate excerpt">{{ quotes.smarten(event.excerpt | raw) }}</p>
+               
+                <div class="event-time">
+                    {% set difference = date(event.endDate).diff(date(event.startDate)) %}
+                    {% set leftDays = difference.days %}
+                    {% if leftDays > 0 %}
+                        <p class="date">{{ startDate }} - {{ endDate }}</p>
+                        <p class="time">{{ fullStartTime }} - {{ fullEndTime }} </p>
+                    {% else %}
+                        <p class="date">{{ fullStartDate }}</p>
+                        <p class="time">{{ startTime }} - {{ endTime }} </p>
+                    {% endif %}
+                </div>
+
+                <div class="address">
+                    <span class="address__pin">
+                        <svg class="svg-icons {{ site }}">
+                            <path fill-rule="evenodd" d="M9.505 12.552c-2.121 0-3.863-1.712-3.863-3.804 0-2.092 1.742-3.803 3.863-3.803 2.12 0 3.863 1.711 3.863 3.803 0 2.092-1.742 3.804-3.863 3.804m7.801-8.444C15.526 1.483 12.686 0 9.505 0 6.323 0 3.483 1.483 1.703 4.108-.077 6.694-.494 9.965.605 12.856c.303.76.757 1.56 1.363 2.282L9.505 24l7.498-8.862c.606-.723 1.099-1.483 1.364-2.282 1.136-2.89.72-6.162-1.06-8.748"/>
+                        </svg>
+                    </span>
+                    <span class="address__address1">{{ event.address.address1 }}</span>
+                    <span class="address__suburb">{{ event.address.suburb }}</span>
+                    <span class="address__city">{{ event.address.city }}</span>
+                    {# <soan class="address__state">{{ event.address.state  }}</span> #}
+                </div>                
+
+                <div class="author">
+                    <img src="{{profileImg}}" class="img-circle">
+                    <p>{{ event.createdBy['name'] }}</p>
+                    <time datetime="{{publishDate}}">{{publishDate}}</time>
+                </div>
+
+                <time datetime="{{startDate}}">{{startDate}}</time>
+
+            </div>
+
+
+
+
+        </article>
+    </a>
+
+    <div class="event-sharing-panel">
+        <a href="https://www.facebook.com/sharer/sharer.php?u={{event.url}}&title={{ event.title|url_encode }}" class="social-icon facebook-icon">
+            <svg class="svg-icons {{ site }}">
+                <path fill-rule="evenodd" d="M5.893 6.223V4.59c0-.248.013-.441.04-.579.029-.137.084-.268.166-.392a.69.69 0 0 1 .393-.27c.18-.055.42-.082.724-.082h1.633V0H6.223C4.707 0 3.62.359 2.957 1.075c-.662.717-.993 1.778-.993 3.184v1.964H0V9.49h1.964V19h3.929V9.49h2.625l.352-3.267H5.893z"/>
+            </svg>                            
+        </a
+        ><a href="https://twitter.com/share?text={{ event.title|url_encode }}&url={{event.url}}" class="social-icon twitter-icon">
+            <svg class="svg-icons {{ site }}">
+                <path fill-rule="evenodd" d="M17.367 2.509a3.954 3.954 0 0 0 1.77-2.218 7.817 7.817 0 0 1-2.554.986C15.775.425 14.79 0 13.624 0c-1.12 0-2.077.395-2.868 1.187-.792.792-1.187 1.748-1.187 2.869 0 .299.029.604.089.918a11.229 11.229 0 0 1-4.64-1.255A11.667 11.667 0 0 1 1.345.74c-.373.627-.56 1.3-.56 2.017 0 .717.164 1.366.493 1.95.329.582.77 1.06 1.322 1.434a4.098 4.098 0 0 1-1.815-.516c-.015 1.03.292 1.89.919 2.622a4.102 4.102 0 0 0 2.33 1.39 4.14 4.14 0 0 1-1.053.134c-.24 0-.493-.022-.762-.068a4.075 4.075 0 0 0 1.434 1.996 3.896 3.896 0 0 0 2.353.806c-1.464 1.15-3.137 1.726-5.02 1.726-.358 0-.686-.016-.985-.046C1.882 15.394 3.95 16 6.207 16c1.434.016 2.78-.208 4.033-.671 1.255-.464 2.33-1.068 3.227-1.815a11.42 11.42 0 0 0 2.308-2.623 11.949 11.949 0 0 0 1.435-3.114c.314-1.076.47-2.16.47-3.25 0-.224-.007-.396-.022-.515a8.124 8.124 0 0 0 2.017-2.084s-1.532.493-2.308.582z"/>
+            </svg>                            
+        </a
+        ><a href="mailto:?subject=Check%20out%20this%20event&body={{event.url}}" class="social-icon email-icon">
+            <svg class="svg-icons {{ site }}">
+                <g transform="translate(-548.000000, -1194.000000)">
+                    <path d="M548.084,1207.818 L555.182,1200.993 L548.063,1194.903 L548,1195.302 L548,1207.398 C548,1207.482 548.028,1207.622 548.084,1207.818 L548.084,1207.818 Z M556.085,1200.174 L557.03,1200.93 L558.899,1202.463 L560.768,1200.93 L561.713,1200.174 L568.853,1194.063 C568.727,1194.021 568.601,1194 568.475,1194 L549.302,1194 C549.162,1194 549.043,1194.021 548.945,1194.063 L556.085,1200.174 Z M549.302,1208.7 L568.475,1208.7 C568.601,1208.7 568.72,1208.679 568.832,1208.637 L561.671,1201.77 L558.899,1204.017 L556.127,1201.77 L548.966,1208.637 C549.078,1208.679 549.19,1208.7 549.302,1208.7 L549.302,1208.7 Z M569.714,1207.818 C569.756,1207.664 569.777,1207.524 569.777,1207.398 L569.777,1195.302 C569.777,1195.162 569.756,1195.029 569.714,1194.903 L562.616,1200.993 L569.714,1207.818 Z" id="Fill-6" />
+                </g>
+            </svg>
+        </a>
+    </div>
+</div>

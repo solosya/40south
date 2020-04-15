@@ -1,0 +1,159 @@
+@mixin event-card-2-base() {
+
+    
+    .c-eventcards-view {
+        position: relative;
+        @include flexbox();
+        @include margin-bottom(15);
+        @include calc(height, '100% - 40px');
+    
+
+        &__date {
+            display:none;
+            top: 0;
+            left: 0;
+            z-index: 10;
+            color: $mainColor;
+            @include flexbox;
+            position: absolute;
+            @include font-size(20);
+            justify-content: center;
+            align-content: center;
+            align-items: center;
+            background-color: $white;
+            @include padding-bottom(5);
+            font-weight: $weightMedium;
+            &__leaderboard {
+                display:block;
+            }
+        }
+
+        &__media {
+            display: none;
+        }
+    
+        &__container {
+            @include margin-left(20);
+            @include padding-right(0);
+            width:100%;
+            &:before {
+                top: 0;
+                left: 38px;
+                width: 1px;
+                z-index: -1;
+                height: 100%;
+                content: ' ';
+                position: absolute;
+                background-color: rgba($greyish, .5);
+            }
+        }
+    
+        &__info {
+            padding-right:0;
+            @include padding-left(50);
+            height:auto;
+        }
+    
+        &__month {
+            color: $greyish;
+            @include font-size(12);
+            font-weight: $weightRegular;
+            @include padding-left(6);
+            text-transform: uppercase;
+        }
+    
+        &__category {
+            display:none;
+        }
+    
+
+        &__heading {
+            color: $black;
+            @include font-size(16);
+            font-weight: $weightBold;
+            line-height: 1.25;
+            @include margin-bottom(5);
+            min-height:40px;
+            max-height:40px;
+            overflow: hidden;
+        }
+
+        &__time-venue {
+            display:block;
+            color: $greyish;
+            font-weight: $weightRegular;
+            @include font-size(13);
+            line-height: 1.5;
+            @include margin-bottom(2);
+            font-style: italic;
+        }
+
+        &__description {
+            display:none;
+        }
+    
+        &__day {
+            display:none;
+        }
+
+        &__time {
+            display:none;
+        }
+
+
+        &__author {
+            display:none;
+        }
+
+        &__icon{
+            &--pin{
+                float: left;
+                >svg{
+                    height: 27px;
+                }
+            }
+        }
+    
+        
+    }
+
+}
+
+.event-card-2-mobile {
+	@media #{$mobile} {
+        @include event-card-2-base();
+        .c-eventcards-view {
+            @media screen and (min-width:1px) and (max-width:599px) {
+                &__container {
+                    // seriously, fuck the _event-card settings they ARE FUCKING OVVERRIDING THIS JUST GET RID OF THAT FUCK!
+                    width: 100% !important;
+                    
+                }
+            }
+        }
+    }
+}
+
+
+.event-card-2-tablet {
+	@media #{$tablet} {
+        @include event-card-2-base();
+        .c-eventcards-view {
+
+            &__heading {
+                @include font-size(14);
+                min-height:36px;
+                max-height:36px;
+            }
+            &__time-venue {
+                @include font-size(12);
+            }
+        }   
+    }
+}
+
+.event-card-2-desktop {
+	@media #{$desktop-up} {
+        @include event-card-2-base();
+    }
+}

@@ -1,0 +1,732 @@
+<div class="container-fluid no-padding o-body-container  o-body-container-md" data-ver="5">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-lg-12"> 
+            <!--Page head start-->
+            <div class="row">
+                <div class="col-lg-12">
+
+                    <div class="c-section-head">
+                        <h1 class="c-section-head__title c-section-head__title--40">Submit a listing</h1>
+                        <div class="c-section-head__rule"></div>
+                    </div>
+                </div>
+            </div>
+            <!--Page head end-->
+            <div class="row">
+                <div class="col-lg-9"> 
+                
+                
+                
+                <!--Place listing section start-->
+                <form id="classifieds-form" class="c-classifieds-form" action="#" autocomplete="off">
+                    
+                    <div class="c-placelisting c-placelisting-md">
+                        <div class="row">
+                            <div class="col-lg-12">
+                                <div class="u-font-size-15 u-line-height-15 u-font-weight-medium">To place a listing, select a date or date range you would like your ad to appear. If you would like a combination of dates please note this in the comments.</div>
+                            </div>
+                        </div>
+
+                        <div class="row u-margin-top-10">
+                            <div class="col-12">
+                                <label class="c-form__label--inline u-font-size-15 u-line-height-15 u-margin-right-10">Single date</label>
+                                <input type="text" class="c-form__input c-form__input--inline c-form__input--bordered u-pointer articleExtendedData u-margin-right-20" name="start_date" id="start_date" value="" placeholder="Select date">
+                                <label class="c-form__label--inline u-font-size-15 u-line-height-15 u-margin-right-10">Date range</label>
+                                <input type="text" class="c-form__input c-form__input--inline c-form__input--bordered u-pointer articleExtendedData u-margin-right-10" name="start_date_range" id="end_date_range" value="" placeholder="Date range from">
+                                <input type="text" class="c-form__input c-form__input--inline c-form__input--bordered u-pointer articleExtendedData u-margin-right-10" name="end_date_range" id="end_date_range" value="" placeholder="To">
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-lg-12 u-margin-top-20">
+                                <div class="c-formrequirement">
+                                    <div class="c-formrequirement__head u-font-size-15 u-line-height-15">Please note: </div>
+                                    <p class="u-font-size-15 u-line-height-15">Deadlines: Monday edition – 10am, 3 days prior. Tuesday to Saturday editions – 10am, 1 day prior. Discounts apply for publishing on multiple days.</p>
+                                    <ul class="c-formrequirement__list u-margin-top-20">
+                                        <li class="u-font-size-15 u-line-height-15">1) Registration numbers are required for all relevant classifications (motor vehicles, caravans...)</li>
+                                        <li class="u-font-size-15 u-line-height-15">2) IDs are required when placing a birth notice, wedding notice and engagement notice.</li>
+                                        <li class="u-font-size-15 u-line-height-15">3) All trade ads must have the licence name and no. appear in the ad.</li>
+                                    </ul>
+                                    <ul class="c-formrequirement__list u-margin-top-20">
+                                        <li class="u-font-size-15">Advertisements will only be published once you have agreed either verbally, via email or via fax to the quoted price and publication date(s). 
+                                        If you are placing an ad outside of normal business hours, your booking may not be attended to until the next working day.</li>
+                                    </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!--Create listing form section start-->
+
+
+
+
+
+                        <div class="row">
+
+
+                            {# *******************************************************
+                                                    LISTING
+                            ******************************************************* #}
+
+                            <div class="col-lg-12">
+                                <div class="c-section-head">
+                                    <h1 class="c-section-head__title c-section-head__title--light">Create listing</h1>
+                                    <div class="c-section-head__rule"></div>
+                                </div>
+                                <div class="c-formnotice u-font-size-15">Fields marked with an * are required.</div>
+                            </div>
+
+
+
+
+
+
+
+
+                            {# *******************************************************
+                                            Category Pulldown
+                            ******************************************************* #}
+                            <div class="col-lg-6 u-margin-top-10">
+                                <label class="c-form__label" for="title">Select category*</label>
+                                <div id="categorySelect" class=""></div>
+                                <div class="c-form__help-block">Please fill out this field.</div>
+                            </div>
+
+                            {# *******************************************************
+                                            Classification Pulldown
+                            ******************************************************* #}
+                            <div class="col-lg-6 u-margin-top-10">
+                                <label class="c-form__label" for="title">Select classification*</label>
+                                <div id="classificationSelect" class=""></div>
+                                <div class="c-form__help-block">Please fill out this field.</div>
+                            </div>
+
+
+
+
+
+
+
+                            <div class="col-12 u-margin-top-15">
+                                <div class="c-form__group">
+                                    <label class="c-form__label" for="title">Title*</label>
+                                    <input id="title" type="title" class="c-form__input c-form__input--bordered"  placeholder="4WD for sale" name="title">
+                                    <div class="c-form__help-block">Please fill out this field.</div>
+                                </div>
+                            </div>
+
+
+
+                            <div class="col-lg-6  u-margin-top-10">
+                                <div class="c-form__group">
+                                    <label class="c-form__label" for="ad_details">Ad details*</label>
+                                    <textarea id="content" rows="10" class="c-form__input c-form__input--bordered u-line-height-15 u-padding-10" id="ad_details" placeholder="Nissan 4WD for sale $1000 ONO. Contact Pete on ..." name="content"  ></textarea>
+                                    <div class="c-form__help-block">Please fill out this field.</div>
+                                </div>
+                            </div>
+
+                            <div class="col-lg-6  u-margin-top-10">
+                                <div class="c-form__group">
+                                    <label class="c-form__label" for="comment">Comment/special notes*</label>
+                                    <textarea  rows="10" class="c-form__input c-form__input--bordered u-line-height-15 u-padding-10" id="comment" placeholder="Please run every Friday for three weeks" name="comment"  ></textarea>
+                                    <div class="c-form__help-block">Please fill out this field.</div>
+                                </div>
+                            </div>
+
+
+                            <div class="col-lg-12 u-margin-top-20">
+                                <div id="imageArray" class="row"></div>
+                            </div>
+
+
+                            <div class="col-lg-6 u-margin-top-20">
+                                <div class="c-form__group">
+                                    <label class="c-form__label">Upload file</label>
+                                    <a class="c-upload-image" id="uploadFileBtn" href="javascript:;">Upload image</a> 
+                                </div>
+                            </div>
+
+                            <div class="col-lg-12 u-margin-top-10">
+
+                                <div class="c-formrequirement u-mb--50">
+                                    <div class="c-formrequirement__head">Image requirements </div>
+                                    <ul class="c-formrequirement__list">
+                                        <li><em>– File type: JPEG images only with .JPG extension</em></li>
+                                        <li><em>– Maximum file size: 1MB </em></li>
+                                    </ul>
+                                </div>
+                            </div>
+                            
+                        </div>
+
+
+
+
+                        <div class="row u-margin-top-50">
+                            
+                            <div class="col-12 ">
+                                <div class="c-section-head ">
+                                    <h1 class="c-section-head__title c-section-head__title--light">Payment</h1>
+                                    <div class="c-section-head__rule"></div>
+                                </div>
+                            
+                                <div class="c-placelisting__paydiscription u-font-size-15">Our friendly staff will contact you by phone with the cost of your advertisement. Payment is required before publication, and can be made by credit card over the phone, or in person.</div>
+                                <p class="c-placelisting__cost">The estimated cost of this listing per day is:  $<span id="ad_cost">0</span>.</p>
+                                <p>This is an approximate cost only. Images are an additional charge. Discounts apply for publishing on multiple days.</p>
+
+                            </div>
+
+                        </div>
+
+
+
+
+                        <div class="row">
+
+                            {# *******************************************************
+                                                    BILLING
+                            ******************************************************* #}
+                            <div class="col-lg-12 u-margin-top-80">
+                                <div class="c-section-head">
+                                    <h1 class="c-section-head__title c-section-head__title--light">Billing address</h1>
+                                    <div class="c-section-head__rule"></div>
+                                </div>
+                            </div>
+
+
+                            <div class="col-lg-6 u-margin-top-15">
+                                <div class="c-form__group">
+                                    <label class="c-form__label" for="firstname">First name*</label>
+                                    <input type="text" class="c-form__input c-form__input--bordered" id="firstname" placeholder="eg. John" name="firstname">
+                                    <div class="c-form__help-block">Please fill out this field.</div>
+                                </div>
+                            </div>
+                            <div class="col-lg-6 u-margin-top-15">
+                                <div class="c-form__group">
+                                    <label class="c-form__label" for="lastname">Last name*</label>
+                                    <input type="text" class="c-form__input c-form__input--bordered" id="lastname" placeholder="eg. Smith" name="lastname">
+                                    <div class="c-form__help-block">Please fill out this field.</div>
+                                </div>
+                            </div>
+                            <div class="col-lg-6 u-margin-top-15">
+                                <div class="c-form__group">
+                                    <label class="c-form__label" for="email_address">Email address*</label>
+                                    <input type="email" class="c-form__input c-form__input--bordered" id="email_address" placeholder="eg. johnsmith@gmail.com" name="email_address">
+                                    <div class="c-form__help-block">Please fill out this field.</div>
+                                </div>
+                            </div>
+
+                            <div class="col-lg-6 u-margin-top-15">
+                                <div class="c-form__group">
+                                    <label class="c-form__label" for="phone_number">Phone number*</label>
+                                    <input type="tel" class="c-form__input c-form__input--bordered" id="phone_number" placeholder="Home or mobile" name="phone_number">
+                                    <div class="c-form__help-block">Please fill out this field.</div>
+                                </div>
+                            </div>
+                            <div class="col-lg-6 u-margin-top-15">
+                                <div class="c-form__group">
+                                    <label class="c-form__label" for="street_address">Street address*</label>
+                                    <input type="text" class="c-form__input c-form__input--bordered" id="street_address" placeholder="Street address" name="street_address">
+                                    <div class="c-form__help-block">Please fill out this field.</div>
+                                </div>
+                            </div>
+                            <div class="col-lg-6">
+                                <div class="c-form__group u-margin-top-15">
+                                    <label class="c-form__label" for="suburb">Suburb</label>
+                                    <input type="text" class="c-form__input c-form__input--bordered" id="suburb" placeholder="Suburb" name="suburb">
+                                    <div class="c-form__help-block">Please fill out this field.</div>
+                                </div>
+                            </div>
+                            <div class="col-lg-6 u-margin-top-15">
+                                <div class="c-form__group">
+                                    <label class="c-form__label" for="state">State</label>
+                                    <input type="text" class="c-form__input c-form__input--bordered" id="state" placeholder="State" name="state">
+                                    <div class="c-form__help-block">Please fill out this field.</div>
+                                </div>
+                            </div>
+                            <div class="col-lg-6 u-margin-top-15">
+                                <div class="c-form__group">
+                                    <label class="c-form__label" for="postcode">Postcode*</label>
+                                    <input type="tel" class="c-form__input c-form__input--bordered" id="postcode" placeholder="Postcode" name="postcode">
+                                    <div class="c-form__help-block">Please fill out this field.</div>
+                                </div>
+                            </div>
+
+                            {# <div class="col-lg-12  u-margin-top-30">
+                                <div class="c-form__group">
+                                    <label>
+                                        <input id="terms" name="terms" type="checkbox" class="validate[required]">
+                                        <span><!-- fake radio --></span> <span class="u-font-size-15">I have read and accept the <a href="javascript:;">Advertising Terms.</a><span>
+                                    </label>
+                                </div>
+                            </div> #}
+
+                            <div  class="col-lg-12 u-margin-top-60">
+                                <button id="classifieds_submit" name="" type="submit" class="c-button c-button-block c-button-md c-button--red" style="position:relative">Submit listing</button>
+                                <p id="form-errors" class="u-font-size-15 u-font-weight-medium u-margin-top-10" style="color: #c51515;display:none">There were some errors in the form.  Check the highlighted fields above.</p>
+                            </div>
+                        </div>
+                        <!--Create listing form section end--> 
+                    </form>
+                </div>
+                <!--Place listing section end--> 
+                </div>
+                <div class="col-lg-3">
+                <div class="o-body-container--right-layout article-left-img">
+                    {# <figure> 
+                        <img src="https://images.unsplash.com/photo-1495107334309-fcf20504a5ab?ixlib=rb-1.2.1&w=1000&q=80" class="img-fluid" alt="dummy image">
+                    </figure> #}
+                </div>
+                </div>
+            </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<script>
+    // main script is defered so event listener makes sure
+    // defered script is loaded before this runs
+
+    document.addEventListener("DOMContentLoaded", function() {
+
+
+        var ClassifiedsForm = function(options) {
+
+            this.formId = options.form;
+
+
+            this.subscriptions = Acme.PubSub.subscribe({
+                'Acme.classified_form.listener' : ['state_changed', 'update_state']
+            });
+
+            this.container = $('#' + this.formId);
+            this.errorFields = [];
+
+            this.validateRules = {
+                "title"         : ["notEmpty"], 
+                "content"       : ["notEmpty"], 
+                "start_date"    : ["notEmpty"],
+                "firstname"     : ["notEmpty"],
+                "lastname"      : ["notEmpty"],
+                "email_address" : ["notEmpty"],
+                "phone_number"  : ["notEmpty"],
+                "street_address": ["notEmpty"],
+                "postcode"      : ["notEmpty"],
+            };
+
+            this.validateFields = Object.keys(this.validateRules);
+
+            this.menus = {};
+
+            this.data = {
+                attachments : []
+            };
+
+            this.carousel_item_tmp = '<li class="carousel-tray__item swap-images col-md-6"> \
+                <div class="carousel-tray__delete"> \
+                    <span class="o-close"></span> \
+                </div> \
+                <img class="carousel-tray__img" src="\{\{path\}\}" /> \
+            </li>';
+
+            this.addPullDowns();
+            this.events();
+            this.render();
+
+        };
+        ClassifiedsForm.prototype = new Acme.Form();
+        ClassifiedsForm.constructor = ClassifiedsForm;
+
+        ClassifiedsForm.prototype.listeners = 
+        {
+            "start_date" : function(data, topic) {
+                this.data.start_date = data['start_date'];
+            },
+            "start_date_range" : function(data, topic) {
+                this.data.start_date_range = data['start_date_range'];
+            },
+            "end_date_range" : function(data, topic) {
+                this.data.end_date_range = data['end_date_range'];
+            },
+            "category": function(data, topic) {
+                if (data.category === "") {
+                    data.category = 0;
+                }
+
+                this.selectedCategory = data.category;
+
+                this.data.classification = null;
+
+                this.classificationList = [];
+                if (this.categories[this.selectedCategory].children) {
+                    this.classificationList = this.categories[this.selectedCategory].children.map(function(item, i) {
+                        return {
+                            label: item.blogTitle,
+                            value: i
+                        }
+                    });
+                }
+
+                this.menus.classification.update(this.classificationList);
+                if (this.classificationList.length === 0) {
+                    this.menus.classification.disable();
+                } else {
+                    this.menus.classification.enable();
+                }
+                var updateData = {
+                    category: this.categories[this.selectedCategory].blogTitle
+                }
+
+
+
+                this.updateData(updateData);
+            },
+            "classification": function(data, topic) {
+                if (data.classification === "") {
+                    data.classification = 0;
+                }
+
+                var updateData = {
+                    classification: this.categories[this.selectedCategory].children[data.classification].blogTitle
+                }
+                this.updateData(updateData);
+
+            },
+            "delete image" : function(data, topic) {
+                return this.deleteImage(data);
+            },
+            "after" : function(data, topic) {
+                //console.log(this.data);
+            }
+        };
+
+        ClassifiedsForm.prototype.addPullDowns = function(list)
+        {
+            this.menus.category = new Acme.listMenu({
+                'parent'        : $('#categorySelect'),
+                'list'          : [],
+                'defaultSelect' : {"label": "Select category*"},
+                'name'          : 'category',
+                'key'           : 'category',
+                'class'         : 'Acme-pulldown Acme-pulldown--border'
+            }).init().render();
+
+            this.menus.classification = new Acme.listMenu({
+                'parent'        : $('#classificationSelect'),
+                'list'          : [],
+                'defaultSelect' : {"label": 'Select classification'},
+                'name'          : 'classification',
+                'key'           : 'classification',
+                'class'         : 'Acme-pulldown Acme-pulldown--border'
+            }).init().render();
+            this.menus.classification.disable();
+
+        };
+        ClassifiedsForm.prototype.render = function() 
+        {
+            this.clearInlineErrors();
+            this.addInlineErrors();
+            if (this.data.attachments.length > 0) {
+                this.renderImageThumbs();
+            }
+
+        };
+        ClassifiedsForm.prototype.renderImageThumbs = function() 
+        {
+            var imageArray = $('#imageArray');
+            var images = this.data.attachments;
+
+            if ( imageArray.children().length != images.length) {
+                var html = "";
+                var temp = Handlebars.compile(this.carousel_item_tmp); 
+        
+                for (var i=0;i<images.length;i++) {
+                    html += temp({"path": images[i]});
+                }
+
+                imageArray.empty().append(html);
+                //this.initSortable();
+            }
+        };
+        ClassifiedsForm.prototype.initSortable = function()
+        {
+            var self = this;
+
+            $( "#imageArray" ).sortable({
+                self: self,
+                axis: "x", // only sort horizontal
+                update: function(e, ui) {
+                    var data = {
+                        articleGuid: self.data.guid,
+                        images: []
+                    };
+                    var container = $(e.target);
+
+                    var images = container.children();
+                    images.each(function(i,e) {
+                        var id = $(e).find('span').data('id');
+                        data.images.push(id);
+                    });
+
+                    Acme.server.create('/api/article/reorder-article-media', data).done(function(r) {
+                        if (r.success == 1) {
+                            images.css({outline: '0 solid rgba(167, 237, 52, 1)' })
+                            images.animate({
+                                "outlineWidth": 4
+                            }, 100).animate({
+                                "outlineWidth": 0
+                            }, 100, function() {
+                                $(this).removeAttr('style');
+                            });
+                        }
+                    });
+                }
+            });
+        };
+        ClassifiedsForm.prototype.saveImage = function(data)
+        {
+            var attachments = this.data.attachments || [];
+            attachments.push(data.url);
+            this.updateData({attachments: attachments});
+            this.renderImageThumbs();
+            return true;
+        }
+        ClassifiedsForm.prototype.deleteImage = function(data) 
+        {
+            var info = data['delete image'].confirmDeleteImage;
+            var elem = info.elem;
+            var id = info.id;
+            elem.remove();
+            var index = this.data.attachments.indexOf(id);
+            if (index > -1) {
+                this.data.attachments.splice(index, 1);
+            }
+            Acme.PubSub.publish('update_state', {'closeConfirm': ''});
+        };
+        ClassifiedsForm.prototype.submit = function()
+        {
+            var self = this;
+            var submitButton = $('#classifieds_submit');
+            var errorField = $('#form-errors');
+            errorField.hide();
+            var validated = this.validate();
+            if (!validated) {
+                errorField.show();
+                this.render();
+                return;
+            }
+            submitButton.addClass('spinner').addClass('c-button--spinner').text('');
+
+            var formText = "";
+            Object.keys(this.data).forEach(function(el) {
+                var data = self.data[el];
+
+                if (el === 'attachments') {
+                    data = '<br />' + data.map(function(img) { 
+                        return '<a href="'+img+'">'+img+'</a>';
+                    }).join('<br />');
+                }
+
+                formText += "<p><strong>" + el + ":</strong> " + data + "</p>";
+            });
+
+            var formData = {
+                name: self.data.firstname,
+                email: self.data.email_address,
+                emailGroup: "Listings",
+                sendToNetworkAdmins: 0,
+                message: formText,
+            }
+
+            Acme.server.create('/api/contact/send-email', formData).done(function(r) {
+
+                if (r.success === '1' || r.success === 1) {
+                    $().General_ShowNotification({message: 'Classified sent, thanks!'});
+                    setTimeout( function() {
+                        window.location.reload(false);
+                    }, 3000)
+                } else {
+                    submitButton.removeClass('spinner').removeClass('c-button--spinner').text('SUBMIT LISTING');
+                }
+            }).fail(function(r) {
+                submitButton.removeClass('spinner').removeClass('c-button--spinner').text('SUBMIT LISTING');
+                console.log(r);
+            });
+        };
+        ClassifiedsForm.prototype.events = function() 
+        {
+            var self = this;
+
+
+            $('#' + this.formId + ' input, textarea').on("change", function(e) {
+                e.stopPropagation();
+                e.preventDefault();
+                var data = {};
+                var elem = $(e.target);
+                var elemid = elem.attr('name');
+
+                data[elemid] = elem.val();
+                self.updateData(data);
+                self.validate([elemid]);
+                self.render();
+            });
+
+
+
+            $('#content').on('input', function(e) {
+                var elem = $(e.target);
+                var text = elem.val().trim();
+                var paras = text.split('\n');
+
+                var text = text.replace(/\s/g, "¡" );
+                var text = text.replace(/\n/g, "¡" );
+
+                var words = text.split('¡');
+                var wordCount = words.length;
+                var cost = wordCount * 1.53;
+                $('#ad_cost').text(cost.toFixed(2));
+            });
+
+
+            $('#uploadFileBtn').uploadFile({
+                onSuccess: function(data, obj) {
+                    self.saveImage(data);
+                }
+            });
+
+            $('#imageArray').on('click', '.carousel-tray__delete', function(e) {
+                var elem = $(e.target);
+                var container = elem.closest('li');
+                var image = container.find('img');
+                mediaId = image.attr('src');
+                Acme.PubSub.publish('update_state', {'confirmDeleteImage': {elem:container, id:mediaId}});
+            });
+
+
+            $(self.container).submit(function(e) {
+                e.preventDefault();
+                self.submit();
+            });
+
+
+
+            var picker = $('#start_date, #start_date_range, #end_date_range').datetimepicker({
+                keepOpen: false,
+                format: "DD-MM-YYYY",
+                useCurrent: false,
+                showClose: true,
+                icons: {
+                    time: "fa fa-clock-o",
+                    date: "fa fa-calendar",
+                    up: "fa fa-angle-up",
+                    down: "fa fa-angle-down",
+                    close: "fa fa-close"
+                },
+                tooltips: {selectTime: ''}
+            }).on('dp.change', function (e) {
+                $(this).datepicker('hide');
+
+                var data = {};
+                data[e.target.id] = e.date.format('YYYY-MM-DD HH:mm');
+
+                if(data['start_date_range'] || data['end_date_range']) {
+                    if(data['start_date_range'] && e.date.hour() == 9 && e.date.minute() == 0) {
+                        $('#end_date_range').data("DateTimePicker").minDate(e.date.hour(16).minute(59));
+                    } else if (data['start_date_range']) {
+                        $('#end_date_range').data("DateTimePicker").minDate(e.date);
+                    }
+
+                }
+                self.updateData(data);
+
+                {# Acme.PubSub.publish("update_state", data); #}
+            });
+
+
+
+            Acme.server.fetch(_appJsConfig.appHostName + '/api/menu/get-menu?name=classifieds').done(function(r) {
+
+                self.categories = r;
+                self.categoryList = self.categories.map(function(item, i) {
+                    return {
+                        label: item.blogTitle,
+                        value: i
+                    }
+                });
+
+                self.menus.category.update(self.categoryList);
+            });
+
+
+
+
+
+
+        };
+
+
+
+        Acme.classified_form = new ClassifiedsForm({
+            form: "classifieds-form"
+        });
+
+
+
+        var layouts = {
+            "delete"   : 'listingDeleteTmpl',
+        };
+
+
+        Acme.confirmView = new Acme.Confirm('modal', 'signin', layouts);
+
+            Acme.confirmView.constructor = Acme.Confirm;
+
+            Acme.confirmView.subscriptions = Acme.PubSub.subscribe({
+                'Acme.confirmView.listener' : ['update_state']
+            });
+
+            Acme.confirmView.listeners = 
+            {
+                "confirm" : function(data, topic) {
+                    this.render("listing", "Listing saved");
+                },
+                "confirmDelete" : function(data, topic) {
+                    this.render("delete", "Warning", { msg: "Are you sure you want to permanently delete this listing?", role:"delete"});
+                },
+                "confirmDeleteImage" : function(data, topic) {
+                    this.upoil = data;
+                    
+                    this.render("delete", "Warning", 
+                        {
+                            msg: "Are you sure you want to delete this image?", 
+                            role:"deleteImage"
+                        }
+                    );
+                },
+                "closeConfirm" : function(data, topic) {
+                    this.closeWindow();
+                }
+
+            };
+            Acme.confirmView.handle = function(e) {
+                var self = this;
+                this.parent.handle.call(this, e);
+                var $elem = $(e.target);
+                if ($elem.data('role') === 'deleteImage') {
+                    Acme.PubSub.publish("update_state", {'delete image': this.upoil });
+
+                }
+            }
+
+
+
+
+
+
+
+    }); {# end js #}
+
+</script>

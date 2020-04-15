@@ -1,0 +1,209 @@
+{% set headermenu = _Menu.get({'menuType': 'header', "menuGroupName":"header-main"}) %}
+{% set miniMenu = _Menu.get({'menuType': 'header', 'menuGroupName': 'header-mini'}) %}
+
+{% set loggedin = _User.isGuest() ? false : true %}
+{% set user = loggedin ? _User.getUser() : null %}
+
+{% set logo = networkData.templatePath~'/static/images/logo.svg'%}
+
+{% set logoWidth = 650 %}
+{% set logoHeight = 144 %}
+
+{% if config['logo'] is defined %}
+    {% if config['logo']['width'] is defined %}
+        {% set logoWidth = config['logo']['width'] %}
+
+        {% if config['logo']['height'] is not defined %}
+            {% set logoHeight = 0 %}
+        {% endif %}
+    {% endif %}
+
+    {% if config['logo']['height'] is defined %}
+        {% set logoHeight = config['logo']['height'] %}
+
+        {% if config['logo']['width'] is not defined %}
+            {% set logoWidth = 0 %}
+        {% endif %}
+
+    {% endif %}
+{% endif %}
+
+
+
+{% if networkData.logoMedia | length > 0 %}
+    {% set logo = _Media.getMediaUrl(networkData.logoMedia, logoWidth, logoHeight, {'crop': 'fit'} ) %}
+{% endif %}
+
+
+{% set theDate = _AppHelper.getCurrentTimestampBasedOnTimezone() %}
+{% set date = _AppHelper.getDefaultTimezoneDateTime(theDate, "l, j F Y") %}
+
+
+<header class="c-header-3 u-mobile-margin-bottom-70" data-header="0">
+    <div class="container">
+        <div class="row">
+            
+            
+            
+            {# ******************************************************
+                                 MINI MENU
+            ****************************************************** #}
+            <div class="col-12 c-header-3__container">
+                <div class="c-header-3-top-bar">
+                    {{this.render('../_submenu_navigation.twig', {
+                        items: miniMenu,
+                        class: 'c-header-3-top-bar__link',
+                    }) | raw}}
+                </div>
+                
+
+
+
+                {# <div class="c-header-3__row2"> #}
+                
+                    {# <div class="c-header-3__mobile-login">
+                        {% if loggedin %}
+                            <a class="c-header-3__login-text" href="{{networkData.defaultBlogUrl}}/user/edit-profile">My Account</a>
+                            <a class="c-header-3__login-text" href="{{_AppHelper.getLogoffUrl()}}" class="">Log out</a>
+                        {% else %}
+                            <a href="{{networkData.defaultBlogUrl}}/subscriptions#subscriptions">Subscribe</a>
+                            <a id="signinBtn" href="javascript:;" class="">Log in</a>
+                        {% endif %}
+                    </div> #}
+                {# </div> #}
+
+            </div>  
+
+                
+                
+                {# <div class="c-header-3__login-info">
+                    {% if loggedin %}
+                        <a class="c-header-3__login-text" href="{{networkData.defaultBlogUrl}}/user/edit-profile">My Account</a>
+                        <a class="c-header-3__login-text" href="{{_AppHelper.getLogoffUrl()}}">Log out</a>
+                    {% else %}
+                        <a class="c-header-3__login-text" id="signinBtn" href="javascript:;" >Log in</a>
+                        <a class="c-header-3__login-text" href="{{networkData.defaultBlogUrl}}/subscriptions#subscriptions">Subscribe</a>
+                    {% endif %}
+                </div> #}
+        </div>
+
+
+        <div class="row">
+            <div class="col-12">
+
+
+                <div class="c-header-3__main-info">
+
+                    <div class="c-header-3__weather-info--date" >{{date}}</div>
+
+                    <a href="{{networkData.defaultBlogUrl}}" class="c-header-3__main-info__logo">
+                        <figure class="c-header-3__main-info__figure">
+                            <img src="{{logo}}" class="image-fluid" />
+                        </figure>
+                    </a>
+                    
+                    <div class="c-header-3__login-info" >
+                        {% if loggedin %}
+                            <a class="c-header-3__login-text" href="{{networkData.defaultBlogUrl}}/user/edit-profile">My Account</a>
+                            <a class="c-header-3__login-text" href="{{_AppHelper.getLogoffUrl()}}">Log out</a>
+                        {% else %}
+                            <a class="c-header-3__login-text" id="signinBtn" href="javascript:;" >Log in</a>
+                            <a class="c-header-3__login-text" href="{{networkData.defaultBlogUrl}}/subscriptions#subscriptions">Subscribe</a>
+                        {% endif %}
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+
+    <div class="u-rule d-none d-lg-block"></div>
+        {# ******************************************************
+                                MAIN NAV
+        ****************************************************** #}
+    <div class="container">
+        <div class="row">
+            <div class="col-12">       
+                <div class="c-navigation-3 c-navigation-3-md">
+                    <ul class="c-navigation-3__list">
+                        {{ this.render('../../../partials/_menu.twig', {'menu': headermenu}) | raw }}
+                    </ul>
+                    
+                    <div class="c-navigation-3__icons">
+                        <div class="c-navigation-3__icons__menu o-hamburger js-menu"></div>
+                        <div class="c-navigation-3__icons__search">
+                            <div class="js-searchButton__search">{{ this.render('../../../partials/icons.twig', {icon: 'search'} ) | raw }}</div>
+                            <div class="js-searchButton__close d-none">{{ this.render('../../../partials/icons.twig', {icon: 'cross'} ) | raw }}</div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+
+
+
+    {# ******************************************************
+                        FIXED HEADER
+    ****************************************************** #}
+    <div class="c-header-3__fixed c-header-3__fixed--off" id="j-menu-fixed">
+        <div class="c-header-3__main-info c-header-3__fixed-block" >
+            <a href="{{networkData.defaultBlogUrl}}" class="c-header-3__main-info__logo" >
+                <figure class="c-header-3__main-info__figure">
+                    <img src="{{logo}}" class="image-fluid" />
+                </figure>
+            </a>
+            <div class="c-navigation-3 c-navigation-3-md c-navigation-3__fixed u-margin-top-10" >
+                <ul class="c-navigation-3__list d-none d-lg-flex">
+                    {{ this.render('../../../partials/_menu.twig', {'menu': headermenu}) | raw }}
+                </ul>
+
+                <div class="c-navigation-3__icons d-lg-none">
+                    <div class="c-navigation-3__icons__menu o-hamburger js-menu"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+</header>
+
+
+
+<div class="c-search-bar">
+    <div class="container">
+        <form class="c-search-bar__form" method="get" id="searchform" action="{{networkData.defaultBlogUrl}}/search">
+            <div class="c-search-bar__submit"></div>
+            <input class="c-search-bar__input" type="text" name="s" placeholder="Search"/>
+            <button class="c-button c-button--rounded c-button--blue" type="submit" id="searchsubmit">Go</button>
+        </form>
+    </div>
+</div>
+
+<div class="responsive-standalone">
+    
+    <ul class="standalone-menu">
+        <li class="c-search-bar d-block d-md-none">
+            <form class="c-search-bar__form" method="get" id="searchform" action="{{networkData.defaultBlogUrl}}/search">
+                <div class="c-search-bar__icon">{{ this.render('../../../partials/icons.twig', {icon: 'search'} ) | raw }}</div>
+                <input class="c-search-bar__input" type="text" name="s" placeholder="Search"/>
+                <button class="c-search-bar__button c-button c-button--rounded c-button--blue" type="submit" id="searchsubmit">Go</button>
+            </form>
+        </li>
+        {{ this.render('../../../partials/_menu.twig', {
+            'menu': headermenu
+            }) | raw }}
+    </ul>
+    
+    <div class="responsive-standalone-close">
+        <div class="responsive-standalone-close-menu">Menu</div>
+        <div class="responsive-standalone-close-close o-close o-close--dark"></div>
+    </div>
+
+</div>
+
+<div class="responsive-standalone-overlay"></div>

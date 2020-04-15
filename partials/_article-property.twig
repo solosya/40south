@@ -1,0 +1,57 @@
+{% import "quotes.twig" as quotes %}
+
+
+
+{% if (article.hasMedia == 'TRUE' or article.hasPreviewMedia == 'TRUE') and params.imageSuppress != 'false' %}
+    <figure class="c-cards-view__media">
+        <picture>
+            <source media="(max-width: 620px)" srcset="{{params.articleImgSmall}}">
+            <img class="img-fluid" src="{{params.articleImg}}" data-original="{{params.articleImg}}"  {% if articleImg is not empty %} style="background-image:url('{{params.placeholder}}');" {%endif%}>
+        </picture>
+    </figure>
+{% endif %}
+
+
+
+
+
+<div class="c-cards-view__container">
+    <div class="c-cards-view__category">{{article.label}}</div>
+    
+    <h2 class="c-cards-view__heading js-c-cards-view-heading j-truncate">{{ params.articleTitle }}</h2>
+    
+    <p class="c-cards-view__description js-c-cards-view-description j-truncate">{{ quotes.smarten(article.excerpt | raw) }}</p>
+
+    
+    <div class="c-cards-view__additioanl-info">
+        <div class="c-cards-view__additioanl-info__price">{{ article.additionalInfo.pricerange }}</div>
+        <div class="c-cards-view__additioanl-info__features">
+
+            {% if article.additionalInfo.bedroom_count %}
+                <div class="c-cards-view__additioanl-info__features-list">
+                    <span class="icon fa fa-bed"></span>
+                    <span class="text">{{ article.additionalInfo.bedroom_count }}</span>
+                </div>
+            {% endif %}
+
+            {% if article.additionalInfo.bathroom_count %}
+                <div class="c-cards-view__additioanl-info__features-list">
+                    <span class="icon fa fa-bath"></span>
+                    <span class="text">{{ article.additionalInfo.bathroom_count }}</span>
+                </div>
+            {% endif %}
+
+            {% if article.additionalInfo.car_count %}
+                <div class="c-cards-view__additioanl-info__features-list">
+                    <span class="icon fa fa-car"></span>
+                    <span class="text">{{ article.additionalInfo.car_count }}</span>
+                </div>
+            {% endif %}
+        </div>
+    </div>
+    
+    <div class="c-cards-view__author">
+        <div class="c-cards-view__time">{{params.publishDate}}</div>
+    </div>
+
+</div>

@@ -1,0 +1,197 @@
+{% import "quotes.twig" as quotes %}
+
+{% set imageSuppress = imageSuppress is defined and imageSuppress == true   ? true : false  %}
+{% set lazyload      = lazyload      is defined and lazyload == false       ? false : true  %}
+{% set template      = (template     is defined and template != '')         ? template : 'main'  %}
+{% set swap          = swap          is defined and swap == 'false'         ? '' : 'swap'  %}
+{% set dev           = dev           is defined and dev == true             ? true : false  %}
+{% set inline        = inline        is defined and inline != ''            ? inline : ''  %}
+
+{% set lightbox = ''  %}
+{% set articleImg = '' %}
+
+{% if behaviour is defined %} 
+    {% if behaviour == 'noclick' %}
+        {% set article = article | merge({'url' : 'javascript: void(0)'}) %}
+    {% elseif behaviour == 'lightbox' %}
+        {% set lightbox = behaviour %}
+    {% endif %}
+{% endif %}
+
+
+{% set imgWidth = 0 %}
+{% set imgHeight = 0 %}
+{% if imageSize is defined %}
+    {% set imgWidth = (imageSize.width is defined) ? imageSize.width : 0 %}
+    {% set imgHeight = (imageSize.height is defined) ? imageSize.height : imgWidth %}
+{% endif %}
+
+
+{% set profileImg = false %}
+{% if authorImg is defined and authorImg == true %}
+    {% set profileImg = _Media.getMediaUrl(article.createdBy['media'], 34, 34, {radius: 'max', gravity: 'face', 'crop': 'thumb', type: 'user'}) %}
+{% endif %}
+
+
+{% if article.articleId > 0 or (isArticle is defined and isArticle == 'true') %}
+
+    {% set hasArticleMediaClass = ((article.hasMedia == 'TRUE' or article.hasPreviewMedia == 'TRUE') and imageSuppress == false) ? 'withImage__content': 'without__image' %}
+
+
+    {% set publishDate = (article.publishDate is defined) ? article.publishDate : article.publishedDate %}
+    {% set publishDateTime = (article.publishDateTime is defined) ? article.publishDateTime : article.publishedDateTime %}
+    {% set publishDate  = _AppHelper.getDefaultTimezoneDateTime(publishDate, 'd M Y') %}
+    {% set publishedAgo = _AppHelper.getSecondsSincePublished(publishDateTime) %}
+    
+    {% if publishedAgo < 86400 %}
+        {% set publishDate = _AppHelper.getRelativeTime(publishDateTime) ~ " ago" %}
+    {% endif %}
+
+
+
+
+    
+    {% set articleTitle = quotes.smarten(article.title)  %}
+    {% if article.titlePreview is defined and article.titlePreview != "" %}
+        {% set articleTitle = quotes.smarten(article.titlePreview) %}
+    {% endif %}
+
+    {% set params = {
+        placeholder:     "https://place-hold.it/1",
+        figureClass:     article.featuredMedia['type'] == 'video' ? 'video' : '',
+        articleImgSmall: _Media.getMediaUrl(article.featuredMedia,500, 325, {'crop': 'fill', 'gravity': 'faces'} ),
+        articleImgMedium:_Media.getMediaUrl(article.featuredMedia,768, 500, {'crop': 'fill', 'gravity': 'faces'} ),
+        articleImg:      _Media.getMediaUrl(article.featuredMedia,imgWidth, imgHeight, {'crop': 'fill', 'gravity': 'faces'} ),
+        publishDate:     publishDate,
+        articleTitle:    articleTitle,
+        profileImg:      profileImg,
+        imageSuppress:   imageSuppress,
+        lazyload:        lazyload,
+        imgWidth:        imgWidth,
+        imgHeight:       imgHeight,
+        site:            site
+    } %}
+
+    
+    {% set totalstring = "" %}
+    {% set totals = (article.total is defined) ? article.total : false %}
+    {% if totals and _User.isAdminUser() %}
+        {% set totalstring = "Viewed " ~ totals.view ~ " times" %}
+        {% set totalstring = totalstring ~ " Published " ~ params.publishDate %}
+    {% endif %}
+
+
+
+
+    <div class="{{containerClass}}" data-title="{{ params.articleTitle | raw }}" {{inline}}>
+        
+
+        <a  href                = "{{article.url}}" 
+            class               = "{{swap}} card article {{hasArticleMediaClass}}" 
+            data-id             = "{{article.articleId}}" 
+            data-guid           = "{{article.guid}}" 
+            data-position       = "{{position}}" 
+            data-social         = "0"
+            data-article-image  = "{{params.articleImg}}" 
+            data-article-text   = "{{Helper.htmlToText(article.title, -1) | raw | escape('html')}}"
+            title               = "{{totalstring}}">
+
+            {% if dev %}
+                <div class="article_number">{{position}}</div>
+            {% endif %}
+            
+            {# Article content including image #}
+            <article class="{{lightbox}}">
+
+                {{ this.render('_article-'~template~'.twig', {
+                    article: article,  
+                    params:params, 
+                    networkData: networkData
+                } ) | raw }}
+            </article>
+
+
+
+            {# Article admin buttons to delete/edit/pin #}
+            {% if article.userHasBlogAccess == '1' and swap != '' %}
+                {{ this.render('_article_admin.twig', {article: article, position:position, type: "article"} ) | raw }}
+            {% endif %}
+        </a>
+    </div>
+
+
+
+
+
+{% else %}
+
+
+
+
+
+
+    {% set social = article.social %}
+    {% set mediaClass = (social.hasMedia == 'TRUE') ? 'withImage__content' : 'without__image' %}
+    {% set videoClass = (social.media['type'] == 'video') ? 'video' : '' %}
+    {% set hasArticleMediaClass = (social.hasMedia == 'TRUE') ? 'withImage__content': 'without__image' %}
+    {% set hasArticleContentClass = (social.content) ? '': 'without__content' %}
+    {% set socialSource = social.source %} 
+
+    <div class="{{containerClass}}">
+        <a  href                = "{{social.url}}"
+            target              = "_blank"
+            class               = "{{swap}} card social {{ socialSource }} {{hasArticleContentClass}} {{hasArticleMediaClass}}" 
+            data-id             = "{{article.socialId}}" 
+            data-position       = "{{position}}"
+            data-blog-guid      = "{{social.blog['guid']}}" 
+            data-guid           = "{{social.guid}}" 
+            data-social         = "1" 
+            data-article-image  = "{{social.media['path']}}" 
+            data-article-text   = "{{Helper.htmlToText(social.content, -1) | raw | escape('html')}}">
+
+            <article class="socialarticle {{ socialSource }} lightbox">
+                {% if social.hasMedia == 'TRUE' and imageSuppress == false %}  
+                    <figure class="{{videoClass}}">
+
+                        {% if lazyload == false %}
+                            <img class="img-responsive" src="{{social.media['path']}}"  {% if params.articleImg is not empty %} style="background-image:url('{{params.placeholder}}');" {% endif %}>
+                        {% else %}
+                            <img class="img-responsive lazyload" data-original="{{social.media['path']}}"  {% if params.articleImg is not empty %} style="background-image:url('{{params.placeholder}}');" {% endif %}>
+                        {% endif %}
+
+                        {% if social.media['type'] == 'video' and social.media['videoUrl'] is not empty %}
+                            <div class="play_icon video-player" data-source="{{socialSource}}" data-url="{{social.media['videoUrl']}}" data-poster="{{social.media['path']}}"></div>
+                        {% endif %}
+                    </figure>
+                {% endif %}
+
+
+                <div class="content">
+                    <div class="icon {{site}}"></div>
+
+                    <div class="category {{socialSource}} {{site}}">{{socialSource}}</div>
+                    
+                    <p id="updateSocial{{article.socialId}}" data-update="0" class="j-truncate">
+                             {{ quotes.smarten(social.content  | raw) }}
+                    </p>
+
+                    
+                    <div class="j-truncate author">
+                        <img src="{{social.user.media.path}}" class="img-circle">
+                        <p class="">{{ (socialSource == _Article.socialArticleSourceTwitter()) ? '@' : ''}}{{ social.user['name'] | lower }}</p>
+                        <time datetime="">{{_AppHelper.getDateTimeBasedOnTimezone(social.publishDate, 'd M Y')}}</time>
+                    </div><!-- .author-->
+                    <time datetime="">{{_AppHelper.getDateTimeBasedOnTimezone(social.publishDate, 'd M Y')}}</time>
+
+                </div>
+            </article>
+
+
+            {% if article.userHasBlogAccess == '1' and swap != '' %}
+                {{ this.render('_article_admin.twig', {article: article, position:position, type: "social"} ) | raw }}
+            {% endif %}
+
+        </a>
+    </div>
+
+{% endif %}

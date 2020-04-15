@@ -1,0 +1,162 @@
+@mixin acme-card-1-base() {
+    background: $white;
+
+    .acme-c-cards-view {
+        @include flex-direction(row, horizontal);
+        @include flex-height(162px);
+
+        &__media {
+            @include flex-width(100px);
+            img {
+                height:100%;
+            }
+        }   
+
+
+        &__container {
+            @include flexbox();
+            @include flex-direction(column, vertical);
+            padding: 15px 10px 15px 20px;
+        }
+
+        &__category {
+            @include font-size(11);
+            margin-bottom: 5px;
+            order: 1;
+            flex-grow:0;
+        }
+
+        &__heading {
+            @include font-size(22);
+            @include flex-height(32px);
+            order: 3;
+        }
+        &__description {
+            margin-top: 5px;
+            order: 4;
+            // @include flex-height(40px);
+        }
+
+        &__author {
+            order: 2;
+            margin-bottom: 20px;
+        }
+        &__time {
+            @include font-size(15);
+            font-weight: $weightMedium;
+        }
+
+        &.video {
+            .c-cards-view__media .video-icon {
+                @include size(40px);
+            }
+        }
+
+        &.without-image {
+            .acme-c-cards-view {
+                &__container {
+                    width: 100%;
+                    padding: 15px 15px 15px 20px;
+                }
+
+                &__category {
+                    margin-bottom:8px;
+                }
+
+                &__description {
+                    margin-bottom: 15px;
+                    display: block;
+                    max-height: 90px;
+                    overflow: hidden;
+                }
+
+                &__author {
+                    margin-bottom:10px;
+                }    
+
+            }
+        }
+    }
+}
+
+.acme-card-1-mobile {
+    @media #{$mobile} {
+        @include acme-card-1-base();
+        @include card-name("acme 1 mobile");
+    }
+}
+
+
+.acme-card-1-tablet {
+    @media #{$tablet} {
+        @include card-name("acme 1 tablet");
+        @include acme-card-1-base();
+
+        .acme-c-cards-view {
+
+            &__media {
+                @include flex-width(167px);
+            }   
+        }
+
+    }
+}
+
+.acme-card-1-desktop {
+    @media #{$desktop-up} {
+        @include card-name("acme 1 desktop");
+        @include acme-card-1-base();
+
+        
+        .acme-c-cards-view {
+            @include flex-height(280px);
+
+            @include flex-direction(column, vertical);
+
+
+            &__container {
+            }
+            &__media {
+                @include flex-height(192px);
+                min-width:100%;
+                max-width:100%;
+                // @include flex-width(167px);
+            }   
+
+            &__description {
+                    display:none;
+            }
+
+            &__author {
+                display:none;
+            }
+
+
+            &.without-image {
+                .acme-c-cards-view {
+
+                    &__heading {
+                        margin-top:70px;
+                    }
+        
+
+                    &__description {
+                        display:block;
+                    }
+        
+                    &__author {
+                        display:block;
+                    }
+        
+                }
+            }
+    
+
+        }
+
+    }
+}
+
+
+
+

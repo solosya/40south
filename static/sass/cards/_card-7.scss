@@ -1,0 +1,99 @@
+// Used for real estate cards on the form page
+@mixin card-7-base() {
+    @include card-name("C5 mobile");
+
+    .c-cards-view {
+
+        margin:0;
+        @include flex-height(86px);
+
+        align-items: stretch;
+
+        &__media {
+            @include flex-width(74px);
+            @include flex-height(86px);
+
+            &--video {
+                &:before {
+                    @include size(55px);
+                }
+            }
+        }
+
+        &__container {
+            margin-left: 14px;
+            width:100%;
+            height: inherit;
+
+            &:after {
+                content: '';
+                position:absolute;
+                right:0;
+                top:0;
+                width: 24px;
+                height:100%;
+                background-color:$mainColor;
+                background-image: url('../icons/pencil.svg');
+                background-repeat: no-repeat;
+                background-position: center center;
+            }
+            &:hover {
+                &:after {
+                    background-color: $info;
+                }
+            }
+
+        }
+        &__category {
+            margin-bottom:14px;
+        }
+
+        &__heading {
+            margin-right:24px;
+            @include flex-height(44px);
+            @include font-size(18);
+            font-weight: $weightBold;
+        }
+        &__author {
+            display:none;
+        }
+
+
+        &.without-image {
+            background-color:white;
+
+            .c-cards-view {
+
+                &__container {
+                    width: 100%;
+                    padding: 0 0;
+                    margin-left: 0;
+                    height: inherit;
+                }
+            }
+        }
+    }
+}
+
+.card-7-mobile {
+    @media #{$mobile} {
+        @include card-7-base();
+        @include card-name("C7 mobile");
+
+    }
+}
+
+
+.card-7-tablet {
+    @media #{$tablet} {
+        @include card-7-base();
+        @include card-name("C7 tablet");
+    }
+}
+
+.card-7-desktop {
+    @media #{$desktop-up} {
+        @include card-7-base();
+        @include card-name("C7 desktop");
+    }
+}

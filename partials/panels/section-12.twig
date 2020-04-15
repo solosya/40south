@@ -1,0 +1,44 @@
+{% set articleCount = 0 %}
+{% set cardIndex = 0 %}
+
+
+
+<div class="row" data-section="12">
+    <div class="col-12">
+        <div class="c-page-head c-page-head-xs">
+            <div class="u-heading__large u-heading__large-xs u-pr--6">{{title}}</div>
+            <a href="{{link}}" class="c-page-head__link">View all</a>
+        </div>
+    </div>
+
+
+    <div class="col-12 col-md-8 col-lg-6">
+        {{this.render('../_single-article.twig', {
+            article: articles[articleCount], 
+            position: (articleCount+1),
+            imageSize: {width: 1156, height: 560},
+            behaviour: 'lightbox',
+            containerClass: "card-4-mobile card-10-tablet card-10-desktop card-10-desktop-lg"
+        }) | raw}}
+        {% set articleCount = (dev) ? articleCount : articleCount + 1 %}
+    </div>
+    
+    {% for i in 0..1 if articles[articleCount] %}
+        
+        <div class="col-12 col-md-4 col-lg-3{% if i == 1 %} d-md-none d-lg-block{% endif %}">
+            {{this.render('../_single-article.twig', {
+                article: articles[articleCount], 
+                position: (articleCount+1),
+                imageSize: {width: 550, height: 468},
+                containerClass: "card-5-mobile card-4-tablet card-2-desktop card-2-desktop-lg"
+            }) | raw}}
+            {% set articleCount = (dev) ? articleCount : articleCount + 1 %}
+        </div>
+    {% endfor %}
+    {# <div class="col-12 col-lg-3">
+        {% if adslots[0] is defined %}
+            <div class="j-adslot" id="{{adslots[0]}}" data-adshape="mrec"></div>
+        {% endif %}
+    </div>   #}
+</div> <!-- row -->
+

@@ -1,0 +1,208 @@
+{% import "partials/quotes.twig" as quotes %}
+
+{{ set(this, 'title', event.title) }}
+{{this.registerLinkTag({rel:'amphtml', href:_AppHelper.getServerUrl(false)~'?amp=1'})}}
+
+
+
+
+{# {{this.registerJsFile("https://maps.googleapis.com/maps/api/js?key=AIzaSyCRILYoQMiSjf_1Q_DhL199ha5w410AOLU")}} #}
+
+
+{% set networkData = _Network.getNetworkData() %}
+{% set site        = networkData.title | lower | split(" ")[0]%}
+
+
+{% set eventImage = false %}
+{% if event.media | length > 0 %}
+    {% set eventImage = _Media.getMediaUrl(event.media[0], 750, 420, {'crop': 'fill', 'gravity': 'auto'} ) %}
+{% endif %}
+
+{% set startDate = _AppHelper.getDefaultTimezoneDateTime(event.startDate, 'j F Y') %}
+{% set endDate = _AppHelper.getDefaultTimezoneDateTime(event.endDate, 'j F Y') %}
+
+{% set startTime = _AppHelper.getDefaultTimezoneDateTime(event.startDate, 'g:ia') %}
+{% set endTime = _AppHelper.getDefaultTimezoneDateTime(event.endDate, 'g:ia') %}
+
+{% set date = date() %}
+{% set events = _Event.getEvents({"limit": 4, "start_date": date.date | split(" ")[0]}) %}
+
+
+<div class="o-body-container o-body-container-md u-margin-top-60">
+
+    <div class="container"> 
+        <div class="row">
+            <div class="col-12 col-md-7">
+                <div class="c-eventdetail">
+
+                    {% if eventImage %} 
+                        <div class="c-eventdetail__media">
+                            <figure class="c-eventdetail__figure"> 
+                                <img src="{{eventImage}}" class="img-fluid" alt="Article Info">
+                            </figure>
+                        </div>
+                    {% endif %}
+                    
+                    
+                    <div class="c-eventdetail__head">
+
+                        {# {% if _User.isAdminUser() %}
+                            <a href="{{event.editUrl}}" target="_blank" class="c-button c-button--rounded c-button--blue">Edit article</a>
+                        {% endif %} #}
+                        
+                        <a href="{{ networkData.defaultBlogUrl }}/events">
+                            <div class="c-eventdetail__category">
+                                Events
+                            </div>
+                        </a>
+                        <div class="c-eventdetail__title">
+                            {{ quotes.smarten(event.title) }}  
+                        </div>
+                    </div>
+                    <div class="c-eventdetail__container">
+                        <div class="row">
+
+                            <div class="col-md-4">
+                                <div class="c-eventdetail__info">
+                                    <div class="c-eventdetail__info-item">
+                                        {{ this.render('partials/icons.twig', {icon: 'calendar'} ) | raw }}
+                                        <span class="c-eventdetail__info-text">{{ startDate }}</span>
+                                    </div>
+                                    <div class="c-eventdetail__info-item">
+                                        {{ this.render('partials/icons.twig', {icon: 'clock'} ) | raw }}
+                                        <span class="c-eventdetail__info-text">{{ startTime }}{% if event.endDate != "" %} - {{endTime}}{% endif %}</span>
+                                    </div>
+                                    <div class="c-eventdetail__info-item">
+                                        {{ this.render('partials/icons.twig', {icon: 'location'} ) | raw }}
+                                        <span class="c-eventdetail__info-text">{{ event.address.address1 }},<br/>
+                                        {{ event.address.suburb }}</span>
+                                    </div>
+                                    {# <div class="c-eventdetail--source">
+                                        <span class="fa fa-laptop"></span>
+                                        youtube.com/johnbobbelitandhisband
+                                    </div> #}
+
+
+
+
+
+
+
+                                        {% set contactDetails = "" %}
+
+                                        {% if event.contactNumber != "" %}
+                                            {% set contactDetails = event.contactNumber %}
+                                        {% endif %}
+
+                                        {% if event.contactEmail != "" %}
+                                            {% if contactDetails != "" %}
+                                                {% set contactDetails = contactDetails ~ ", " ~ event.contactEmail %}
+                                            {% else %}
+                                                {% set contactDetails = event.contactEmail %}
+                                            {% endif %}
+                                        {% endif %}
+
+
+                                        {% if contactDetails != "" %}
+                                            <div class="c-eventdetail__info-item">
+                                                {{ this.render('partials/icons.twig', {icon: 'email'} ) | raw }}
+                                                <span class="c-eventdetail__info-text" >Contact {{event.contactName}} on {{contactDetails}}</span>
+                                            </div>
+                                        {% endif %}
+
+
+                                </div>
+                            </div>
+
+                            <div class="col-md-8">
+                                <div class="c-eventdetail__content u-mobile-margin-top-20">
+                                    {{ event.content | raw }}
+                                </div>
+                            </div>
+
+
+
+                            {% if event.latitude and event.longitude %}
+                                <div class="col-md-12">
+                                    <div class="event-map u-margin-top-60">
+                                        <div id="addressMap" data-latitude="{{event.latitude}}" data-longitude="{{event.longitude}}" style="width:100%;min-height:500px;background:rgba(0,0,0,.3)"></div>
+                                    </div>
+                                </div>
+                            {% endif %}
+
+
+
+
+
+                        </div>
+                    </div>
+                </div>  
+            </div> 
+
+
+            <div class="col offset-md-2 col-md-3 c-events u-border-left u-mobile-margin-top-30">
+                {% set events = _Event.getEvents({"limit": limit, "start_date": date.date | split(" ")[0]}) %}
+
+                <div class="c-events-panel c-events-panel-xs">
+                    <h4 class="c-events-panel__head c-events-panel__head-xs">Upcoming Events</h4>
+                    <div class="c-events-panel__details">
+                        
+                        {% for i in 0..3 if events[i] %}
+                            {{this.render('partials/_single-event.twig', {
+                                event: events[i], 
+                                imageSuppress: 'true',
+                                containerClass: "event-card-2-mobile event-card-2-tablet event-card-2-desktop"
+                            }) | raw}}
+                        {% endfor %}
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+
+
+</div>
+
+
+
+
+{% if event.latitude and event.longitude %}
+
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCRILYoQMiSjf_1Q_DhL199ha5w410AOLU" type="text/javascript"></script>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            Acme.eventMap = new Acme.GoogleMap();
+        });
+    </script>
+{% endif %}
+
+
+
+
+
+
+                    {# <div class="col-md-12">
+                        <a href="https://www.facebook.com/sharer/sharer.php?u={{event.url}}&title={{ event.title|url_encode }}" class="share-icon facebook-icon"></a
+                        ><a href="https://twitter.com/share?text={{ event.title|url_encode }}&url={{event.url}}" class="share-icon twitter-icon"></a
+                        ><a href="mailto:?subject=Check%20out%20this%20article&body={{event.url}}" class="share-icon email-icon"></a>
+                    </div> #}
+            
+                            {# show start date OR start and end data if different #}
+                            {# {% set difference = date(event.endDate).diff(date(event.startDate)) %}
+                            {% set leftDays = difference.days %}
+                            {% if leftDays > 0 %}
+                                <p class="date">{{ startDate }} - {{ endDate }}</p>
+                            {% else %}
+                                <p class="date">{{ startDate }}</p>
+                                <p class="time">{{ startTime }} - {{ endTime }} </p>
+                            {% endif %} #}
+
+
+
+
+
