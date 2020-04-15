@@ -20,5 +20,7 @@
     "gulp-uglify": "^3.0.2",
     "gulp-util": "^3.0.8"
   },
-  "dependencies": {}
+  "dependencies": {
+    "lodash": "^4.17.15"
+  }
 }
