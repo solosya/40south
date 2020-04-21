@@ -110,10 +110,10 @@
     .standalone-menu {
         padding: 40px 0 0 0;
         margin:0;
-        background: $offwhite none repeat scroll 0 0;
+        background: $grey-3 none repeat scroll 0 0;
         > li {
             padding-left: 25px;
-            border-bottom: solid 1px $greyish;
+            border-bottom: solid 1px $grey-2;
             position:relative;
 
 
@@ -176,7 +176,7 @@
             transition:.2s ease;
 
             > span {
-                border-color: $greyish;
+                border-color: $grey-2;
             }
 
             &:hover {
@@ -190,10 +190,10 @@
             display: none;
             padding: 0;
             margin-left: -25px;
-            background: $greyish none repeat scroll 0 0;
+            background: $grey-2 none repeat scroll 0 0;
 
             >li {
-                border-top: solid 1px $offwhite;
+                border-top: solid 1px $grey-3;
                 padding-left:25px;
                 a {
                     color:$white;

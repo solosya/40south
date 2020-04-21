@@ -44,7 +44,7 @@
                 height: 100%;
                 content: ' ';
                 position: absolute;
-                background-color: rgba($greyish, .5);
+                background-color: rgba($grey-2, .5);
             }
         }
     
@@ -55,7 +55,7 @@
         }
     
         &__month {
-            color: $greyish;
+            color: $grey-2;
             @include font-size(12);
             font-weight: $weightRegular;
             @include padding-left(6);
@@ -80,7 +80,7 @@
 
         &__time-venue {
             display:block;
-            color: $greyish;
+            color: $grey-2;
             font-weight: $weightRegular;
             @include font-size(13);
             line-height: 1.5;

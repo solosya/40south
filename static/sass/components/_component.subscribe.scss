@@ -48,12 +48,12 @@
         @include margin-bottom(20);
     }
     &__subhead {
-        color:$greyish;
+        color:$grey-2;
         @include font-size(15);
         @include margin-bottom(20);
     }
     &__text {
-        color:$greyish;
+        color:$grey-2;
         @include font-size(14);
         line-height:1.6;
         @include margin-bottom(20);
@@ -112,7 +112,7 @@
                 width:100%;
                 flex:0 0 100%;
                 max-width:100%;
-                color: $greyish;
+                color: $grey-2;
                 margin-bottom:7px;
                 @include font-size(14);
                 line-height:1.5;
@@ -168,7 +168,7 @@
             
 
             .input__label {
-                color:$darkergrey;
+                color:$grey-1 ;
                 @include font-size(14);
                 font-weight:$weightRegular;
                 position:absolute;
@@ -205,7 +205,7 @@
                 top: 0px;
                 left: -10px;
                 width: 1px;
-                background: $offwhite;
+                background: $grey-3;
                 height: 100%;
                 position: absolute;
             }
@@ -218,7 +218,7 @@
             left:0px;
             z-index:-1;
             position:absolute;
-            background-color: $grey;
+            background-color: $grey-3;
             width:calc(100% - 0px);
             height:calc(100% - 170px);
             @media #{$tablet}{

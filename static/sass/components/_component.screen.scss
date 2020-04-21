@@ -350,7 +350,7 @@ body.layout-screen {
                         &__description{
                             display: block;
                             font-size: rem(42);
-                            color: $greyish;
+                            color: $grey-2;
                             line-height: 1.37;
                             height: 65px;
                             @media #{$desktop}{

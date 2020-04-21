@@ -8,7 +8,7 @@
     padding:8px;
     position:relative;
     text-align:center;
-    border: 2px dashed $greyish;
+    border: 2px dashed $grey-2;
     
     &__label {
         @include font-size(13);

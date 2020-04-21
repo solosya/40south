@@ -19,7 +19,7 @@
     }
 
     &__img-container {
-        background-color: $greyish;
+        background-color: $grey-2;
         @media #{$tablet}{
             height: 400px;
         }
@@ -76,7 +76,7 @@
         
         > p {
             @include font-size(11);
-            color: $greyish;
+            color: $grey-2;
             font-style: italic;
             line-height: 1.36;
             font-family: $base-font-family;

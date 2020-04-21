@@ -26,7 +26,7 @@
     }
     
     &__prev, &__next {
-        color:$greyish;
+        color:$grey-2;
         @include font-size(20);
         @include padding(2 0);
         &:hover, &.active {
@@ -42,7 +42,7 @@
     
     &__links {
         display:block;
-        color:$greyish;
+        color:$grey-2;
         @include padding(2 8);
         @include border-radius(5px);
     }
@@ -75,7 +75,7 @@
 
         &:hover, &:focus {
             color:$white;
-            background-color:lightness($mainColor, 0.82);
+            background-color: $mainColor;
         }
     }
     
@@ -98,7 +98,7 @@
 
             &:hover, &:focus {
                 color:$white;
-                background-color:lightness($mainColor, 0.82);
+                background-color: $mainColor;
             }
         }
     }

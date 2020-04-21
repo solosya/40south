@@ -1,5 +1,5 @@
    .c-orderSummary {
-        color:$greyish;
+        color:$grey-2;
         @include padding(40 20);
         @include padding-top(60);
         @include flexbox;
@@ -23,7 +23,7 @@
                 text-align: center;
                 &:after{
                     content: '';
-                    background-color: $greyish;
+                    background-color: $grey-2;
                     width: 20px;
                     display: block;
                     margin: 10px auto;
@@ -72,7 +72,7 @@
                 text-align: center;
             }
             p {
-                color:$greyish;
+                color:$grey-2;
                 @include font-size(14);
                 line-height:1.5;
                 font-weight:$weightBold;

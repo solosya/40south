@@ -46,7 +46,7 @@
     &--spinner {
         color:white !important;
         &:hover {
-            color:lightness( $mainColor, 0.82) !important;
+            color: $mainColor;
         }
     }
 
@@ -61,8 +61,8 @@
         &:hover {
             background-color: $mainColor;
             border-color: $mainColor;
-            background-color: lightness( $mainColor, 0.82);
-            border-color: lightness( $mainColor, 0.82);
+            background-color: $mainColor;
+            border-color: $mainColor;
             color: $white;
         }
 
@@ -72,8 +72,8 @@
 
             &:hover {
                 color: $white;
-                background-color: lightness( $mainColor, 0.82);
-                border-color: lightness( $mainColor, 0.82);
+                background-color: $mainColor, 0.82;
+                border-color: $mainColor;
             }
         }
     }
@@ -92,7 +92,7 @@
 
         &--bordered {
             color: $error;
-            border-color: $greyish;
+            border-color: $grey-2;
             background-color: transparent;
 
             &:hover {
@@ -129,10 +129,10 @@
     }
     &--disabled{
         border: none;
-        background: $grey;
+        background: $grey-3;
         cursor: unset;
         &:hover{
-            background: $grey;
+            background: $grey-3;
         }
     }
     &--subscribe{

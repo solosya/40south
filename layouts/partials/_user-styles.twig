@@ -1,5 +1,5 @@
 
-{% set themeColors = networkData['styling']['colours'] %}
+{# {% set themeColors = networkData['styling']['colours'] %}
 {% set primaryFont = networkData['styling']['fonts']['primaryFont'] | preg_replace('/:[0-9]+$/','' ) %}
 {% set secFont     = networkData['styling']['fonts']['secondaryFont'] | preg_replace('/:[0-9]+$/','' ) %}
 {% set customCss   = networkData['styling']['customStyleSheet'] %}
@@ -19,7 +19,7 @@
     {% else %}
         <style type="text/css">
             :root {
-                --main-font: "Roboto", Helvetica, Arial, sans-serif;
+                --main-font: "Lato", Helvetica, Arial, sans-serif;
             }
         </style>
     {% endif %}
@@ -38,34 +38,6 @@
         </style>
     {% endif %}
 
-    {# function hexToHSL(hex) {
-            var result = /^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i.exec(hex);
-            r = parseInt(result[1], 16);
-            g = parseInt(result[2], 16);
-            b = parseInt(result[3], 16);
-            r /= 255, g /= 255, b /= 255;
-            var max = Math.max(r, g, b), min = Math.min(r, g, b);
-            var h, s, l = (max + min) / 2;
-            if(max == min){
-                h = s = 0; // achromatic
-            }else{
-                var d = max - min;
-                s = l > 0.5 ? d / (2 - max - min) : d / (max + min);
-                switch(max){
-                case r: h = (g - b) / d + (g < b ? 6 : 0); break;
-                case g: h = (b - r) / d + 2; break;
-                case b: h = (r - g) / d + 4; break;
-                }
-                h /= 6;
-            }
-            var HSL = new Object();
-            HSL['h']=h;
-            HSL['s']=s;
-            HSL['l']=l;
-            return HSL;
-        }
-        var mainColor = hexToHSL("{{themeColors.headingColor}}");
-        document.write("<style id='user-colors' type='text/css'>:root {--main-color:{{themeColors.headingColor}};--main-color-h:"+(mainColor['h']*360)+";--main-color-s:"+(mainColor['s']*100)+"%;--main-color-l:"+(mainColor['l']*100)+"%;}</style>"); #}
 {% endif %}
 
 <style type="text/css">
@@ -74,4 +46,4 @@
         {{customCss | raw }}
     {% endif %} 
 
-</style>
+</style> #}

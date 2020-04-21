@@ -27,7 +27,7 @@
                 font-weight:$weightBold;
                 
                 > small {
-                    color:$greyish;
+                    color:$grey-2;
                 }
             }
         }
@@ -46,7 +46,7 @@
 	
 	> p {
 		height:46px;
-		color:$grey;
+		color:$grey-3;
 		padding-left:20px;
 		display:table-cell;
 		@include font-size(16);
@@ -235,7 +235,7 @@ textarea {
         width:100%;
 		cursor:pointer;
 		margin-right:0px;
-		color: $greyish;
+		color: $grey-2;
         margin-bottom:0px;
         @include font-size(14);
         line-height:1.5;
@@ -531,7 +531,7 @@ form.contact-form .help-block-error {
             @include font-size(13);
             line-height: 1.54;
             font-weight: $weightMedium;
-            color: $greyish;
+            color: $grey-2;
             height: auto;
             text-align: left;
             font-family: $primaryFont;
@@ -540,7 +540,7 @@ form.contact-form .help-block-error {
             appearance: none;
             border: 0;
             @include border-radius(0px);
-            border-bottom: 2px solid $offwhite;
+            border-bottom: 2px solid $grey-3;
             @include transition(all 0.3s ease-out);
             box-shadow: none;
         }
@@ -553,13 +553,13 @@ form.contact-form .help-block-error {
                 top: 50%;
                 right: 0;
                 @include translate(0, -50%);
-                color: $grey;
+                color: $grey-3;
             }
         } 
 
         .forgot__password {
             &__link {
-                color: $greyish;
+                color: $grey-2;
                 font-family: $weightRegular;
                 @include font-size(11);
                 line-height: normal;

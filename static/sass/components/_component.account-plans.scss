@@ -21,7 +21,7 @@
 
     &__name, &__usercount, &__price {
         width:100%;
-        color:$greyish;
+        color:$grey-2;
         text-align:center;
         display:inline-block;
         &--selected {
@@ -56,7 +56,7 @@
         width: 20px;
         height:20px;
         border-radius:6px;
-        border: 1px solid $greyish;
+        border: 1px solid $grey-2;
         background-color:none;
 
         &--selected {
@@ -99,7 +99,7 @@
                 &[type="radio"] + span {
                     margin-right:0px;
                     background-color:#d8d8d8;
-                    border:1px solid rgba($greyish,0.5);
+                    border:1px solid rgba($grey-2,0.5);
                 }
             }
         }

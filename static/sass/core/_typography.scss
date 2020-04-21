@@ -19,7 +19,7 @@ $weightRegular: 400;
 $weightMedium: 500;
 $weightSemibold: 600;
 $weightBold: 700;
-$weightUltabold: 900;
+$weightUltrabold: 900;
 
 strong,
 .strong {
@@ -44,7 +44,7 @@ html,
 body {
     font-family: $primaryFont;
     font-size: $baseFontSize;
-    color: $greyish;
+    color: $grey-2;
 }
 
 // Headings

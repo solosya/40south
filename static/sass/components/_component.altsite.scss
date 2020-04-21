@@ -14,7 +14,7 @@
         font-weight: $weightMedium;
         line-height: 2.56;
         text-align: center;
-        color:$greyish;
+        color:$grey-2;
     }
     &__head{
         font-size: rem(28);
@@ -44,14 +44,14 @@
            width: 48px;
            height: 48px;
            >path{
-               fill:$grey;
+               fill:$grey-3;
            }
        } 
     }
 
     @media #{$desktop-up}{
         
-        border-right: 1px solid $greyish;
+        border-right: 1px solid $grey-2;
         &:last-child{
             border-right: none;
         }
@@ -61,7 +61,7 @@
     @media #{$mobile}{
         margin-top: 30px;
         padding-bottom: 20px;
-        border-bottom: 1px solid $greyish;
+        border-bottom: 1px solid $grey-2;
         &:last-child{
             border-bottom: none;
         }

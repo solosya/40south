@@ -35,7 +35,7 @@
 
             .close {
                 @include font-size(35);
-                color: $greyish;
+                color: $grey-2;
                 cursor: pointer;
                 @include margin-bottom(10);
             }
@@ -53,7 +53,7 @@
     }
 
     &__discription {
-        color: $greyish;
+        color: $grey-2;
         font-family: $weightRegular;
         @include font-size(13);
         line-height: 1.18;
@@ -73,7 +73,7 @@
         @include justify-content(center);
 
         span {
-            color: $greyish;
+            color: $grey-2;
             font-family: $weightRegular;
             @include font-size(11);
             line-height: 1.18;
@@ -83,7 +83,7 @@
             opacity: 0.8;
 
             a {
-                color: $greyish;
+                color: $grey-2;
                 display: inline-block;
             }
         }

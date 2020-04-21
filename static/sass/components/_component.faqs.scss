@@ -4,7 +4,7 @@
     $self: &;
     &__quescate{
         @include padding(7 0 4 0); 
-        color:$greyish;
+        color:$grey-2;
         &-head{
             @include font-size(16);
             font-weight: $weightBold;

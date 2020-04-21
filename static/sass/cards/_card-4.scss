@@ -35,7 +35,7 @@
             @include font-size(13);
             font-weight: $weightRegular;
             line-height: 1.54;
-            color: $greyish;
+            color: $grey-2;
             display: none;
         }
 
@@ -75,7 +75,7 @@
                 &__author {
                     padding-top:10px;
                     flex-direction: row;
-                    border-top: 1px solid rgba($greyish, 0.3);
+                    border-top: 1px solid rgba($grey-2, 0.3);
                     @include align-items(flex-start);
                     bottom: 15px;
                     width: calc(100% - 40px);
@@ -181,7 +181,7 @@
                 &__author-name {
                     padding-bottom:8px;
                     width:100%;
-                    border-bottom: 1px solid rgba($greyish, 0.3);
+                    border-bottom: 1px solid rgba($grey-2, 0.3);
                 }
                 &__time {
                     padding-top:9px;

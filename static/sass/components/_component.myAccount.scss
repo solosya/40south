@@ -15,12 +15,12 @@
         @include margin-bottom(20);
     }
     &__subhead {
-        color:$greyish;
+        color:$grey-2;
         @include font-size(15);
         @include margin-bottom(20);
     }
     &__text {
-        color:$greyish;
+        color:$grey-2;
         @include font-size(14);
         line-height:1.6;
         @include margin-bottom(20);
@@ -72,7 +72,7 @@
     //     width:100%;
     //     flex:0 0 100%;
     //     max-width:100%;
-    //     color: $greyish;
+    //     color: $grey-2;
     //     margin-bottom:7px;
     //     @include font-size(14);
     //     line-height:1.5;
@@ -100,7 +100,7 @@
         position:relative;
         
         .account-form__input-text {
-            color:$greyish;
+            color:$grey-2;
             @include font-size(17);
             line-height:1.5;
             font-style:italic;

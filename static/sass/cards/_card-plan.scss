@@ -3,7 +3,7 @@
     padding:20px;
     // height:100%;
     border-radius: 8px;
-    background-color: $grey;
+    background-color: $grey-3;
     text-align: center;
 
     &__name {
@@ -34,13 +34,13 @@
         width: 100%;
         
         li {
-            color: $greyish;
+            color: $grey-2;
             position: relative;
             @include font-size(18);
             font-weight:$weightMedium;
             line-height: 1.47;
             @include padding(10 15 10 50);
-            //border-bottom: 1px solid rgba($greyish,0.3);
+            //border-bottom: 1px solid rgba($grey-2,0.3);
             text-align: left;
             &:last-child {
                 border-bottom: 0px none;

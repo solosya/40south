@@ -86,7 +86,7 @@
         @include font-size(14);
         font-weight: $weightRegular;
         line-height: 1.54;
-        color: $greyish;
+        color: $grey-2;
         display: none;
         overflow: hidden;
     }
@@ -103,7 +103,7 @@
             font-weight: $weightMedium;
             line-height: 1.07;
             letter-spacing: 1px;
-            color: $greyish;
+            color: $grey-2;
         }
 
         &__features {
@@ -125,14 +125,14 @@
                     font-weight: $weightRegular;
                     line-height: 1.07;
                     letter-spacing: 1px;
-                    color: $greyish;
+                    color: $grey-2;
                 }
             }
         }
     }
 
     &__author {
-        border-top: 1px solid rgba($greyish, 0.3);
+        border-top: 1px solid rgba($grey-2, 0.3);
         @include flexbox();
         @include justify-content(space-between);
         @include align-items(center);
@@ -147,11 +147,11 @@
         @include font-size(11);
         letter-spacing: 0.87px;
         line-height: 15px;
-        color: $greyish;
+        color: $grey-2;
     }
 
     &__time {
-        color: rgba($greyish, 0.8);
+        color: rgba($grey-2, 0.8);
         font-weight: $weightRegular;
         @include font-size(12);
         letter-spacing: 0.87px;
@@ -162,7 +162,7 @@
 
 
     &.without-image {
-        background-color: rgba($grey, 0.8);
+        background-color: rgba($grey-3, 0.8);
 
         .c-cards-view {
             &__media {

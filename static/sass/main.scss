@@ -68,15 +68,9 @@
 @import 'component.events-panel';
 
 //header
-@import 'component.header-1';
-@import 'component.header-2';
-@import 'component.header-3';
 @import 'component.header-0';
 @import 'component.header-top-bar';
 @import 'component.navigation-0';
-@import 'component.navigation-1';
-@import 'component.navigation-2';
-@import 'component.navigation-3';
 @import 'component.search-bar';
 @import 'component.weather'; 
 @import 'component.weather-reverse'; 
@@ -113,9 +107,6 @@
 @import 'component.managed-user-search'; 
 @import 'component.profile-message'; 
 
-@import "component.classified-search";
-@import "component.classifieds-form";
-@import "component.classifieds";
 
 @import 'component.faqs';
 
@@ -160,8 +151,3 @@
 @import "event-card-2";  // leaderboard
 @import "card-plan";
 @import "card-screen";
-
-
-@import "acme-card";
-@import "acme-card-1";
-@import "acme-card-10";  // classifieds lightbox

@@ -1,7 +1,7 @@
 /* Begin footer style */
 
 .c-footer {
-    background-color: $greyish;
+    background-color: $grey-2;
     padding: 28px 0 20px;
 
     @include responsive(sm) {
@@ -76,7 +76,7 @@
         @include flex-direction(column, vertical);
         @include justify-content(flex-start);
         @include align-items(flex-start);
-        color: $offwhite;
+        color: $grey-3;
         @include font-size(11);
         letter-spacing: 0.8px;
 

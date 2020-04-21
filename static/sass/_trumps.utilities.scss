@@ -79,7 +79,7 @@ div[class*="col-sm"] {
 }
 
 .u-border-left {
-    border-left: 1px solid $offwhite;
+    border-left: 1px solid $grey-3;
 }
 
 @media #{$mobile} {
@@ -88,7 +88,7 @@ div[class*="col-sm"] {
     }
 }
 
-.u-rule {border-top:1px solid $offwhite}
+.u-rule {border-top:1px solid $grey-3}
 .u-display-none { display:none;}
 .relative { position:relative; }
 .no-padding {padding:0;}
@@ -422,7 +422,7 @@ div[class*="col-sm"] {
 
 
 .u-grey-background{
-    background-color: $offwhite;
+    background-color: $grey-3;
 }
 
 .u-max-height{
@@ -569,7 +569,7 @@ div[class*="col-sm"] {
 hr.divide {
     margin:28px 0;
     border: 0;
-    border-top: 1px solid $offwhite;
+    border-top: 1px solid $grey-3;
 }
 
 
@@ -827,7 +827,7 @@ hr.divide {
         background-color: $white;
     }
     &-offwhite{
-        background-color: $offwhite;
+        background-color: $grey-3;
     }
 }
 
@@ -877,8 +877,21 @@ hr.divide {
         color: $white !important;
     }
     &--offwhite{
-        color: $offwhite !important;
+        color: $grey-3 !important;
     }
+}
+
+.u-border-right{
+    border-right: 1px solid $black;
+}
+.u-border-left{
+    border-left: 1px solid $black;
+}
+.u-border-top{
+    border-top: 1px solid $black;
+}
+.u-border-bottom{
+    border-bottom: 1px solid $black;
 }
 
 .x-close {

@@ -17,7 +17,7 @@
         background-color: $white;
     }
     &-offwhite{
-        background-color: $offwhite;
+        background-color: $grey-3;
     }
 }
 .u-page-info{
@@ -35,7 +35,7 @@
     &__discription {
         p {
             @include font-size(13);
-            color: $greyish;
+            color: $grey-2;
             line-height:1.54;
             margin-bottom:18px;
 

@@ -2,9 +2,9 @@
 
 
 //Fonts
-$font-family-sans-serif:    var(--main-font);
-$font-family-serif:                var(--sec-font);
-$base-font-family:                   var(--main-font) !default;
+$font-family-sans-serif:    "Lato", Helvetica, Arial, sans-serif;
+$font-family-serif:         "Playfair Display", "Times New Roman", Times, serif;
+$base-font-family:          $font-family-serif;
 
 
 $iconfont: 'FontAwesome';
@@ -19,14 +19,14 @@ $uppercase: uppercase;
 // ================================
 
 /* Primary Fonts Style */
-$primaryFont: var(--main-font);
-$secondaryFont: var(--sec-font);
+$primaryFont: $font-family-serif;
+$secondaryFont: $font-family-sans-serif;
 $weightLight: 300;
 $weightRegular: 400;
 $weightMedium: 500;
 $weightSemibold: 600;
 $weightBold: 700;
-$weightUltabold: 900;
+$weightUltrabold: 900;
 
 
 $font-size-base:            16px;
@@ -39,28 +39,20 @@ $baseFontSize:                        16px; /* ($baseFontSize * 1) + 0px; */
 
 
 // //colors
-$darkgrey:            #383737;
-$darkergrey:      #979797;
-
-$greyish:       #595859;
-$grey:          #d8d8d8;
 $black:         #000000;
+$grey-1:        #141414;
+$grey-2:        #272727;
+$grey-3:        #979797;
+//$grey-8:        #e7e7e7;
+$white:         #ffffff;
 $transparent:   rgba(0, 0, 0, 0);
-$blue:          #4a90e2;
+$blue:          #129eff;
 $error:         #ac001a;
 $success:       #22e6ba;
 $warning:       #fcba08;
 $info:          #129eff;
-$white:         #ffffff;
-$offwhite:      #e7e7e7;
-$mainColor:        #4a90e2;
-:root{
-    --main-color: $blue;
-}
-@if (var(--main-color) != #4a90e2){
-    $mainColor: var(--main-color);
-}
-$border:        $offwhite;
+$mainColor:     rgb(70,97,120);
+$border:        $grey-3;
 $hoverColor:    $mainColor;
 $unsuccessful:  #ac001a;
 $blackred:      #ac001a;
@@ -76,10 +68,10 @@ $linkedin:      #1f7bc2;
 $flickr:        #377ede;
 
 $black_sh1:     #333333;
-$black_sh2:     lighten($black_sh1,20%); /* color code == #666666 also (0,0,0,0.6) */
-$black_sh3:     lighten($black_sh1,40%); /* color code == #999999 */
-$black_sh4:     lighten($black_sh1,60%); /* color code == #cccccc */
-$black_sh5:     lighten($black_sh1,41%); /* color code == #9c9c9c */
+// $black_sh2:     lighten($black_sh1,20%); /* color code == #666666 also (0,0,0,0.6) */
+// $black_sh3:     lighten($black_sh1,40%); /* color code == #999999 */
+// $black_sh4:     lighten($black_sh1,60%); /* color code == #cccccc */
+// $black_sh5:     lighten($black_sh1,41%); /* color code == #9c9c9c */
 $blue:          #0e215d;
 $blue_sh1:      #4573cd;
 $blue_sh2:      #4772cc;

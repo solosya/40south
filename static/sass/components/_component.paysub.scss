@@ -19,7 +19,7 @@
             width:calc(100% - 70px);
             max-width:calc(100% - 70px);
             position:absolute;
-            background-color:rgba($greyish, .5);
+            background-color:rgba($grey-2, .5);
             
             @media (max-width:767px) {
                 left:0px;
@@ -58,7 +58,7 @@
         font-weight:$weightBold;
         @include padding-bottom(20);
         @include margin-bottom(25);
-        border-bottom:1px solid rgba($greyish, .5);
+        border-bottom:1px solid rgba($grey-2, .5);
         
         @media #{$mobile} {
             @include margin-bottom(45);

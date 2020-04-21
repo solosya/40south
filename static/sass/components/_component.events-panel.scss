@@ -58,7 +58,7 @@
     }
 
     &__month {
-        color: $greyish;
+        color: $grey-2;
         @include font-size(12);
         font-weight: $weightRegular;
         @include padding-left(6);
@@ -78,7 +78,7 @@
             height: 100%;
             content: ' ';
             position: absolute;
-            background-color: rgba($greyish, .5);
+            background-color: rgba($grey-2, .5);
         }
     }
 
@@ -91,7 +91,7 @@
     }
 
     &__time {
-        color: $greyish;
+        color: $grey-2;
         @include font-size(13);
         line-height: 1.25;
         font-weight: $weightRegular;

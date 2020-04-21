@@ -60,7 +60,7 @@
         }
     
         &__time {
-            color: $greyish;
+            color: $grey-2;
             font-weight: $weightRegular;
             @include font-size(13);
             line-height: 1.5;
@@ -74,14 +74,14 @@
     
         &__author {
             @include margin-top(12);
-            border-top: 1px solid rgba($greyish, 0.3);
+            border-top: 1px solid rgba($grey-2, 0.3);
             @include flexbox();
             @include justify-content(space-between);
             @include align-items(center);
             @include padding(7 0 8);
     
             &__name {
-                color: $greyish;
+                color: $grey-2;
                 font-style: italic;
                 font-family: $primaryFont;
                 font-weight: $weightRegular;

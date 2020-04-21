@@ -6,7 +6,7 @@
 
 @mixin card-6-base() {
     padding-left: 34px;
-    border-bottom: solid 1px $grey;
+    border-bottom: solid 1px $grey-3;
     padding-bottom: 20px;
     .c-cards-view {
         height: inherit;

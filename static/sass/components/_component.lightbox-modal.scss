@@ -35,7 +35,7 @@
         font-weight: $weightLight;
         padding-bottom:20px;
         margin-bottom:20px;
-        border-bottom: 1px solid $offwhite;
+        border-bottom: 1px solid $grey-3;
     }
     &__message {
         @include font-size(13);

@@ -3,7 +3,7 @@
         height: 417px;
         display: block;
         position: relative;
-        border: solid 1px $grey;
+        border: solid 1px $grey-3;
         @media #{$tablet}{
             height: 340px;
         }
@@ -32,7 +32,7 @@
                 &:after{
                     content: '';
                     height: 1px;
-                    background: $greyish;
+                    background: $grey-2;
                     width: calc(100% - 30px);
                     display: block;
                     margin: 10px auto;
@@ -59,13 +59,13 @@
                     margin-right: auto;
                     display: block;
                     >path{
-                        fill: $grey;
+                        fill: $grey-3;
                     }
                 }
                 &:hover{
                     >svg{
                         >path{
-                            fill: $greyish;
+                            fill: $grey-2;
                         }
                     }
                 }
@@ -73,7 +73,7 @@
             &:after{
                 content: '';
                 height: 1px;
-                background: $greyish;
+                background: $grey-2;
                 width: 100%;
                 display: block;
                 margin-top: 10px;
@@ -84,7 +84,7 @@
             }
         }
         &__text{
-            color: $greyish;
+            color: $grey-2;
             font-size: rem(19);
             font-weight: $weightMedium;
             padding: 0 30px;

@@ -27,13 +27,13 @@
         padding: 4px 0;
         outline:0;
         border:0;
-        border-bottom: 1px solid $offwhite;
+        border-bottom: 1px solid $grey-3;
         @include font-size(13);
         @include transition(all .3s ease-out);
         line-height:28px;
 
         &--bordered {
-            border: 1px solid $offwhite;
+            border: 1px solid $grey-3;
             border-radius:6px;
             padding: 4px 8px;
 		}
@@ -52,7 +52,7 @@
         width:100%;
         flex:0 0 100%;
         max-width:100%;
-        color: $greyish;
+        color: $grey-2;
         margin-bottom:7px;
         @include font-size(14);
         line-height:1.5;
