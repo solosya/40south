@@ -1,5 +1,6 @@
-{% set headermenu = _Menu.get({'menuType': 'header', "menuGroupName":"header-main"}) %}
-{% set miniMenu = _Menu.get({'menuType': 'header', 'menuGroupName': 'header-mini'}) %}
+{% set menu1 = _Menu.get({'menuType': 'header', "menuGroupName":"main-menu-one"}) %}
+{% set menu2 = _Menu.get({'menuType': 'header', "menuGroupName":"main-menu-two"}) %}
+{% set miniMenu = _Menu.get({'menuType': 'header', 'menuGroupName': 'mini-menu'}) %}
 
 
 {% set loggedin = _User.isGuest() ? false : true %}
@@ -7,34 +8,7 @@
 
 
 
-{% set logo = networkData.templatePath~'/static/images/logo.svg'%}
-
-{% set logoWidth = 650 %}
-{% set logoHeight = 144 %}
-
-{% if config['logo'] is defined %}
-    {% if config['logo']['width'] is defined %}
-        {% set logoWidth = config['logo']['width'] %}
-
-        {% if config['logo']['height'] is not defined %}
-            {% set logoHeight = 0 %}
-        {% endif %}
-    {% endif %}
-
-    {% if config['logo']['height'] is defined %}
-        {% set logoHeight = config['logo']['height'] %}
-
-        {% if config['logo']['width'] is not defined %}
-            {% set logoWidth = 0 %}
-        {% endif %}
-
-    {% endif %}
-{% endif %}
-
-{% if networkData.logoMedia | length > 0 %}
-    {% set logo = _Media.getMediaUrl(networkData.logoMedia, logoWidth, logoHeight, {'crop': 'fit'} ) %}
-{% endif %}
-
+{% set logo = networkData.templatePath~'/static/images/logo.jpg'%}
 
 {% set theDate = _AppHelper.getCurrentTimestampBasedOnTimezone() %}
 {% set date = _AppHelper.getDefaultTimezoneDateTime(theDate, "l, j F Y") %}
@@ -53,13 +27,27 @@
                         items: miniMenu,
                         class: 'c-header-0-top-bar__link',
                     }) | raw}}
-                    
+                    <div class="c-navigation-0__icons__search">
+                        <div class="js-searchButton__search">{{ this.render('../../../partials/icons.twig', {icon: 'search'} ) | raw }}</div>
+                        <div class="js-searchButton__close d-none">{{ this.render('../../../partials/icons.twig', {icon: 'cross'} ) | raw }}</div>
+                    </div>
+                    <div class="c-header-0-top-bar__social">
+                        <a href="" class="c-header-0-top-bar__social__icon c-header-0-top-bar__social__icon--linkedin">
+                            {{ this.render('../../../partials/icons.twig', {icon: 'linkedin'} ) | raw }}
+                        </a>
+                        <a href="" class="c-header-0-top-bar__social__icon c-header-0-top-bar__social__icon--twitter">
+                            {{ this.render('../../../partials/icons.twig', {icon: 'twitter'} ) | raw }}
+                        </a>
+                        <a href="" class="c-header-0-top-bar__social__icon c-header-0-top-bar__social__icon--facebook">
+                            {{ this.render('../../../partials/icons.twig', {icon: 'facebook'} ) | raw }}
+                        </a>
+                    </div>
                 </div>
                 
 
 
 
-                <div class="c-header-0__row2">
+                {# <div class="c-header-0__row2">
                 
                     <div class="c-header-0__mobile-login {% if not loggedin %} c-header-0__mobile-login--guest {% endif %}">
                         {% if loggedin %}
@@ -75,11 +63,11 @@
                     <div class="c-header-0__weather-info--date">{{date}}</div>
                     <div id="weather" class="c-header-0__weather-info c-header-0__weather-info-xs weather-panel-reverse j-weather-panel"></div>
                 
-                </div>
+                </div> #}
 
                 
                 
-                <div class="c-header-0__login-info">
+                {# <div class="c-header-0__login-info">
                     {% if loggedin %}
                         <a class="c-header-0__login-text" href="{{networkData.defaultBlogUrl}}/user/edit-profile" class="">My account</a>
                         <a href="{{_AppHelper.getLogoffUrl()}}" class="c-header-0__login-text">Log out</a>
@@ -88,26 +76,39 @@
                         <a href="{{networkData.defaultBlogUrl}}/subscriptions#subscriptions" class="c-button c-button--rounded c-button--blue">Subscribe</a>
                     {% endif %}
 
+                </div> #}
+
+                <div class="c-header-0__logobar u-margin-bottom-50">
+                    <a href="{{networkData.defaultBlogUrl}}" class="c-header-0__logo">
+                        <img src="{{logo}}" class="image-fluid" />
+                    </a>
                 </div>
 
 
-
                 <div class="c-header-0__main-info">
-                    <a href="{{networkData.defaultBlogUrl}}" class="c-header-0__main-info__logo">
-                        <img src="{{logo}}" class="image-fluid" />
-                    </a>
                     <div class="c-navigation-0 c-navigation-0-md">
-                        <ul class="c-navigation-0__list">
-                            {{ this.render('../../../partials/_menu.twig', {'menu': headermenu}) | raw }}
-                        </ul>
-                        
-                        <div class="c-navigation-0__icons">
+                    <div class="row">
+                        <div class="col-12">
+                            <ul class="c-navigation-0__list">
+                                {{ this.render('../../../partials/_menu.twig', {'menu': menu1}) | raw }}
+                            </ul>
+                        </div>
+                        <div class="col-12 d-none d-lg-block">
+                            <hr class="u-border-top-15 u-border-bottom-15">
+                        </div>
+                        <div class="col-12">
+                            <ul class="c-navigation-0__list">
+                                {{ this.render('../../../partials/_menu.twig', {'menu': menu2}) | raw }}
+                            </ul>
+                        </div>
+                    </div>
+                        {# <div class="c-navigation-0__icons">
                             <div class="c-navigation-0__icons__menu o-hamburger js-menu"></div>
                             <div class="c-navigation-0__icons__search">
                                 <div class="js-searchButton__search">{{ this.render('../../../partials/icons.twig', {icon: 'search'} ) | raw }}</div>
                                 <div class="js-searchButton__close d-none">{{ this.render('../../../partials/icons.twig', {icon: 'cross'} ) | raw }}</div>
                             </div>
-                        </div>
+                        </div> #}
 
 
 
@@ -122,7 +123,10 @@
                         </a>
                         <div class="c-navigation-0 c-navigation-0-md c-navigation-0__fixed">
                             <ul class="c-navigation-0__list d-none d-lg-flex">
-                                {{ this.render('../../../partials/_menu.twig', {'menu': headermenu}) | raw }}
+                                {{ this.render('../../../partials/_menu.twig', {'menu': menu1}) | raw }}
+                            </ul>
+                            <ul class="c-navigation-0__list d-none d-lg-flex">
+                                {{ this.render('../../../partials/_menu.twig', {'menu': menu2}) | raw }}
                             </ul>
 
                             <div class="c-navigation-0__icons d-lg-none">
@@ -158,7 +162,10 @@
             </form>
         </li>
         {{ this.render('../../../partials/_menu.twig', {
-            'menu': headermenu
+            'menu': menu1
+            }) | raw }}
+        {{ this.render('../../../partials/_menu.twig', {
+            'menu': menu2
             }) | raw }}
     </ul>
     

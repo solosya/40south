@@ -8,123 +8,135 @@
         flex-direction: column;
     }
 
+    &__logobar{
+        order: 2;
+        
+    }
+
+    &__logo{
+        margin: 0 auto;
+        width: 818px;
+        display: block;
+    }
+
     // this row is weather and date for tablet and up
     // but login and weather for mobile, so not easily named
-    &__row2 {
-        @include flexbox();
-        @include flex-direction(row, horizontal);
-        @include align-items(center);
-        order:2;
-    }
+    // &__row2 {
+    //     @include flexbox();
+    //     @include flex-direction(row, horizontal);
+    //     @include align-items(center);
+    //     order:2;
+    // }
 
 
-    &__mobile-login {
-        flex:2;
+    // &__mobile-login {
+    //     flex:2;
 
-        margin-top: 10px;
-        text-align: right;
+    //     margin-top: 10px;
+    //     text-align: right;
 
         
-        &--guest {
-            @include flexbox();
-            @include flex-direction(row, horizontal);
-            @include justify-content(center);    
-        }
+    //     &--guest {
+    //         @include flexbox();
+    //         @include flex-direction(row, horizontal);
+    //         @include justify-content(center);    
+    //     }
 
-        @media #{$tablet-up} {
-            display:none;
-        }
-    }
+    //     @media #{$tablet-up} {
+    //         display:none;
+    //     }
+    // }
     
 
-    &__mobile-subscribe {
-        order:3;
-        height: 25px;
-        @include font-size(13);
-        font-weight:$weightBold;
-        line-height:25px;
-        background: $mainColor;
-        color:white;
-        text-align:center;
-        width: calc(100% + 40px);
-        margin-left: -20px;
-        >a{
-            text-decoration: none;
-            color:white;
-            &:hover{
-                color: $white;
-            }
-        }
-        @media #{$tablet-up} {
-            display:none;
-        }
+    // &__mobile-subscribe {
+    //     order:3;
+    //     height: 25px;
+    //     @include font-size(13);
+    //     font-weight:$weightBold;
+    //     line-height:25px;
+    //     background: $mainColor;
+    //     color:white;
+    //     text-align:center;
+    //     width: calc(100% + 40px);
+    //     margin-left: -20px;
+    //     >a{
+    //         text-decoration: none;
+    //         color:white;
+    //         &:hover{
+    //             color: $white;
+    //         }
+    //     }
+    //     @media #{$tablet-up} {
+    //         display:none;
+    //     }
         
-    }
+    // }
     
 
-    &__weather-info {
-        margin: 15px 0;
-        @include flexbox();
-        @include flex-direction(row, horizontal);
-        @include align-items(flex-end);
-        @include justify-content(flex-start);
+    // &__weather-info {
+    //     margin: 15px 0;
+    //     @include flexbox();
+    //     @include flex-direction(row, horizontal);
+    //     @include align-items(flex-end);
+    //     @include justify-content(flex-start);
         
-        @media #{$mobile} {
-            display:none;
-        }
+    //     @media #{$mobile} {
+    //         display:none;
+    //     }
 
-        &--date {
-            @include font-size(13);
-            flex:2;
-            letter-spacing: 1px;
-            color: $grey-2;
-            font-weight: $weightRegular;
-            text-transform: uppercase;
-            @media #{$mobile} {
-                display:none;
-            }
+    //     &--date {
+    //         @include font-size(13);
+    //         flex:2;
+    //         letter-spacing: 1px;
+    //         color: $grey-2;
+    //         font-weight: $weightRegular;
+    //         text-transform: uppercase;
+    //         @media #{$mobile} {
+    //             display:none;
+    //         }
     
-        }
-    }
+    //     }
+    // }
 
 
 
-    &__login-text {
-        @include font-size(16);
-        font-weight: $weightMedium;
-        color: $mainColor;
+    // &__login-text {
+    //     @include font-size(16);
+    //     font-weight: $weightMedium;
+    //     color: $mainColor;
         
-        &:not(:last-child) {
-            margin-right:7px;
-            padding-right:7px;
+    //     &:not(:last-child) {
+    //         margin-right:7px;
+    //         padding-right:7px;
 
-            &:after {
-                content: "";
-                position: relative;
-                left: 7px;
-                top:1px;
-                display:inline-block;
-                height:13px;
-                width:2px;
-                background:$mainColor;
-            }
-        }
+    //         &:after {
+    //             content: "";
+    //             position: relative;
+    //             left: 7px;
+    //             top:1px;
+    //             display:inline-block;
+    //             height:13px;
+    //             width:2px;
+    //             background:$mainColor;
+    //         }
+    //     }
 
-    }
+    // }
 
-    &__login-info {
-        order:3;
+    // &__login-info {
+    //     order:3;
 
-        @include flexbox();
-        @include flex-direction(row, horizontal);
-        @include align-items(center);
-        @include justify-content(flex-end);
-        // margin-bottom: -30px;
-        z-index: 9;
-        @media #{$mobile} {
-            display:none;
-        }
-    }
+    //     @include flexbox();
+    //     @include flex-direction(row, horizontal);
+    //     @include align-items(center);
+    //     @include justify-content(flex-end);
+    //     // margin-bottom: -30px;
+    //     z-index: 9;
+    //     @media #{$mobile} {
+    //         display:none;
+    //     }
+    // }
+    
 
     
 
@@ -134,19 +146,19 @@
         @include justify-content(space-between);
         order:4;
         position: relative;
-        margin-top:-10px;
+        // margin-top:-10px;
         
 
-        &__logo {
-            // width: 162px;
-            max-width:300px;
-            flex-shrink:0;
-            display: block;
-            @media #{$mobile} {
-                max-width:200px;
-            }
+        // &__logo {
+        //     // width: 162px;
+        //     max-width:300px;
+        //     flex-shrink:0;
+        //     display: block;
+        //     @media #{$mobile} {
+        //         max-width:200px;
+        //     }
 
-        }
+        // }
 
         @media #{$mobile} {
             order:1;
