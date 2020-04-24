@@ -212,14 +212,31 @@
         @include card-name("C1 desktop");
 
         .c-cards-view {
-
+            height: 546px;
+            &__media{
+                width: 1200px;
+                right: 400px;
+            }
+            &__category{
+                font-size: rem(16);
+                font-weight: $weightUltrabold;
+                margin-bottom: 35px;
+            }
             &__heading {
                 margin-top: 27px;
                 margin-bottom: 10px;
+                font-size: rem(40);
+                max-height: 104px;
+                line-height: 1.2;
             }
 
             &__container {
-                width:333px;
+                width:365px;
+                height: 100%;
+                right: 0;
+                padding: 50px 0 40px 25px;
+                margin: 0;
+                border-left: 1px solid $grey-3;
             }
             &__description{
                 max-height: 75px;
