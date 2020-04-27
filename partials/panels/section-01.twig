@@ -25,13 +25,13 @@
     <div class="col-12 col-md-4">
         <div class="row">
             {% for i in 0..1 if articles[articleCount] %}
-                
-                <div class="col-12{% if i == 0 %} u-border-bottom{% endif %}">
+                {% set indexClass = [' u-border-bottom u-margin-bottom-50',''] %}
+                <div class="col-12">
                     {{this.render('../_single-article.twig', {
                         article: articles[articleCount], 
                         position: (articleCount+1),
                         imageSize: {width: 300, height: 260},
-                        containerClass: "card-11-mobile card-11-tablet card-11-desktop"
+                        containerClass: "card-12-mobile card-12-tablet card-12-desktop" ~ indexClass[i]
                     }) | raw}}
                     {% set articleCount = (dev) ? articleCount : articleCount + 1 %}
                 </div>

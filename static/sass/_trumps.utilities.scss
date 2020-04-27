@@ -79,7 +79,7 @@ div[class*="col-sm"] {
 }
 
 .u-border-left {
-    border-left: 1px solid $grey-3;
+    border-left: 1px solid $grey-4;
 }
 
 @media #{$mobile} {
@@ -88,7 +88,7 @@ div[class*="col-sm"] {
     }
 }
 
-.u-rule {border-top:1px solid $grey-3}
+.u-rule {border-top:1px solid $grey-4}
 .u-display-none { display:none;}
 .relative { position:relative; }
 .no-padding {padding:0;}
@@ -422,7 +422,7 @@ div[class*="col-sm"] {
 
 
 .u-grey-background{
-    background-color: $grey-3;
+    background-color: $grey-4;
 }
 
 .u-max-height{
@@ -569,7 +569,7 @@ div[class*="col-sm"] {
 hr.divide {
     margin:28px 0;
     border: 0;
-    border-top: 1px solid $grey-3;
+    border-top: 1px solid $grey-4;
 }
 
 
@@ -811,13 +811,18 @@ hr.divide {
 /* Begin utility view style */
 .u-heading {
     &__large {
-        @include font-size(20);
-        font-weight: $weightBold;
-        color: $black;
+        @include font-size(40);
+        font-weight: $weightUltrabold;
+        line-height: 1.2;
+        letter-spacing: 3px;
+        text-align: center;
+        color: $grey-2;
+        width: max-content;
         z-index: 11;
+        margin: 0 auto;
 
         @include responsive (xs) {
-            @include font-size(28);
+            @include font-size(40);
         }
     }
 }
@@ -827,7 +832,7 @@ hr.divide {
         background-color: $white;
     }
     &-offwhite{
-        background-color: $grey-3;
+        background-color: $grey-4;
     }
 }
 
@@ -877,7 +882,7 @@ hr.divide {
         color: $white !important;
     }
     &--offwhite{
-        color: $grey-3 !important;
+        color: $grey-4 !important;
     }
 }
 

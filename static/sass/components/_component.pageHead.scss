@@ -1,13 +1,17 @@
 /* Begin page head style */
 .c-page-head {
-    @include flexbox();
+    // @include flexbox();
+    display: block;
     @include justify-content(space-between);
     @include align-items(center);
     position: relative;
     margin-bottom: 25px;
+    
 
     > div {
         order:1;
+        text-transform: uppercase;
+
     }
     &:after {
         content: '';
@@ -21,7 +25,7 @@
         flex-grow:1;
 
         @media #{$desktop-up} {
-            margin-top: 5px;
+            margin-top: 20px;
         }
     }
 

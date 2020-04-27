@@ -199,12 +199,12 @@
 
     .c-cards-view {
 
-        @include flex-direction(column, vertical);
+        @include flex-direction(row, horizontal);
         // min-height: 417px;
 
         &__media {
-            width: 100%;
-            min-height: 271px;
+            width: 45%;
+            height: 200px;
             background: $white none repeat scroll 0 0 !important;
 
             img {
@@ -213,8 +213,9 @@
         }
 
         &__container {
-            width: 100%;
-            margin-left: 0;
+            width: calc(55% - 50px);
+            margin-left: 50px;
+
         }
 
         &__category {
@@ -222,13 +223,18 @@
         }
 
         &__heading {
-            @include flex-height(43px);
-            @include font-size(22);
-            text-transform: uppercase;
+            @include flex-height(75px);
+            @include font-size(30);
+            font-weight: $weightBold;
+            // text-transform: uppercase;
+
         }
 
         &__author {
-            margin-top:4px;
+            margin-top:30px;
+            &-name{
+                @include font-size(16.5);
+            }
         }
 
 
@@ -296,26 +302,26 @@
 
 .card-10-desktop {
 
-    @media #{$desktop} {
-        @include card-10-desktop-base();
-    }
-}
-
-.card-10-desktop-up {
     @media #{$desktop-up} {
         @include card-10-desktop-base();
     }
 }
 
-.card-10-desktop-lg {
-    @media #{$desktop-lg} {
-        @include card-10-desktop-base();
+// .card-10-desktop-up {
+//     @media #{$desktop-up} {
+//         @include card-10-desktop-base();
+//     }
+// }
 
-        .c-cards-view {
+// .card-10-desktop-lg {
+//     @media #{$desktop-lg} {
+//         @include card-10-desktop-base();
 
-            &__media {
-                min-height: 311px;
-            }
-        }
-    }
-}
+//         .c-cards-view {
+
+//             // &__media {
+//             //     min-height: 311px;
+//             // }
+//         }
+//     }
+// }

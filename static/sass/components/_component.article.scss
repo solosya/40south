@@ -40,8 +40,8 @@
 
     }
     &__features {
-        border-top:1px solid $grey-3;
-        border-bottom:1px solid $grey-3;
+        border-top:1px solid $grey-4;
+        border-bottom:1px solid $grey-4;
         padding:12px 0;
         @include flexbox;
         @include flex-direction(row, horizontal);
@@ -131,8 +131,8 @@
     }
 
     &__posted-by {
-        border-top: 1px solid $grey-3;
-        border-bottom: 1px solid $grey-3;
+        border-top: 1px solid $grey-4;
+        border-bottom: 1px solid $grey-4;
         @include padding(11 0);
         @include flexbox();
         @include align-items(center);

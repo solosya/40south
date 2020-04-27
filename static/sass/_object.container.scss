@@ -4,7 +4,7 @@
 
     &__right-layout {
         height: 100%;
-        border-top: 1px solid $grey-3;
+        border-top: 1px solid $grey-4;
         @include padding-top(20);
         @media #{$desktop-up}{
             float: right;
@@ -15,7 +15,7 @@
 
     @include responsive(md) {
         .o-body-container__right-layout {
-            border-left: 1px solid $grey-3;
+            border-left: 1px solid $grey-4;
             border-top: none;
             @include padding-top(0);
             @include padding-left(20);
@@ -24,7 +24,7 @@
 
     &__forvideo {
         @include margin-bottom(0);
-        background-color: $grey-3;
+        background-color: $grey-4;
         @include padding-bottom(50);
     }
 }

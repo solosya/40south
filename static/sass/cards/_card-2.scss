@@ -111,8 +111,8 @@
 
         &__media {
             width: 100%;
-            min-height: 220px;
-            background: $white none repeat scroll 0 0 !important;
+            min-height: 886px;
+            // background: $white none repeat scroll 0 0 !important;
 
             img {
                 display: block;
@@ -125,16 +125,18 @@
         }
 
         &__category {
-            margin-top:15px;
+            margin-top:40px;
+            @include font-size(13);
         }
 
         &__heading {
-            @include flex-height(78px);
-            @include font-size(22);
+            @include flex-height(50px);
+            @include font-size(40);
+            font-weight: $weightUltrabold;
         }
 
         &__author {
-            margin-top:15px;
+            margin-top:40px;
         }
 
 
@@ -196,34 +198,8 @@
 }
 
 .card-2-desktop {
-    @media #{$desktop} {
-        @include card-2-desktop-base();
-    }
-}
-
-.card-2-desktop-up {
     @media #{$desktop-up} {
         @include card-2-desktop-base();
     }
 }
 
-
-.card-2-desktop-lg {
-    @media #{$desktop-lg} {
-        @include card-2-desktop-base();
-        .c-cards-view {
-
-            &__media {
-                min-height: 260px;
-            }
-
-            &.without-image {
-                .c-cards-view__author {
-                    margin-top: 35px;
-                    margin-bottom: 20px;
-                }
-            }
-
-        }
-    }
-}

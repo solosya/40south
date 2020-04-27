@@ -129,10 +129,10 @@
     }
     &--disabled{
         border: none;
-        background: $grey-3;
+        background: $grey-4;
         cursor: unset;
         &:hover{
-            background: $grey-3;
+            background: $grey-4;
         }
     }
     &--subscribe{

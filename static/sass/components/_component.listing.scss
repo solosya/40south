@@ -2,21 +2,28 @@
 
 .c-news-feed {
     &__title {
-        color: $mainColor;
-        @include font-size(20);
+        color: $black;
+        @include font-size(30);
         line-height: 1.2;
         font-weight: $weightBold;
         position: relative;
-        padding-bottom: 15px;
+        padding-bottom: 25px;
+        // margin-bottom: 25px;
+        text-align: center;
 
-        &:before {
-            content: '';
-            position: absolute;
-            left: 0;
-            bottom: 0;
-            width: 30px;
-            height: 1px;
-            background-color: #979797;
+        &--before{
+            &:before {
+                content: '';
+                position: absolute;
+                left: calc(50% - 22px);
+                
+                right: calc(50% - 22px);
+                bottom: 0;
+                width: 44px;
+                height: 1px;
+                background-color: $grey-3;
+
+            }
         }
     }
 

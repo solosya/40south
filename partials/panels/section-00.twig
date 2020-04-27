@@ -27,30 +27,39 @@
         
             {% if articles[articleCount] %}
                 <div class="col-12 col-md-4 u-border-right">
-                    {{this.render('../_single-article.twig', {
-                        article: articles[articleCount], 
-                        position: (articleCount+1),
-                        imageSize: {width: 296, height: 260},
-                        containerClass: "card-3-mobile card-3-tablet card-3-desktop"
-                    }) | raw}}
-                    {% set articleCount = (dev) ? articleCount : articleCount + 1 %}
+                    <div class="row">
+                        <div class="col-12">
+                            <div class="c-news-feed__title ">Latest</div>
+                        </div>
+                        <div class="col-12">
+                            {{this.render('../_single-article.twig', {
+                                article: articles[articleCount], 
+                                position: (articleCount+1),
+                                imageSize: {width: 296, height: 260},
+                                containerClass: "card-12-mobile card-12-tablet card-12-desktop"
+                            }) | raw}}
+                            {% set articleCount = (dev) ? articleCount : articleCount + 1 %}
+                        </div>
+                    </div>
                 </div>
             {% endif %}
             <div class="col-12 col-md-4 u-border-right">
-                <ul class="row c-news-feed__list">
-
+                <div class="row">
+                    <div class="col-12">
+                        
+                        <li class="c-news-feed__title c-news-feed__title--before">Top Stories</li>
+                    </div>
+                       
                     {% for i in 0..3 if popularArticles[i] %}
-                        {% set displayClass = i > 2 ? 'd-sm-block d-md-none d-lg-block' : '' %}
-                            <li class="col-sm-12 col-md-4 col-lg-12 {{displayClass}}">
-                                {{this.render('../_single-article.twig', {
-                                    article: popularArticles[i], 
-                                    imageSuppress: true,
-                                    containerClass: "card-11-mobile card-11-tablet card-11-desktop"
-                                }) | raw}}
-                                
-                            </li>
+                        <div class="col-sm-12">
+                            {{this.render('../_single-article.twig', {
+                                article: popularArticles[i], 
+                                containerClass: "card-11-mobile card-11-tablet card-11-desktop"
+                            }) | raw}}
+                            
+                        </div>
                     {% endfor %}
-                </ul>
+                </div>
             </div>
             <div class="col-12 col-md-4">
                 {% if adslots[0] is defined %}

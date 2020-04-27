@@ -3,7 +3,7 @@
         height: 417px;
         display: block;
         position: relative;
-        border: solid 1px $grey-3;
+        border: solid 1px $grey-4;
         @media #{$tablet}{
             height: 340px;
         }
@@ -59,7 +59,7 @@
                     margin-right: auto;
                     display: block;
                     >path{
-                        fill: $grey-3;
+                        fill: $grey-4;
                     }
                 }
                 &:hover{

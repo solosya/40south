@@ -18,7 +18,7 @@
             position: relative;
             //margin: 10px 0;
             padding: 0 55px;
-            border-right: 1px solid $grey-3;
+            border-right: 1px solid $grey-4;
             &:last-child{
                 border-right: none;
             }
@@ -67,7 +67,7 @@
                     left: auto;
                     right: 0;
                     @include box-shadow(4px 4px 6px 0 rgba($black, 0.07));
-                    background-color: $grey-3;
+                    background-color: $grey-4;
                     border: none;
                     @include border-radius(0);
                     z-index: 999;
@@ -78,7 +78,7 @@
                         content: '\f0d8';
                         position: absolute;
                         font-family: $iconfont;
-                        color: $grey-3;
+                        color: $grey-4;
                         right: 10px;
                         top: -23px;
                         @include font-size(35);
