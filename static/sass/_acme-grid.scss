@@ -1,5 +1,6 @@
 $acme-grid-columns:                12 !default;
-$acme-grid-gutter-width:           50px !default;
+// SETGUTTER
+$acme-grid-gutter-width:           70px !default;
 $acme-grid-breakpoints: (
   xs: 0,
   sm: 576px,
@@ -8,8 +9,8 @@ $acme-grid-breakpoints: (
   xl: 1200px
 ) !default;
 
-
-$acme-grid-gutter-width: 50px !default;
+// SETGUTTER
+$acme-grid-gutter-width: 70px !default;
 $acme-container-max-widths: (
   sm: 540px,
   md: 720px,

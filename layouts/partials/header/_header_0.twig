@@ -31,6 +31,7 @@
                         <div class="js-searchButton__search">{{ this.render('../../../partials/icons.twig', {icon: 'search'} ) | raw }}</div>
                         <div class="js-searchButton__close d-none">{{ this.render('../../../partials/icons.twig', {icon: 'cross'} ) | raw }}</div>
                     </div>
+                    
                     <div class="c-header-0-top-bar__social">
                         <a href="" class="c-header-0-top-bar__social__icon c-header-0-top-bar__social__icon--linkedin">
                             {{ this.render('../../../partials/icons.twig', {icon: 'linkedin'} ) | raw }}
@@ -41,6 +42,15 @@
                         <a href="" class="c-header-0-top-bar__social__icon c-header-0-top-bar__social__icon--facebook">
                             {{ this.render('../../../partials/icons.twig', {icon: 'facebook'} ) | raw }}
                         </a>
+                    </div>
+                </div>
+                <div class="c-search-bar">
+                    <div class="container">
+                        <form class="c-search-bar__form" method="get" id="searchform" action="{{networkData.defaultBlogUrl}}/search">
+                            <div class="c-search-bar__submit"></div>
+                            <input class="c-search-bar__input" type="text" name="s" placeholder="Search"/>
+                            <button class="c-button c-button--rounded c-button--blue" type="submit" id="searchsubmit">Go</button>
+                        </form>
                     </div>
                 </div>
                 
@@ -141,15 +151,7 @@
         </div>
     </div>
 </header>
-    <div class="c-search-bar">
-        <div class="container">
-            <form class="c-search-bar__form" method="get" id="searchform" action="{{networkData.defaultBlogUrl}}/search">
-                <div class="c-search-bar__submit"></div>
-                <input class="c-search-bar__input" type="text" name="s" placeholder="Search"/>
-                <button class="c-button c-button--rounded c-button--blue" type="submit" id="searchsubmit">Go</button>
-            </form>
-        </div>
-    </div>
+    
 
 <div class="responsive-standalone">
     

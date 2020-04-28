@@ -12,24 +12,48 @@
 </div>
 
 {% set date = date() %}
-{% set events = _Event.getEvents({"limit": 9, "start_date": date.date | split(" ")[0]}) %}
+{# {% set events = _Event.getEvents({"limit": 9, "start_date": date.date | split(" ")[0]}) %} #}
+{% set events = _Event.getEvents({"limit": 9}) %}
 
-<div class="row">
-    <div class="col-12 c-events">
-        <div class="c-events-panel c-events-panel-xs">
-            <h4 class="c-events-panel__head c-events-panel__head-xs">Upcoming Events</h4>
-            <div class="row c-events-panel__details">                    
-                {% for i in 0..8 if events[i] %}
-                    <div class="col-12 col-md-4">
+
+    <div class="row">
+        <div class="col-12 col-md-4 u-border-right">
+            <div class="row">
+                {% for i in 0..2 if events[i] %}
+                    <div class="col-12{% if i < 2 %} u-margin-bottom-60{% endif %}">
                         {{this.render('../_single-event.twig', {
                             event: events[i], 
-                            imageSuppress: 'true',
-                            containerClass: "event-card-2-mobile event-card-2-tablet event-card-2-desktop"
+                            containerClass: "event-card-1__mobile event-card-1__tablet event-card-1__desktop"
                         }) | raw}}
                         {% set eventCount = (dev) ? eventCount : eventCount + 1 %}
                     </div>
                 {% endfor %}
             </div>
         </div>
-    </div>
-</div> <!-- row -->
+        <div class="col-12 col-md-4 u-border-right">
+            <div class="row">
+                {% for i in 3..5 if events[i] %}
+                    <div class="col-12{% if i < 5 %} u-margin-bottom-60{% endif %}">
+                        {{this.render('../_single-event.twig', {
+                            event: events[i], 
+                            containerClass: "event-card-1__mobile event-card-1__tablet event-card-1__desktop"
+                        }) | raw}}
+                        {% set eventCount = (dev) ? eventCount : eventCount + 1 %}
+                    </div>
+                {% endfor %}
+            </div>
+        </div>
+        <div class="col-12 col-md-4">
+            <div class="row">
+                {% for i in 6..8 if events[i] %}
+                    <div class="col-12{% if i < 8 %} u-margin-bottom-60{% endif %}">
+                        {{this.render('../_single-event.twig', {
+                            event: events[i], 
+                            containerClass: "event-card-1__mobile event-card-1__tablet event-card-1__desktop"
+                        }) | raw}}
+                        {% set eventCount = (dev) ? eventCount : eventCount + 1 %}
+                    </div>
+                {% endfor %}
+            </div>
+        </div>
+    </div><!-- row -->

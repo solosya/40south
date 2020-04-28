@@ -1,0 +1,200 @@
+@mixin card-13-base() {
+    @include card-name("C13 mobile");
+
+    .c-cards-view {
+        @include flex-direction(column, vertical);
+        &__media {
+            width: 98px;
+            height: 130px;
+            &--video {
+                &:before {
+                    @include size(55px);
+                }
+            }
+        }
+
+        &__container {
+            @include calc(width, '100% - 112px');
+            margin-left: 14px;
+        }
+
+        &__info {
+            @include calc(height, '100% - 40px');
+
+        }
+        &__heading {
+            
+        }
+
+        &__description {
+            display: block;
+        }
+
+
+        &.without-image {
+            .c-cards-view__container {
+                width: 100%;
+                margin-left: 0px;
+                padding: 0px 20px 0;
+            }
+
+            .c-cards-view__category {
+                margin-top: 36px;
+                margin-bottom: 24px;
+            }
+
+
+            .c-cards-view__heading {
+                height: 55px;
+            }
+
+            .c-cards-view__description {
+                margin-bottom: 15px;
+                display: block;
+                height:100px;
+                max-height: 100px;
+                overflow: hidden;
+            }
+            .c-cards-view__author {
+                margin-top:55px;
+            }
+
+        }
+
+        &.social {
+            .social-icon {
+                @include size(30px);
+
+                &:before {
+                    @include font-size(13);
+                    line-height: 32px;
+                }
+            }
+
+            &.without-image {
+                .c-cards-view__container {
+                    padding-top: 40px;
+                }
+            }
+        }
+
+    }
+    // &.design2 {
+    //     .c-cards-view {
+    //         &__heading {
+    //             @include font-size(18);
+    //             line-height: 1.3;
+    //             font-weight: $weightBold;
+    //         }
+    //         &__additioanl-info {
+    //             @include flexbox();
+    //         }
+
+    //         &.without-image {
+    //             .c-cards-view__container {
+                
+    //             }
+    //             .c-cards-view__heading {
+    //                 max-height:none;
+    //                 height:70px;
+
+    //             }
+    //             .c-cards-view__description {
+    //                 max-height:none;
+    //                 height:160px;
+    //             }
+
+    //         }
+    
+
+    //     }
+    // }
+}
+
+.card-13-mobile {
+    @media #{$mobile} {
+        @include card-13-base();
+    }
+}
+
+
+.card-13-tablet {
+
+    @media #{$tablet} {
+        
+        @include card-13-base();
+        @include card-name("C13 tablet");
+        // .c-cards-view {
+
+        //     &__container {
+        //         width: auto;
+        //     margin-left: 14px;
+        //     }
+        // }
+    }
+}
+
+
+.card-13-desktop {
+
+    @media #{$desktop-up} {
+
+        @include card-13-base();
+        @include card-name("C13 desktop");
+        .c-cards-view {
+           
+            &__media{
+                width: 100%;
+                height: 300px;
+            }
+
+            &__container {
+                @include flexbox;
+                @include flex-direction(column, vertical);
+                width:   100%;
+                margin: 17px 0 0;
+            }
+
+            &__category{
+                order: 1;
+            }
+
+            &__heading{
+                order: 2;
+                @include font-size(40);
+                font-weight: $weightUltrabold;
+                min-height:98px;
+                max-height:98px;
+                margin-bottom: 30px;
+                
+            }
+
+            &__author{
+                order: 4;
+                &-name{
+                    @include font-size(16);
+                }
+
+            }
+
+            &__description{
+                order: 3;
+                min-height: 142px;
+                max-height: 142px;
+                font-family: $font-family-sans-serif;
+                font-size: rem(20);
+                font-weight: $weightLight;
+                font-stretch: normal;
+                font-style: normal;
+                line-height: 1.65;
+                letter-spacing: normal;
+                color: $grey-1;
+                margin-bottom: 15px;
+            }
+        }
+    }
+}
+
+
+
+

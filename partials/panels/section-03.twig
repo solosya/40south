@@ -14,21 +14,22 @@
 
 
 <div class="row">
-    <div class="col-12 u-border-bottom">
+    <div class="col-12 u-margin-bottom-40">
         {{this.render('../_single-article.twig', {
             article: articles[articleCount], 
             position: (articleCount+1),
             imageSize: {width: 720, height: 420},
-            containerClass: "card-4-mobile card-4-tablet card-4-desktop"
+            containerClass: "card-4-mobile card-4-tablet card-4-desktop u-desktop-padding-bottom-40 u-border-bottom"
         }) | raw}}
         {% set articleCount = (dev) ? articleCount : articleCount + 1 %}
     </div>
 
-    <div class="col-12 col-md-4">
+    <div class="col-12">
         <div class="row">
+            {% set indexClass = [' col-md-5 col-lg-4 offset-lg-1',' col-md-5 col-lg-4 offset-md-1'] %}
             {% for i in 0..1 if articles[articleCount] %}
                 
-                <div class="col-12{% if i == 0 %} u-border-bottom{% endif %}">
+                <div class="col-12{{indexClass[i]}}">
                     {{this.render('../_single-article.twig', {
                         article: articles[articleCount], 
                         position: (articleCount+1),
@@ -37,6 +38,9 @@
                     }) | raw}}
                     {% set articleCount = (dev) ? articleCount : articleCount + 1 %}
                 </div>
+                {% if i == 0 %}
+                    <div class="col-1 d-none d-md-block u-border-right" styles="height:100%"></div>
+                {% endif %}
             {% endfor %}  
         </div>
         

@@ -3,7 +3,7 @@
 .c-cards-view {
     @include flexbox();
     @include calc(height, '100% - 40px');
-    margin-bottom: 40px;
+    //margin-bottom: 40px;
     position: relative;
 
     &.draft {
@@ -65,7 +65,7 @@
     }
 
     &__category {
-        font-weight: $weightMedium;
+        font-weight: $weightBold;
         @include font-size(12);
         letter-spacing: 0.87px;
         line-height: 15px;

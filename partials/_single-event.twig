@@ -64,6 +64,8 @@
 {% set startMonth       = _AppHelper.getDefaultTimezoneDateTime(event.startDate, 'M') %}
 {% set endMonth         = _AppHelper.getDefaultTimezoneDateTime(event.endDate, 'M') %}
 
+{% set startYear       = _AppHelper.getDefaultTimezoneDateTime(event.startDate, 'Y') %}
+{% set endYear         = _AppHelper.getDefaultTimezoneDateTime(event.endDate, 'Y') %}
 
 {% set venue            = event.venue %}
 
@@ -96,13 +98,11 @@
 
             <div class="c-eventcards-view__container">
                 <div class="c-eventcards-view__info">
-                    <div class="c-eventcards-view__category">Events</div>
-                    <h2  class="c-eventcards-view__heading js-card-heading j-truncate {{figureClass}}">{{ quotes.smarten(event.title) }}</h2>
+                    <div class="c-eventcards-view__category">{{startYear}}{% if endYear != "" and endYear != startYear %} - {{endYear}}{% endif %}</div>
                     <p   class="c-eventcards-view__description j-truncate">{{ quotes.smarten(event.excerpt | raw) }}</p>
-                    <div class="c-eventcards-view__day">{{ fullStartDate }}</div>
-                    <div class="c-eventcards-view__time">{{startTime}}{% if event.endDate != "" %} - {{endTime}}{% endif %}</div>
-                    <div class="c-eventcards-view__time-venue">{{startTime}}{% if venue != "" %} - {{venue}}{% endif %}</div>
-
+                    <div class="c-eventcards-view__time">{{startDay}}{% if event.endDate != "" %}{% if startMonth != endMonth %} {{startMonth}}{% endif %} - {{endDay}} {{endMonth}}{% else %} {{startMonth}}{% endif %}</div>
+                    <h2  class="c-eventcards-view__heading js-card-heading j-truncate {{figureClass}}">{{ quotes.smarten(event.title) }}</h2>
+                    
                     {# <div class="event-time">
                         {% if startDay == endDay %}
                             <p class="date">{{ startDay }}</p>

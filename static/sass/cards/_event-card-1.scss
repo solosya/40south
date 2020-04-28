@@ -1,17 +1,88 @@
+@mixin event-card-1-base{
+    .c-eventcards-view{
+        margin-bottom: 0;
+        &__media{
+            width: 132px;
+            height: 114px;
+            img{
+                height: 100%;
+                object-fit: cover;
+            }
+        }
+        &__date{
+            display: none;
+        }
+
+        &__container {
+           @include calc(width, '100% - 132px');
+        }
+
+        &__info{
+            padding: 0;
+        }
+
+        &__category{
+            @include font-size(13);
+            font-weight: $weightBold;
+            font-stretch: normal;
+            font-style: normal;
+            line-height: 1;
+            letter-spacing: normal;
+        }
+
+        &__description{
+            display: none;
+        }
+
+        &__time{
+            font-stretch: normal;
+            font-style: normal;
+            line-height: 2.09;
+            letter-spacing: normal;
+            @include font-size(23);
+            font-weight: $weightBold;
+        }
+
+        &__time-venue{
+            display: none;
+        }
+
+        &__heading{
+            font-family: $font-family-sans-serif;
+            @include font-size(18);
+            font-weight: $weightMedium;
+            font-stretch: normal;
+            font-style: normal;
+            line-height: 1.33;
+            letter-spacing: normal;
+            max-height: 50px; 
+        }
+
+        &__author{
+            display: none;
+        }
+    }
+}
+
+
 .event-card-1 {
     &__desktop{
         @media #{$desktop-up}{
             @include base-event-card();
+            @include event-card-1-base();
+            
         }
     }
     &__tablet{
         @media #{$tablet}{
             @include base-event-card();
+            @include event-card-1-base();
         }
     }
     &__mobile{
         @media #{$mobile}{
             @include base-event-card();
+            @include event-card-1-base();
             .c-eventcards-view{
                 &__info{
                     padding-right: 0;
