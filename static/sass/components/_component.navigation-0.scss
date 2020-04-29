@@ -66,7 +66,7 @@
                     @include calc(top, '100% + 10px');
                     left: auto;
                     right: 0;
-                    @include box-shadow(4px 4px 6px 0 rgba($black, 0.07));
+                    @include box-shadow(0 2px 4px 0 rgba(70, 97, 120, 0.16));
                     background-color: $white;
                     border: none;
                     @include border-radius(0);
@@ -133,6 +133,66 @@
 
                             
                         }
+                        .custom-menu-child-sub{
+                            display: none;
+                            position: absolute;
+                            // @include calc(top, '100% + 10px');
+                            left: 100%;
+                            @include box-shadow(0 2px 4px 0 rgba(70, 97, 120, 0.16));
+                            background-color: $white;
+                            border: none;
+                            border-top: solid 2px $mainColor;
+                            @include border-radius(0);
+                            z-index: 999;
+                            min-width: 241px;
+                            margin-top: -35px;
+                            li {
+                                width: 100%;
+                                text-align: left;
+                                margin: 0px;
+                                padding: 15px 32px 10px;
+                                display: block;
+                                position: relative;
+                                border-right: none;
+                                &:after{
+                                    content: '';
+                                    height: 1px;
+                                    position: absolute;
+                                    bottom: -1px;
+                                    margin: 0 auto;
+                                    display: block;
+                                    width: calc(100% - 64px);
+                                    background-color: $grey-6;
+                                }
+                                &:last-child{
+                                    &:after{
+                                        display: none;
+                                    }
+                                    margin-bottom: 25px;
+                                }
+        
+                                a {
+                                    display: block;
+                                    //font-family: $;
+                                    color: $grey-1;
+                                    text-transform: uppercase;
+                                    @include font-size(14);
+                                    line-height: normal;
+                                    letter-spacing: 1.4px;
+        
+                                    
+                                }
+                                &:hover, &:focus {
+                                    background-color: $mainColor;
+                                    >a{
+                                        color: $white;
+                                    }
+                                    &:after{
+                                        display: none;
+                                    }
+                                }
+                            }
+                        }
                         &:hover,
                             &:focus {
                                 background-color: $mainColor;
@@ -141,6 +201,11 @@
                                 }
                                 &:after{
                                     display: none;
+                                }
+                                &.custom-menu-child {
+                                    .custom-menu-child-sub {
+                                        display: block;
+                                    }
                                 }
                             }
                     }
