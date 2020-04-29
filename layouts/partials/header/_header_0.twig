@@ -23,13 +23,16 @@
                 
                 <div class="c-header-0-top-bar">
                     
-                    {{this.render('../_submenu_navigation.twig', {
+                    {# {{this.render('../_submenu_navigation.twig', {
                         items: miniMenu,
                         class: 'c-header-0-top-bar__link',
-                    }) | raw}}
+                    }) | raw}} #}
+                    <ul class="c-header-0-top-bar__ul">
+                        {{ this.render('../../../partials/_menu.twig', {'menu': miniMenu, 'menuClass':'c-header-0-top-bar__link'}) | raw }}
+                    </ul>
                     <div class="c-navigation-0__icons__search">
                         <div class="js-searchButton__search">{{ this.render('../../../partials/icons.twig', {icon: 'search'} ) | raw }}</div>
-                        <div class="js-searchButton__close d-none">{{ this.render('../../../partials/icons.twig', {icon: 'cross'} ) | raw }}</div>
+                        
                     </div>
                     
                     <div class="c-header-0-top-bar__social">
@@ -44,14 +47,17 @@
                         </a>
                     </div>
                 </div>
-                <div class="c-search-bar">
-                    <div class="container">
-                        <form class="c-search-bar__form" method="get" id="searchform" action="{{networkData.defaultBlogUrl}}/search">
-                            <div class="c-search-bar__submit"></div>
-                            <input class="c-search-bar__input" type="text" name="s" placeholder="Search"/>
-                            <button class="c-button c-button--rounded c-button--blue" type="submit" id="searchsubmit">Go</button>
-                        </form>
-                    </div>
+                <div class="c-search-bar u-border-bottom">
+                    
+                    <form class="c-search-bar__form" method="get" id="searchform" action="{{networkData.defaultBlogUrl}}/search">
+                        <div class="c-search-bar__submit"></div>
+                        <input class="c-search-bar__input" type="text" name="s" placeholder="Enter search term"/>
+                        <button class="c-search-bar__button" type="submit" id="searchsubmit">Search</button>
+                        <div class="c-search-bar__close">
+                            <div class="js-searchButton__close d-none">{{ this.render('../../../partials/icons.twig', {icon: 'cross'} ) | raw }}</div>
+                        </div>
+                    </form>
+                   
                 </div>
                 
 

@@ -7,6 +7,10 @@
     width: max-content;
     margin: 0 auto;
     
+    &__ul{
+        @include flexbox(); 
+    }
+    
 
     &__link {
         color: $grey-2;

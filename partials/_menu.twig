@@ -4,9 +4,11 @@
     {% set activeClass = (parentItem.link == _AppHelper.getServerUrl()) ? 'active' : ''%}
     {% set externalClass = (parentItem.isExternal) ? 'external-link' : '' %}
     {% set children = parentItem.children is defined and parentItem.children | length > 0  %}
-
+    {% if not menuClass is defined %}
+        {% set menuClass = 'c-menu-item' %}
+    {% endif %}
     <li class="dropdown">
-        <a  class="{{activeClass}} {{externalClass}} "
+        <a  class="{{menuClass}} {{activeClass}} {{externalClass}} "
             href="{{parentItem.link | raw}}"
             {% if parentItem.target != "" %} 
                 target="{{parentItem.target}}"
@@ -39,6 +41,10 @@
                         <a class="{{activeClass}} {{externalClass}} two" href="{{childItem.link |raw}}" {% if childItem.target != "" %}target="{{childItem.target}}"{% endif %}>
                             {{ ((childItem.label is empty) ? ((childItem.pageTitle is empty) ? childItem.blogTitle : childItem.pageTitle) : childItem.label)}}
                         </a>
+                        {% if childItem.clildren is defined and childItem.clildren | length > 0 %}
+
+                        {% endif %}
+                        
                     </li>
                 {% endfor %}
             </ul>
