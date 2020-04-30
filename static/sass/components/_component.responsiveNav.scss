@@ -60,7 +60,7 @@
         transform: translate3d(100%, 0, 0);
         visibility: hidden;
         cursor: pointer;
-
+        border-bottom: 1px solid $grey-6;
         &.open {
             visibility: visible;
             -webkit-transform: translate3d(0, 0, 0);
@@ -87,10 +87,14 @@
             flex:2;
             color:$mainColor;
             @include font-size(18);
+            >img{
+                width: 150px;
+            }
         }
         &-close {
-            flex:0 0 20px;
-            height:20px;
+            flex:0 0 22px;
+            height:30px;
+            width: 50px;
         }
     
 
@@ -108,31 +112,52 @@
     }
 
     .standalone-menu {
-        padding: 40px 0 0 0;
+        padding: 53px 0 0 0;
         margin:0;
-        background: $grey-4 none repeat scroll 0 0;
+        background: $white none repeat scroll 0 0;
         > li {
-            padding-left: 25px;
-            border-bottom: solid 1px $grey-2;
+            padding-left:25px;
             position:relative;
-
+            
+            
 
             a {
                 display: block;
-                @include font-size(15);
+                @include font-size(14);
                 padding: 20px 0 20px 0;
-                font-weight:$weightMedium;
-                letter-spacing: 1px;
+                font-weight:$weightRegular;
+                letter-spacing: 1.4px;
                 text-align: left;
                 width: $viewportSize;
-                color: black;
+                color: $grey-1;
                 text-transform: uppercase;
+                position: relative;
+                &:after{
+                    content: '';
+                    width: calc(100% - 50px);
+                    //margin: 0 25px;
+                    height: 1px;
+                    position: absolute;
+                    bottom: 0;
+                    left: 0;
+                    
+                    background-color: $grey-6;
+                }
+            
+            }
+            &:last-child{
+                >a::after{
+                    display: none;
+                }
             }
 
             &.active {
                 background: $mainColor none repeat scroll 0 0;
-                a {
+                >a {
                     color:$white;
+                    &:after{
+                        background-color: $grey-6;
+                    }
                 }
 
                 .list-arrow {
@@ -188,24 +213,73 @@
 
         .custom-menu {
             display: none;
-            padding: 0;
-            margin-left: -25px;
-            background: $grey-2 none repeat scroll 0 0;
+            //padding: 0;
+                
+            background: $mainColor none repeat scroll 0 0;
 
-            >li {
-                border-top: solid 1px $grey-4;
-                padding-left:25px;
-                a {
+            
+
+            &-child{
+                >a {
                     color:$white;
+                }   
+                padding-left:25px;
+                &:last-child{
+                    >a::after{
+                        display: none;
+                    }
                 }
-
             }
+
+            &-child--babies{
+                background: $grey-6 none repeat scroll 0 0;
+                margin-left: -25px;
+                padding-left: 50px;
+                a {
+                    color:$grey-1;
+                    &:after{
+                        background-color: $grey-3;
+                    }
+                    
+                }
+                &:last-child{
+                    >a::after{
+                        display: block;
+                    }
+                }
+                
+            }
+
+            
 
             &--active { 
                 display:block;
+                
             }
 
+            
 
+            .custom-menu-child-sub{
+                >li {
+                    padding-left: 25px;
+                    
+                    
+                    a {
+                        color:$grey-1;
+                        &:after{
+                            background-color: $grey-3;
+                        }
+                    }
+                    &:last-child{
+                        >a::after{
+                            display: none;
+                        }
+                    }
+
+                }
+
+                
+            }
         }
 
 

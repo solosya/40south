@@ -34,10 +34,11 @@
 
             <ul class="custom-menu">
                 {% for childItem in parentItem.children %}
+                    {% set babies = childItem.children is defined and childItem.children | length > 0 ? ' custom-menu-child--babies' : '' %}
                     {% set externalClass = (childItem.isExternal) ? 'external-link' : '' %}
                     {% set activeClass = (childItem.link == _AppHelper.getServerUrl()) ? 'active' : ''%}
 
-                    <li class="custom-menu-child">
+                    <li class="custom-menu-child{{babies}}">
                         <a class="{{activeClass}} {{externalClass}} two" href="{{childItem.link |raw}}" {% if childItem.target != "" %}target="{{childItem.target}}"{% endif %}>
                             {{ ((childItem.label is empty) ? ((childItem.pageTitle is empty) ? childItem.blogTitle : childItem.pageTitle) : childItem.label)}}
                         </a>

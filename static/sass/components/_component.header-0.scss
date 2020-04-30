@@ -3,6 +3,11 @@
     position:relative;
     z-index:20;
     background:white;
+
+    @media #{$mobile} {
+        border-bottom: 1px solid $grey-6;
+    }
+
     &__container {
         display: flex;
         flex-direction: column;
@@ -10,13 +15,33 @@
 
     &__logobar{
         order: 2;
-        
+        @media #{$tablet}{
+            height: 100px;
+        }
+        @media #{$mobile} {
+            height: 53px;
+        }
     }
 
     &__logo{
         margin: 0 auto;
         width: 818px;
         display: block;
+        @media #{$desktop}{
+            width: 603px;
+        }
+        @media #{$tablet}{
+            width: 250px;
+            position: absolute;
+            left: 35px;
+            margin-top: 20px;
+        }
+        @media #{$mobile}{
+            width: 150px;
+            position: absolute;
+            left: 35px;
+            // margin-top: 20px;
+        }
     }
 
     // this row is weather and date for tablet and up
@@ -163,7 +188,7 @@
         @media #{$mobile} {
             order:1;
             @include align-items(center);
-            border-bottom: 1px solid #e7e7e7;
+            //border-bottom: 1px solid #e7e7e7;
             padding-bottom:12px;
         }
     }

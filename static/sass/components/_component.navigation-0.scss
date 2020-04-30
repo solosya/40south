@@ -230,6 +230,14 @@
         &__menu {
             width:25px;
             height:20px;
+            position: absolute;
+            right: 0;
+            &--static{
+                @media #{$mobile}{
+                    top: 5px;
+                    right: 35px;
+                }
+            }
 
             @media #{$desktop-up} {
                 display:none;

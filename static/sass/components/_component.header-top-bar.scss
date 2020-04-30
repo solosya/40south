@@ -197,7 +197,7 @@
         }
     }
 
-    @media #{$mobile} {
+    @media #{$up-to-desktop} {
         display:none;
     }
     &__social{
