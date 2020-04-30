@@ -134,6 +134,24 @@
             'menu': menu2
             }) | raw }}
     </ul>
+    <ul class="standalone-menu-base">
+        {{ this.render('../../../partials/_menu.twig', {'menu': miniMenu, 'menuClass':'c-header-0-top-bar__link'}) | raw }}
+        
+        <li class="">
+            <div class="standalone-menu-base__social">
+                <a href="" class="standalone-menu-base__social__icon standalone-menu-base__social__icon--facebook">
+                    {{ this.render('../../../partials/icons.twig', {icon: 'facebook'} ) | raw }}
+                </a>
+                <a href="" class="standalone-menu-base__social__icon standalone-menu-base__social__icon--twitter">
+                    {{ this.render('../../../partials/icons.twig', {icon: 'twitter'} ) | raw }}
+                </a>
+                <a href="" class="standalone-menu-base__social__icon standalone-menu-base__social__icon--linkedin">
+                    {{ this.render('../../../partials/icons.twig', {icon: 'linkedin'} ) | raw }}
+                </a>
+            </div>
+        </li>
+    </ul>
+
     
     <div class="responsive-standalone-close">
         <div class="responsive-standalone-close-menu"><img src="{{logo}}" class="image-fluid"/></div>
