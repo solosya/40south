@@ -4,8 +4,8 @@
     .c-cards-view {
         @include flex-direction(column, vertical);
         &__media {
-            width: 98px;
-            height: 130px;
+            width: 100%;
+            height: 165px;
             &--video {
                 &:before {
                     @include size(55px);
@@ -14,16 +14,12 @@
         }
 
         &__container {
-            @include calc(width, '100% - 112px');
-            margin-left: 14px;
-        }
-
-        &__info {
-            @include calc(height, '100% - 40px');
-
+            width: 100%;
+            
         }
         &__heading {
-            
+            @include font-size(18);
+            margin-bottom: 10px;
         }
 
 
@@ -75,41 +71,32 @@
         }
 
     }
-    // &.design2 {
-    //     .c-cards-view {
-    //         &__heading {
-    //             @include font-size(18);
-    //             line-height: 1.3;
-    //             font-weight: $weightBold;
-    //         }
-    //         &__additioanl-info {
-    //             @include flexbox();
-    //         }
-
-    //         &.without-image {
-    //             .c-cards-view__container {
-                
-    //             }
-    //             .c-cards-view__heading {
-    //                 max-height:none;
-    //                 height:70px;
-
-    //             }
-    //             .c-cards-view__description {
-    //                 max-height:none;
-    //                 height:160px;
-    //             }
-
-    //         }
-    
-
-    //     }
-    // }
+   
 }
+
 
 .card-12-mobile {
     @media #{$mobile} {
         @include card-12-base();
+        .c-cards-view {
+            &__container {
+                margin: 11px 0 25px;
+            }
+            &__category{
+                @include font-size(10);
+                text-align: center;
+            }
+
+            &__heading {
+                text-align: center;
+            }
+            &__author{
+                &-name{
+                    margin: 0 auto;
+                    @include font-size(11);
+                }
+            }
+        }
     }
 }
 
@@ -120,13 +107,7 @@
         
         @include card-12-base();
         @include card-name("C12 tablet");
-        // .c-cards-view {
-
-        //     &__container {
-        //         width: auto;
-        //     margin-left: 14px;
-        //     }
-        // }
+        
     }
 }
 
@@ -141,7 +122,7 @@
 
             &__media{
                 width: 100%;
-                height: 300px;
+                height: 250px;
             }
 
             &__container {

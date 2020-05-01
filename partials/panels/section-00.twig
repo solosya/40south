@@ -1,7 +1,7 @@
 {% set articleCount = 0 %}
 {% set cardIndex = 0 %}
 
-{% set popularArticles = _Article.getPopularArticles({ limit: 4, sortBy: 'VIEWS', scope: 'network' }) %}
+{% set popularArticles = _Article.getPopularArticles({ limit: 3, sortBy: 'VIEWS', scope: 'network' }) %}
 
 <div class="row" data-section="00">
     
@@ -26,12 +26,12 @@
         <div class="row">
         
             {% if articles[articleCount] %}
-                <div class="col-12 col-md-4 u-border-right">
+                <div class="col-12 col-md-4 u-desktop-border-right">
                     <div class="row">
                         <div class="col-12">
                             <div class="c-news-feed__title ">Latest</div>
                         </div>
-                        <div class="col-12">
+                        <div class="col-8 offset-2 col-md-10 offset-md-1">
                             {{this.render('../_single-article.twig', {
                                 article: articles[articleCount], 
                                 position: (articleCount+1),
@@ -41,16 +41,17 @@
                             {% set articleCount = (dev) ? articleCount : articleCount + 1 %}
                         </div>
                     </div>
+                    <hr class="o-rule">
                 </div>
             {% endif %}
-            <div class="col-12 col-md-4 u-border-right">
+            <div class="col-12 col-md-4 u-desktop-border-right">
                 <div class="row">
                     <div class="col-12">
                         
                         <li class="c-news-feed__title c-news-feed__title--before">Top Stories</li>
                     </div>
                        
-                    {% for i in 0..3 if popularArticles[i] %}
+                    {% for i in 0..2 if popularArticles[i] %}
                         <div class="col-sm-12">
                             {{this.render('../_single-article.twig', {
                                 article: popularArticles[i], 
@@ -60,6 +61,7 @@
                         </div>
                     {% endfor %}
                 </div>
+                <hr class="o-rule">
             </div>
             <div class="col-12 col-md-4">
                 {% if adslots[0] is defined %}

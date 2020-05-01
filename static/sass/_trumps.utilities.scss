@@ -17,67 +17,6 @@
     }
 }
 
-
-
-
-div[class*="col-md"] {
-    @media screen and (min-width: 992px) {
-        &.m-split {
-            width:50%;
-            float:left;
-        }
-        &.split {
-            width:50%;
-            float:left;
-        }
-
-        &.clearfixed {
-            clear:both;
-        }
-    }
-}
-
-
-
-div[class*="col-sm"] {
-    @media screen and (min-width: 500px) and (max-width: 767px) {
-        &.split {
-            width:50%;
-            float:left;
-        }
-        &.clearfixed {
-            clear:both;
-        }
-    }
-}
-
-div[class*="col-sm"] {
-    @media screen and (min-width: 500px) {
-
-        &.large-split {
-            width:50%;
-            float:left;
-        }
-        &.clearfixed {
-            clear:both;
-        }
-    }
-}
-
-
-div[class*="col-sm"] {
-    @media screen and (min-width: 992px) {
-
-        &.desktop-split {
-            width:50%;
-            float:left;
-        }
-        &.clearfixed {
-            clear:both;
-        }
-    }
-}
-
 .u-border-left {
     border-left: 1px solid $grey-4;
 }
@@ -886,18 +825,29 @@ hr.divide {
     }
 }
 
-.u-border-right{
-    border-right: 1px solid $black;
+.u-border-right{border-right: 1px solid $black;}
+.u-border-left{border-left: 1px solid $black;}
+.u-border-top{border-top: 1px solid $black;}
+.u-border-bottom{border-bottom: 1px solid $black;}
+@media #{$desktop-up}{
+    .u-desktop-border-right{border-right: 1px solid $black;}
+    .u-desktop-border-left{border-left: 1px solid $black;}
+    .u-desktop-border-top{border-top: 1px solid $black;}
+    .u-desktop-border-bottom{border-bottom: 1px solid $black;}
 }
-.u-border-left{
-    border-left: 1px solid $black;
+@media #{$tablet}{
+    .u-tablet-border-right{border-right: 1px solid $black;}
+    .u-tablet-border-left{border-left: 1px solid $black;}
+    .u-tablet-border-top{border-top: 1px solid $black;}
+    .u-tablet-border-bottom{border-bottom: 1px solid $black;}
 }
-.u-border-top{
-    border-top: 1px solid $black;
+@media #{$mobile}{
+    .u-mobile-border-right{border-right: 1px solid $black;}
+    .u-mobile-border-left{border-left: 1px solid $black;}
+    .u-mobile-border-top{border-top: 1px solid $black;}
+    .u-mobile-border-bottom{border-bottom: 1px solid $black;}
 }
-.u-border-bottom{
-    border-bottom: 1px solid $black;
-}
+
 
 .x-close {
 	top:50%;

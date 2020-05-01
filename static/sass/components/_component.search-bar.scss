@@ -46,6 +46,10 @@
             margin-top:5px;
             width: 100%;
             padding: 0 10px;
+            @media #{$tablet}{
+                padding: 10px 0 0;
+                border-bottom: solid 1px $grey-6;
+            }
             @media #{$mobile}{
                 padding: 5px 0;
                 border-bottom: solid 1px $grey-6;
@@ -91,8 +95,7 @@
             font-family: $font-family-sans-serif;
             letter-spacing: 0.4px;
             color: $grey-2;
-
-            @media #{$mobile}{
+            @media #{$up-to-desktop}{
                 padding: 0;
             }
             @include placeholder{

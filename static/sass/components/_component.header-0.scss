@@ -17,6 +17,7 @@
         order: 2;
         @media #{$tablet}{
             height: 100px;
+            position: relative;
         }
         @media #{$mobile} {
             height: 53px;
@@ -33,7 +34,7 @@
         @media #{$tablet}{
             width: 250px;
             position: absolute;
-            left: 35px;
+            left: 0;
             margin-top: 20px;
         }
         @media #{$mobile}{

@@ -2,33 +2,60 @@
     @include card-name("C1 mobile");
     .c-cards-view {
         @include flex-direction(column, vertical);
-        // height: 320px;
-
+        //height: 320px;
+        //margin-bottom: 10px;
         &__media {
-            height: 40vw;
+            height: 75vmin;
+            width: calc(100% + 70px);
+            margin: 0;
+            margin-left: -($grid-gutter-width/2);
+            margin-right: -($grid-gutter-width/2);
+
         }
 
-        &__author {
-            border: none;
-        }
-        &__heading {
-            font-weight: $weightBold;
-            @include font-size(20);
-            @include flex-height(50px);
-        }
+        
 
         &__container {
-            margin-top: -14px;
-            margin-left: 10px;
-            @include calc(width, '100% - 20px');
+            margin-top: 22px;
+            border-left: 1px solid $grey-4;
+            width: 100%;
             background: $white none repeat scroll 0 0;
-            height: inherit;
-            padding: 20px 20px 0 20px;
+            height: 232px;
+            padding: 0 0 0 20px;
             z-index: 1;
+            @include flexbox();
+            @include flex-direction(column, vertical);
+
+        }
+        &__category{
+            order: 1;
+            @include font-size(10);
+        }
+
+        &__heading {
+            order: 2;
+            font-weight: $weightBold;
+            @include font-size(26);
+            @include flex-height(75px);
+            padding-bottom: 15px;
+            margin-bottom: 15px;
+            border-bottom: 1px solid $grey-4;
+        }
+
+        &__description {
+            order: 3;
+            margin-top:10px;
+            display:block;
+            @include font-size(13);
+            line-height: 1.44;
+            @include flex-height(90px);
+            font-family: $font-family-sans-serif;
         }
 
         &__author {
-            margin-top:18px;
+            order: 4;
+            border: none;
+            padding: 0;
         }
 
         &.without-image {
@@ -50,13 +77,13 @@
                     display:block;
                     @include font-size(13);
                     line-height: 1.44;
-                    @include flex-height(80px);
+                    @include flex-height(90px);
                 }
 
 
                 &__author {
                     margin-top:20px;
-                    border-top: 1px solid rgba($grey-2, 0.3);
+                    //border-top: 1px solid rgba($grey-2, 0.3);
                 }
             }
         }
@@ -110,36 +137,59 @@
     @include card-name("C1 tablet");
     .c-cards-view {
 
-        height: 417px;
+        height: 546px;
 
         &__media {
-            //@include flex-height(360px);
-            @include calc(width, '100% - 26%');
             position: absolute;
-            right: 0;
+            width: 1200px;
+            right: 400px;
             height: 100%;
+            padding-right: 35px;
             &--video {
                 &:before {
                     @include size(88px);
                 }
             }
+        }
 
+        &__category{
+            font-size: rem(16);
+            font-weight: $weightUltrabold;
+            margin-bottom: 35px;
         }
 
         &__heading {
-            @include font-size(28);
-            max-height: 140px;
+            @include font-size(40);
+            line-height: 1.2;
+            font-weight: $weightUltrabold;
+            max-height: 104px;
             min-height: 40px;
-            margin-top: 72px;
-
+            margin-top: 27px;
+            margin-bottom: 10px;
+            border: none;
         }
 
         &__container {
             margin-top: 20px;
             margin-left: 0;
             position: absolute;
-            width:238px;
-            height: 373px;
+            width:32.6%;
+            height: 100%;
+            right: 0;
+            padding: 50px 0 40px 25px;
+            margin: 0;
+        }
+
+        &__description{
+            order: 4;
+            @include font-size(20);
+            line-height: 1.5;
+            font-weight: $weightMedium;
+            padding-top: 35px;
+            margin-top: 35px;
+            border-top: 1px solid $grey-4;
+            max-height: 200px;
+            display: block;
         }
 
         &__time{
@@ -153,6 +203,7 @@
                     margin-top: 40px;
                     padding: 0 40px;
                 }
+                
                 &__heading {
                     margin-top:82px;
                     margin-bottom:15px;
@@ -161,6 +212,7 @@
                     @include flex-height(68px);
 
                 }
+                
                 &__description {
                     display:block;
                     @include font-size(18);
@@ -211,42 +263,14 @@
         @include card-1-tablet-base();
         @include card-name("C1 desktop");
 
-        .c-cards-view {
-            height: 546px;
-            &__media{
-                width: 1200px;
-                right: 400px;
-            }
-            &__category{
-                font-size: rem(16);
-                font-weight: $weightUltrabold;
-                margin-bottom: 35px;
-            }
-            &__heading {
-                margin-top: 27px;
-                margin-bottom: 10px;
-                font-size: rem(40);
-                max-height: 104px;
-                line-height: 1.2;
-                font-weight: $weightUltrabold;
-            }
+        // .c-cards-view {
+            
+            
+            
 
-            &__container {
-                width:32.6%;
-                height: 100%;
-                right: 0;
-                padding: 50px 0 40px 25px;
-                margin: 0;
-                border-left: 1px solid $grey-4;
-            }
-            &__description{
-                padding-top:    35px;
-                margin-top: 35px;
-                border-top: 1px solid $grey-4;
-                max-height: 200px;
-                display: block;
-            }
-        }
+            
+            
+        // }
     }
 }
 

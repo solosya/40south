@@ -25,8 +25,7 @@
     <div class="col-12 col-md-4">
         <div class="row">
             {% for i in 0..1 if articles[articleCount] %}
-                {% set indexClass = [' u-border-bottom u-margin-bottom-50 u-desktop-padding-bottom-50',''] %}
-                <div class="col-12">
+                <div class="col-8 offset-2 col-md-10 offset-md-1">
                     {{this.render('../_single-article.twig', {
                         article: articles[articleCount], 
                         position: (articleCount+1),
@@ -35,6 +34,7 @@
                     }) | raw}}
                     {% set articleCount = (dev) ? articleCount : articleCount + 1 %}
                 </div>
+                {% if i == 0 %}<div class="col-12"><hr class="o-rule"></div>{% endif %} 
             {% endfor %}  
         </div>
         
