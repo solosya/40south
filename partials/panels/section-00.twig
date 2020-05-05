@@ -41,7 +41,7 @@
                             {% set articleCount = (dev) ? articleCount : articleCount + 1 %}
                         </div>
                     </div>
-                    <hr class="o-rule">
+                    <hr class="o-rule d-md-none">
                 </div>
             {% endif %}
             <div class="col-12 col-md-4 u-desktop-border-right">
@@ -61,7 +61,7 @@
                         </div>
                     {% endfor %}
                 </div>
-                <hr class="o-rule">
+                {# <hr class="o-rule d-md-none"> #}
             </div>
             <div class="col-12 col-md-4">
                 {% if adslots[0] is defined %}

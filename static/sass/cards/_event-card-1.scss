@@ -2,10 +2,9 @@
     .c-eventcards-view{
         margin-bottom: 0;
         &__media{
-            width: 132px;
-            height: 114px;
+            width: 101px;
+            height: 87px;
             img{
-                height: 100%;
                 object-fit: cover;
             }
         }
@@ -70,13 +69,30 @@
         @media #{$desktop-up}{
             @include base-event-card();
             @include event-card-1-base();
-            
+            .c-eventcards-view{
+                &__media{
+                    width: 132px;
+                    height: 114px;
+                    img{
+                        height: 100%;
+                    }
+                }
+            }
         }
     }
     &__tablet{
         @media #{$tablet}{
             @include base-event-card();
             @include event-card-1-base();
+            .c-eventcards-view{
+                &__media{
+                    width: 132px;
+                    height: 114px;
+                    img{
+                        height: 100%;
+                    }
+                }
+            }
         }
     }
     &__mobile{

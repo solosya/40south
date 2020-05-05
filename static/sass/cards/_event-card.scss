@@ -123,34 +123,8 @@
         }
     
     
-        @media (max-width:600px) {
-            .c-eventcards-view {
-                &__media {
-                    width: 120px;
-                    height: 180px;
-                }
+       
     
-                &__container {
-                    @include margin-left(20);
-                    @include padding-right(0);
-                    @include calc(width, '100% - 120px');
-                }
-            }
-        }
-    
-        @media screen and (min-width:601px) and (max-width:767px) {
-            .c-eventcards-view {
-                &__media {
-                    width: 150px;
-                    height: 180px;
-                }
-    
-                &__container {
-                    @include margin-left(20);
-                    @include padding-right(0);
-                    @include calc(width, '100% - 150px');
-                }
-            }
-        }
+        
     }
 }

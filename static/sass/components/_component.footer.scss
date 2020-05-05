@@ -4,13 +4,18 @@
     //background-color: $grey-2;
     padding: 28px 0 20px;
     
+    @media #{$mobile}{
+        border-top: solid 3px $black;
+    }
     @include responsive(sm) {
         padding: 50px 0 20px;
     }
 
     &__container{
-        border-top: solid 3px $black;
-
+        
+        @media #{$tablet-up}{
+            border-top: solid 3px $black;
+        }
     }
 
     &__social{
@@ -19,6 +24,9 @@
         bottom: 0;
         &__icon{
             margin-right: 15px;
+        }
+        @media #{$mobile}{
+            bottom: -15px;
         }
     }
 

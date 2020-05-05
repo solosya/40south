@@ -23,7 +23,7 @@
         z-index: 10;
         order:2;
         flex-grow:1;
-
+        margin-top: 10px;
         @media #{$desktop-up} {
             margin-top: 20px;
         }
