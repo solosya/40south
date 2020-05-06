@@ -5,47 +5,67 @@
         @include flex-direction(column, vertical);
 
         &__media {
-            width: 98px;
-            height: 130px;
+            width: 100%;
+            height: calc(100vw - 70px);
             &--video {
                 &:before {
-                    @include size(55px);
+                    @include size(107px);
                 }
             }
         }
 
         &__container {
-            @include calc(width, '100% - 112px');
-            margin-left: 14px;
+            width: 100%;
+            margin-top: 12px;
         }
-
-        &__info {
-            @include calc(height, '100% - 40px');
-
+        &__category{
+            text-align: center; 
         }
+        
         &__heading {
-            min-height: 66px;
-            max-height: 66px;
+            //min-height: 60px;
+            max-height: 80px;
+            font-weight: $weightBold;
+            @include font-size(22);
+            text-align: center; 
         }
 
-        &.video {
-            .c-cards-view__media .video-icon {
-                @include size(40px);
+        &__author{
+            margin-top: 15px;
+            &-name{
+               margin: 0 auto;
             }
         }
+
+        
 
         &.without-image {
             .c-cards-view__container {
                 width: 100%;
-                margin-left: 0px;
-                padding: 0px 20px 0;
             }
 
+            .c-cards-view__category {
+                margin-top: 40px;
+                margin-bottom: 30px;
+            }
+            .c-cards-view__heading{
+                max-height: 117px;
+                margin-bottom: 40px;
+            }
             .c-cards-view__description {
-                margin-bottom: 15px;
+                text-align: center;
+                margin-bottom: 30px;
                 display: block;
-                max-height: 90px;
+                max-height: 120px;
                 overflow: hidden;
+            }
+            .c-cards-view__author {
+                position: absolute;
+                bottom: 0;
+                width: 100%;
+                &-name{
+                    margin: 0 auto;
+                }
             }
         }
 
@@ -110,65 +130,75 @@
         // min-height: 417px;
 
         &__media {
-            order: 2;
             width: 100%;
-            min-height: 697px;
+            height: 886px;
             // background: $white none repeat scroll 0 0 !important;
 
             img {
                 display: block;
             }
+            &--video {
+                &:before {
+                    @include size(120px);
+                }
+            }
         }
 
         &__container {
-            order: 1;
-            width: 100%;
-            margin-left: 0;
-            margin-bottom: 40px;
+            margin: 0;
         }
 
         &__category {
-            // margin-top:40px;
+            text-align: left; 
+            margin-top:40px;
             @include font-size(13);
         }
 
         &__heading {
+            text-align: left; 
             @include flex-height(50px);
             @include font-size(40);
             font-weight: $weightUltrabold;
         }
 
         &__author {
+            text-align: left; 
             margin-top:40px;
+            &-name{
+                margin: 0;
+            }
         }
 
 
 
         &.without-image {
-
+            height: 915px;
             .c-cards-view__container {
             }
 
             
             .c-cards-view__category {
+                margin-top: 70px;
                 margin-bottom:60px;
             }
 
             .c-cards-view__heading {
-                height:84px;
+                max-height:169px;
+                margin-bottom: 90px;
             }
 
             .c-cards-view__description {
-                margin-top:10px;
-                margin-bottom: 15px;
+                text-align: left; 
+                @include font-size(24);
+                line-height: 1.67;
+                margin-bottom: 300px;
                 display: block;
-                height: 160px;
-                max-height:none;
+                max-height: 330px;
+                min-height: 330px;
                 overflow: hidden;
             }
             .c-cards-view__author {
-                margin-top: 10px;
-                margin-bottom: 20px;
+                bottom: 30px;
             }
 
         }

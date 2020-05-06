@@ -51,6 +51,7 @@
                 @include translate(-50%, -50%);
                 display: block;
                 @include size(70px);
+                padding: 0 10%;
                 background-image: url('../icons/video-icon.svg');
                 background-repeat: no-repeat;
                 background-size:cover;
@@ -88,7 +89,8 @@
 
     &__description {
         @include font-size(14);
-        font-weight: $weightRegular;
+        font-family: $font-family-sans-serif;
+        font-weight: $weightLight;
         line-height: 1.54;
         color: $grey-2;
         display: none;
@@ -168,7 +170,7 @@
 
 
     &.without-image {
-        background-color: rgba($grey-4, 0.8);
+        // background-color: rgba($grey-4, 0.8);
 
         .c-cards-view {
             &__media {
@@ -178,6 +180,10 @@
             &__heading {
                 min-height: inherit;
                 max-height: 100px;
+            }
+
+            &__author{
+                width: 100%;
             }
         }
     }

@@ -73,7 +73,7 @@
                                     {{this.render('partials/_single-event.twig', {
                                         event: events[i], 
                                         imageSuppress: 'true',
-                                        containerClass: "event-card-2-mobile event-card-2-tablet event-card-2-desktop"
+                                        containerClass: "event-card-3-mobile event-card-3-tablet event-card-3-desktop"
                                     }) | raw}}
                                
                                 {% endfor %}
@@ -113,7 +113,7 @@
             limit           : 50,
             offset          : 50,
             name            : 'section-load', //name of the search button
-            card_class      : 'col-12 col-md-3 card-4-mobile card-2-tablet card-1-desktop card-2-desktop-lg',
+            card_class      : 'col-12 col-md-3 card-7-mobile card-3-tablet card-1-desktop card-3-desktop-lg',
             non_pinned      : {{eventCount}}
 
         });

@@ -1,53 +1,57 @@
+
+
 @mixin card-9-base() {
-    @include card-name("C9 mobile");
+    
+    margin-bottom: 25px;
+    margin-top: 25px;
+    &:before {
+        content: '';
+        position: absolute;
+        bottom: 0;
+        width: 44px;
+        height: 1px;
+        background-color: $grey-3;
+        right: calc(50% - 22px);
+        left: calc(50% - 22px);
+    }
+
 
     .c-cards-view {
-        
-
-        // @media #{$bootstrap-sm} {
-        //     @include flex-height(258px);
-        // }
-
-
+        height: inherit;
+        margin-bottom:0;
 
         &__media {
-            
+            display: none;
         }
-        &__container{
-            width: calc(50% - 15px);
+
+        &__container {
+            //height: 65px;
+            overflow: hidden;
+            //padding-bottom: 27px;
+            width: 100%;
         }
         &__category {
-            
-            margin-left: 30px;
-        }
-
-
-        &__heading {
-            @include font-size(28);
-            @include flex-height(105px);
-            font-weight: $weightBold;
-            line-height: 1.18;
-            color: $black;
-            margin-left: 30px;
-        }
-
-        &__description {
             @include font-size(13);
-            @include flex-height(75px);
-            display: block;
+            font-weight: $weightBold;
+            margin-bottom:5px;
+            text-align: center;
+        }
+        &__heading {
+            @include font-size(22);
             font-weight: $weightRegular;
-            line-height: 1.54;
-            color: $grey-2;
-            margin-left: 30px;
+            min-height: 52.8px;
+            max-height: 52.8px;
+            text-align: center;
+            max-width: 65%;
+            margin: 0 auto;
+        }
+        &__description {
+            display:none;
+        }
+        &__author {
+            display:none;
         }
 
-        &__author {
-            margin-top:20px;
-            margin-left: 30px;
-            position: absolute;
-            bottom: 0;
-            width: calc(50% - 15px);
-        }
     }
 }
 
@@ -60,14 +64,17 @@
 .card-9-tablet {
     @media #{$tablet} {
         @include card-9-base();
-        @include card-name("C9 tablet");
     }
 }
 
 .card-9-desktop {
-	@media #{$desktop-up} {
+    @media #{$desktop-up} {
         @include card-9-base();
-        @include card-name("C9 desktop");
-
     }
 }
+
+
+
+
+
+

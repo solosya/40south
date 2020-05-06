@@ -1,7 +1,6 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="70" height="70" viewBox="0 0 70 70">
+<svg xmlns="http://www.w3.org/2000/svg" width="112" height="140" viewBox="0 0 112 140">
     <g fill="none" fill-rule="evenodd">
-        <circle cx="35" cy="35" r="34.205" fill="#595859" opacity=".5" style="mix-blend-mode:multiply"/>
-        <path fill="#FFF" d="M27.84 51.466v-33.17L51.053 34.88z"/>
-        <path fill="#FFF" d="M35 1.59C16.549 1.59 1.59 16.55 1.59 35 1.59 53.451 16.55 68.41 35 68.41c18.451 0 33.41-14.959 33.41-33.41C68.41 16.549 53.45 1.59 35 1.59M35 70C15.67 70 0 54.33 0 35S15.67 0 35 0s35 15.67 35 35-15.67 35-35 35"/>
+        <path fill="#3E637A" d="M2.065 39.114l51-36.985c1.75-1.27 4.12-1.27 5.87 0l51 36.985c1.297.94 2.065 2.445 2.065 4.047v58.288c0 1.659-.823 3.21-2.198 4.14l-51 34.515c-1.692 1.145-3.912 1.145-5.604 0l-51-34.515C.823 104.66 0 103.108 0 101.45V43.16c0-1.602.768-3.107 2.065-4.047z" opacity=".91" style="mix-blend-mode:multiply" transform="translate(0 -1)"/>
+        <path stroke="#FFF" stroke-linecap="round" stroke-linejoin="round" stroke-width="4" d="M44 44L44 98 86 71.893 55.911 52.447" transform="translate(0 -1)"/>
     </g>
 </svg>
