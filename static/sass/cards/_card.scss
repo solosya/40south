@@ -51,11 +51,12 @@
                 @include translate(-50%, -50%);
                 display: block;
                 @include size(70px);
-                padding: 0 10%;
                 background-image: url('../icons/video-icon.svg');
                 background-repeat: no-repeat;
-                background-size:cover;
+                background-size:contain;
+                background-position-x: center;
                 z-index: 15;
+                opacity: 0.6;
             }
         }
 
