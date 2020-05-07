@@ -33,6 +33,7 @@ with width taken up with borders on the side #}
 
 
 {% if ( media | length > 1 ) %}
+    {% set gallThumbs = true %}
     {% set owl = "owl-gallery-" ~ type %}
     {% set owlClass = 'owl-carousel owl-pub-theme owl-carousel__base'%}
 {% endif %}
@@ -133,8 +134,7 @@ with width taken up with borders on the side #}
                     {% set articleImg = _Media.getMediaUrl(thumb,152, 95, {'crop': 'fill', 'gravity':'faces'} ) %}
                     <img id="owl-{{loop.index}}" src="{{articleImg}}" class="owl-thumb-item">
                 {% endfor %}
-            </div>
- #}
+            </div> #}
 
 
 

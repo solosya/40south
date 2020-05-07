@@ -34,20 +34,21 @@
                 
                 &.active {
                     color: $mainColor;
-
-                    &:after {
-                        content: '';
-                        height:1px;
-                        width:15px;
-                        background:$grey-2;
-                        position: absolute;
-                        left: 0;
-                        bottom: -3px;
+                    @media #{$desktop-up}{
+                        &:after {
+                            content: '';
+                            height:1px;
+                            width:15px;
+                            background:$mainColor;
+                            position: absolute;
+                            left: 55px;
+                            bottom: -3px;
+                        }
                     }
                 }
 
                 &:hover {
-                    color: $mainColor;
+                    color: $green;
                 }
             }
 

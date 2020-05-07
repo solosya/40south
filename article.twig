@@ -144,33 +144,35 @@
 
 <main id="main" class="o-body-container o-body-container-md u-margin-top-60" role="main" {# data-paywall-type="{{paywallType}}" #}>
     <div class="container">
-        <div class="row">
-            <div class="col-12">
-                {% if articleImg %} 
+        {% if articleImg %}
+            <div class="row">
+                <div class="col-12">
+                    
 
-                    <div class="gallery-container relative u-margin-bottom-40 u-desktop-margin-bottom-50">
-                        {% set galleryStyle = 'article' %}
-                        {% if article.media|length > 1 %}
-                            {% set galleryStyle = 'gallery' %}
-                        {% endif %}
+                        <div class="gallery-container relative u-margin-bottom-40 u-desktop-margin-bottom-50">
+                            {% set galleryStyle = 'article' %}
+                            {% if article.media|length > 1 %}
+                                {% set galleryStyle = 'gallery' %}
+                            {% endif %}
 
 
-                        {% if article.media|length > 0 %}
-                            {% set imageFeature = featured == 'image' ? true : false %}
-                            {{this.render('partials/gallery.twig', {
-                                media: article.media,
-                                default: imageFeature,
-                                watermark: watermark,
-                                galleryStyle: galleryStyle,
-                                showPaywall: showPaywall
-                            }) | raw}}
-                        {% endif %}
+                            {% if article.media|length > 0 %}
+                                {% set imageFeature = featured == 'image' ? true : false %}
+                                {{this.render('partials/gallery.twig', {
+                                    media: article.media,
+                                    default: imageFeature,
+                                    watermark: watermark,
+                                    galleryStyle: galleryStyle,
+                                    showPaywall: showPaywall
+                                }) | raw}}
+                            {% endif %}
 
-                    </div> 
+                        </div> 
 
-                {% endif %}
+                    
+                </div>
             </div>
-        </div>
+        {% endif %}
         <div class="row justify-content-between">
             <div class="col-12 col-lg-8 j-article-container">
 
@@ -350,7 +352,7 @@
                 <div class="col-12 col-md-4{{borderclass[i]}}">
                     {{this.render('partials/_single-event.twig', {
                         event: events[i], 
-                        imageSize: {width: 260, height: 230},
+                        imageSize: {width: 600, height: 600},
                         containerClass: "event-card-1__mobile event-card-1__tablet event-card-1__desktop"
                     }) | raw}}
                     {% set eventCount = (dev) ? eventCount : eventCount + 1 %}

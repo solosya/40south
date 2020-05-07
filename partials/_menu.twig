@@ -8,7 +8,7 @@
         {% set menuClass = 'c-menu-item' %}
     {% endif %}
     <li class="dropdown">
-        <a  class="{{menuClass}} {{activeClass}} {{externalClass}} "
+        <a  class="{{menuClass}} {{activeClass}} {{externalClass}}"
             href="{{parentItem.link | raw}}"
             {% if parentItem.target != "" %} 
                 target="{{parentItem.target}}"

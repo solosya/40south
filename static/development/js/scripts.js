@@ -300,7 +300,6 @@ $('document').ready(function() {
 
 
 
-
     Acme.adScroll();
 
 

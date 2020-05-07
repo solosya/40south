@@ -243,13 +243,19 @@
             line-height: 1.45 !important;
             font-weight: $weightMedium !important;
             letter-spacing: 0.5px !important;
-            margin-bottom: 44px !important;
             display: block;
-            padding: 40px 0;
-            margin: 40px 0;
+            padding: 40px 0 !important;
+            margin: 40px 0 !important;
             border-top: 1px solid $grey-4;
             border-bottom: 1px solid $grey-4;
-
+            >p{
+                color: $black !important;
+                font-family: $primaryFont !important;
+                font-size: 26px !important;
+                line-height: 1.45 !important;
+                font-weight: $weightMedium !important;
+                letter-spacing: 0.5px !important;
+            }
             // &:after {
             //     content: '';
             //     width: 76px;

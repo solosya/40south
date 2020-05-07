@@ -12,12 +12,12 @@
 {% set articleBlog = article.blog.title | lower %}
 {% set publishDate = _AppHelper.getDateTimeBasedOnTimezone(article.publishDate, 'F, Y') %}
 
-{% set showPaywall = false %}
+{# {% set showPaywall = false %}
 {% if   not _User.isAdminUser()     and
         article.showPaywall == true  %}
     
 
-{% endif %}
+{% endif %} #}
 {% set ArticleContent = article.content %}
 {% set watermark = false %}
 {% if config['watermark']['settings'] is defined and config['watermark']['sections'][articleBlog|lower] is defined %}
@@ -65,9 +65,9 @@
 
 
 
-                        {% if showPaywall == true %}
+                        {# {% if showPaywall == true %}
                             {{this.render('partials/article/paywall_article_notice.twig', {networkData:networkData}) | raw}}
-                        {% endif %}
+                        {% endif %} #}
 
                     </div>
                 </div>
@@ -75,14 +75,14 @@
 
             <div class="d-none d-lg-block col-md-2">
 
-            {% if showPaywall != true %}
+            
                 <div id="owl-thumbs" class="owl-thumbs article-gallery__thumbs" data-slider-id="1">
                     {% for image in article.media %}
                         {% set articleImg = _Media.getMediaUrl(image,152, 95, {'crop': 'fill', 'gravity':'faces'} ) %}
                         <img id="owl-{{loop.index}}" src="{{articleImg}}" class="owl-thumb-item">
                     {% endfor %}
                 </div>
-            {% endif %}
+            
 
             </div>
         
