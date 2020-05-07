@@ -14,7 +14,7 @@
             height:390px;
         }
         @media #{$desktop-up} {
-            height:470px;
+            height:540px;
         }
     }
 
@@ -46,7 +46,7 @@
 
 
     &__thumbs {
-        max-height:470px;
+        max-height:540px;
         @include flexbox();
         @include flex-direction(column, vertical);
         overflow-x: hidden;

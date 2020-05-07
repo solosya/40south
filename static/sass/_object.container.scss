@@ -15,7 +15,7 @@
 
     @include responsive(md) {
         .o-body-container__right-layout {
-            border-left: 1px solid $grey-4;
+            //border-left: 1px solid $grey-4;
             border-top: none;
             @include padding-top(0);
             @include padding-left(20);

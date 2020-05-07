@@ -13,13 +13,26 @@
 
 
     <div class="col-12 col-md-8 u-border-right">
-        {{this.render('../_single-article.twig', {
-            article: articles[articleCount], 
-            position: (articleCount+1),
-            imageSize: {width: 720, height: 420},
-            containerClass: "card-3-mobile card-3-tablet card-3-desktop"
-        }) | raw}}
-        {% set articleCount = (dev) ? articleCount : articleCount + 1 %}
+        <div class="row">
+            <div class="col-12">
+                {{this.render('../_single-article.twig', {
+                    article: articles[articleCount], 
+                    position: (articleCount+1),
+                    imageSize: {width: 1200, height: 1200},
+                    containerClass: "card-3-mobile card-5-tablet card-5-desktop"
+                }) | raw}}
+                {% set articleCount = (dev) ? articleCount : articleCount + 1 %}
+            </div>
+            <div class="col-12 u-margin-top-40">
+                {{this.render('../_single-article.twig', {
+                    article: articles[articleCount], 
+                    position: (articleCount+1),
+                    imageSize: {width: 640, height: 480},
+                    containerClass: "card-4-mobile card-6-tablet card-6-desktop"
+                }) | raw}}
+                {% set articleCount = (dev) ? articleCount : articleCount + 1 %}
+            </div>
+        </div>
         <hr class="o-rule d-md-none">
     </div>
     
@@ -30,7 +43,7 @@
                     {{this.render('../_single-article.twig', {
                         article: articles[articleCount], 
                         position: (articleCount+1),
-                        imageSize: {width: 300, height: 260},
+                        imageSize: {width: 600, height: 600},
                         containerClass: "card-4-mobile card-4-tablet card-4-desktop" ~ indexClass[i]
                     }) | raw}}
                     {% set articleCount = (dev) ? articleCount : articleCount + 1 %}
@@ -41,6 +54,14 @@
         
     </div>
     
+    <div class="col-12 d-none d-md-block u-margin-top-60">
+        <hr class="o-rule">
+        <div class="c-signup-body">
+            <p class="c-signup-body__text">Become a Forty South Insider</p>
+            <div class="c-button c-signup-body__button j-insider-signup">sign up</div>
+        </div>
+        <hr class="o-rule">
+    </div>
     
 </div> <!-- row -->
 

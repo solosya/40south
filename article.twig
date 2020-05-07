@@ -11,28 +11,28 @@
 {% set articleBlog = article.blog.title | lower %}
 
 {% set articleBlogInfo = _Blog.getBlog({'guid':article.blog['guid']}) %}
-
-
-{% set showPaywall = false %}
 {% set ArticleContent = article.content %}
+
+{# {% set showPaywall = false %}
+
 
 {% set pwstats = {} %}
 {% if not _User.isGuest() %}
     {% set pwstats = _User.getPaywallStats(false) %}
-{% endif %}
+{% endif %} #}
 
 
 
 
 
-{% set paywallType = "" %}
+{# {% set paywallType = "" %}
 {% if not _User.isAdminUser() and article.showPaywall == true %}
 
     {% set showPaywall = true %}
     
-    {# DETERMINE IF PAYWALL IS 'PAID' OR 'FREE' #}
+    
     {% if articleBlogInfo['paywallAllowSignupOnly'] == true %}
-        {# TURN FREE PAYWALL OFF FOR LOGGED IN USERS AND SET FREE PAYWALL TO SHOW #}
+        
         
         {% if not _User.isGuest() %}
             {% set showPaywall = false %}
@@ -42,7 +42,7 @@
 
         
     {% else %}
-        {# DETERMINE WHICH PAYWALL TO SHOW #}
+        
         {% if not _User.isGuest() %}
 
             {% if pwstats['type'] == 'article' %}
@@ -80,8 +80,6 @@
     {% endfor %}
 
 {% else %}
-    {# Only grab these if article is not paywalled #}
-    {# {% set relatedArticles = _Article.getPopularArticles({ blogId: article.blog.id, limit: 3, excludeArticleIds : [article.id], interval: 168 }) %} #}
     {% if config['inventory']['articleAd'] is defined %}
         {% set adPos = config['inventory']['articleAd']  %}
         
@@ -101,10 +99,11 @@
             
         {% endif %}
     {% endif %}
-    {% set recentArticles = _Article.getRecentArticles({ limit: 5, excludeArticleIds : [article.id] }) %}
-{% endif %}
+    
+{% endif %} #}
 
-
+{% set recentArticles = _Article.getRecentArticles({ limit: 3, scope: 'network', excludeArticleIds : [article.id] }) %}
+{% set popularArticles = _Article.getPopularArticles({ limit: 3, sortBy: 'VIEWS', scope: 'network', excludeArticleIds : [article.id] }) %}
 
 
 
@@ -143,56 +142,61 @@
 
 
 
-<main id="main" class="o-body-container o-body-container-md u-margin-top-60" role="main" data-paywall-type="{{paywallType}}">
+<main id="main" class="o-body-container o-body-container-md u-margin-top-60" role="main" {# data-paywall-type="{{paywallType}}" #}>
     <div class="container">
+        <div class="row">
+            <div class="col-12">
+                {% if articleImg %} 
+
+                    <div class="gallery-container relative u-margin-bottom-40 u-desktop-margin-bottom-50">
+                        {% set galleryStyle = 'article' %}
+                        {% if article.media|length > 1 %}
+                            {% set galleryStyle = 'gallery' %}
+                        {% endif %}
+
+
+                        {% if article.media|length > 0 %}
+                            {% set imageFeature = featured == 'image' ? true : false %}
+                            {{this.render('partials/gallery.twig', {
+                                media: article.media,
+                                default: imageFeature,
+                                watermark: watermark,
+                                galleryStyle: galleryStyle,
+                                showPaywall: showPaywall
+                            }) | raw}}
+                        {% endif %}
+
+                    </div> 
+
+                {% endif %}
+            </div>
+        </div>
         <div class="row justify-content-between">
-            <div class="col-12 col-lg-7 j-article-container">
+            <div class="col-12 col-lg-8 j-article-container">
 
                 <div class="c-article c-article-sm" >
 
-                    {% if articleImg %} 
-
-                        <div class="gallery-container relative">
-                            {% set galleryStyle = 'article' %}
-                            {% if article.media|length > 1 %}
-                                {% set galleryStyle = 'gallery' %}
-                            {% endif %}
-
-
-                            {% if article.media|length > 0 %}
-                                {% set imageFeature = featured == 'image' ? true : false %}
-                                {{this.render('partials/gallery.twig', {
-                                    media: article.media,
-                                    default: imageFeature,
-                                    watermark: watermark,
-                                    galleryStyle: galleryStyle,
-                                    showPaywall: showPaywall
-                                }) | raw}}
-                            {% endif %}
-
-                        </div> 
-
-                    {% endif %}
-                    {% if showPaywall == true %}
+                    
+                    {# {% if showPaywall == true %}
                         {% set imageMargin = 'u-tablet-margin-top-60 u-mobile-margin-top-100 u-desktop-margin-top-80' %}
                     {% else %}
                         {% set imageMargin = 'u-tablet-margin-top-30 u-desktop-margin-top-80' %}
-                    {% endif %}
+                    {% endif %} #}
 
-                    <div class="c-article__main {{imageMargin}}">
+                    <div class="c-article__main {# {{imageMargin}} #}">
                         <div class="c-article__head">
                             
-                            {% if _User.isAdminUser() %}
-                                    <a href="{{article.editUrl}}" target="_blank" class="c-article__edit-link">Edit article</a>
-                            {% endif %}
-
-
                             <div class="c-article__category">
                                 {{article.label}}
                             </div>
                             <div class="c-article__title">
                                 {{ quotes.smarten(article.title) }}
                             </div>
+
+                            {% if _User.isAdminUser() %}
+                                    <a href="{{article.editUrl}}" target="_blank" class="c-article__edit-link">Edit article</a>
+                            {% endif %}
+
                             <div class="c-article__posted-on">
                                 <time class="c-article__published">{{article.publishedDate}}</time>
                                 {% if updated %}
@@ -203,7 +207,8 @@
 
 
                             
-                                <div class="c-article__posted-by row">
+                            <div class="c-article__posted-by ">
+                                <div class="row">
                                     <div class="c-article__author col-12 col-md">
                                         <div class="c-article__avatar" style="background-image: url({{ profileImg }});"></div>
                                         {% if config['hide-author'] is defined and config['hide-author'] %}
@@ -211,6 +216,8 @@
                                         {% else %}
                                             <a class="c-article__author-name" href="{{_AppHelper.getUserProfileUrl(article.createdBy['username'])}}/posts">{{ article.createdBy['displayName'] }}</a>
                                         {% endif %}
+
+                                       
                                     </div>
 
                                     {% if article['createdBy']['coauthors'] %}
@@ -225,8 +232,22 @@
                                             </div>
                                         {% endfor %}
                                     {% endif %}
-
                                 </div>
+                                 <div class="c-article__social">
+                                    <a href="mailto:?subject=Check%20out%20this%20article&body={{article.url}}" class="c-article__social__icon c-article__social__icon--email">
+                                        {{ this.render('partials/icons.twig', {icon: 'email'} ) | raw }}
+                                    </a>
+                                    <a href="https://www.facebook.com/sharer/sharer.php?u={{article.url}}&title={{ article.title|url_encode }}" class="c-article__social__icon c-article__social__icon--facebook">
+                                        {{ this.render('partials/icons.twig', {icon: 'facebook'} ) | raw }}
+                                    </a>
+                                    <a href="https://twitter.com/share?text={{ article.title|url_encode }}&url={{article.url}}" class="c-article__social__icon c-article__social__icon--twitter">
+                                        {{ this.render('partials/icons.twig', {icon: 'twitter'} ) | raw }}
+                                    </a>
+                                    <a href="https://www.linkedin.com/shareArticle?mini=true&url={{article.url}}&title={{article.title|url_encode}}" class="c-article__social__icon c-article__social__icon--linkedin">
+                                        {{ this.render('partials/icons.twig', {icon: 'linkedin'} ) | raw }}
+                                    </a>
+                                </div>
+                            </div>
                             
 
 
@@ -238,55 +259,106 @@
 
 
 
-                        {% if showPaywall == true %}
+                        {# {% if showPaywall == true %}
                             {{this.render('partials/article/paywall_article_notice.twig', {networkData:networkData, paywallType:paywallType}) | raw}}
-                        {% endif %}
+                        {% endif %} #}
 
                     </div>
 
-                    {% if showPaywall == false %}
+                    {# {% if showPaywall == false %}
                         <!-- Disqus Comment Added -->
                         {% if networkData.thirdPartyIntegrations['disqus'] | length > 0 and networkData.thirdPartyIntegrations['disqus']['shortName'] != '' %}
                             {{this.render("partials/article/_disqus_comments.twig", {disqus: networkData.thirdPartyIntegrations['disqus'], userId: article.createdBy['id'], url:article.url, articleId: article.id}) | raw}}
                         {% endif %}
-                    {% endif %}
+                    {% endif %} #}
 
 
                 </div>
                 <!-- End Article Page -->
             </div>
-            <div class="col-12 offset-lg-1 col-lg-4">
+            <div class="col-12 offset-lg-1 col-lg-3">
+                
                 <div class="o-body-container__right-layout j-article-sidebar">
-                    {% if config['inventory']['adSpace']['side-fix'][0] is defined %}
-                        <div class="j-adslot" id="{{config['inventory']['adSpace']['side-fix'][0]}}" data-adshape="side-fix"></div>
-                    {% endif %}
+                    <div class="row">
+                        <div class="col-12">
+                            {% if config['inventory']['adSpace']['side-fix'][0] is defined %}
+                                <div class="j-adslot" id="{{config['inventory']['adSpace']['side-fix'][0]}}" data-adshape="side-fix"></div>
+                            {% endif %}
+                        </div>
+                        <div class="col-12">
+                            <div class="c-news-feed__title c-news-feed__title--before">Top Stories</div>
+                        </div>
+                        
+                        {% for i in 0..2 if popularArticles[i] %}
+                            <div class="col-sm-12">
+                                {{this.render('partials/_single-article.twig', {
+                                    article: popularArticles[i], 
+                                    containerClass: "card-9-mobile card-9-tablet card-9-desktop"
+                                }) | raw}}
+                                
+                            </div>
+                        {% endfor %}
+                            
+                    </div>
                 </div>
             </div>
 
         </div>
-        {% if showPaywall == false %}
-            <div class="row c-related-articles u-desktop-margin-top-100">
-                <div class="col-12">
-                    <h1 class="c-related-articles__header" >Latest stories</h1>
-                </div>
-                
-                <div class="col-12 u-margin-top-30">
-                    <div class="row">
-                        {% for i in 0..3 if recentArticles[i] %}
-                            <div class="col-12 col-md-4 col-lg-3{% if i == 3 %} d-md-none d-lg-block{% endif %}">
-                                {{this.render('partials/_single-article.twig', {
-                                    article: recentArticles[i], 
-                                    imageSize: {width: 300, height: 180},
-                                    containerClass: 'card-5-mobile card-7-tablet card-7-desktop',
-                                    site:   site
-                                }) | raw}}
-                            </div>
-                        {% endfor %}
-                    </div>
+       
+        <div class="row c-related-articles u-desktop-margin-top-100">
+            <div class="col-12">
+                <div class="c-page-head c-page-head-xs">
+                    <div class="u-heading__large u-heading__large-xs u-pr--6">latest stories</div>
+                    {# <a href="{{link}}" class="c-page-head__link">View all</a> #}
                 </div>
             </div>
-        {% endif %}
+            
+            <div class="col-12 u-margin-top-30">
+                <div class="row justify-content-between">
+                    {% for i in 0..2 if recentArticles[i] %}
+                        <div class="col-12 col-md-4">
+                            {{this.render('partials/_single-article.twig', {
+                                article: recentArticles[i], 
+                                imageSize: {width: 300, height: 180},
+                                containerClass: 'card-4-mobile card-4-tablet card-4-desktop',
+                                site:   site
+                            }) | raw}}
+                        </div>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
 
+        <div class="row u-margin-top-40 u-desktop-margin-top-80">
+            <div class="col-12">
+                <div class="c-page-head c-page-head-xs">
+                    <div class="u-heading__large u-heading__large-xs u-pr--6">forthcoming events</div>
+                    {# <a href="{{link}}" class="c-page-head__link">View all</a> #}
+                </div>
+            </div>
+        </div>
+
+        {% set date = date() %}
+        {# {% set events = _Event.getEvents({"limit": 3, "start_date": date.date | split(" ")[0]}) %} #}
+        {% set events = _Event.getEvents({"limit": 3}) %}
+
+
+        <div class="row">
+            
+            {% set borderclass = [' u-border-right',' u-border-right',''] %}
+            {% for i in 0..2 if events[i] %}
+                <div class="col-12 col-md-4{{borderclass[i]}}">
+                    {{this.render('partials/_single-event.twig', {
+                        event: events[i], 
+                        imageSize: {width: 260, height: 230},
+                        containerClass: "event-card-1__mobile event-card-1__tablet event-card-1__desktop"
+                    }) | raw}}
+                    {% set eventCount = (dev) ? eventCount : eventCount + 1 %}
+                </div>
+            {% endfor %}
+            
+        </div>
+        
 
 
 

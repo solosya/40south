@@ -3,8 +3,8 @@
 {% set owl      = '' %}
 {% set owlClass = '' %}
 
-{% set imgWidth  = imageSize.width  is defined ? imageSize.width  : 745 %}
-{% set imgHeight = imageSize.height is defined ? imageSize.height : 470 %}
+{% set imgWidth  = imageSize.width  is defined ? imageSize.width  : 1710 %}
+{% set imgHeight = imageSize.height is defined ? imageSize.height : 765 %}
 {% set gravity   = 'faces' %}
 {% set mobImgHeight = imageSize.height is defined ? imageSize.height : 250 %}
 
@@ -13,12 +13,12 @@
 with width taken up with borders on the side #}
 {% if galleryStyle == "gallery" %} 
     {% set imgWidth = 0 %}
-    {% set imgHeight = 515 %}
+    {% set imgHeight = 540 %}
     {% set gravity = 'auto' %}
     {% set mobImgHeight = 250 %} 
 {% elseif galleryStyle == "property" %}
     {% set imgWidth = 0 %}
-    {% set imgHeight = 350 %}
+    {% set imgHeight = 540 %}
     {% set gravity = 'auto' %}
     {% set mobImgHeight = 250 %}
 {% endif %}
@@ -26,9 +26,9 @@ with width taken up with borders on the side #}
 {% set cloudinaryParams = {'crop': 'fill', 'gravity': gravity} %}
 
 
-{% if showPaywall is defined and showPaywall == true %}
+{# {% if showPaywall is defined and showPaywall == true %}
     {% set media = [media[0]] %}
-{% endif %} 
+{% endif %}  #}
 
 
 

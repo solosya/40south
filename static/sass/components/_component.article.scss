@@ -16,15 +16,16 @@
         letter-spacing: 0.9px;
         text-align: center;
         background-color: $mainColor;
-        color: white;
+        color: $white;
     }
 
     &__category {
         color: $mainColor;
         font-family: $primaryFont;
-        @include font-size(12);
-        line-height: 1.25;
-        font-weight: $weightMedium;
+        @include font-size(16);
+        line-height: 1.5;
+        letter-spacing: 2.29;
+        font-weight: $weightUltrabold;
         @include margin-bottom(6);
         text-transform: uppercase;
         letter-spacing: 0.9px;
@@ -90,10 +91,10 @@
     &__title {
         color: $black;
         font-family: $primaryFont;
-        @include font-size(28);
-        line-height: 1.14;
+        @include font-size(40);
+        line-height: 1.2;
         font-weight: $weightBold;
-        @include margin-bottom(20);
+        @include margin-bottom(30);
         letter-spacing: normal;
     }
 
@@ -159,6 +160,30 @@
         line-height: 1.15;
         font-weight: $weightLight;
         letter-spacing: normal;
+        font-style: italic;
+    }
+
+    &__social{
+        position: absolute;
+        right:35px;
+        width: max-content;
+        &__icon{
+            height: 16px;
+            object-fit: contain;
+            margin: 0 5px;
+            &:last-child{
+                margin: 0 0 0 5px;
+            }
+            >svg>path{
+                fill: $mainColor;
+                opacity: 1;
+            }
+            &:hover{
+                >svg>path{
+                    opacity: 0.5;
+                }
+            }
+        }
     }
 
     &__excerpt {
@@ -212,23 +237,27 @@
         }
 
         blockquote {
-            color: $mainColor !important;
+            color: $black !important;
             font-family: $primaryFont !important;
-            font-size: 22px !important;
+            font-size: 26px !important;
             line-height: 1.45 !important;
             font-weight: $weightMedium !important;
             letter-spacing: 0.5px !important;
             margin-bottom: 44px !important;
             display: block;
+            padding: 40px 0;
+            margin: 40px 0;
+            border-top: 1px solid $grey-4;
+            border-bottom: 1px solid $grey-4;
 
-            &:after {
-                content: '';
-                width: 76px;
-                height: 1px;
-                display: block;
-                background: $grey-2 none repeat scroll 0 0;
-                margin-top: 30px !important;
-            }
+            // &:after {
+            //     content: '';
+            //     width: 76px;
+            //     height: 1px;
+            //     display: block;
+            //     background: $grey-2 none repeat scroll 0 0;
+            //     margin-top: 30px !important;
+            // }
         }
 
         img {

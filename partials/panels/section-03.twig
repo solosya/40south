@@ -18,7 +18,7 @@
         {{this.render('../_single-article.twig', {
             article: articles[articleCount], 
             position: (articleCount+1),
-            imageSize: {width: 720, height: 420},
+            imageSize: {width: 1800, height: 800},
             containerClass: "card-3-mobile card-7-tablet card-7-desktop u-desktop-padding-bottom-40 u-desktop-border-bottom u-desktop-margin-bottom-40"
         }) | raw}}
         {% set articleCount = (dev) ? articleCount : articleCount + 1 %}
@@ -34,7 +34,7 @@
                     {{this.render('../_single-article.twig', {
                         article: articles[articleCount], 
                         position: (articleCount+1),
-                        imageSize: {width: 300, height: 260},
+                        imageSize: {width: 720, height: 720},
                         containerClass: "card-8-mobile card-8-tablet card-8-desktop"
                     }) | raw}}
                     {% set articleCount = (dev) ? articleCount : articleCount + 1 %}

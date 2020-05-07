@@ -1,0 +1,23 @@
+.c-signup-body {
+    padding: 15px 35px;
+    position: relative;
+
+    &__text{
+        @include font-size(40);
+        font-weight: $weightBold;
+        font-stretch: normal;
+        font-style: normal;
+        line-height: 1.2;
+        letter-spacing: normal;
+        color: $grey-2;
+    }
+
+    &__button{
+        width: 358px;
+        position: absolute;
+        right: 35px;
+        top: 5px;
+    }
+
+}
+

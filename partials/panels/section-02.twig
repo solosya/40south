@@ -33,7 +33,7 @@
                         {{this.render('../_single-article.twig', {
                             article: articles[articleCount], 
                             position: (articleCount+1),
-                            imageSize: {width: 600, height: 400},
+                            imageSize: {width: 640, height: 480},
                             containerClass: "card-4-mobile card-6-tablet card-6-desktop"
                         }) | raw}}
                         {% set articleCount = (dev) ? articleCount : articleCount + 1 %}
