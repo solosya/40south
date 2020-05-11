@@ -151,6 +151,13 @@
         margin-top: -7px;
         letter-spacing: 1px;
     }
+
+    &--wide{
+        width: 100%;
+        @media #{$tablet-up}{
+            width: 337px;
+        }
+    }
 }
 
 /* End header style */

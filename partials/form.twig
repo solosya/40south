@@ -27,9 +27,9 @@
                             <div class="col-12 u-margin-bottom-15">
                                 <div class="c-form__group c-form__group--horizontal">
                                 {% if input.type != "textarea" %}
-                                    <input id="{{input.id}}" class="c-form__input c-form__input--bordered c-account-form__input" name="{{input.id}}" placeholder="{{input.name}}">
+                                    <input id="{{input.id}}" class="c-form__input c-account-form__input" name="{{input.id}}" placeholder="{{input.name}}">
                                 {% else %}
-                                    <textarea class="c-form__input c-form__input--bordered" id="{{input.id}}"  name="{{input.id}}" placeholder="{{input.name}}" aria-required="{{input.required}}" type="{{input.type}}"
+                                    <textarea class="c-form__input" id="{{input.id}}"  name="{{input.id}}" placeholder="{{input.name}}" aria-required="{{input.required}}" type="{{input.type}}"
                                     style="min-height: 230px;"></textarea>
                                 {% endif %}
                                     <div class="c-form__help-block"></div>
@@ -55,7 +55,7 @@
                     
                     <div class="col-12 u-margin-bottom-15">
                         <div class="c-form__group c-form__group--horizontal">
-                            <textarea class="c-form__input c-form__input--bordered" id="message"  name="message" placeholder="Message" aria-required="true" type="text"
+                            <textarea class="c-form__input" id="message"  name="message" placeholder="Message" aria-required="true" type="text"
                             style="min-height: 230px;"></textarea>
                             <div class="c-form__help-block"></div>
                             
@@ -63,14 +63,14 @@
                     </div>
                 {% endif %}                
                 {% if _Network.getCaptchaSiteKey() is defined and _Network.getCaptchaSiteKey() is not empty %}
-                    <div class="col-12 u-margin-bottom-15">
+                    <div class="col-12 u-margin-top-40 u-margin-bottom-15">
                         <div class="g-recaptcha" data-sitekey="{{_Network.getCaptchaSiteKey()}}" data-callback="contactEnable" style="padding-bottom:30px;"></div>
                         <div class="captchaContainer">
                             <div class="captchaMessage"></div>
                         </div>
                     </div>
                 {% else %}     
-                    <div class="col-12 u-margin-bottom-15">      
+                    <div class="col-12 u-margin-top-40 u-margin-bottom-15">      
                         <div class="account-modal__content_container">
                             <div class="account-modal__content_item-container">
                                 <div class="account-modal__input-container">
@@ -84,7 +84,7 @@
                 {% endif %}
                 
                 <div class="col-12 u-margin-bottom-15">
-                    <input name="" id="btnContact" disabled type="submit" value="Submit" class="c-button c-button--rounded c-button--blue c-button--disabled" />
+                    <input name="" id="btnContact" disabled type="submit" value="Submit" class="c-button c-button--blue c-button--wide c-button--disabled" />
                 </div>
             </div>
         </form>

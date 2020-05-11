@@ -110,10 +110,13 @@
             font-weight: $weightBold;
             letter-spacing: 1px;
             color: $green;
+            border-color: $green;
+            height: 40px;
+            padding: 10px 5px;
             &:hover{
                 color: $white;
                 background: $green;
-                border-radius: 25px;
+                //border-radius: 25px;
             }
             &--icon{
                 border-radius: 8px;

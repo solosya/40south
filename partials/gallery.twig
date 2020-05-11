@@ -136,11 +136,15 @@ with width taken up with borders on the side #}
                 {% endfor %}
             </div> #}
 
-
+            {% if ( media | length > 1 ) %}
+                <div class="article-gallery__count">{{loop.index}}/{{loop.length}}</div>
+            {% endif %}
 
             <figcaption class="article-gallery__caption" style="float:unset;">
                 <p class="">{{image.caption | raw }}</p>
             </figcaption>
+
+           
 
         </figure>
 

@@ -30,11 +30,11 @@
 {% endif %}
 
 
-<main id="main" class="article-gallery u-margin-bottom-100" role="main">
+<main id="main" class="article-gallery u-margin-top-60 u-margin-bottom-100" role="main">
 
     <div class="container u-margin-top-30">
         <div class="row">
-            <div class="col-12 col-lg-10 col-xl-8">
+            <div class="col-12 col-md-9">
 
                 <div class="row">
                     <div class="col-12">
@@ -73,7 +73,7 @@
                 </div>
             </div>
 
-            <div class="d-none d-lg-block col-md-2">
+            <div class="d-none d-md-block col-md-3">
 
             
                 <div id="owl-thumbs" class="owl-thumbs article-gallery__thumbs" data-slider-id="1">
@@ -86,6 +86,36 @@
 
             </div>
         
+        </div>
+
+         <div class="row u-margin-top-40 u-desktop-margin-top-80">
+            <div class="col-12">
+                <div class="c-page-head c-page-head-xs">
+                    <div class="u-heading__large u-heading__large-xs u-pr--6">forthcoming events</div>
+                    {# <a href="{{link}}" class="c-page-head__link">View all</a> #}
+                </div>
+            </div>
+        </div>
+
+        {% set date = date() %}
+        {% set events = _Event.getEvents({"limit": 3, "start_date": date.date | split(" ")[0]}) %}
+        {# {% set events = _Event.getEvents({"limit": 3}) %} #}
+
+
+        <div class="row">
+            
+            {% set borderclass = [' u-border-right',' u-border-right',''] %}
+            {% for i in 0..2 if events[i] %}
+                <div class="col-12 col-md-4{{borderclass[i]}}">
+                    {{this.render('partials/_single-event.twig', {
+                        event: events[i], 
+                        imageSize: {width: 600, height: 600},
+                        containerClass: "event-card-1__mobile event-card-1__tablet event-card-1__desktop"
+                    }) | raw}}
+                    {% set eventCount = (dev) ? eventCount : eventCount + 1 %}
+                </div>
+            {% endfor %}
+            
         </div>
 
         

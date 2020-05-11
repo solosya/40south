@@ -46,16 +46,16 @@
 
 
     &__thumbs {
-        max-height:540px;
+        max-height:725px;
         @include flexbox();
         @include flex-direction(column, vertical);
         overflow-x: hidden;
         overflow-y: scroll;
         // white-space:nowrap;
         .owl-thumb-item {
-            margin-bottom:12px;
+            margin-bottom:15px;
             object-fit: cover;
-            height: 108px;
+            height: 133px;
             &.active {
                 border:4px solid #B9B9B9;
             }
@@ -68,7 +68,7 @@
     &__caption {
 
         margin-top: 10px;
-
+        
         @media #{$media-ipadSmall} {
             float: left;
             margin-bottom: 30px;
@@ -90,15 +90,15 @@
 
     &__category {
         margin-top:10px;
-        @include font-size(11);
-        font-weight: $weightMedium;
+        @include font-size(13);
+        font-weight: $weightBold;
         text-transform:uppercase;
         color: $mainColor;
         text-decoration: none;
     }
     &__title {
-        margin-top:7px;
-        @include font-size(28);
+        margin-top:10px;
+        @include font-size(30);
         font-weight: $weightBold;
         float:left;
     }
@@ -110,6 +110,16 @@
         margin-top: 22px;
     }
 
+    &__count{
+        float: right;
+        @include font-size(20);
+        line-height: 1.3;
+        letter-spacing: 2px;
+        text-align: right;
+        color: $mainColor;
+        margin-top: 15px;
+    }
+
 
 
     &__single {
@@ -118,6 +128,6 @@
                 max-width: 915px;
             }
         }
-}
+    }
 
 }

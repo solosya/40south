@@ -341,8 +341,8 @@
         </div>
 
         {% set date = date() %}
-        {# {% set events = _Event.getEvents({"limit": 3, "start_date": date.date | split(" ")[0]}) %} #}
-        {% set events = _Event.getEvents({"limit": 3}) %}
+        {% set events = _Event.getEvents({"limit": 3, "start_date": date.date | split(" ")[0]}) %}
+        {# {% set events = _Event.getEvents({"limit": 3}) %} #}
 
 
         <div class="row">
