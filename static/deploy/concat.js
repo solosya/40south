@@ -24336,6 +24336,24 @@ Acme.templates.create_user =
     <button id="saveUser" type="button" class="c-button c-button--rounded c-button--blue-bordered u-margin-top-40">Save</button> \
 </div>';
 
+Acme.templates.mailChimpSignup = 
+'<form class="vertical-form mailchimp-modal__form" action="{{mailChimpClass}}" method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" class="validate" target="_blank" novalidate> \
+    <div class="c-form mailchimp-modal__title"> \
+        {{mctitle}}\
+    </div> \
+    <div class="c-form mailchimp-modal__description"> \
+        {{mcdescription}}\
+    </div> \
+    <div id="mc_embed_signup_scroll" class="mailchimp-modal__inputs">\
+        <input type="email" value="" name="EMAIL" class="c-form__input field form-control" id="mce-EMAIL" placeholder="Email address" required>\
+        <div style="position: absolute; left: -5000px;" aria-hidden="true">\
+            <input type="text" name="b_f951467ba4375a98673dddecd_effe44468e" tabindex="-1" value="">\
+        </div>\
+        <div class="c-form__buttons"> \
+            <button class="c-button c-button--blue-bordered c-button--wide" type="submit" id="mc-embedded-subscribe">Sign up</button>\
+        </div> \
+    </div>\
+</form>';
 (function($) {
 
 
@@ -27261,6 +27279,95 @@ Acme.confirmView = new Acme.Confirm('modal', 'signin', layouts);
 
 
 }(jQuery));
+(function ($) {
+
+
+    Acme.mailChimp = function(template, parent, layouts) {
+        this.template = template;
+        this.parentCont = parent;
+        this.layouts = layouts;
+        this.parent = Acme.modal.prototype;
+    };
+    Acme.mailChimp.prototype = new Acme.modal();
+    Acme.mailChimp.constructor = Acme.mailChimp;
+    
+    
+    Acme.mailChimp.prototype.handle = function(e) {
+        var $elem = this.parent.handle.call(this, e);
+        if ( $elem.is('a') ) {
+    
+            if ($elem.hasClass('close')) {
+    
+                e.preventDefault();
+                $('body').removeClass("active");
+                this.closeWindow();
+            }
+        }
+        if ($elem.is('button')) {
+    
+    
+            if ($elem.hasClass('close')) {
+                $('body').removeClass("active");
+                this.closeWindow();
+            }
+       
+    
+        }
+    
+        if ($elem.data('layout') != null) {
+            var layout = $elem.data('layout');
+            this.renderLayout(layout);
+    
+        }
+    
+    
+    };
+
+    var layouts = {
+        "mailchimp"         : 'mailChimpSignup'
+    
+    }
+
+    var mailchimpLink = '//not-loaded';
+    var mailChimpTitle = 'Please configure your mailchimp';
+    var mailChimpDescription = 'in the site config';
+
+    Acme.server.fetch(_appJsConfig.appHostName + '/api/theme/get-config')
+        .done(function(r) {
+            
+            var data = r.data['mailchimp'];
+            console.log(data);
+            if (data) {
+                mailchimpLink = data.url;
+                mailChimpTitle = data.title;
+                mailChimpDescription = data.description;
+            }
+        }).fail(function(r) {
+            console.log(r);
+        });
+    
+    
+    
+    
+    
+    
+    Acme.mailchimpView = new Acme.mailChimp('modal', 'mailchimp-modal', layouts);
+    
+    
+    $('.j-insider-signup').on('click', function() {
+        console.log(mailchimpLink,mailChimpTitle,mailChimpDescription);
+        Acme.mailchimpView.render("mailchimp", "Become a Forty South Insider", {mailChimpClass: mailchimpLink, mctitle: mailChimpTitle, mcdescription: mailChimpDescription});
+    });
+    
+    // $('a.j-register').on('click', function(e) {
+    //     e.preventDefault();
+    //     Acme.SigninView.render("register", "Register your interest");
+    // });
+    
+    
+    
+    
+    }(jQuery));
 
     
 Acme.UserProfileController = function()
@@ -28072,7 +28179,6 @@ $('document').ready(function() {
             ""
         ]
     });   
-
 
 
 

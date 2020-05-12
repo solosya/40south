@@ -426,3 +426,22 @@ Acme.templates.create_user =
     \
     <button id="saveUser" type="button" class="c-button c-button--rounded c-button--blue-bordered u-margin-top-40">Save</button> \
 </div>';
+
+Acme.templates.mailChimpSignup = 
+'<form class="vertical-form mailchimp-modal__form" action="{{mailChimpClass}}" method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" class="validate" target="_blank" novalidate> \
+    <div class="c-form mailchimp-modal__title"> \
+        {{mctitle}}\
+    </div> \
+    <div class="c-form mailchimp-modal__description"> \
+        {{mcdescription}}\
+    </div> \
+    <div id="mc_embed_signup_scroll" class="mailchimp-modal__inputs">\
+        <input type="email" value="" name="EMAIL" class="c-form__input field form-control" id="mce-EMAIL" placeholder="Email address" required>\
+        <div style="position: absolute; left: -5000px;" aria-hidden="true">\
+            <input type="text" name="b_f951467ba4375a98673dddecd_effe44468e" tabindex="-1" value="">\
+        </div>\
+        <div class="c-form__buttons"> \
+            <button class="c-button c-button--blue-bordered c-button--wide" type="submit" id="mc-embedded-subscribe">Sign up</button>\
+        </div> \
+    </div>\
+</form>';

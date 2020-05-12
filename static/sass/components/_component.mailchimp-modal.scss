@@ -1,0 +1,78 @@
+.mailchimp-modal {
+    position:fixed;
+    top:0;
+    width:100%;
+    height:100%;
+    z-index:1001;
+    background: rgba(0,0,0,0.7);
+}
+
+.mailchimp-modal__window {
+    margin: auto auto;
+    width:731px;
+    //height: 562px;
+    background:white;
+    padding:0 20px 20px;
+    border-radius:0;
+    text-align: center;
+    @media #{$media-ipadSmall} {
+        width:auto;
+    }
+}
+
+.mailchimp-modal__container {
+    position:relative;
+    margin:auto;
+}
+
+.mailchimp-modal__header {
+    // max-width:94%;
+    min-height: 30px;
+    margin-top: 10px;
+    padding-bottom:15px;
+    position:relative;
+    .popupVideo__headerlogo {
+        display: none;
+    }
+
+}
+.mailchimp-modal__description {
+    padding: 0 60px;
+    @include font-size(18);
+    text-align:center;
+    font-weight: $weightRegular;
+
+    // margin-bottom:28px;
+}
+
+.mailchimp-modal__title {
+    @include font-size(40);
+    padding: 0 60px;
+    text-align:center;
+    font-weight: $weightBold;
+    margin-bottom:15px;
+}
+
+.mailchimp-modal__inputs {
+    padding: 30px 135px;
+    >div{
+        margin-top: 40px;
+    }
+}
+
+.mailchimp-modal__close {
+    display:block;
+    position:absolute;
+    top: 8px;
+    right: 0;
+    height:20px;
+    width:20px;
+    background:url("../icons/cross-black.svg");
+    background-repeat:no-repeat;
+    cursor: pointer;
+
+}
+
+// .signin-modal__content-window {
+// }
+
