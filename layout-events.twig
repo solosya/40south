@@ -5,7 +5,8 @@
 
 {% set limit = 50 %}
 {% set date = date() %}
-{% set events = _Event.getEvents({"limit": limit, "start_date": date.date | split(" ")[0]}) %}
+{# {% set events = _Event.getEvents({"limit": limit, "start_date": date.date | split(" ")[0]}) %} #}
+{% set events = _Event.getEvents({"limit": limit}) %}
 {% set config       = _Network.getThemeConfig() %}
 
 
@@ -17,82 +18,178 @@
 <!-- used to index each article as we loop over throughout the template -->
 {% set eventCount = _AppHelper.getApplicationEnv() == 'DEV' ? 0 : 0 %}
 {% set dev = _AppHelper.getApplicationEnv() == 'DEV' ? false : false %}
-
+{% set marginSettings = [' u-desktop-margin-bottom-40 u-tablet-margin-bottom-40',''] %}
+                            
 
     <main id="main" class="site-main" role="main">
         <div class="container u-margin-top-60 u-margin-bottom-60">
-            <section class="row">
+            <div class="row">
                 <div class="col-12">
-                    <div class="c-events__main">
-                        <div class="c-page-head c-page-head-xs">
-                            <div class="u-heading__large u-heading__large-xs u-pr--6 u-bg-white">{{this.title}}</div>
-                            {% if not _User.isGuest() %}
-                                <a href="{{networkData.defaultBlogUrl}}/event-form" class="c-page-head__link d-none d-md-block">Submit an event</a>
-                            {% endif %}
-                        </div>
+                    <div class="c-page-head c-page-head-xs">
+                        <div class="u-heading__large u-heading__large-xs u-pr--6">{{this.title}}</div>
                     </div>
-                    {# {% if not _User.isGuest() %} #}
-                        {# <a class="c-button c-button--rounded c-button--blue d-md-none u-margin-bottom-30" href="{{networkData.defaultBlogUrl}}/event-form">Submit an Event</a> #}
-                    {# {% endif %} #}
                 </div>
                 
 
-            </section>
+            </div>
 
-            {% set monthDivider = '' %}
-
-            <section class="middle">
-                <div class="row row-space maincards">
-                    <div class="col-12 col-lg-7">
-                        {% for i in 0..49 if events[eventCount] %}
-
-                            {% set eventMonth = _AppHelper.getDateTimeBasedOnTimezone(events[eventCount].startDate, 'F') %}
-                            {% if monthDivider != eventMonth %}
-                                <p class="c-events__head c-events__head-xs">{{ eventMonth }}</p>
-                                {% set monthDivider = eventMonth %}
-                            {% endif %}
-
+            
+            
+                <div class="row">
+                    <div class="col-12">
+                        {% if events[eventCount] %}
                             {{this.render('partials/_single-event.twig', {
                                 event: events[eventCount], 
                                 position: eventCount + 1, 
-                                imageSize: {width:300},
-                                containerClass: 'event-card-1__desktop event-card-1__tablet event-card-1__mobile',
+                                imageSize: {width:1800},
+                                containerClass: 'event-card-2__desktop event-card-2__tablet event-card-2__mobile',
                             }) | raw}}
                             {% set eventCount = (dev) ? eventCount : eventCount + 1 %}
-                        {% endfor %}
+                        {% endif %}
+                        <hr class="o-rule">
                     </div>
 
-
-                    <div class="col-12 offset-lg-1 col-lg-4 d-md-none d-lg-block c-events">
-                        <div class="c-events-panel c-events-panel-xs">
-                            <h4 class="c-events-panel__head c-events-panel__head-xs">Upcoming Events</h4>
-                            <div class="c-events-panel__details">
-                                
-                                {% for i in 0..3 if events[i] %}
-
+                    <div class="col-12 col-md-6 u-desktop-border-right u-tablet-border-right">
+                        <div class="row justify-content-center">
+                            {% for i in 0..1 if events[eventCount] %}
+                                <div class="col-9 col-md-12{{marginSettings[i]}}">
                                     {{this.render('partials/_single-event.twig', {
-                                        event: events[i], 
-                                        imageSuppress: 'true',
-                                        containerClass: "event-card-3-mobile event-card-3-tablet event-card-3-desktop"
+                                        event: events[eventCount], 
+                                        position: eventCount + 1, 
+                                        imageSize: {width:400},
+                                        containerClass: 'event-card-3__desktop event-card-3__tablet event-card-3__mobile',
                                     }) | raw}}
-                               
-                                {% endfor %}
-
-                            </div>
-                        </div>
-                        <div class="o-body-container__right-layout j-article-sidebar">
-                            {% if config['inventory']['adSpace']['side-fix'][0] is defined %}
-                                <div class="j-adslot" id="{{config['inventory']['adSpace']['side-fix'][0]}}" data-adshape="side-fix"></div>
-                            {% endif %}
+                                    {% set eventCount = (dev) ? eventCount : eventCount + 1 %}
+                                    
+                                </div>
+                                <div class="col-12 d-block d-md-none">
+                                    <hr class="o-rule">
+                                </div>
+                            {% endfor %}
                         </div>
                     </div>
 
-
+                    <div class="col-12 col-md-6">
+                        <div class="row justify-content-center">
+                            {% for i in 0..1 if events[eventCount] %}
+                                <div class="col-9 col-md-12{{marginSettings[i]}}">
+                                    {{this.render('partials/_single-event.twig', {
+                                        event: events[eventCount], 
+                                        position: eventCount + 1, 
+                                        imageSize: {width:400},
+                                        containerClass: 'event-card-3__desktop event-card-3__tablet event-card-3__mobile',
+                                    }) | raw}}
+                                    {% set eventCount = (dev) ? eventCount : eventCount + 1 %}
+                                </div>
+                                <div class="col-12 d-block d-md-none">
+                                    <hr class="o-rule">
+                                </div>
+                            {% endfor %}
+                        </div>
+                    </div>
 
                 </div>
-            </section>
 
-            <div class="col-lg-1 visible-lg-block"></div>            
+
+                <div class="row justify-content-center">
+                    <div class="col-12">
+                        <hr class="o-rule d-none d-md-block">
+                    </div>
+                    {% for i in 0..1 if events[eventCount] %}
+                        <div class="col-9 col-md-4 u-tablet-border-right u-desktop-border-right">
+                            {{this.render('partials/_single-event.twig', {
+                                event: events[eventCount], 
+                                position: eventCount + 1, 
+                                imageSize: {width:400},
+                                containerClass: 'event-card-4__desktop event-card-4__tablet event-card-4__mobile',
+                            }) | raw}}
+                            {% set eventCount = (dev) ? eventCount : eventCount + 1 %}
+                            
+                        </div>
+                        <div class="col-12 d-block d-md-none">
+                            <hr class="o-rule">
+                        </div>
+                    {% endfor %}
+                    <div class="col-12 col-md-4">
+                        {% if config['inventory']['adSpace']['mrec'][0] is defined %}
+                            <div class="j-adslot" id="{{config['inventory']['adSpace']['mrec'][0]}}" data-adshape="mrec"></div>
+                        {% endif %}
+                    </div>
+                </div>  
+
+                <div class="row justify-content-center">
+                    <div class="col-12">
+                        {% if events[eventCount] %}
+                            {{this.render('partials/_single-event.twig', {
+                                event: events[eventCount], 
+                                position: eventCount + 1, 
+                                imageSize: {width:1800},
+                                containerClass: 'event-card-2__desktop event-card-2__tablet event-card-2__mobile',
+                            }) | raw}}
+                            {% set eventCount = (dev) ? eventCount : eventCount + 1 %}
+                        {% endif %}
+                        <hr class="o-rule">
+                    </div>
+
+                    <div class="col-12 col-md-6 u-desktop-border-right u-tablet-border-right">
+                        <div class="row">
+                            {% for i in 0..1 if events[eventCount] %}
+                                <div class="col-9 col-md-12{{marginSettings[i]}}">
+                                    {{this.render('partials/_single-event.twig', {
+                                        event: events[eventCount], 
+                                        position: eventCount + 1, 
+                                        imageSize: {width:400},
+                                        containerClass: 'event-card-3__desktop event-card-3__tablet event-card-3__mobile',
+                                    }) | raw}}
+                                    {% set eventCount = (dev) ? eventCount : eventCount + 1 %}
+                                    
+                                </div>
+                                <div class="col-12 d-block d-md-none">
+                                    <hr class="o-rule">
+                                </div>
+                            {% endfor %}
+                        </div>
+                    </div>
+
+                    <div class="col-12 col-md-6">
+                        <div class="row">
+                            {% for i in 0..1 if events[eventCount] %}
+                                <div class="col-9 col-md-12{{marginSettings[i]}}">
+                                    {{this.render('partials/_single-event.twig', {
+                                        event: events[eventCount], 
+                                        position: eventCount + 1, 
+                                        imageSize: {width:400},
+                                        containerClass: 'event-card-3__desktop event-card-3__tablet event-card-3__mobile',
+                                    }) | raw}}
+                                    {% set eventCount = (dev) ? eventCount : eventCount + 1 %}
+                                    
+                                </div>
+                                <div class="col-12 d-block d-md-none">
+                                    <hr class="o-rule">
+                                </div>
+                            {% endfor %}
+                        </div>
+                    </div>
+                </div>  
+
+                <div class="row justify-content-center">
+                    {% for i in 0..39 if events[eventCount] %}
+                        <div class="col-9 col-md-4 u-tablet-border-right u-desktop-border-right">
+                            {{this.render('partials/_single-event.twig', {
+                                event: events[eventCount], 
+                                position: eventCount + 1, 
+                                imageSize: {width:400},
+                                containerClass: 'event-card-4__desktop event-card-4__tablet event-card-4__mobile',
+                            }) | raw}}
+                            {% set eventCount = (dev) ? eventCount : eventCount + 1 %}
+                        </div>
+                        <div class="col-12 d-block d-md-none">
+                            <hr class="o-rule">
+                        </div>
+                    {% endfor %}
+                    
+                </div>  
+
         </div>
         <div class="j-keyword-cont" data-keywords="{{blogInfo.keywords}}"></div>
     </main><!-- .site-main -->

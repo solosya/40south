@@ -1,26 +1,164 @@
+@mixin event-card-3-base{
+    .c-eventcards-view{
+        @include flex-direction(column, vertical);
+        margin-bottom: 0;
+        &__media{
+            width: 100%;
+            height: 35vw;
+            margin-bottom: 15px;
+            img{
+                object-fit: cover;
+            }
+        }
+        &__date{
+            display: none;
+        }
+
+        &__container {
+           width: 100%;
+           margin: 0;
+        }
+
+        &__info{
+            padding: 0;
+        }
+
+        &__category{
+            @include font-size(10);
+            font-weight: $weightBold;
+            font-stretch: normal;
+            font-style: normal;
+            line-height: 1;
+            letter-spacing: normal;
+            margin-bottom: 15px;
+        }
+
+        &__description{
+            display: none;
+        }
+
+        &__time{
+            font-stretch: normal;
+            font-style: normal;
+            line-height: 2.09;
+            letter-spacing: normal;
+            @include font-size(16);
+            font-weight: $weightBold;
+            margin-bottom: 15px;
+        }
+
+        &__time-venue{
+            display: none;
+        }
+
+        &__heading{
+            font-family: $font-family-sans-serif;
+            @include font-size(14);
+            font-weight: $weightMedium;
+            font-stretch: normal;
+            font-style: normal;
+            line-height: 1.33;
+            letter-spacing: normal;
+            max-height: 50px; 
+        }
+
+        &__author{
+            height: min-content;
+        }
+    }
+}
+
+
 .event-card-3 {
     &__desktop{
         @media #{$desktop-up}{
             @include base-event-card();
+            @include event-card-3-base();
+            
+            .c-eventcards-view{
+                @include flex-direction(row, horizontal);
+                margin-bottom: 0;
+                &__media{
+                    width: 262px;
+                    height: 167px;
+                    margin: 0;
+                    img{
+                        object-fit: cover;
+                    }
+                }
+                &__date{
+                    display: none;
+                }
+
+                &__container {
+                    @include calc(width, '100% - 282px');
+                    margin-left: 20px;
+                }
+
+                &__info{
+                    padding: 0;
+                }
+
+                &__category{
+                    @include font-size(11);
+                }
+
+                &__description{
+                    display: none;
+                }
+
+                &__time{
+                    @include font-size(23);
+                    
+                }
+
+                &__time-venue{
+                    display: none;
+                }
+
+                &__heading{
+                    @include font-size(18);
+                    max-height: 70px; 
+                }
+
+                &__author{
+                    &__name{
+                        @include font-size(13);
+                    }
+                }
+                &__icon--pin{
+                    width: 13px;
+                    >svg{
+                        width: 13px;
+                    }
+                }
+            }
         }
     }
     &__tablet{
         @media #{$tablet}{
             @include base-event-card();
+            @include event-card-3-base();
+            .c-eventcards-view{
+                &__media{
+                    width: 132px;
+                    height: 114px;
+                    img{
+                        height: 100%;
+                    }
+                }
+            }
         }
     }
     &__mobile{
         @media #{$mobile}{
             @include base-event-card();
+            @include event-card-3-base();
             .c-eventcards-view{
                 &__info{
                     padding-right: 0;
                 }
-                &__author{
-                    position: absolute;
-                    right: 0;
-                    width: 100%;
-                }
+                
                 &__day{
                     font-size: rem(12);
                 }

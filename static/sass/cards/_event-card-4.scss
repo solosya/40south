@@ -1,23 +1,17 @@
-@mixin event-card-2-base{
+@mixin event-card-4-base{
     .c-eventcards-view{
         @include flex-direction(column, vertical);
         margin-bottom: 0;
         &__media{
-            width: calc(100% + 70px);
-            height: 65vw;
-            margin: 0 -35px;
-            margin-bottom: 15px;
-            img{
-                object-fit: cover;
-            }
+            display: none;
         }
         &__date{
             display: none;
         }
 
         &__container {
-          width: 100%;
-          margin: 0;
+           width: 100%;
+           margin: 0;
         }
 
         &__info{
@@ -25,12 +19,23 @@
         }
 
         &__category{
-            display: block;
+            @include font-size(10);
+            font-weight: $weightBold;
+            font-stretch: normal;
+            font-style: normal;
+            line-height: 1;
+            letter-spacing: normal;
             margin-bottom: 15px;
         }
 
         &__description{
-            display: none;
+            @include font-size(12);
+            font-weight: $weightBold;
+            font-stretch: normal;
+            font-style: normal;
+            line-height: 1;
+            letter-spacing: normal;
+            margin-bottom: 15px;
         }
 
         &__time{
@@ -38,7 +43,7 @@
             font-style: normal;
             line-height: 2.09;
             letter-spacing: normal;
-            @include font-size(14);
+            @include font-size(16);
             font-weight: $weightBold;
             margin-bottom: 15px;
         }
@@ -48,13 +53,14 @@
         }
 
         &__heading{
-            @include font-size(24);
-            font-weight: $weightBold;
+            font-family: $font-family-sans-serif;
+            @include font-size(14);
+            font-weight: $weightMedium;
             font-stretch: normal;
             font-style: normal;
+            line-height: 1.33;
             letter-spacing: normal;
             max-height: 50px; 
-            line-height: 1.25;
         }
 
         &__author{
@@ -64,49 +70,27 @@
 }
 
 
-.event-card-2 {
+.event-card-4 {
     &__desktop{
         @media #{$desktop-up}{
             @include base-event-card();
-            @include event-card-2-base();
+            @include event-card-4-base();
             .c-eventcards-view{
-                &__media{
-                    width: 100%;
-                    margin: 0 0 25px 0;
-                    max-height: 477px;
-                }
-                &__category{
-                    @include font-size(13);
-
-                }
-                &__time{
-                    @include font-size(23);
-                }
-                &__heading{
-                    @include font-size(40);
-                }
-                &__author{
-                    &__name{
-                        @include font-size(16);
-                    }
-                }
-                &__icon--pin{
-                    width: 18px;
-                    >svg{
-                        width: 18px;
-                    }
-                }
+                
             }
         }
     }
     &__tablet{
         @media #{$tablet}{
             @include base-event-card();
-            @include event-card-2-base();
+            @include event-card-4-base();
             .c-eventcards-view{
                 &__media{
-                    width: 100%;
-                    margin: 0;
+                    width: 132px;
+                    height: 114px;
+                    img{
+                        height: 100%;
+                    }
                 }
             }
         }
@@ -114,11 +98,12 @@
     &__mobile{
         @media #{$mobile}{
             @include base-event-card();
-            @include event-card-2-base();
+            @include event-card-4-base();
             .c-eventcards-view{
                 &__info{
                     padding-right: 0;
                 }
+                
                 &__day{
                     font-size: rem(12);
                 }

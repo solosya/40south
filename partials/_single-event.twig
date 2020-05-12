@@ -68,8 +68,12 @@
 {% set endYear         = _AppHelper.getDefaultTimezoneDateTime(event.endDate, 'Y') %}
 
 {% set venue            = event.venue %}
+{% if event.address.suburb != '' and event.address.state != '' %}
+    {% set venue            = event.address.suburb ~ ', ' ~ event.address.state %}
+{% endif %}
 
 
+{# {{_AppHelper.printArray(event)}} #}
 <div class="{{containerClass}}" data-title="{{ eventTitle | raw }}">
     {% set eventImgSmall = _Media.getMediaUrl(event.media[0], 500, 500, {'crop': 'fill', 'gravity': 'faces'} ) %}
     {% set eventImg = _Media.getMediaUrl(event.media[0], imgWidth, imgHeight, {'crop': 'fill', 'gravity': 'faces'} ) %}
@@ -119,7 +123,9 @@
            
                     <div class="c-eventcards-view__author">
                         <div class="c-eventcards-view__icon--pin">{{ this.render('icons.twig', {icon: 'location'} ) | raw }}</div>
+                        
                         <div class="c-eventcards-view__author__name">{{venue}}</div>
+
                     </div>
 
                 </div>
