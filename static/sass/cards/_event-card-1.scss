@@ -38,7 +38,7 @@
             font-style: normal;
             line-height: 2.09;
             letter-spacing: normal;
-            @include font-size(23);
+            @include font-size(14);
             font-weight: $weightBold;
         }
 
@@ -77,6 +77,11 @@
                         height: 100%;
                     }
                 }
+
+                &__time{
+                    @include font-size(23);
+                    
+                }
             }
         }
     }
@@ -91,6 +96,11 @@
                     img{
                         height: 100%;
                     }
+                }
+                
+                &__time{
+                    @include font-size(23);
+                    
                 }
             }
         }
@@ -114,7 +124,9 @@
                 &__heading{
                     line-height: 1.1;
                     height: 44px;
+                    margin-top: 5px;
                 }
+                
             }
         }
     }

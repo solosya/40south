@@ -1,9 +1,17 @@
 .c-eventdetail {
     &__media {
         @include margin-bottom(30);
-        height: 288px;
+       
+        @media #{$mobile}{
+            width: calc(100% + 70px);
+            margin: 0 -35px 30px;
+            height: 65vw;
+        }
         @media #{$desktop-up}{
-            height: 420px;
+            position: absolute;
+            width: 1200px;
+            right: 35px;
+            height: 546px;
         }
     }
     &__figure {
@@ -16,76 +24,75 @@
         }
     }
 
+   
+
     &__category {
         color: $mainColor;
         font-weight: $weightMedium;
-        @include font-size(12);
-        letter-spacing: 0.87px;
+        @include font-size(16);
+        letter-spacing: 2px;
         line-height: 1.25;
         text-transform: uppercase;
-        @include margin-bottom(8);
+        @include margin-bottom(40);
     }
 
     &__title {
-        color: $black;
+        color: $grey-1;
         font-family: $primaryFont;
-        @include font-size(28);
-        line-height: 1.14;
+        @include font-size(40);
+        line-height: 1.4;
         font-weight: $weightBold;
         @include margin-bottom(20);
         letter-spacing: normal;
+        max-height: 220px;
+        padding-bottom: 20px;
+        border-bottom: 1px solid $grey-4;
     }
 
-    &__info {
-        color: $black;
-        font-weight: $weightRegular;
-        @include font-size(13);
-        letter-spacing: 1.15;
-        line-height: 1.25;
-    }
+    
+    &__head{
+        &--image{
+            @media #{$desktop-up}{
+                height: 486px;
+            }
+            @media #{$mobile}{
+                padding-left: 20px;
+            }
+        }
 
+    }
 
 
     &__info-item {
-        border-bottom: 1px solid $grey-4;
         @include flexbox();
-        @include align-items(center);
-        min-height: 60px;
-        word-wrap: anywhere;
+        @include flex-direction(column, vertical);
+        
     }
 
-
-    &__info-icon {
-        background-size: contain;
-        background-repeat: no-repeat;
-        float:left;
-
-        &--calandar {
-            height: 23px;
-            width: 24px;
-            background-image: url('../icons/calendar.svg');
+    &__info-head{
+        @include font-size(30);
+        text-align: center;
+        margin-bottom: 40px;
+        position: relative;
+        font-weight: $weightBold;
+        &:after{
+            content: '';
+            position: absolute;
+            width: 44px;
+            bottom: -15px;
+            height: 1px;
+            background-color: $grey-3;
+            left: calc(50% - 22px);
         }
-        &--time {
-            height: 22px;
-            width: 22px;
-            background-image: url('../icons/clock.svg');
-        }
-        &--location {
-            height: 27px;
-            width: 19px;
-            background-image: url('../icons/location.svg');
-        }
-        &--contact {
-            height: 16px;
-            width: 24px;
-            background-image: url('../icons/email.svg');
-        }
-
-
     }
 
     &__info-text {
-        margin: 5px 0 5px 17px;
+        text-align: center;
+        @include font-size(18);
+        font-weight: $weightBold;
+        font-style: italic;
+        line-height: 1.56;
+        color: $grey-1;
     }
 
     &__excerpt {

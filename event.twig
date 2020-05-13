@@ -32,61 +32,65 @@
 
     <div class="container"> 
         <div class="row">
-            <div class="col-12 col-md-7">
+            <div class="col-12">
                 <div class="c-eventdetail">
-
-                    {% if eventImage %} 
-                        <div class="c-eventdetail__media">
-                            <figure class="c-eventdetail__figure"> 
-                                <img src="{{eventImage}}" class="img-fluid" alt="Article Info">
-                            </figure>
-                        </div>
-                    {% endif %}
-                    
-                    
-                    <div class="c-eventdetail__head">
-
-                        {# {% if _User.isAdminUser() %}
-                            <a href="{{event.editUrl}}" target="_blank" class="c-button c-button--rounded c-button--blue">Edit article</a>
-                        {% endif %} #}
+                    <div class="row u-margin-bottom-60">
+                        {% if eventImage %} 
+                            <div class="col-12 col-md-7 col-lg-8">
                         
-                        <a href="{{ networkData.defaultBlogUrl }}/events">
-                            <div class="c-eventdetail__category">
-                                Events
+                                <div class="c-eventdetail__media">
+                                    <figure class="c-eventdetail__figure"> 
+                                        <img src="{{eventImage}}" class="img-fluid" alt="Article Info">
+                                    </figure>
+                                </div>
                             </div>
-                        </a>
-                        <div class="c-eventdetail__title">
-                            {{ quotes.smarten(event.title) }}  
-                        </div>
+                            <div class="col-12 col-md-5 col-lg-4">
+                                <div class="c-eventdetail__head c-eventdetail__head--image u-border-left">
+                                    <div class="c-eventdetail__category u-tablet-margin-top-30 u-desktop-margin-top-60">
+                                        EVENTS
+                                    </div>
+                                    <div class="c-eventdetail__title">
+                                        {{ quotes.smarten(event.title) }}  
+                                    </div>
+                                </div>
+                             </div>
+                        {% else %}
+                            <div class="col-12">
+                                <div class="c-eventdetail__head">
+                                    <div class="c-eventdetail__category">
+                                        EVENTS
+                                    </div>
+                                    <div class="c-eventdetail__title">
+                                        {{ quotes.smarten(event.title) }}  
+                                    </div>
+                                </div>
+                            </div>
+                        {% endif %}
+                    
                     </div>
+                    
                     <div class="c-eventdetail__container">
                         <div class="row">
 
-                            <div class="col-md-4">
+                            <div class="col-12 order-1 order-md-2">
                                 <div class="c-eventdetail__info">
-                                    <div class="c-eventdetail__info-item">
-                                        {{ this.render('partials/icons.twig', {icon: 'calendar'} ) | raw }}
-                                        <span class="c-eventdetail__info-text">{{ startDate }}</span>
-                                    </div>
-                                    <div class="c-eventdetail__info-item">
-                                        {{ this.render('partials/icons.twig', {icon: 'clock'} ) | raw }}
-                                        <span class="c-eventdetail__info-text">{{ startTime }}{% if event.endDate != "" %} - {{endTime}}{% endif %}</span>
-                                    </div>
-                                    <div class="c-eventdetail__info-item">
-                                        {{ this.render('partials/icons.twig', {icon: 'location'} ) | raw }}
-                                        <span class="c-eventdetail__info-text">{{ event.address.address1 }},<br/>
-                                        {{ event.address.suburb }}</span>
-                                    </div>
-                                    {# <div class="c-eventdetail--source">
-                                        <span class="fa fa-laptop"></span>
-                                        youtube.com/johnbobbelitandhisband
-                                    </div> #}
-
-
-
-
-
-
+                                    <div class="row">
+                                        <div class="col-12 col-md-4">
+                                            <div class="c-eventdetail__info-item">
+                                                <span class="c-eventdetail__info-head">When</span>
+                                                <span class="c-eventdetail__info-text">{{ startDate }}</span>
+                                                <span class="c-eventdetail__info-text">{{ startTime }}{% if event.endDate != "" %} - {{endTime}}{% endif %}</span>
+                                            </div>
+                                            <hr class="o-rule d-block d-md-none">
+                                        </div>
+                                        <div class="col-12 col-md-4 u-desktop-border-left u-tablet-border-left">
+                                            <div class="c-eventdetail__info-item">
+                                                <span class="c-eventdetail__info-head">Where</span>
+                                                <span class="c-eventdetail__info-text">{{ event.address.address1 }},<br/>
+                                                {{ event.address.suburb }}, {{ event.address.state }}</span>
+                                            </div>
+                                            <hr class="o-rule d-block d-md-none">
+                                        </div>
 
                                         {% set contactDetails = "" %}
 
@@ -104,26 +108,33 @@
 
 
                                         {% if contactDetails != "" %}
-                                            <div class="c-eventdetail__info-item">
-                                                {{ this.render('partials/icons.twig', {icon: 'email'} ) | raw }}
-                                                <span class="c-eventdetail__info-text" >Contact {{event.contactName}} on {{contactDetails}}</span>
+                                            <div class="col-12 col-md-4 u-desktop-border-left u-tablet-border-left">
+                                                <div class="c-eventdetail__info-item">
+                                                    <span class="c-eventdetail__info-head">Contact</span>
+                                                    
+                                                    <span class="c-eventdetail__info-text" >Contact {{event.contactName}} on <br />{{contactDetails}}</span>
+                                                </div>
+                                                <hr class="o-rule d-block d-md-none">
                                             </div>
                                         {% endif %}
 
-
+                                    </div>
                                 </div>
+                                
                             </div>
 
-                            <div class="col-md-8">
+                            <div class="col-12 order-2 order-md-1">
                                 <div class="c-eventdetail__content u-mobile-margin-top-20">
                                     {{ event.content | raw }}
                                 </div>
+                                <hr class="o-rule">
                             </div>
 
 
 
                             {% if event.latitude and event.longitude %}
-                                <div class="col-md-12">
+                                <div class="col-12">
+                                    <hr class="o-rule d-none d-md-block">
                                     <div class="event-map u-margin-top-60">
                                         <div id="addressMap" data-latitude="{{event.latitude}}" data-longitude="{{event.longitude}}" style="width:100%;min-height:500px;background:rgba(0,0,0,.3)"></div>
                                     </div>
@@ -140,24 +151,61 @@
             </div> 
 
 
-            <div class="col offset-md-2 col-md-3 c-events u-border-left u-mobile-margin-top-30">
-                {% set events = _Event.getEvents({"limit": limit, "start_date": date.date | split(" ")[0]}) %}
+            <div class="col-12 u-margin-top-60">
+                {% set events = _Event.getEvents({"limit": limit}) %}
+                {# {% set events = _Event.getEvents({"limit": limit, "start_date": date.date | split(" ")[0]}) %} #}
 
-                <div class="c-events-panel c-events-panel-xs">
-                    <h4 class="c-events-panel__head c-events-panel__head-xs">Upcoming Events</h4>
-                    <div class="c-events-panel__details">
-                        
-                        {% for i in 0..3 if events[i] %}
-                            {{this.render('partials/_single-event.twig', {
-                                event: events[i], 
-                                imageSuppress: 'true',
-                                containerClass: "event-card-3-mobile event-card-3-tablet event-card-3-desktop"
-                            }) | raw}}
-                        {% endfor %}
-
+                <div class="c-page-head c-page-head-xs">
+                    <div class="u-heading__large u-heading__large-xs u-pr--6">Forthcoming Events</div>
+                </div>
+                    
+                <div class="row">
+                    <div class="col-12 col-md-4 u-desktop-border-right u-tablet-border-right">
+                        <div class="row">
+                    
+                            {% for i in 0..1 if events[i] %}
+                                <div class="col-12{% if i < 1 %} u-margin-bottom-60{% endif %} u-mobile-no-margin-bottom">
+                                    {{this.render('partials/_single-event.twig', {
+                                        event: events[i], 
+                                        containerClass: "event-card-1__mobile event-card-1__tablet event-card-1__desktop"
+                                    }) | raw}}
+                                    <hr class="o-rule d-block d-md-none">
+                                </div>
+                            {% endfor %}
+                        </div>
+                    </div>
+                    <div class="col-12 col-md-4 u-desktop-border-right u-tablet-border-right">
+                        <div class="row">
+                    
+                            {% for i in 2..3 if events[i] %}
+                                <div class="col-12{% if i < 3 %} u-margin-bottom-60{% endif %} u-mobile-no-margin-bottom">
+                                    {{this.render('partials/_single-event.twig', {
+                                        event: events[i], 
+                                        containerClass: "event-card-1__mobile event-card-1__tablet event-card-1__desktop"
+                                    }) | raw}}
+                                    <hr class="o-rule d-block d-md-none">
+                                </div>
+                            {% endfor %}
+                        </div>
+                    </div>
+                    <div class="col-12 col-md-4">
+                        <div class="row">
+                    
+                            {% for i in 4..5 if events[i] %}
+                                <div class="col-12{% if i < 5 %} u-margin-bottom-60{% endif %} u-mobile-no-margin-bottom">
+                                    {{this.render('partials/_single-event.twig', {
+                                        event: events[i], 
+                                        containerClass: "event-card-1__mobile event-card-1__tablet event-card-1__desktop"
+                                    }) | raw}}
+                                    <hr class="o-rule d-block d-md-none">
+                                </div>
+                            {% endfor %}
+                        </div>
                     </div>
                 </div>
+
             </div>
+            
         </div>
     </div>
 

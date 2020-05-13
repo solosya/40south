@@ -76,7 +76,32 @@
             @include base-event-card();
             @include event-card-4-base();
             .c-eventcards-view{
-                
+                &__category{
+                    @include font-size(16);
+                }
+                &__time{
+                    @include font-size(30);
+                    line-height: 1.6;
+  
+                }
+
+                &__heading{
+                    @include font-size(18);
+                    line-height: 1.33;
+  
+                }
+
+                &__author{
+                    &__name{
+                        @include font-size(13);
+                    }
+                }
+                &__icon--pin{
+                    width: 13px;
+                    >svg{
+                        width: 13px;
+                    }
+                }
             }
         }
     }
