@@ -152,8 +152,8 @@
 
 
             <div class="col-12 u-margin-top-60">
-                {% set events = _Event.getEvents({"limit": limit}) %}
-                {# {% set events = _Event.getEvents({"limit": limit, "start_date": date.date | split(" ")[0]}) %} #}
+                {# {% set events = _Event.getEvents({"limit": 6}) %} #}
+                {% set events = _Event.getEvents({"limit": 6, "start_date": date.date | split(" ")[0]}) %}
 
                 <div class="c-page-head c-page-head-xs">
                     <div class="u-heading__large u-heading__large-xs u-pr--6">Forthcoming Events</div>
