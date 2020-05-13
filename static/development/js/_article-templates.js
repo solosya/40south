@@ -428,7 +428,7 @@ Acme.templates.create_user =
 </div>';
 
 Acme.templates.mailChimpSignup = 
-'<form class="vertical-form mailchimp-modal__form" action="{{mailChimpClass}}" method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" class="validate" target="_blank" novalidate> \
+'<form class="vertical-form mailchimp-modal__form" action="javascript:void(0)" method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" class="validate" target="_blank" novalidate> \
     <div class="c-form mailchimp-modal__title"> \
         {{mctitle}}\
     </div> \
@@ -436,14 +436,16 @@ Acme.templates.mailChimpSignup =
         {{mcdescription}}\
     </div> \
     <div id="mc_embed_signup_scroll" class="mailchimp-modal__inputs">\
-        <input type="text" value="" name="FNAME" class="c-form__input field form-control" id="mce-FNAME" placeholder="First Name" required>\
-        <input type="text" value="" name="LNAME" class="c-form__input field form-control" id="mce-LNAME" placeholder="Last Name" required>\
-       <input type="email" value="" name="EMAIL" class="c-form__input field form-control" id="mce-EMAIL" placeholder="Email address" required>\
+        <input type="text" value="" name="FNAME" class="c-form__input field form-control u-margin-bottom-15" id="mce-FNAME" placeholder="First Name" required>\
+        <input type="text" value="" name="LNAME" class="c-form__input field form-control u-margin-bottom-15" id="mce-LNAME" placeholder="Last Name" required>\
+        <input type="email" value="" name="EMAIL" class="c-form__input field form-control u-margin-bottom-15" id="mce-EMAIL" placeholder="Email address" required>\
+        <div class="c-form mailchimp-modal__errortext" id="mailchimp-modal__errortext"></div>\
         <div style="position: absolute; left: -5000px;" aria-hidden="true">\
-            <input type="text" name="b_f951467ba4375a98673dddecd_effe44468e" tabindex="-1" value="">\
+            <input type="text" name="b_7ca16e173650b89f4d8302a86_9e8e5c87da" tabindex="-1" value="">\
         </div>\
-        <div class="c-form__buttons"> \
-            <input type="submit" value="Sign up" name="subscribe" id="mc-embedded-subscribe" class="button c-button c-button--blue-bordered c-button--wide">\
+        <div class="c-form__buttons mailchimp-modal__buttons">\
+            <button value="Sign up" name="subscribe" id="j-insider-subscribe" class="button c-button c-button--blue-bordered c-button--wide">Sign up</button>\
+            <button value="Close" name="close" id="j-insider-close" class="button c-button c-button--blue-bordered c-button--wide j-close-button d-none">Close</button>\
         </div> \
     </div>\
 </form>';

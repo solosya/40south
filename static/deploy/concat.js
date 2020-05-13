@@ -24337,7 +24337,7 @@ Acme.templates.create_user =
 </div>';
 
 Acme.templates.mailChimpSignup = 
-'<form class="vertical-form mailchimp-modal__form" action="{{mailChimpClass}}" method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" class="validate" target="_blank" novalidate> \
+'<form class="vertical-form mailchimp-modal__form" action="javascript:void(0)" method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" class="validate" target="_blank" novalidate> \
     <div class="c-form mailchimp-modal__title"> \
         {{mctitle}}\
     </div> \
@@ -24345,14 +24345,16 @@ Acme.templates.mailChimpSignup =
         {{mcdescription}}\
     </div> \
     <div id="mc_embed_signup_scroll" class="mailchimp-modal__inputs">\
-        <input type="text" value="" name="FNAME" class="c-form__input field form-control" id="mce-FNAME" placeholder="First Name" required>\
-        <input type="text" value="" name="LNAME" class="c-form__input field form-control" id="mce-LNAME" placeholder="Last Name" required>\
-       <input type="email" value="" name="EMAIL" class="c-form__input field form-control" id="mce-EMAIL" placeholder="Email address" required>\
+        <input type="text" value="" name="FNAME" class="c-form__input field form-control u-margin-bottom-15" id="mce-FNAME" placeholder="First Name" required>\
+        <input type="text" value="" name="LNAME" class="c-form__input field form-control u-margin-bottom-15" id="mce-LNAME" placeholder="Last Name" required>\
+        <input type="email" value="" name="EMAIL" class="c-form__input field form-control u-margin-bottom-15" id="mce-EMAIL" placeholder="Email address" required>\
+        <div class="c-form mailchimp-modal__errortext" id="mailchimp-modal__errortext"></div>\
         <div style="position: absolute; left: -5000px;" aria-hidden="true">\
-            <input type="text" name="b_f951467ba4375a98673dddecd_effe44468e" tabindex="-1" value="">\
+            <input type="text" name="b_7ca16e173650b89f4d8302a86_9e8e5c87da" tabindex="-1" value="">\
         </div>\
         <div class="c-form__buttons"> \
-            <input type="submit" value="Sign up" name="subscribe" id="mc-embedded-subscribe" class="button c-button c-button--blue-bordered c-button--wide">\
+            <button value="Sign up" name="subscribe" id="j-insider-subscribe" class="button c-button c-button--blue-bordered c-button--wide">Sign up</button>\
+            <button value="Close" name="close" id="j-insider-close" class="button c-button c-button--blue-bordered c-button--wide j-close-button d-none">Close</button>\
         </div> \
     </div>\
 </form>';
@@ -27305,10 +27307,10 @@ Acme.confirmView = new Acme.Confirm('modal', 'signin', layouts);
                 this.closeWindow();
             }
         }
-        if ($elem.is('button')) {
+        if ($elem.hasClass('button')) {
     
     
-            if ($elem.hasClass('close')) {
+            if ($elem.hasClass('close') || $elem.hasClass('j-close-button')) {
                 $('body').removeClass("active");
                 this.closeWindow();
             }
@@ -27333,6 +27335,8 @@ Acme.confirmView = new Acme.Confirm('modal', 'signin', layouts);
     var mailchimpLink = '//not-loaded';
     var mailChimpTitle = 'Please configure your mailchimp';
     var mailChimpDescription = 'in the site config';
+    var mailChimpUuid = 'unset';
+    var mailChimpLid = 'unset';
 
     Acme.mailchimpView = new Acme.mailChimp('modal', 'mailchimp-modal', layouts);
 
@@ -27340,14 +27344,68 @@ Acme.confirmView = new Acme.Confirm('modal', 'signin', layouts);
         .done(function(r) {
             
             var data = r.data['mailchimp'];
-            console.log(data);
+            //console.log(data);
             if (data) {
                 mailchimpLink = data.url;
                 mailChimpTitle = data.title;
                 mailChimpDescription = data.description;
+                mailChimpUuid = data.uuid;
+                mailChimpLid = data.lid;
+                mailchimpAfterTitle = data.after_title;
+                mailchimpAfterDesc = data.after_description;
             }
             $('.j-insider-signup').on('click', function() {
-                Acme.mailchimpView.render("mailchimp", "Become a Forty South Insider", {mailChimpClass: mailchimpLink, mctitle: mailChimpTitle, mcdescription: mailChimpDescription});
+                Acme.mailchimpView.render("mailchimp", "Become a Forty South Insider", {mctitle: mailChimpTitle, mcdescription: mailChimpDescription});
+                $('#j-insider-subscribe').click(function(){
+                    var errorText = '';
+                    if ( $('#mce-FNAME').val() == '' ) {
+                        errorText += "First name cannot be empty. <br />";
+                       
+                    }
+                    if ( $('#mce-LNAME').val() == '' ) {
+                        errorText += "Last name cannot be empty.  <br />";
+                       
+                    }
+            
+                    if ($('#mce-EMAIL').val() == '' ) {
+                        errorText += "Email cannot be empty. ";
+                        
+                    }
+
+                    $("#mailchimp-modal__errortext").html(errorText);
+                    console.log(errorText);
+                    if (!errorText) {
+                        $("#mailchimp-modal__errortext").html('');
+                        console.log('subscribing');
+                        var subscribeData = {
+                            "EMAIL":  $('#mce-EMAIL').val(),
+                            "FNAME":   $('#mce-FNAME').val(),
+                            "LNAME":   $('#mce-LNAME').val(),
+                            "u": mailChimpUuid,
+                            "id": mailChimpLid
+                        };
+                
+                        // if ($('#j-mccheckbox-daily').is(":checked")){
+                        //     doSubscribe = true;
+                        //     subscribeData["group[3][1]"] = 1;
+                        // };
+                        
+                
+                        
+                        Acme.server.create(mailchimpLink, subscribeData)
+                        .then(function(r) {
+                            console.log(r);
+                            
+                        });
+
+                        $('.mailchimp-modal__title').html(mailchimpAfterTitle);
+                        $('.mailchimp-modal__description').html(mailchimpAfterDesc);
+                        $('#j-insider-subscribe').addClass('d-none');
+                        $('#j-insider-close').removeClass('d-none');
+
+                    }
+            
+                });
             });
         }).fail(function(r) {
             console.log(r);
@@ -27360,9 +27418,8 @@ Acme.confirmView = new Acme.Confirm('modal', 'signin', layouts);
     
     
     
-    
     // $('.j-insider-signup').on('click', function() {
-    //     Acme.mailchimpView.render("mailchimp", "Become a Forty South Insider", {mailChimpClass: mailchimpLink, mctitle: mailChimpTitle, mcdescription: mailChimpDescription});
+    //     window.dojoRequire(["mojo/signup-forms/Loader"], function(L) { L.start({"baseUrl":"mc.us18.list-manage.com","uuid":"7ca16e173650b89f4d8302a86","lid":"9e8e5c87da","uniqueMethods":true}) });
     // });
     
     // $('a.j-register').on('click', function(e) {

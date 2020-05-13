@@ -31,11 +31,12 @@
 		font-family: $font-family-sans-serif;
         @include font-size(15);
         @include transition(all .3s ease-out);
-        line-height:28px;
+		line-height:28px;
+		border-radius: 0;
 
         &--bordered {
             border: 1px solid $grey-4;
-            border-radius:6px;
+            // border-radius:6px;
             padding: 4px 8px;
 		}
 		
