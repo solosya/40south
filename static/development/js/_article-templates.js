@@ -436,12 +436,14 @@ Acme.templates.mailChimpSignup =
         {{mcdescription}}\
     </div> \
     <div id="mc_embed_signup_scroll" class="mailchimp-modal__inputs">\
-        <input type="email" value="" name="EMAIL" class="c-form__input field form-control" id="mce-EMAIL" placeholder="Email address" required>\
+        <input type="text" value="" name="FNAME" class="c-form__input field form-control" id="mce-FNAME" placeholder="First Name" required>\
+        <input type="text" value="" name="LNAME" class="c-form__input field form-control" id="mce-LNAME" placeholder="Last Name" required>\
+       <input type="email" value="" name="EMAIL" class="c-form__input field form-control" id="mce-EMAIL" placeholder="Email address" required>\
         <div style="position: absolute; left: -5000px;" aria-hidden="true">\
             <input type="text" name="b_f951467ba4375a98673dddecd_effe44468e" tabindex="-1" value="">\
         </div>\
         <div class="c-form__buttons"> \
-            <button class="c-button c-button--blue-bordered c-button--wide" type="submit" id="mc-embedded-subscribe">Sign up</button>\
+            <input type="submit" value="Sign up" name="subscribe" id="mc-embedded-subscribe" class="button c-button c-button--blue-bordered c-button--wide">\
         </div> \
     </div>\
 </form>';

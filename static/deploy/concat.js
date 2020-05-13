@@ -24345,12 +24345,14 @@ Acme.templates.mailChimpSignup =
         {{mcdescription}}\
     </div> \
     <div id="mc_embed_signup_scroll" class="mailchimp-modal__inputs">\
-        <input type="email" value="" name="EMAIL" class="c-form__input field form-control" id="mce-EMAIL" placeholder="Email address" required>\
+        <input type="text" value="" name="FNAME" class="c-form__input field form-control" id="mce-FNAME" placeholder="First Name" required>\
+        <input type="text" value="" name="LNAME" class="c-form__input field form-control" id="mce-LNAME" placeholder="Last Name" required>\
+       <input type="email" value="" name="EMAIL" class="c-form__input field form-control" id="mce-EMAIL" placeholder="Email address" required>\
         <div style="position: absolute; left: -5000px;" aria-hidden="true">\
             <input type="text" name="b_f951467ba4375a98673dddecd_effe44468e" tabindex="-1" value="">\
         </div>\
         <div class="c-form__buttons"> \
-            <button class="c-button c-button--blue-bordered c-button--wide" type="submit" id="mc-embedded-subscribe">Sign up</button>\
+            <input type="submit" value="Sign up" name="subscribe" id="mc-embedded-subscribe" class="button c-button c-button--blue-bordered c-button--wide">\
         </div> \
     </div>\
 </form>';
@@ -27332,6 +27334,8 @@ Acme.confirmView = new Acme.Confirm('modal', 'signin', layouts);
     var mailChimpTitle = 'Please configure your mailchimp';
     var mailChimpDescription = 'in the site config';
 
+    Acme.mailchimpView = new Acme.mailChimp('modal', 'mailchimp-modal', layouts);
+
     Acme.server.fetch(_appJsConfig.appHostName + '/api/theme/get-config')
         .done(function(r) {
             
@@ -27342,6 +27346,9 @@ Acme.confirmView = new Acme.Confirm('modal', 'signin', layouts);
                 mailChimpTitle = data.title;
                 mailChimpDescription = data.description;
             }
+            $('.j-insider-signup').on('click', function() {
+                Acme.mailchimpView.render("mailchimp", "Become a Forty South Insider", {mailChimpClass: mailchimpLink, mctitle: mailChimpTitle, mcdescription: mailChimpDescription});
+            });
         }).fail(function(r) {
             console.log(r);
         });
@@ -27351,13 +27358,12 @@ Acme.confirmView = new Acme.Confirm('modal', 'signin', layouts);
     
     
     
-    Acme.mailchimpView = new Acme.mailChimp('modal', 'mailchimp-modal', layouts);
     
     
-    $('.j-insider-signup').on('click', function() {
-        console.log(mailchimpLink,mailChimpTitle,mailChimpDescription);
-        Acme.mailchimpView.render("mailchimp", "Become a Forty South Insider", {mailChimpClass: mailchimpLink, mctitle: mailChimpTitle, mcdescription: mailChimpDescription});
-    });
+    
+    // $('.j-insider-signup').on('click', function() {
+    //     Acme.mailchimpView.render("mailchimp", "Become a Forty South Insider", {mailChimpClass: mailchimpLink, mctitle: mailChimpTitle, mcdescription: mailChimpDescription});
+    // });
     
     // $('a.j-register').on('click', function(e) {
     //     e.preventDefault();

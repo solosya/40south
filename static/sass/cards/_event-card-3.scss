@@ -78,6 +78,7 @@
             .c-eventcards-view{
                 @include flex-direction(row, horizontal);
                 margin-bottom: 0;
+                
                 &__media{
                     width: 262px;
                     height: 167px;
