@@ -67,6 +67,19 @@
 {% set startYear       = _AppHelper.getDefaultTimezoneDateTime(event.startDate, 'Y') %}
 {% set endYear         = _AppHelper.getDefaultTimezoneDateTime(event.endDate, 'Y') %}
 
+{% set timespan = startDay %}
+{% if event.endDate != "" %}
+    {% if startMonth != endMonth %} 
+        {% set timespan = timespan ~ ' ' ~ startMonth %}
+    {% endif %}
+    {% if startDay != endDay or startMonth != endMonth or endYear != startYear %}
+        {% set timespan = timespan ~ ' - ' ~ endDay %}
+    {% endif %}
+    {% set timespan = timespan ~ ' ' ~ endMonth %}
+{% else %} 
+    {% set timespan = timespan ~ ' ' ~ startMonth %}
+{% endif %}
+
 {% set venue            = event.venue %}
 {% if event.address.city != '' %}
     {% set venue            = event.address.city %}
@@ -104,7 +117,7 @@
                 <div class="c-eventcards-view__info">
                     <div class="c-eventcards-view__category">{{startYear}}{% if endYear != "" and endYear != startYear %} - {{endYear}}{% endif %}</div>
                     <p   class="c-eventcards-view__description j-truncate">{{ quotes.smarten(event.excerpt | raw) }}</p>
-                    <div class="c-eventcards-view__time">{{startDay}}{% if event.endDate != "" %}{% if startMonth != endMonth %} {{startMonth}}{% endif %}{% if startDay != endDay %} - {{endDay}}{% endif %} {{endMonth}}{% else %} {{startMonth}}{% endif %}</div>
+                    <div class="c-eventcards-view__time">{{timespan}}</div>
                     <h2  class="c-eventcards-view__heading js-card-heading j-truncate {{figureClass}}">{{ quotes.smarten(event.title) }}</h2>
                     
                     {# <div class="event-time">

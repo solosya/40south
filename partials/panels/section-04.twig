@@ -12,8 +12,8 @@
 </div>
 
 {% set date = date() %}
-{% set events = _Event.getEvents({"limit": 9, "start_date": date.date | split(" ")[0]}) %}
-{# {% set events = _Event.getEvents({"limit": 9}) %} #}
+{# {% set events = _Event.getEvents({"limit": 9, "start_date": date.date | split(" ")[0]}) %} #}
+{% set events = _Event.getEvents({"limit": 9}) %}
 
 
     <div class="row">

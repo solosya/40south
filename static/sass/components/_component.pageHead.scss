@@ -13,6 +13,11 @@
         text-transform: uppercase;
 
     }
+    >a> div {
+        order:1;
+        text-transform: uppercase;
+
+    }
     &:after {
         content: '';
         display: block;
