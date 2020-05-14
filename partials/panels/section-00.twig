@@ -2,10 +2,11 @@
 {% set cardIndex = 0 %}
 
 {% set popularArticles = _Article.getPopularArticles({ limit: 3, sortBy: 'VIEWS', scope: 'network' }) %}
-{% set recentArticles = _Article.getRecentArticles({ limit: 1, scope: 'network', excludeArticleIds : [articles[articleCount].id] }) %}
+{% set recentArticles = _Article.getRecentArticles({ limit: 1, scope: 'network' }) %}
+{# {% set recentArticles = _Article.getRecentArticles({ limit: 1, scope: 'network', excludeArticleIds : [articles[articleCount].id] }) %} #}
 <div class="row" data-section="00">
     
-    
+   
     <div class="col-12">
 
 
@@ -34,7 +35,6 @@
                         <div class="col-7 col-md-9">
                             {{this.render('../_single-article.twig', {
                                 article: recentArticles[0], 
-                                position: (articleCount+1),
                                 imageSize: {width:400, height: 300},
                                 containerClass: "card-2-mobile card-2-tablet card-2-desktop"
                             }) | raw}}
