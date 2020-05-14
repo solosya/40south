@@ -24023,7 +24023,7 @@ Acme.templates.systemCardTemplate =
             <h2 class="{{cardType}}c-cards-view__heading js-c-cards-view-heading j-truncate">{{{ params.title }}}</h2>\
             <p class="{{cardType}}c-cards-view__description js-c-cards-view-description j-truncate">{{{ params.content }}}</p>\
             <div class="{{cardType}}c-cards-view__author">\
-                <div class="{{cardType}}c-cards-view__author-name">{{ params.author }}</div>\
+                <div class="{{cardType}}c-cards-view__author-name">by {{ params.author }}</div>\
                 <time class="{{cardType}}c-cards-view__time" datetime="{{params.publishDate}}">{{params.publishDate}}</time>\
             </div>\
         </div>'+ 
@@ -24238,7 +24238,7 @@ Acme.templates.socialPopup =
                             <div class="c-cards-view__category">{{source}}</div> \
                             <div class="c-cards-view__heading">{{content}}</div> \
                             <div class="c-cards-view__author"> \
-                                <div class="c-cards-view__author-name">{{user.name}}</div> \
+                                <div class="c-cards-view__author-name">by {{user.name}}</div> \
                                 <div class="c-cards-view__time">{{publishDate}}</div> \
                             </div> \
                         </div> \
@@ -24352,7 +24352,7 @@ Acme.templates.mailChimpSignup =
         <div style="position: absolute; left: -5000px;" aria-hidden="true">\
             <input type="text" name="b_7ca16e173650b89f4d8302a86_9e8e5c87da" tabindex="-1" value="">\
         </div>\
-        <div class="c-form__buttons"> \
+        <div class="c-form__buttons mailchimp-modal__buttons">\
             <button value="Sign up" name="subscribe" id="j-insider-subscribe" class="button c-button c-button--blue-bordered c-button--wide">Sign up</button>\
             <button value="Close" name="close" id="j-insider-close" class="button c-button c-button--blue-bordered c-button--wide j-close-button d-none">Close</button>\
         </div> \
@@ -27400,8 +27400,9 @@ Acme.confirmView = new Acme.Confirm('modal', 'signin', layouts);
 
                         $('.mailchimp-modal__title').html(mailchimpAfterTitle);
                         $('.mailchimp-modal__description').html(mailchimpAfterDesc);
-                        $('#j-insider-subscribe').addClass('d-none');
-                        $('#j-insider-close').removeClass('d-none');
+                        $('#j-insider-subscribe').toggleClass('d-none');
+                        $('#j-insider-close').toggleClass('d-none');
+                        $('.mailchimp-modal__inputs>input').toggleClass('d-none');
 
                     }
             

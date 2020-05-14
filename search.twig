@@ -1,5 +1,5 @@
 
-{% set limit = 3 %}
+{% set limit = 6 %}
 {% set articles = _Search.searchArticles({'limit': limit, 'offset': 0, 'search': search, 'sortBy': 'published'}) %}
 {% set config   = _Network.getThemeConfig() %}
 
@@ -20,16 +20,20 @@
             <div class="col-12 col-lg-7 j-article-container">
                 <div class="c-search">
                     <div class="c-search__head">
-                        {% set resultString = firstCount < 2 ? 'result' : 'results' %}
-                        Showing <span>{{firstCount}}</span>  {{resultString}} for '<span class="c-search__name">{{search}}</span>'
+                        {% if firstCount > 0 %}
+                            {% set resultString = firstCount < 2 ? 'result' : 'results' %}
+                            Showing {# <span>{{firstCount}}</span> #} {{resultString}} for '<span class="c-search__name">{{search}}</span>'
+                        {% else %}
+                            No results were found for '<span class="c-search__name">{{search}}</span>'
+                        {% endif %}
                     </div>
 
-                    <div id="results" style="min-height:600px;">
+                    <div id="results" style="min-height:300px;">
                     {% for article in articles %}
 
                         {{this.render('partials/_single-article.twig', {
                             article: article, 
-                            containerClass: "card-5-mobile card-5-tablet card-5-desktop"
+                            containerClass: "card-10-mobile card-10-tablet card-10-desktop u-border-bottom"
                         }) | raw}}
 
                     {% endfor %}
@@ -53,7 +57,7 @@
             </div>
 
 
-            <div class="col-12 offset-md-1 col-md-4">
+            <div class="col-12 offset-md-1 col-md-4 d-noned-lg-block">
                 <div class="o-body-container__right-layout j-article-sidebar">
                     {% if config['inventory']['adSpace']['side-fix'][0] is defined %}
                         <div class="j-adslot" id="{{config['inventory']['adSpace']['side-fix'][0]}}" data-adshape="side-fix"></div>
@@ -80,7 +84,7 @@
             loadtype        : 'api/search',
             searchterm      : "{{search}}",
             name            : 'search-load', //name of the search button
-            card_class      : 'card-5-mobile card-5-tablet card-5-desktop'
+            card_class      : 'card-10-mobile card-10-tablet card-10-desktop u-border-bottom'
         });
     });
 </script>

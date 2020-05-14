@@ -49,6 +49,21 @@
         border-bottom: 1px solid $grey-4;
     }
 
+    &__excerpt{
+        @include font-size(14);
+        font-family: $secondaryFont;
+        color: $grey-3;
+        font-weight: $weightBold;
+        line-height: 1.71;
+        letter-spacing: 0.35px;
+        @media #{$tablet-up}{
+            @include font-size(20);
+            line-height: 1.65;
+            letter-spacing: 0.5px;
+        
+        }
+    }
+
     
     &__head{
         &--image{

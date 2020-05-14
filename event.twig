@@ -52,6 +52,9 @@
                                     <div class="c-eventdetail__title">
                                         {{ quotes.smarten(event.title) }}  
                                     </div>
+                                    <div class="c-eventdetail__excerpt">
+                                        {{ quotes.smarten(event.excerpt | raw) }}
+                                    </div>
                                 </div>
                              </div>
                         {% else %}
@@ -86,8 +89,9 @@
                                         <div class="col-12 col-md-4 u-desktop-border-left u-tablet-border-left">
                                             <div class="c-eventdetail__info-item">
                                                 <span class="c-eventdetail__info-head">Where</span>
-                                                <span class="c-eventdetail__info-text">{{ event.address.address1 }},<br/>
-                                                {{ event.address.suburb }}, {{ event.address.state }}</span>
+                                                {# <span class="c-eventdetail__info-text">{{ event.address.address1 }},<br/>
+                                                {{ event.address.suburb }}, {{ event.address.state }}</span> #}
+                                                <span class="c-eventdetail__info-text">{{ event.venue }}</span>
                                             </div>
                                             <hr class="o-rule d-block d-md-none">
                                         </div>

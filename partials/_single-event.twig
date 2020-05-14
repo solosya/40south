@@ -68,8 +68,8 @@
 {% set endYear         = _AppHelper.getDefaultTimezoneDateTime(event.endDate, 'Y') %}
 
 {% set venue            = event.venue %}
-{% if event.address.suburb != '' and event.address.state != '' %}
-    {% set venue            = event.address.suburb ~ ', ' ~ event.address.state %}
+{% if event.address.city != '' %}
+    {% set venue            = event.address.city %}
 {% endif %}
 
 

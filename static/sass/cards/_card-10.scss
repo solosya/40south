@@ -1,0 +1,103 @@
+
+
+@mixin card-10-base() {
+    margin-bottom:30px;
+    padding-bottom: 30px;
+   
+    .c-cards-view {
+
+        height: inherit;
+        
+
+        &__media {
+            display: none;
+        }
+
+        &__container {
+            //height: 65px;
+            overflow: hidden;
+            //padding-bottom: 27px;
+            width: 100%;
+            @include flexbox();
+            @include flex-direction(column, vertical);
+        }
+        &__category {
+            
+            @include font-size(10);
+            font-weight: $weightBold;
+            margin-bottom:5px;
+            order: 1;
+        }
+        &__heading {
+            @include font-size(18);
+            font-weight: $weightRegular;
+            max-height: 52.8px;
+            margin-bottom: 15px;
+            order: 2;
+        }
+        &__description {
+            display: flex;
+            @include font-size(14);
+            font-family: $secondaryFont;
+            line-height: 1.57;
+            color: $grey-1;
+            margin-bottom: 20px;
+            order: 3;
+        }
+        &__author {
+            order: 4;
+           &-name{
+                @include font-size(11);
+            }
+        }
+
+    }
+}
+
+@mixin card-10-tablet-base(){
+    .c-cards-view {
+        &__category {
+            @include font-size(12);
+            margin-bottom:10px;
+        }
+        &__heading {
+            @include font-size(26);
+            max-height:70px;
+            margin-bottom: 20px;
+        }
+        &__description {
+            @include font-size(15);
+        }
+        &__author {
+           &-name{
+                @include font-size(11.5);
+            }
+        }
+    }
+}
+
+.card-10-mobile {
+    @media #{$mobile} {
+        @include card-10-base();
+    }
+}
+
+.card-10-tablet {
+    @media #{$tablet} {
+        @include card-10-base();
+        @include card-10-tablet-base();
+    }
+}
+
+.card-10-desktop {
+    @media #{$desktop-up} {
+        @include card-10-base();
+        @include card-10-tablet-base();
+    }
+}
+
+
+
+
+
+
