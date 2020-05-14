@@ -416,29 +416,7 @@
 
 
 
-.fourOnNine {
-	@media #{$desktop-up} {
-		flex: 0 0 25%;
-	}
-}
 
-.col-sm-split {
-	@media #{$bootstrap-sm} {
-		flex: 0 0 50%;
-	}
-}
-
-.col-md-split {
-	@media #{$tablet} {
-		flex: 0 0 50%;
-	}
-}
-
-.col-lg-split {
-	@media #{$desktop-up} {
-		flex: 0 0 50%;
-	}
-}
 
 
 .editactive {
@@ -448,58 +426,7 @@
     }
 }
 
-// @media #{$tablet} {
-//     .two-cols-tablet {
-//         .col-md-1, .col-sm-1, .col-lg-1 {
-//             width: 50%;
-//         }
-//     }
-// }
 
-
-// @media #{$tablet-up} {
-//     .two-cols-tablet-up {
-//         .col-md-1, .col-sm-1, .col-lg-1 {
-//             width: 50%;
-//         }
-//     }
-// }
-
-
-// @media #{$tablet-up} {
-//     .three-cols .col-md-1,
-//     .three-cols .col-sm-1,
-//     .three-cols .col-lg-1 {
-//         width: 33.3333%;
-//         *width: 33.3333%;
-//     }
-// }
-
-// @media #{$tablet-up} {
-//     .four-cols .col-md-1,
-//     .four-cols .col-sm-1,
-//     .four-cols .col-lg-1 {
-//         width: 25%;
-//         *width: 25%;
-//     }
-// }
-// @media #{$desktop-up} {
-//     .desk-four-cols .col-md-1,
-//     .desk-four-cols .col-sm-1,
-//     .desk-four-cols .col-lg-1 {
-//         width: 25%;
-//         *width: 25%;
-//     }
-// }
-
-// @media #{$desktop-up} {
-//     .three-cols .col-md-2,
-//     .three-cols .col-sm-2,
-//     .three-cols .col-lg-2  {
-//         width: 100%;
-//         *width: 100%;
-//     }
-// }
 
 
 
@@ -526,28 +453,7 @@ hr.divide {
     display:block;
 }
 
-.advert {
-    margin: 20px 0 20px 0;
-    @media #{$desktop-up} {
-            margin: 40px 0 40px 0;
-        }
-        @media screen and (max-width: '320px'){
-            margin-left: -15px;
-        }
-    .mini{
-        img{
-            margin-top: -25px;
-        }
-    }
-}
 
-
-.divide {
-    margin-top: 32px;
-    margin-bottom: 42px;
-    border: 0;
-    border-top: 1px solid color(lightgrey);
-}
 
 .u-noscroll {overflow:hidden}
 .clearfix {overflow:auto;overflow-x:hidden}
@@ -647,105 +553,6 @@ hr.divide {
 .flex12{-webkit-flex:12 0 0;-ms-flex:12 0 0;flex:12 0 0;-moz-flex:12 0 0;}
 .flex13{-webkit-flex:13 0 0;-ms-flex:13 0 0;flex:13 0 0;-moz-flex:13 0 0;}
 .flex15{-webkit-flex:15 0 0;-ms-flex:15 0 0;flex:15 0 0;-moz-flex:15 0 0;}
-
-.divideright {
-    @media #{$tablet} {
-    // @media screen and (min-width : 768px)  and (max-width : 991px) {
-
-        &:after {
-            content: '';
-            display: block;
-            height: 100%;
-            background: color(lightgrey);
-            width: 1px;
-            position: absolute;
-            top: 0;
-            right: -13px;
-        }
-        &:last-child {
-            &:after {
-                display:none;
-            }
-        }
-        &.dairy {
-            &:after {
-                right: 0;
-            }
-        }
-        &.divideright__nogap {
-            &:after {
-                right: 0;
-            }
-        }
-    }
-}
-.divideright-desk {
-    @media #{$desktop_up} {
-        &:after {
-            content: '';
-            display: block;
-            height: 100%;
-            background: color(lightgrey);
-            width: 1px;
-            position: absolute;
-            top: 0;
-            right: -13px;
-        }
-        &:last-child {
-            &:after {
-                display:none;
-
-            }
-        }
-        &.dairy {
-            &:after {
-                right: 0;
-            }
-        }
-        &.divideright__nogap {
-            &:after {
-                right: 0;
-            }
-        }
-        &.after-display{
-            &:after {
-                display:block;
-            }
-        }
-    }
-}
-
-.divideright-main {
-    &:after {
-        content: '';
-        display: block;
-        height: 100%;
-        background: color(lightgrey);
-        width: 1px;
-        position: absolute;
-        top: 0;
-        right: 5px;
-    }
-    &:last-child {
-        &:after {
-            display:none;
-        }
-    }
-}
-
-.divideright-ofs {
-    &:after {
-        content: '';
-        display: block;
-        height: 100%;
-        background: color(lightgrey);
-        width: 1px;
-        position: absolute;
-        top: 0;
-        right: -85px;
-    }
-}
-
 
 /* Begin utility view style */
 .u-heading {
@@ -864,7 +671,7 @@ hr.divide {
             left: 35px;
             height: 1px;
             background-color: $grey-4;
-            width: calc(100% - 70px);
+            width: calc(100vw - 70px);
         }
         &:last-child{
             &:after{
@@ -901,6 +708,24 @@ hr.divide {
 }
 
 .u-loadmore-card-3s{
+    @media #{$mobile}{
+        padding-bottom: 30px;
+        margin-bottom: 30px;
+        &:after{
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: calc(50% - 50vw + 35px);
+            height: 1px;
+            background-color: $grey-4;
+            width: calc(100vw - 70px);
+        }
+        &:last-child{
+            &:after{
+                display: none;
+            }
+        }
+    }
     @media #{$tablet-up}{
         border-right: 1px solid $grey-4;
         margin-bottom: 60px;

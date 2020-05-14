@@ -58,6 +58,11 @@
 .card-9-mobile {
     @media #{$mobile} {
         @include card-9-base();
+        .c-cards-view {
+            &__heading {
+                @include font-size(15);
+            }
+        }
     }
 }
 

@@ -13,7 +13,7 @@
 
 
     <div class="col-12 col-md-8 u-border-right">
-        <div class="row">
+        <div class="row justify-content-center">
             <div class="col-12">
                 {{this.render('../_single-article.twig', {
                     article: articles[articleCount], 
@@ -22,8 +22,9 @@
                     containerClass: "card-3-mobile card-5-tablet card-5-desktop"
                 }) | raw}}
                 {% set articleCount = (dev) ? articleCount : articleCount + 1 %}
+                <hr class="o-rule d-md-none">
             </div>
-            <div class="col-12 u-margin-top-40">
+            <div class="col-8 col-md-12 u-desktop-margin-top-40 u-tablet-margin-top-40">
                 {{this.render('../_single-article.twig', {
                     article: articles[articleCount], 
                     position: (articleCount+1),

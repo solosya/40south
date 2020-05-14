@@ -36,7 +36,7 @@
             order: 2;
             font-weight: $weightBold;
             @include font-size(26);
-            @include flex-height(75px);
+            @include flex-height(80px);
             padding-bottom: 15px;
             margin-bottom: 15px;
             border-bottom: 1px solid $grey-4;
@@ -46,7 +46,8 @@
             order: 3;
             margin-top:10px;
             display:block;
-            @include font-size(13);
+            font-weight: $weightMedium;
+            @include font-size(14);
             line-height: 1.44;
             @include flex-height(90px);
             font-family: $font-family-sans-serif;

@@ -43,7 +43,7 @@ $('document').ready(function() {
         if ( scrollMetric[1] === 'up' && isScrolledPast(300) && isDesk === true ){
             fixMenu.removeClass('c-header-0__fixed--off');
             fixMenu.addClass('c-header-0__fixed--on');
-        } else if (isScrolledPast(200) && isDesk === false) {
+        } else if (scrollMetric[1] === 'up' && isScrolledPast(200) && isDesk === false) {
             console.log('tab menu');
             fixMenu.removeClass('c-header-0__fixed--off');
             fixMenu.addClass('c-header-0__fixed--on');     

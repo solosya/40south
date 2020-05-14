@@ -38,7 +38,7 @@
             font-style: normal;
             line-height: 2.09;
             letter-spacing: normal;
-            @include font-size(14);
+            @include font-size(15);
             font-weight: $weightBold;
         }
 
@@ -48,7 +48,7 @@
 
         &__heading{
             font-family: $font-family-sans-serif;
-            @include font-size(18);
+            @include font-size(13);
             font-weight: $weightMedium;
             font-stretch: normal;
             font-style: normal;
@@ -82,7 +82,11 @@
                     @include font-size(23);
                     
                 }
+                &__heading{
+                    @include font-size(18);
+                }
             }
+            
         }
     }
     &__tablet{
@@ -101,6 +105,9 @@
                 &__time{
                     @include font-size(23);
                     
+                }
+                &__heading{
+                    @include font-size(18);
                 }
             }
         }
