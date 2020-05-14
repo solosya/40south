@@ -83,7 +83,7 @@
 
 
     {% if _AppHelper.getApplicationEnv() == 'PROD'%}
-        <link rel="stylesheet" href="{{networkData.templatePath}}/static/deploy/concat.min.css?v=68c20ba6" type="text/css" media="all">
+        <link rel="stylesheet" href="{{networkData.templatePath}}/static/deploy/concat.min.css?v=cadb9482" type="text/css" media="all">
     {% else %}
 
         <link rel='stylesheet' href='{{networkData.templatePath}}/static/deploy/concat.css' type='text/css' media='all' />
@@ -205,12 +205,17 @@
         </div>
     </div> #}
 
+    {% if config['inventory']['adSpace']['banner'][1] is defined) %}
+        <div class="j-adslot advertisment__head u-margin-top-40 u-margin-bottom-40" id="{{config['inventory']['adSpace']['banner'][1]}}" data-adshape="banner"></div>
+    {% endif %}
 
 
     {% set footerTemplate = '' %}
     {% if config['footer-style'] is defined %}
         {% set footerTemplate = "_" ~ config['footer-style'] %}
     {% endif %}
+
+    
 
 
 
