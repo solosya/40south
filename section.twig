@@ -143,11 +143,13 @@
         {% if articles|length >= limit %}
             <section class="">
                 <div class="row">
-                    {{ this.render('partials/ajaxarticles_new.twig', {
-                        name            : "section-load",
-                        label           : "",
-                        buttonClass     : "c-button c-button--rounded c-button--blue-bordered u-margin-bottom-40",
-                    }) | raw }}
+                    <div class="col-12">
+                        {{ this.render('partials/ajaxarticles_new.twig', {
+                            name            : "section-load",
+                            label           : "SEE MORE",
+                            buttonClass     : "c-button c-button--blue-bordered c-button--wide u-margin-bottom-40",
+                        }) | raw }}
+                    </div>
                 </div>
             </section>
         {% endif %}

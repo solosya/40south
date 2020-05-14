@@ -135,10 +135,10 @@
 
             &__heading{
                 @include font-size(27);
-                max-height: 65px;
-                min-height: 65px;
-                max-width: 85%;
-                margin-bottom: 50px;
+                max-height: 100px;
+                min-height: 100px;
+                //max-width: 85%;
+                margin-bottom: 15px;
                 
             }
             &.without-image {

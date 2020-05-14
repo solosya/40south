@@ -11,7 +11,7 @@
             <!-- Begin Terms -->
             <div class="content-wrap clearfix" style="height:100%">
                 <div class="row" style="height:100%">
-                    <div class="col-12 col-lg-7 j-article-container" style="height:100%; min-height:600px;">
+                    <div class="col-12 col-lg-8 j-article-container" style="height:100%; min-height:600px;">
 
                         {% if _User.isAdminUser() and page.editUrl is defined %}
                             <a href="{{page.editUrl}}" target="_blank">Edit</a>
@@ -27,7 +27,7 @@
                             }) | raw }}
                         {% endif %}
                     </div>
-                    <div class="col-12 offset-lg-1 col-lg-4">
+                    <div class="col-12 col-lg-4">
                         <div class="o-body-container__right-layout j-article-sidebar ">
                             {% if config['inventory']['adSpace']['hpage'][0] is defined %}
                                 <div class="j-adslot" id="{{config['inventory']['adSpace']['hpage'][0]}}" data-adshape="hpage"></div>

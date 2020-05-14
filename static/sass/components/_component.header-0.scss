@@ -26,10 +26,10 @@
 
     &__logo{
         margin: 0 auto;
-        width: 818px;
+        width: 615px;
         display: block;
         @media #{$desktop}{
-            width: 603px;
+            width: 500px;
         }
         @media #{$tablet}{
             width: 250px;

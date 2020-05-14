@@ -154,7 +154,7 @@
             }
 
             &__heading {
-                @include flex-height(43px);
+                @include flex-height(80px);
                 @include font-size(22);
                 text-transform: uppercase;
             }
@@ -217,8 +217,8 @@
         }
 
         &__heading {
-            @include flex-height(75px);
-            @include font-size(30);
+            @include flex-height(100px);
+            @include font-size(25);
             font-weight: $weightBold;
 
         }
@@ -226,7 +226,7 @@
         &__author {
             margin-top:30px;
             &-name{
-                @include font-size(16.5);
+                @include font-size(13);
             }
         }
 

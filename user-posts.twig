@@ -16,7 +16,7 @@
 
             <div class="col-12 col-md-10 offset-md-1">
                 <div class="c-author">
-                    <div class="c-author-left c-author-left-md">  
+                    <div class="c-author-left">  
 
                         <div class="c-author__avatar c-author__avatar-xs u-image-covered" style="background-repeat:none;background-image:url({{profileImage}});">&nbsp;</div>
                         
@@ -68,11 +68,13 @@
                 {% if userArticles|length >= limit %}
                     <section class="">
                         <div class="row">
-                            {{ this.render('partials/ajaxarticles_new.twig', {
-                                name            : "user-load",
-                                label           : "more",
-                                buttonClass     : "c-button c-button--rounded c-button--blue-bordered",
-                            }) | raw }}
+                            <div class="col-12">
+                                {{ this.render('partials/ajaxarticles_new.twig', {
+                                    name            : "user-load",
+                                    label           : "SEE MORE",
+                                    buttonClass     : "c-button c-button--blue-bordered u-margin-bottom-40",
+                                }) | raw }}
+                            </div>
                         </div>
                     </section>
                 {% endif %}

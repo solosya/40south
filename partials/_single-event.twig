@@ -104,7 +104,7 @@
                 <div class="c-eventcards-view__info">
                     <div class="c-eventcards-view__category">{{startYear}}{% if endYear != "" and endYear != startYear %} - {{endYear}}{% endif %}</div>
                     <p   class="c-eventcards-view__description j-truncate">{{ quotes.smarten(event.excerpt | raw) }}</p>
-                    <div class="c-eventcards-view__time">{{startDay}}{% if event.endDate != "" %}{% if startMonth != endMonth %} {{startMonth}}{% endif %} - {{endDay}} {{endMonth}}{% else %} {{startMonth}}{% endif %}</div>
+                    <div class="c-eventcards-view__time">{{startDay}}{% if event.endDate != "" %}{% if startMonth != endMonth %} {{startMonth}}{% endif %}{% if startDay != endDay %} - {{endDay}}{% endif %} {{endMonth}}{% else %} {{startMonth}}{% endif %}</div>
                     <h2  class="c-eventcards-view__heading js-card-heading j-truncate {{figureClass}}">{{ quotes.smarten(event.title) }}</h2>
                     
                     {# <div class="event-time">

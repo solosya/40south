@@ -137,7 +137,7 @@
     @include card-name("C1 tablet");
     .c-cards-view {
 
-        height: 546px;
+        height: 634px;
 
         &__media {
             position: absolute;
@@ -162,7 +162,7 @@
             @include font-size(40);
             line-height: 1.2;
             font-weight: $weightUltrabold;
-            max-height: 119px;
+            max-height: 159px;
             min-height: 40px;
             margin-top: 27px;
             margin-bottom: 10px;
