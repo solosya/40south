@@ -91,11 +91,16 @@
     &__title {
         color: $black;
         font-family: $primaryFont;
-        @include font-size(40);
+        @include font-size(20);
         line-height: 1.2;
         font-weight: $weightBold;
         @include margin-bottom(30);
         letter-spacing: normal;
+
+        @media #{$tablet-up}{
+            @include font-size(40);
+        
+        }
     }
 
     &__posted-on {

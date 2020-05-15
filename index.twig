@@ -97,7 +97,7 @@
 {# <div class="clearfix"></div> #}
 
 
-<main id="main" class="site-main u-margin-top-60" role="main" data-layout="{{layoutTitle}}">
+<main id="main" class="site-main u-margin-top-60 u-mobile-margin-top-35" role="main" data-layout="{{layoutTitle}}">
 
 
 {# *******************************************************
@@ -149,7 +149,7 @@
 
     
 
-    {% set bannerNo = 1 %}
+    {% set bannerNo = 2 %}
     {% for pagesection in panels | keys %}
 
         {% if panels[pagesection]['active'] is not defined or panels[pagesection]['active'] == true %}
@@ -171,7 +171,7 @@
 
             {% if loop.index in bannerSpots %}
                 {% if config['inventory']['adSpace']['banner'][bannerNo] is defined %}
-                    <div class="j-adslot" id="{{config['inventory']['adSpace']['banner'][bannerNo]}}" data-adshape="banner"></div>
+                    <div class="j-adslot u-desktop-margin-top-60 u-tablet-margin-top-40 u-mobile-margin-top-30" id="{{config['inventory']['adSpace']['banner'][bannerNo]}}" data-adshape="banner"></div>
                 {% endif %}
                 {% set bannerNo = bannerNo + 1 %}
             {% endif %}
