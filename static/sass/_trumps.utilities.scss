@@ -749,6 +749,14 @@ hr.divide {
 
 }
 
+.u-menu__highlight{
+    font-weight: $weightBold !important;
+    color: $green !important;
+    &:hover{
+        color: $mainColor !important;
+    }
+}
+
 
 .x-close {
 	top:50%;

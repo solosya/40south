@@ -5,7 +5,14 @@
 
 {% set loggedin = _User.isGuest() ? false : true %}
 {% set user = loggedin ? _User.getUser() : null %}
-
+{% set menuSpecialClass = 'u-menu__highlight' %}
+{% set menuSpecialClassItems = [] %}
+{% if config['menu-highlights']['items'] is defined and config['menu-highlights']['items']|length > 0 %}
+    {% set menuSpecialClassItems = config['menu-highlights']['items'] %}
+{% endif %}
+{% if config['menu-highlights']['class'] is defined and config['menu-highlights']['class'] != '' %}
+    {% set menuSpecialClass = config['menu-highlights']['class'] %}
+{% endif %}
 
 
 {% set logo = networkData.templatePath~'/static/images/logo.svg'%}
@@ -15,7 +22,7 @@
 
 
 <header class="c-header-0 u-mobile-margin-bottom-20" data-header="0">
-    
+   
     <div class="container">
         <div class="row">
             <div class="col-12 c-header-0__container">
@@ -76,7 +83,7 @@
                         <div class="row">
                             <div class="col-12">
                                 <ul class="c-navigation-0__list">
-                                    {{ this.render('../../../partials/_menu.twig', {'menu': menu1}) | raw }}
+                                    {{ this.render('../../../partials/_menu.twig', {'menu': menu1, 'specialClass': menuSpecialClass, 'specialClassItems':menuSpecialClassItems}) | raw }}
                                 </ul>
                             </div>
                             <div class="col-12 d-none d-lg-block">
@@ -84,7 +91,7 @@
                             </div>
                             <div class="col-12">
                                 <ul class="c-navigation-0__list">
-                                    {{ this.render('../../../partials/_menu.twig', {'menu': menu2}) | raw }}
+                                    {{ this.render('../../../partials/_menu.twig', {'menu': menu2, 'specialClass': menuSpecialClass, 'specialClassItems':menuSpecialClassItems}) | raw }}
                                 </ul>
                             </div>
                         </div>                       
@@ -96,17 +103,33 @@
                         <a href="{{networkData.defaultBlogUrl}}" class="c-header-0__main-info__logo">
                             <img src="{{logo}}" class="image-fluid"  style="height:48px;"/>
                         </a>
-                        <div class="c-navigation-0 c-navigation-0-md c-navigation-0__fixed">
-                            <ul class="c-navigation-0__list d-none d-lg-flex">
-                                {{ this.render('../../../partials/_menu.twig', {'menu': menu1}) | raw }}
-                            </ul>
-                            <ul class="c-navigation-0__list d-none d-lg-flex">
-                                {{ this.render('../../../partials/_menu.twig', {'menu': menu2}) | raw }}
-                            </ul>
-
-                            <div class="c-navigation-0__icons d-lg-none">
-                                <div class="c-navigation-0__icons__menu o-hamburger js-menu"></div>
+                        <div class="c-navigation-0 c-navigation-0-md c-navigation-0__fixed d-none j-fixed-menu-desk">
+                            <div class="row">
+                                <div class="col-12 d-none d-lg-block">
+                                    <hr class="u-border-bottom-15">
+                                </div>
+                                <div class="col-12">
+                                    <ul class="c-navigation-0__list">
+                                        {{ this.render('../../../partials/_menu.twig', {'menu': menu1, 'specialClass': menuSpecialClass, 'specialClassItems':menuSpecialClassItems}) | raw }}
+                                    </ul>
+                                </div>
+                                <div class="col-12 d-none d-lg-block">
+                                    <hr class="u-border-top-15 u-border-bottom-15">
+                                </div>
+                                <div class="col-12">
+                                    <ul class="c-navigation-0__list">
+                                        {{ this.render('../../../partials/_menu.twig', {'menu': menu2, 'specialClass': menuSpecialClass, 'specialClassItems':menuSpecialClassItems }) | raw }}
+                                    </ul>
+                                </div>
+                                
                             </div>
+                            <div class="c-navigation-0__icons">
+                                <div class="c-navigation-0__icons__menu o-hamburger js-menu "></div>
+                            </div>
+                            
+                        </div>
+                         <div class="c-navigation-0__icons">
+                            <div class="c-navigation-0__icons__menu o-hamburger js-menu d-lg-block"></div>
                         </div>
                     </div>
                 </div>
@@ -128,10 +151,14 @@
             </form>
         </li>
         {{ this.render('../../../partials/_menu.twig', {
-            'menu': menu1
+            'menu': menu1, 
+            'specialClass': menuSpecialClass, 
+            'specialClassItems': menuSpecialClassItems
             }) | raw }}
         {{ this.render('../../../partials/_menu.twig', {
-            'menu': menu2
+            'menu': menu2, 
+            'specialClass': menuSpecialClass, 
+            'specialClassItems': menuSpecialClassItems
             }) | raw }}
     </ul>
     <ul class="standalone-menu-base">

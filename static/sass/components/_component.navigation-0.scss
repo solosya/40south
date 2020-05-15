@@ -301,6 +301,17 @@
         }
     }
 
+    &__fixed{
+        @media #{$desktop-up}{
+            top: 75px;
+            position: absolute;
+            background: white;
+            margin: 0 -35px;
+            box-shadow: 0 4px 5px 0 rgba(0, 0, 0, 0.28);
+            padding-bottom: 15px;
+        }
+    }
+
 
     @include responsive(md) {
         .c-navigation-0 {
