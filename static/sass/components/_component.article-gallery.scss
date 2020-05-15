@@ -1,9 +1,9 @@
 .article-gallery {
 
-    @media #{$mobile}{
-        margin-left: -35px;
-        margin-right: -35px;
-    }
+    // @media #{$mobile}{
+    //     margin-left: -35px;
+    //     margin-right: -35px;
+    // }
 
     &__image {
         position:relative;
