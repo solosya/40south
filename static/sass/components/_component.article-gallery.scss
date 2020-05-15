@@ -76,6 +76,10 @@
             float: left;
             margin-bottom: 30px;
         }
+
+        @media #{$mobile}{
+            margin-bottom: 0;
+        }
         
         > p {
             @include font-size(12);
@@ -85,7 +89,7 @@
             font-family: $base-font-family;
             float: left;
             @media #{$mobile}{
-                margin-bottom: 15px;
+                margin-bottom: 0;
             }
         }
     }
