@@ -1,4 +1,30 @@
 .c-signup-footer {
-    
+    width: 100%;
+    padding: 15px 0;
+    background-color: $mainColor;
+    @media #{$desktop-up}{
+        padding: 35px 0;
+    } 
+    &__title{
+        @include font-size(20);
+        letter-spacing: -0.26px;
+        color: $white;
+        font-weight: $weightBold;
+        @media #{$desktop-up}{
+            @include font-size(26);
+        }
+    }
+
+    &__text{
+       font-family: $secondaryFont;
+       @include font-size(14);
+       line-height: 1.22;
+       color: $white;
+       @media #{$desktop-up}{
+        @include font-size(18);
+    }
+    }
+
+
 
 }

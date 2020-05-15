@@ -4,7 +4,7 @@
 {% set policiesMenu = _Menu.get({'menuType': 'header', 'menuGroupName': 'policies-menu'}) %}
 {% set sponsorMenu = _Menu.get({'menuType': 'header', 'menuGroupName': 'sponsor-menu'}) %}
 
-<footer class="c-footer c-footer-sm">
+<footer class="c-footer">
     <div class="container">
         <div class="row">
             <div class="col-12">
@@ -73,6 +73,21 @@
         </div>
     </div>
 
-    {{ networkData['styling']['customFooter'] | raw }}
+
+    <div class="c-signup-footer">
+        <div class="container">
+            <div class="row">
+                <div class="col-12 col-md-4 col-lg-3 u-mobile-margin-bottom-15">
+                    <div class="c-signup-footer__title">Join our newsletter</div>
+                </div>
+                <div class="col-12 offset-lg-1 col-md-4 u-mobile-margin-bottom-15">
+                    <div class="c-signup-footer__text">Our love letter – your newsletter on all things Tasmania</div>
+                </div>
+                <div class="col-12 col-md-4">
+                    <div class="c-button c-button--wide c-button--white c-signup-footer__button j-insider-signup">sign up</div>
+                </div>
+            </div>
+        </div>
+    </div>
 
 </footer>

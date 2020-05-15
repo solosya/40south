@@ -105,6 +105,17 @@
         }
     }
 
+    &--white{
+        color: $white;
+        border-color: $white;
+        background-color: $transparent;
+
+        &:hover {
+            color: $mainColor;
+            background-color: $white;
+        }
+    }
+
     &--center{
         margin-right: auto;
         margin-left: auto;

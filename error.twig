@@ -16,24 +16,24 @@
 
 <div class="container u-margin-top-60">
     
-    <div class="row">
-        <div class="col-12 col-md-7">
+    <div class="row justify-content-center">
+        <div class="col-12 col-md-8 col-lg-7">
 
             <div class="c-error u-margin-bottom-60">
-                <h1 class="c-error__title">Sorry, the page you are looking for can't be found.</h1>
-                <p class="c-error__message"> {{messages}} </p>
-                <a class="c-error__button c-button c-button--rounded c-button--blue-bordered" href="/">Back to Home</a>
+                <h1 class="c-error__title u-margin-bottom-50 u-mobile-margin-bottom-40">Oops!</h1>
+                <p class="c-error__message u-margin-bottom-60 u-mobile-margin-bottom-30"> Some beautiful paths can’t be discovered without getting lost</p>
+                <p class="c-error__message d-none u-margin-bottom-60 u-mobile-margin-bottom-30">{{messages}}</p>
+                <div class="row justify-content-center d-none d-md-flex">
+                    <a class="c-error__button c-button c-button--wide c-button--blue-bordered" href="/">Time to go home</a>
+                </div>
+                <a class="c-error__button c-button c-button--wide c-button--blue-bordered d-md-none" href="/">Time to go home</a>
             </div>
         
         </div>
 
 
 
-        <div class="col-12 offset-md-1 col-md-4">
-            {% if config['inventory']['adSpace']['hpage'][0] is defined %}
-                <div class="j-adslot" id="{{config['inventory']['adSpace']['hpage'][0]}}" data-adshape="hpage"></div>
-            {% endif %}
-        </div>
+        
     </div>
 </div>
     

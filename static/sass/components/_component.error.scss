@@ -1,22 +1,27 @@
 .c-error {
-
-    background-color: $grey-4;
-    text-align: center;
-    height: 550px;
-    padding-top:60px;
-
+    position: relative;
+    
+    
     &__title {
-        color: $blackred;
-        @include font-size(22);
-        font-weight: $weightBold;
+        color: $grey-4;
+        @include font-size(60);
+        text-align: center;
+        @media #{$tablet-up}{
+            @include font-size(74);
+        }
     }
 
     &__message {
-        @include font-size(13);
-        margin-top: 23px;
+        @include font-size(18);
+        line-height: 1.56;
+        text-align: center;
+        @media #{$tablet-up}{
+            @include font-size(30);
+        }
+  
     }
     &__button {
-        margin-top: 85px;
+        margin: 0 auto;
     }
 
 }
