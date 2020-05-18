@@ -284,7 +284,7 @@
         > li {
             padding-left:25px;
             position:relative;
-            height: 35px;
+            min-height: 35px;
             a {
                 display: block;
                 @include font-size(12);
@@ -299,7 +299,12 @@
                 position: relative;
             }
             >.custom-menu{
-                display: none;
+                display: block;
+                padding: 15px 0 15px 30px;
+                border-top: 1px solid $white;
+                border-bottom: 1px solid $white;
+                margin: 0 0 15px 0;
+                width: calc(100% - 50px);
             }
             .list-arrow-container {
                 display: none;
