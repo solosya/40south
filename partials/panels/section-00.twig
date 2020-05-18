@@ -2,11 +2,9 @@
 {% set cardIndex = 0 %}
 
 {% set popularArticles = _Article.getPopularArticles({ limit: 3, sortBy: 'VIEWS', scope: 'network' }) %}
-{% set recentArticles = _Article.getRecentArticles({ limit: 1, scope: 'network' }) %}
-{# {% set recentArticles = _Article.getRecentArticles({ limit: 1, scope: 'network', excludeArticleIds : [articles[articleCount].id] }) %} #}
+{% set recentArticles = _Article.getRecentArticles({ limit: 1, scope: 'network', excludeArticleIds : [articles[articleCount].articleId] }) %}
 <div class="row" data-section="00">
     
-   
     <div class="col-12">
 
 

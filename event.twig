@@ -128,8 +128,17 @@
                             </div>
 
                             <div class="col-12 order-2 order-md-1">
-                                <div class="c-eventdetail__content u-mobile-margin-top-20">
-                                    {{ event.content | raw }}
+                                <div class="row">
+                                    <div class="col-12 col-md-6 col-lg-9">
+                                        <div class="c-eventdetail__content u-mobile-margin-top-20">
+                                            {{ event.content | raw }}
+                                        </div>
+                                    </div>
+                                    <div class="col-12 col-md-6 col-lg-3">
+                                         {% if config['inventory']['adSpace']['mrec'][0] is defined %}
+                                            <div class="j-adslot" id="{{config['inventory']['adSpace']['mrec'][0]}}" data-adshape="mrec"></div>
+                                        {% endif %}
+                                    </div>
                                 </div>
                                 <hr class="o-rule">
                             </div>
@@ -213,7 +222,11 @@
         </div>
     </div>
 
-
+    {% set theKeywords = '' %}
+    {% if event.keywords is defined and event.keywords != '' %}
+        {% set theKeywords = event.keywords %}
+    {% endif %}
+    <div class="j-keyword-cont" data-keywords="{{theKeywords}}"></div>
 
 
 
@@ -232,6 +245,7 @@
         });
     </script>
 {% endif %}
+
 
 
 
