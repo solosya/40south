@@ -10,13 +10,27 @@
         line-height: 1.2;
         letter-spacing: normal;
         color: $grey-2;
+        @media #{$tablet}{
+            line-height: 0.8;
+            text-align: center;
+        }
     }
 
     &__button{
-        width: 358px;
-        position: absolute;
-        right: 35px;
-        top: 5px;
+        @media #{$tablet-up}{
+            width: 358px;
+        }
+        @media #{$tablet}{
+            position: relative;
+            margin: 30px auto 0;
+            display: block;
+        }
+        @media #{$desktop-up}{
+            position: absolute;
+            right: 35px;
+            top: 5px;
+        }
+        
     }
 
 }

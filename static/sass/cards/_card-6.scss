@@ -133,20 +133,14 @@
 
         .c-cards-view {
 
-            @include flex-direction(column, vertical);
-            //min-height: 417px;
-
-            &__media {
-                background: $white none repeat scroll 0 0 !important;
-
-                img {
-                    display: block;
-                }
+            &__media{
+                height: 180px;
             }
-
+       
             &__container {
-                width: 100%;
-                margin-left: 0;
+                width: calc(55% - 35px);
+                margin-left: 35px;
+
             }
 
             &__category {
@@ -156,43 +150,51 @@
             &__heading {
                 @include flex-height(80px);
                 @include font-size(22);
-                text-transform: uppercase;
+                font-weight: $weightBold;
+
             }
 
             &__author {
-                margin-top:4px;
-            }
-
-
-
-           
-        }
-
-
-
-
-
-
-        &.video {
-            .c-cards-view__media .video-icon {
-                @include size(70px);
-            }
-        }
-
-        &.social {
-            .social-icon {
-                @include size(50px);
-
-                &:before {
-                    @include font-size(22);
-                    line-height: 52px;
+                margin-top:30px;
+                &-name{
+                    @include font-size(13);
                 }
             }
+
+
 
             &.without-image {
-                .c-cards-view__container {
-                    padding-top: 60px;
-                }
+                
+            }
+
+
+        }
+    }
+
+
+
+
+
+
+    &.video {
+        .c-cards-view__media .video-icon {
+            @include size(70px);
+        }
+    }
+
+    &.social {
+        .social-icon {
+            @include size(50px);
+
+            &:before {
+                @include font-size(22);
+                line-height: 52px;
+            }
+        }
+
+        &.without-image {
+            .c-cards-view__container {
+                padding-top: 60px;
             }
         }
     }
@@ -238,11 +240,6 @@
 
 
     }
-
-
-
-
-
 
     &.video {
         .c-cards-view__media .video-icon {

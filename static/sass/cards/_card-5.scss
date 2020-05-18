@@ -3,121 +3,11 @@
 
     .c-cards-view {
         @include flex-direction(column, vertical);
-
-        &__media {
-            width: 98px;
-            height: 130px;
-            &--video {
-                &:before {
-                    @include size(55px);
-                }
-            }
-        }
-
-        &__container {
-            @include calc(width, '100% - 112px');
-            margin-left: 14px;
-        }
-
-        &__info {
-            @include calc(height, '100% - 40px');
-
-        }
-        &__heading {
-            min-height: 66px;
-            max-height: 66px;
-        }
-
-        &.video {
-            .c-cards-view__media .video-icon {
-                @include size(40px);
-            }
-        }
-
-        &.without-image {
-            .c-cards-view__container {
-                width: 100%;
-            }
-
-            .c-cards-view__category {
-                margin-top: 40px;
-            }
-            .c-cards-view__description {
-                margin-bottom: 30px;
-                display: block;
-                max-height: 120px;
-                overflow: hidden;
-            }
-            .c-cards-view__author {
-                position: absolute;
-                bottom: 0;
-            }
-        }
-
-        &.social {
-
-            .social-icon {
-                @include size(30px);
-
-                &:before {
-                    @include font-size(13);
-                    line-height: 32px;
-                }
-            }
-
-            &.without-image {
-                .c-cards-view__container {
-                    padding-top: 40px;
-                }
-            }
-        }
-
-    }
-    &.design2 {
-        .c-cards-view {
-            &__heading {
-                @include font-size(22);
-                line-height: 1.3;
-                font-weight: $weightBold;
-            }
-            &__additioanl-info {
-                @include flexbox();
-            }
-        }
-    }
-}
-
-.card-5-mobile {
-    @media #{$mobile} {
-        @include card-5-base();
-    }
-}
-
-
-.card-5-tablet {
-
-    @media #{$tablet} {
-
-        @include card-5-base();
-        @include card-name("C5 tablet");
-    }
-}
-
-
-@mixin card-5-desktop-base {
-
-    @include card-5-base();
-    @include card-name("C5 desktop");
-
-    .c-cards-view {
-
-        @include flex-direction(column, vertical);
         // min-height: 417px;
 
         &__media {
             order: 2;
             width: 100%;
-            min-height: 697px;
             // background: $white none repeat scroll 0 0 !important;
 
             img {
@@ -134,7 +24,7 @@
             order: 1;
             width: 100%;
             margin-left: 0;
-            margin-bottom: 40px;
+            margin-bottom: 20px;
         }
 
         &__category {
@@ -143,8 +33,8 @@
         }
 
         &__heading {
-            @include flex-height(50px);
-            @include font-size(40);
+            @include flex-height(80px);
+            @include font-size(32);
             font-weight: $weightUltrabold;
         }
 
@@ -155,28 +45,28 @@
 
 
         &.without-image {
-            height: 823px;
+            height: 535px;
             .c-cards-view__container {
             }
 
             
             .c-cards-view__category {
-                margin-bottom:60px;
+                margin-bottom:40px;
             }
 
             .c-cards-view__heading {
                 height:113px;
-                margin-bottom: 70px;
+                margin-bottom: 50px;
             }
 
             .c-cards-view__description {
                 text-align: left; 
-                @include font-size(24);
+                @include font-size(20);
                 line-height: 1.67;
-                margin-bottom: 300px;
+                margin-bottom: 100px;
                 display: block;
-                max-height: 330px;
-                min-height: 330px;
+                max-height: 200px;
+                min-height: 200px;
                 overflow: hidden;
             }
             
@@ -210,6 +100,82 @@
             .c-cards-view__container {
                 padding-top: 60px;
             }
+        }
+    }
+}
+
+.card-5-mobile {
+    @media #{$mobile} {
+        @include card-5-base();
+    }
+}
+
+
+.card-5-tablet {
+
+    @media #{$tablet} {
+
+        @include card-5-base();
+        @include card-name("C5 tablet");
+        .c-cards-view {
+
+            &__author{
+                margin-top: 5px;
+            }   
+        }
+        
+    }
+}
+
+
+@mixin card-5-desktop-base {
+
+    @include card-5-base();
+    @include card-name("C5 desktop");
+
+    .c-cards-view {
+
+        &__media {
+            min-height: 697px;
+            // background: $white none repeat scroll 0 0 !important;
+
+            
+        }
+
+        &__container {
+            
+            margin-bottom: 40px;
+        }
+
+        &__category {
+            @include font-size(13);
+        }
+
+        &__heading {
+            @include flex-height(50px);
+            @include font-size(40);
+        }
+
+       
+        &.without-image {
+            height: 823px;
+            
+            .c-cards-view__category {
+                margin-bottom:60px;
+            }
+
+            .c-cards-view__heading {
+                height:113px;
+                margin-bottom: 70px;
+            }
+
+            .c-cards-view__description {
+                @include font-size(24);
+                margin-bottom: 300px;
+                max-height: 330px;
+                min-height: 330px;
+            }
+
         }
     }
 }

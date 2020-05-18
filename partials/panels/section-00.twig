@@ -25,7 +25,7 @@
         <div class="row u-desktop-margin-top-15">
         
             {% if recentArticles[0] %}
-                <div class="col-12 col-md-4 u-desktop-border-right">
+                <div class="col-12 col-md-6 col-lg-4 u-desktop-border-right u-tablet-border-right">
                     <div class="row justify-content-center">
                         <div class="col-12">
                             <div class="c-news-feed__title ">Latest</div>
@@ -41,7 +41,7 @@
                     <hr class="o-rule d-md-none">
                 </div>
             {% endif %}
-            <div class="col-12 col-md-4 u-desktop-border-right">
+            <div class="col-12 col-md-6 col-lg-4 u-desktop-border-right">
                 <div class="row">
                     <div class="col-12">
                         
@@ -60,7 +60,7 @@
                 </div>
                 {# <hr class="o-rule d-md-none"> #}
             </div>
-            <div class="col-12 col-md-4 u-mobile-margin-top-40">
+            <div class="col-12 col-lg-4 d-none d-lg-block">
                 {% if adslots[0] is defined %}
                     <div class="j-adslot" id="{{adslots[0]}}" data-adshape="mrec"></div>
                 {% endif %}
