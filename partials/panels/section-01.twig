@@ -24,7 +24,7 @@
                 {% set articleCount = (dev) ? articleCount : articleCount + 1 %}
                 <hr class="o-rule d-lg-none">
             </div>
-            <div class="col-8 col-md-12 u-desktop-margin-top-40 u-tablet-margin-top-40">
+            <div class="col-8 col-md-12 u-desktop-margin-top-40">
                 {{this.render('../_single-article.twig', {
                     article: articles[articleCount], 
                     position: (articleCount+1),
