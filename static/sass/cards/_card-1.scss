@@ -183,6 +183,7 @@
                 @include font-size(32);
                 min-height: unset;
                 max-height: 160px;
+                border-bottom: none;
             }
     
             &__description {

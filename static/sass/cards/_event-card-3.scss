@@ -64,6 +64,9 @@
 
         &__author{
             height: min-content;
+            &-name{
+                font-weight: $weightBold;
+            }
         }
     }
 }
@@ -142,11 +145,9 @@
             @include event-card-3-base();
             .c-eventcards-view{
                 &__media{
-                    width: 132px;
+                    width: 100%;
                     height: 114px;
-                    img{
-                        height: 100%;
-                    }
+                    
                 }
             }
         }

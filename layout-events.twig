@@ -5,8 +5,8 @@
 
 {% set limit = 50 %}
 {% set date = date() %}
-{% set events = _Event.getEvents({"limit": limit, "start_date": date.date | split(" ")[0]}) %}
-{# {% set events = _Event.getEvents({"limit": limit}) %} #}
+{# {% set events = _Event.getEvents({"limit": limit, "start_date": date.date | split(" ")[0]}) %} #}
+{% set events = _Event.getEvents({"limit": limit}) %}
 {% set config       = _Network.getThemeConfig() %}
 
 
@@ -50,9 +50,9 @@
                     </div>
 
                     <div class="col-12 col-md-6 u-desktop-border-right u-tablet-border-right">
-                        <div class="row justify-content-center">
-                            {% for i in 0..1 if events[eventCount] %}
-                                <div class="col-9 col-md-12{{marginSettings[i]}}">
+                        {% for i in 0..1 if events[eventCount] %}
+                            <div class="row justify-content-center">
+                                <div class="col-9 col-md-8 col-lg-12{{marginSettings[i]}}">
                                     {{this.render('partials/_single-event.twig', {
                                         event: events[eventCount], 
                                         position: eventCount + 1, 
@@ -65,14 +65,16 @@
                                 <div class="col-12 d-block d-md-none">
                                     <hr class="o-rule">
                                 </div>
-                            {% endfor %}
-                        </div>
+                            </div>
+                        {% endfor %}
+                       
                     </div>
 
                     <div class="col-12 col-md-6">
-                        <div class="row justify-content-center">
-                            {% for i in 0..1 if events[eventCount] %}
-                                <div class="col-9 col-md-12{{marginSettings[i]}}">
+                        
+                        {% for i in 0..1 if events[eventCount] %}
+                            <div class="row justify-content-center">
+                                <div class="col-9 col-md-8 col-lg-12{{marginSettings[i]}}">
                                     {{this.render('partials/_single-event.twig', {
                                         event: events[eventCount], 
                                         position: eventCount + 1, 
@@ -80,12 +82,14 @@
                                         containerClass: 'event-card-3__desktop event-card-3__tablet event-card-3__mobile',
                                     }) | raw}}
                                     {% set eventCount = (dev) ? eventCount : eventCount + 1 %}
+                                    
                                 </div>
                                 <div class="col-12 d-block d-md-none">
                                     <hr class="o-rule">
                                 </div>
-                            {% endfor %}
-                        </div>
+                            </div>
+                        {% endfor %}
+                        
                     </div>
 
                 </div>
@@ -95,8 +99,9 @@
                     <div class="col-12">
                         <hr class="o-rule d-none d-md-block">
                     </div>
+                    {% set borderSettings = [' u-tablet-border-right u-desktop-border-right',' u-desktop-border-right'] %}
                     {% for i in 0..1 if events[eventCount] %}
-                        <div class="col-9 col-md-4 u-tablet-border-right u-desktop-border-right">
+                        <div class="col-9 col-md-6 col-lg-4{{borderSettings[i]}}">
                             {{this.render('partials/_single-event.twig', {
                                 event: events[eventCount], 
                                 position: eventCount + 1, 
@@ -110,7 +115,7 @@
                             <hr class="o-rule">
                         </div>
                     {% endfor %}
-                    <div class="col-12 col-md-4">
+                    <div class="col-12 col-lg-4">
                         {% if config['inventory']['adSpace']['mrec'][0] is defined %}
                             <div class="j-adslot" id="{{config['inventory']['adSpace']['mrec'][0]}}" data-adshape="mrec"></div>
                         {% endif %}
@@ -132,9 +137,9 @@
                     </div>
 
                     <div class="col-12 col-md-6 u-desktop-border-right u-tablet-border-right">
-                        <div class="row">
-                            {% for i in 0..1 if events[eventCount] %}
-                                <div class="col-9 col-md-12{{marginSettings[i]}}">
+                        {% for i in 0..1 if events[eventCount] %}
+                            <div class="row justify-content-center">
+                                <div class="col-9 col-md-8 col-lg-12{{marginSettings[i]}}">
                                     {{this.render('partials/_single-event.twig', {
                                         event: events[eventCount], 
                                         position: eventCount + 1, 
@@ -147,14 +152,14 @@
                                 <div class="col-12 d-block d-md-none">
                                     <hr class="o-rule">
                                 </div>
-                            {% endfor %}
-                        </div>
+                            </div>
+                        {% endfor %}
                     </div>
 
                     <div class="col-12 col-md-6">
-                        <div class="row">
-                            {% for i in 0..1 if events[eventCount] %}
-                                <div class="col-9 col-md-12{{marginSettings[i]}}">
+                        {% for i in 0..1 if events[eventCount] %}
+                            <div class="row justify-content-center">
+                                <div class="col-9 col-md-8 col-lg-12{{marginSettings[i]}}">
                                     {{this.render('partials/_single-event.twig', {
                                         event: events[eventCount], 
                                         position: eventCount + 1, 
@@ -167,8 +172,8 @@
                                 <div class="col-12 d-block d-md-none">
                                     <hr class="o-rule">
                                 </div>
-                            {% endfor %}
-                        </div>
+                            </div>
+                        {% endfor %}
                     </div>
                 </div>  
 

@@ -56,7 +56,13 @@
         font-weight: $weightBold;
         line-height: 1.71;
         letter-spacing: 0.35px;
-        @media #{$tablet-up}{
+        @media #{$tablet}{
+            @include font-size(16);
+            line-height: 1.65;
+            letter-spacing: 0.5px;
+        
+        }
+        @media #{$desktop-up}{
             @include font-size(20);
             line-height: 1.65;
             letter-spacing: 0.5px;
@@ -110,15 +116,15 @@
         color: $grey-1;
     }
 
-    &__excerpt {
-        color: rgba(0, 0, 0, 0.7);
-        font-family: $primaryFont;
-        @include font-size(15);
-        line-height: 1.6;
-        font-weight: $weightUltrabold;
-        @include margin-bottom(18);
-        letter-spacing: 0.8px;
-    }
+    // &__excerpt {
+    //     color: rgba(0, 0, 0, 0.7);
+    //     font-family: $primaryFont;
+    //     @include font-size(15);
+    //     line-height: 1.6;
+    //     font-weight: $weightUltrabold;
+    //     @include margin-bottom(18);
+    //     letter-spacing: 0.8px;
+    // }
     &__content {
 
         p,
@@ -127,11 +133,11 @@
         u,
         a {
 
-            color: $grey-2 !important;
-            font-family: $primaryFont !important;
+            color: $black !important;
+            font-family: $secondaryFont !important;
             font-size: 15px;
             line-height: 1.5 !important;
-            font-weight: $weightLight;
+            font-weight: $weightRegular;
             letter-spacing: 0.5px;
             margin-bottom: 20px;
             word-wrap: break-word;
@@ -140,7 +146,7 @@
             * {
                 line-height: 1.5 !important;
                 letter-spacing: 1px !important;
-                font-family: $primaryFont !important;
+                font-family: $secondaryFont !important;
                 word-wrap: break-word;
                 margin-bottom: 0px !important;
             }
@@ -149,7 +155,7 @@
         a {
             border-bottom: 1px solid $mainColor;
             @include transition(all 0.3s ease);
-            font-family: $primaryFont !important;
+            font-family: $secondaryFont !important;
             color: $mainColor;
 
             &:hover,
@@ -288,7 +294,7 @@
                 padding-left: 7px;
                 margin-bottom: 10px;
                 color: $grey-2 !important;
-                font-family: $primaryFont !important;
+                font-family: $secondaryFont !important;
                 font-size: 16px !important;
                 line-height: 1.6 !important;
                 font-weight: $weightRegular !important;
@@ -305,7 +311,7 @@
             span {
                 position: relative;
                 left: -22px;
-                font-family: $primaryFont !important;
+                font-family: $secondaryFont !important;
             }
         }
 
@@ -313,18 +319,7 @@
             list-style-type: decimal !important;
         }
     }
-    &__content {
-        p {
-            color: $grey-2;
-            font-family: $primaryFont;
-            font-size: 15px;
-            line-height: 1.5;
-            font-weight: $weightLight;
-            letter-spacing: 0.5px;
-            margin-bottom: 20px;
-            word-wrap: break-word;
-        }
-    }
+    
 
     &__map {
         @include margin-top(40);

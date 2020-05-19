@@ -25,6 +25,9 @@
         &__icon{
             margin-right: 15px;
         }
+        @media #{$tablet}{
+            bottom: -20px;
+        }
         @media #{$mobile}{
             bottom: -30px;
         }

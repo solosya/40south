@@ -34,7 +34,7 @@
 
     <div class="container u-margin-top-30">
         <div class="row">
-            <div class="col-12 col-md-9">
+            <div class="col-12 col-lg-9">
 
                 <div class="row">
                     <div class="col-12">
@@ -52,14 +52,17 @@
                         <a href="{{blogInfo.url}}"><p class="article-gallery__category">{{article.label}}</p></a>
                         <h1 class="article-gallery__title">{{ quotes.smarten(article.title) }}</h1>
                         <time class="article-gallery__date" datetime="{{publishedDate}}">{{article.publishedDate}}</time>
-
+                        
+                    </div>
+                    <div class="col-12 d-none d-md-block d-lg-none">
+                        <hr class="o-rule">
                     </div>
                 </div>
 
                 <div class="row">
                     <div class="col-12">
 
-                        <div class="c-article__container c-article__container-sm u-margin-top-40">
+                        <div class="c-article__container c-article__container-sm u-mobile-margin-top-30 u-desktop-margin-top-40">
                                 {{ ArticleContent | _resizeImages({'width': 600}) | raw }}
                         </div>
 
@@ -73,7 +76,7 @@
                 </div>
             </div>
 
-            <div class="d-none d-md-block col-md-3">
+            <div class="d-none d-lg-block col-lg-3">
 
             
                 <div id="owl-thumbs" class="owl-thumbs article-gallery__thumbs" data-slider-id="1">
@@ -98,19 +101,19 @@
         </div>
 
         {% set date = date() %}
-        {% set events = _Event.getEvents({"limit": 3, "start_date": date.date | split(" ")[0]}) %}
-        {# {% set events = _Event.getEvents({"limit": 3}) %} #}
+        {% set events = _Event.getEvents({"limit": 4, "start_date": date.date | split(" ")[0]}) %}
+        {# {% set events = _Event.getEvents({"limit": 4}) %} #}
 
 
         <div class="row">
             
-            {% set borderclass = [' u-border-right',' u-border-right',''] %}
-            {% for i in 0..2 if events[i] %}
-                <div class="col-12 col-md-4{{borderclass[i]}}">
+            {% set borderclass = ['',' u-desktop-border-right u-tablet-border-right u-tablet-padding-bottom-30 order-1',' u-desktop-border-right u-tablet-border-right order-2 order-md-3 order-lg-2',' u-tablet-padding-bottom-30 order-3 order-md-2 order-lg-3',' d-lg-none order-4'] %}
+            {% for event in events %}
+                <div class="col-12 col-md-6 col-lg-4 u-mobile-margin-bottom-15{{borderclass[loop.index]}}">
                     {{this.render('partials/_single-event.twig', {
-                        event: events[i], 
+                        event: event, 
                         imageSize: {width: 600, height: 600},
-                        containerClass: "event-card-1__mobile event-card-1__tablet event-card-1__desktop"
+                        containerClass: "event-card-1__mobile event-card-1__tablet event-card-1__desktop u-mobile-padding-bottom-15 u-mobile-border-bottom"
                     }) | raw}}
                     {% set eventCount = (dev) ? eventCount : eventCount + 1 %}
                 </div>

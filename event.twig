@@ -34,9 +34,9 @@
         <div class="row">
             <div class="col-12">
                 <div class="c-eventdetail">
-                    <div class="row u-margin-bottom-60">
+                    <div class="row u-margin-bottom-60 u-tablet-margin-bottom-40">
                         {% if eventImage %} 
-                            <div class="col-12 col-md-7 col-lg-8">
+                            <div class="col-12 col-lg-8">
                         
                                 <div class="c-eventdetail__media">
                                     <figure class="c-eventdetail__figure"> 
@@ -44,9 +44,9 @@
                                     </figure>
                                 </div>
                             </div>
-                            <div class="col-12 col-md-5 col-lg-4 u-desktop-border-left u-tablet-border-left">
-                                <div class="c-eventdetail__head c-eventdetail__head--image u-mobile-border-left">
-                                    <div class="c-eventdetail__category u-tablet-margin-top-30 u-desktop-margin-top-60">
+                            <div class="col-12 col-lg-4 u-desktop-border-left">
+                                <div class="c-eventdetail__head c-eventdetail__head--image u-mobile-border-left u-tablet-padding-left-30 u-tablet-border-left">
+                                    <div class="c-eventdetail__category d-md-none d-lg-block u-tablet-margin-top-30 u-desktop-margin-top-60">
                                         EVENTS
                                     </div>
                                     <div class="c-eventdetail__title">
@@ -56,6 +56,7 @@
                                         {{ quotes.smarten(event.excerpt | raw) }}
                                     </div>
                                 </div>
+                                
                              </div>
                         {% else %}
                             <div class="col-12">
@@ -67,6 +68,7 @@
                                         {{ quotes.smarten(event.title) }}  
                                     </div>
                                 </div>
+                                
                             </div>
                         {% endif %}
                     
@@ -75,7 +77,8 @@
                     <div class="c-eventdetail__container">
                         <div class="row">
 
-                            <div class="col-12 order-1 order-md-2">
+                            <div class="col-12 order-1 order-lg-2">
+                                <hr class="o-rule d-none d-md-block d-lg-none">
                                 <div class="c-eventdetail__info">
                                     <div class="row">
                                         <div class="col-12 col-md-4">
@@ -124,17 +127,17 @@
 
                                     </div>
                                 </div>
-                                
+                                <hr class="o-rule d-none d-md-block d-lg-none">
                             </div>
 
-                            <div class="col-12 order-2 order-md-1">
+                            <div class="col-12 order-2 order-lg-1">
                                 <div class="row">
-                                    <div class="col-12 col-md-6 col-lg-8 u-border-right">
-                                        <div class="c-eventdetail__content u-mobile-margin-top-20">
+                                    <div class="col-12 col-lg-8 u-desktop-border-right">
+                                        <div class="c-eventdetail__content u-mobile-margin-top-20 u-tablet-margin-top-40">
                                             {{ event.content | raw }}
                                         </div>
                                     </div>
-                                    <div class="col-12 col-md-6 col-lg-4">
+                                    <div class="col-12 col-lg-4">
                                          {% if config['inventory']['adSpace']['mrec'][0] is defined %}
                                             <div class="j-adslot" id="{{config['inventory']['adSpace']['mrec'][0]}}" data-adshape="mrec"></div>
                                         {% endif %}
@@ -165,59 +168,41 @@
 
 
             <div class="col-12 u-margin-top-60">
-                {# {% set events = _Event.getEvents({"limit": 6}) %} #}
-                {% set events = _Event.getEvents({"limit": 6, "start_date": date.date | split(" ")[0]}) %}
+                {% set events = _Event.getEvents({"limit": 6}) %}
+                {# {% set events = _Event.getEvents({"limit": 6, "start_date": date.date | split(" ")[0]}) %} #}
 
                 <div class="c-page-head c-page-head-xs">
                     <div class="u-heading__large u-heading__large-xs u-pr--6">Forthcoming Events</div>
                 </div>
                     
                 <div class="row">
-                    <div class="col-12 col-md-4 u-desktop-border-right u-tablet-border-right">
-                        <div class="row">
-                    
-                            {% for i in 0..1 if events[i] %}
-                                <div class="col-12{% if i < 1 %} u-margin-bottom-60{% endif %} u-mobile-no-margin-bottom">
-                                    {{this.render('partials/_single-event.twig', {
-                                        event: events[i], 
-                                        containerClass: "event-card-1__mobile event-card-1__tablet event-card-1__desktop"
-                                    }) | raw}}
-                                    <hr class="o-rule d-block d-md-none">
-                                </div>
-                            {% endfor %}
+            
+                    {% set borderclass = [
+                        '',
+                        ' u-tablet-border-right u-tablet-padding-bottom-30 u-desktop-border-right u-desktop-padding-bottom-30 order-1',
+                        ' u-tablet-border-right u-tablet-padding-bottom-30 u-desktop-border-right order-2 order-md-3 order-lg-4',
+                        ' u-tablet-border-right u-desktop-border-right u-desktop-padding-bottom-30 order-3 order-md-5 order-lg-2',
+                        ' u-tablet-padding-bottom-30 u-desktop-border-right order-4 order-md-2 order-lg-5',
+                        ' u-tablet-padding-bottom-30 u-desktop-padding-bottom-30 order-5 order-md-4 order-lg-3',
+                        ' order-6'
+                        ] %}
+                    {% for event in events %}
+                        <div class="col-12 col-md-6 col-lg-4 u-mobile-margin-bottom-15{{borderclass[loop.index]}}">
+                            {{this.render('partials/_single-event.twig', {
+                                event: event, 
+                                imageSize: {width: 600, height: 600},
+                                containerClass: "event-card-1__mobile event-card-1__tablet event-card-1__desktop u-mobile-padding-bottom-15 u-mobile-border-bottom"
+                            }) | raw}}
+                            {% set eventCount = (dev) ? eventCount : eventCount + 1 %}
                         </div>
-                    </div>
-                    <div class="col-12 col-md-4 u-desktop-border-right u-tablet-border-right">
-                        <div class="row">
+                    {% endfor %}
                     
-                            {% for i in 2..3 if events[i] %}
-                                <div class="col-12{% if i < 3 %} u-margin-bottom-60{% endif %} u-mobile-no-margin-bottom">
-                                    {{this.render('partials/_single-event.twig', {
-                                        event: events[i], 
-                                        containerClass: "event-card-1__mobile event-card-1__tablet event-card-1__desktop"
-                                    }) | raw}}
-                                    <hr class="o-rule d-block d-md-none">
-                                </div>
-                            {% endfor %}
-                        </div>
-                    </div>
-                    <div class="col-12 col-md-4">
-                        <div class="row">
-                    
-                            {% for i in 4..5 if events[i] %}
-                                <div class="col-12{% if i < 5 %} u-margin-bottom-60{% endif %} u-mobile-no-margin-bottom">
-                                    {{this.render('partials/_single-event.twig', {
-                                        event: events[i], 
-                                        containerClass: "event-card-1__mobile event-card-1__tablet event-card-1__desktop"
-                                    }) | raw}}
-                                    <hr class="o-rule d-block d-md-none">
-                                </div>
-                            {% endfor %}
-                        </div>
-                    </div>
                 </div>
 
             </div>
+
+
+        
             
         </div>
     </div>

@@ -12,15 +12,15 @@
 </div>
 
 {% set date = date() %}
-{% set events = _Event.getEvents({"limit": 9, "start_date": date.date | split(" ")[0]}) %}
-{# {% set events = _Event.getEvents({"limit": 9}) %} #}
+{# {% set events = _Event.getEvents({"limit": 9, "start_date": date.date | split(" ")[0]}) %} #}
+{% set events = _Event.getEvents({"limit": 9}) %}
 
 
     <div class="row">
-        <div class="col-12 col-md-4 u-border-right">
+        <div class="col-12 col-md-6 col-lg-4 u-border-right">
             <div class="row">
                 {% for i in 0..2 if events[i] %}
-                    <div class="col-12{% if i < 2 %} u-margin-bottom-60{% endif %} u-mobile-margin-bottom-30">
+                    <div class="col-12{% if i < 2 %} u-tablet-margin-bottom-30 u-desktop-margin-bottom-60{% endif %} u-mobile-margin-bottom-30">
                         {{this.render('../_single-event.twig', {
                             event: events[i], 
                             imageSize: {width: 260, height: 230},
@@ -31,10 +31,10 @@
                 {% endfor %}
             </div>
         </div>
-        <div class="col-12 col-md-4 u-border-right">
+        <div class="col-12 col-md-6 col-lg-4 u-desktop-border-right">
             <div class="row">
                 {% for i in 3..5 if events[i] %}
-                    <div class="col-12{% if i < 5 %} u-margin-bottom-60{% endif %} u-mobile-margin-bottom-30">
+                    <div class="col-12{% if i < 5 %} u-tablet-margin-bottom-30 u-desktop-margin-bottom-60{% endif %} u-mobile-margin-bottom-30">
                         {{this.render('../_single-event.twig', {
                             event: events[i], 
                             imageSize: {width: 260, height: 230}, 
@@ -45,10 +45,10 @@
                 {% endfor %}
             </div>
         </div>
-        <div class="col-12 col-md-4">
+        <div class="col-12 col-md-6 col-lg-4 d-none d-lg-block">
             <div class="row">
                 {% for i in 6..8 if events[i] %}
-                    <div class="col-12{% if i < 8 %} u-margin-bottom-60{% endif %} u-mobile-margin-bottom-30">
+                    <div class="col-12{% if i < 8 %} u-margin-bottom-60{% endif %}">
                         {{this.render('../_single-event.twig', {
                             event: events[i], 
                             imageSize: {width: 260, height: 230}, 

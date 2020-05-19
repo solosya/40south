@@ -103,11 +103,11 @@
                 }
                 
                 &__time{
-                    @include font-size(23);
-                    
+                    @include font-size(20);
+                    margin-bottom: 10px;
                 }
                 &__heading{
-                    @include font-size(18);
+                    @include font-size(16);
                 }
             }
         }

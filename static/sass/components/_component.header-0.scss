@@ -18,6 +18,7 @@
         @media #{$tablet}{
             height: 100px;
             position: relative;
+            border-bottom: 1px solid $grey-7;
         }
         @media #{$mobile} {
             height: 53px;

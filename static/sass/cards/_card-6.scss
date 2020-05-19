@@ -135,27 +135,40 @@
 
             &__media{
                 height: 180px;
+                width: 180px;
             }
        
             &__container {
-                width: calc(55% - 35px);
+                width: calc(100% - 215px);
                 margin-left: 35px;
-
+                @include flexbox();
+                @include flex-direction(column,vertical);
             }
 
             &__category {
-                margin-top:10px;
+                margin-top:0;
+                order: 1;
             }
 
             &__heading {
-                @include flex-height(80px);
+                @include flex-height(66px);
                 @include font-size(22);
                 font-weight: $weightBold;
+                order: 2;
 
             }
 
+            &__description{
+                display: block;
+                @include flex-height(64px);
+                @include font-size(16);
+                order: 3;
+            }
+
             &__author {
-                margin-top:30px;
+                order: 4;
+                margin-top:0;
+                padding-top: 5px;
                 &-name{
                     @include font-size(13);
                 }

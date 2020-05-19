@@ -22,29 +22,26 @@
             containerClass: "card-3-mobile card-7-tablet card-7-desktop u-desktop-padding-bottom-40 u-desktop-border-bottom u-desktop-margin-bottom-40"
         }) | raw}}
         {% set articleCount = (dev) ? articleCount : articleCount + 1 %}
-        <hr class="o-rule d-md-none">
+        <hr class="o-rule d-lg-none">
     </div>
 
     <div class="col-12">
         <div class="row">
-            {% set indexClass = [' col-md-5 col-lg-4 offset-lg-1 offset-md-0',' col-md-5 col-lg-4'] %}
+            {% set indexClass = [' u-tablet-border-right u-desktop-border-right',''] %}
             {% for i in 0..1 if articles[articleCount] %}
-                
-                <div class="col-10 offset-1{{indexClass[i]}}">
-                    {{this.render('../_single-article.twig', {
-                        article: articles[articleCount], 
-                        position: (articleCount+1),
-                        imageSize: {width: 720, height: 720},
-                        containerClass: "card-8-mobile card-8-tablet card-8-desktop"
-                    }) | raw}}
-                    {% set articleCount = (dev) ? articleCount : articleCount + 1 %}
-                </div>
-                {% if i == 0 %}
-                    <div class="col-12 d-block d-md-none">
-                        <hr class="o-rule">
+                <div class="col-12 col-md-6{{indexClass[i]}}">
+                    <div class="row justify-content-center">
+                        <div class="col-10 col-lg-8">
+                            {{this.render('../_single-article.twig', {
+                                article: articles[articleCount], 
+                                position: (articleCount+1),
+                                imageSize: {width: 720, height: 720},
+                                containerClass: "card-8-mobile card-8-tablet card-8-desktop"
+                            }) | raw}}
+                            {% set articleCount = (dev) ? articleCount : articleCount + 1 %}
+                        </div>
                     </div>
-                    <div class="col-1 d-none d-md-block u-border-right" styles="height:100%"></div>
-                {% endif %}
+                </div>
             {% endfor %}  
         </div>
         

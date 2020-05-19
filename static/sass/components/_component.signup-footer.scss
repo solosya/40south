@@ -16,15 +16,20 @@
     }
 
     &__text{
-       font-family: $secondaryFont;
-       @include font-size(14);
-       line-height: 1.22;
-       color: $white;
-       @media #{$desktop-up}{
-        @include font-size(18);
+        font-family: $secondaryFont;
+        @include font-size(14);
+        line-height: 1.22;
+        color: $white;
+       
+        @media #{$desktop-up}{
+            @include font-size(18);
+        }
     }
+    &__button{
+        @media #{$tablet}{
+            width: 100%;
+        }
     }
-
 
 
 }

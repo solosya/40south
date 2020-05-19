@@ -106,7 +106,30 @@
             .c-eventcards-view{
                 &__media{
                     width: 100%;
-                    margin: 0;
+                    margin: 0 0 10px 0;
+                    max-height: 331px;
+
+                }
+                &__category{
+                    @include font-size(13);
+
+                }
+                &__time{
+                    @include font-size(18);
+                }
+                &__heading{
+                    @include font-size(26);
+                }
+                &__author{
+                    &__name{
+                        @include font-size(13);
+                    }
+                }
+                &__icon--pin{
+                    width: 13px;
+                    >svg{
+                        width: 13px;
+                    }
                 }
             }
         }
