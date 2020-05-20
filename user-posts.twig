@@ -28,7 +28,7 @@
                                 <li><a href="#"><i class="fa fa-instagram"></i></a></li>
                                 <li><a href="#"><i class="fa fa-youtube-play"></i></a></li>
                             </ul> #}
-                            <p class="c-author__text c-author__text-md">{{Html.decode(user.bio) | raw}}</p>
+                            <p class="c-author__text c-author__text-md d-none d-md-block">{{Html.decode(user.bio) | raw}}</p>
                         </div>
 
                     </div>
@@ -38,12 +38,16 @@
                         
                     </div> #}
                 </div>
+                <hr class="o-rule d-none d-md-block">
+            </div>
+            <div class="col-12 d-md-none">
+                <p class="c-author__text c-author__text-md">{{Html.decode(user.bio) | raw}}</p>
                 <hr class="o-rule">
             </div>
         </div>
         <div class="row">
             <div class="col-12 col-md-10 offset-md-1">
-                <div id="loadmore_section" class="row">
+                <div id="loadmore_section" class="row justify-content-center">
                         
                     {% for i in 0..3 if userArticles[articleCount] %}
                         
@@ -51,7 +55,7 @@
                             article: userArticles[articleCount], 
                             position: (articleCount+1),
                             imageSize: {width: 720, height: 720},
-                            containerClass: "card-8-mobile card-8-tablet card-8-desktop col-12 col-md-6 u-loadmore-card-2s"
+                            containerClass: "card-8-mobile card-8-tablet card-8-desktop col-8 col-md-6 u-loadmore-card-2s"
                         }) | raw}}
                         {% set articleCount = (dev) ? articleCount : articleCount + 1 %}
                         
@@ -64,7 +68,7 @@
 
 
         <div class="row">
-            <div class="col-md-8">
+            <div class="col-12">
                 {% if userArticles|length >= limit %}
                     <section class="">
                         <div class="row">
@@ -72,7 +76,7 @@
                                 {{ this.render('partials/ajaxarticles_new.twig', {
                                     name            : "user-load",
                                     label           : "SEE MORE",
-                                    buttonClass     : "c-button c-button--blue-bordered u-margin-bottom-40",
+                                    buttonClass     : "c-button c-button--blue-bordered c-button--wide c-button--center c-button-block u-margin-bottom-40",
                                 }) | raw }}
                             </div>
                         </div>

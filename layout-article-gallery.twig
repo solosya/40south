@@ -109,11 +109,11 @@
             
             {% set borderclass = ['',' u-desktop-border-right u-tablet-border-right u-tablet-padding-bottom-30 order-1',' u-desktop-border-right u-tablet-border-right order-2 order-md-3 order-lg-2',' u-tablet-padding-bottom-30 order-3 order-md-2 order-lg-3',' d-lg-none order-4'] %}
             {% for event in events %}
-                <div class="col-12 col-md-6 col-lg-4 u-mobile-margin-bottom-15{{borderclass[loop.index]}}">
+                <div class="col-12 col-md-6 col-lg-4 u-mobile-margin-bottom-30{{borderclass[loop.index]}}">
                     {{this.render('partials/_single-event.twig', {
                         event: event, 
                         imageSize: {width: 600, height: 600},
-                        containerClass: "event-card-1__mobile event-card-1__tablet event-card-1__desktop u-mobile-padding-bottom-15 u-mobile-border-bottom"
+                        containerClass: "event-card-1__mobile event-card-1__tablet event-card-1__desktop"
                     }) | raw}}
                     {% set eventCount = (dev) ? eventCount : eventCount + 1 %}
                 </div>

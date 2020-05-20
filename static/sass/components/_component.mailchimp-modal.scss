@@ -9,12 +9,17 @@
 
 .mailchimp-modal__window {
     margin: auto auto;
-    width:731px;
-    //height: 562px;
+    //SETGUTTER
+    width: auto;
     background:white;
-    padding:0 20px 20px;
+    padding:0 15px 20px;
     border-radius:0;
     text-align: center;
+    @media #{$tablet-up}{
+        width:731px;
+        padding:0 20px 20px;
+    
+    }
     @media #{$media-ipadSmall} {
         width:auto;
     }
@@ -37,24 +42,36 @@
 
 }
 .mailchimp-modal__description {
-    padding: 0 60px;
     @include font-size(18);
     text-align:center;
     font-weight: $weightRegular;
+    @media #{$tablet-up}{
+        padding: 0 60px;
+    
+    }
 
     // margin-bottom:28px;
 }
 
 .mailchimp-modal__title {
-    @include font-size(40);
-    padding: 0 60px;
+    @include font-size(30);
+    padding: 0 30px;
     text-align:center;
     font-weight: $weightBold;
     margin-bottom:15px;
+    @media #{$tablet-up}{
+        @include font-size(40);
+        padding: 0 60px;
+    
+    }
 }
 
 .mailchimp-modal__inputs {
-    padding: 30px 135px;
+    padding: 30px 0;
+    @media #{$tablet-up}{
+        padding: 30px 135px;
+    }
+    
     >.c-form__buttons{
         margin-top: 40px;
     }

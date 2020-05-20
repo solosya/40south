@@ -29,7 +29,7 @@
                                 {% if input.type != "textarea" %}
                                     <input id="{{input.id}}" class="c-form__input c-account-form__input" name="{{input.id}}" placeholder="{{input.name}}">
                                 {% else %}
-                                    <textarea class="c-form__input" id="{{input.id}}"  name="{{input.id}}" placeholder="{{input.name}}" aria-required="{{input.required}}" type="{{input.type}}"
+                                    <textarea class="c-form__input c-account-form__textarea" id="{{input.id}}"  name="{{input.id}}" placeholder="{{input.name}}" aria-required="{{input.required}}" type="{{input.type}}"
                                     style="min-height: 230px;"></textarea>
                                 {% endif %}
                                     <div class="c-form__help-block"></div>
