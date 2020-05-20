@@ -28190,6 +28190,21 @@ $('document').ready(function() {
         }
     });
 
+    $(".list-arrow-container-sub").on('click', function(e) {
+
+        $parent = $(this).parent();
+        var isActive = $parent.hasClass('active');
+        $('.custom-menu-child').each(function() {
+            var elem = $(this);
+            elem.removeClass('active');
+            elem.find('.custom-menu-child-sub').removeClass('custom-menu-child-sub--active');
+        });
+        if (!isActive) {
+            $parent.addClass('active');
+            $(this).siblings('.custom-menu-child-sub').addClass('custom-menu-child-sub--active');
+        }
+    });
+
 
 
 
