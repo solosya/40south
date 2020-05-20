@@ -772,6 +772,9 @@ hr.divide {
         color: $mainColor !important;
     }
 }
+.active>.u-menu__highlight{
+    color: $main80 !important;
+}
 
 
 .x-close {
