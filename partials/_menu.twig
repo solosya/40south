@@ -55,7 +55,9 @@
                             {{ ((childItem.label is empty) ? ((childItem.pageTitle is empty) ? childItem.blogTitle : childItem.pageTitle) : childItem.label)}}
                         </a>
                         {% if childItem.children is defined and childItem.children | length > 0 %}
-
+                            <div class="list-arrow-container-sub">
+                                <div class="list-arrow list-arrow--light"><span class="o-arrow"></span></div>
+                            </div>
                             <ul class="custom-menu-child-sub">
                                 {% for babyItem in childItem.children %}
                                     <li class="">

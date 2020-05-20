@@ -33,18 +33,18 @@
                 white-space: nowrap;
                 
                 &.active {
-                    color: $mainColor;
-                    @media #{$desktop-up}{
-                        &:after {
-                            content: '';
-                            height:1px;
-                            width:15px;
-                            background:$mainColor;
-                            position: absolute;
-                            left: 55px;
-                            bottom: -3px;
-                        }
-                    }
+                    color: $main80;
+                    // @media #{$desktop-up}{
+                    //     &:after {
+                    //         content: '';
+                    //         height:1px;
+                    //         width:15px;
+                    //         background:$mainColor;
+                    //         position: absolute;
+                    //         left: 55px;
+                    //         bottom: -3px;
+                    //     }
+                    // }
                 }
 
                 &:hover {
