@@ -83,7 +83,7 @@
 
 
     {% if _AppHelper.getApplicationEnv() == 'PROD'%}
-        <link rel="stylesheet" href="{{networkData.templatePath}}/static/deploy/concat.min.css?v=a5585e29" type="text/css" media="all">
+        <link rel="stylesheet" href="{{networkData.templatePath}}/static/deploy/concat.min.css?v=98dcca6b" type="text/css" media="all">
     {% else %}
 
         <link rel='stylesheet' href='{{networkData.templatePath}}/static/deploy/concat.css' type='text/css' media='all' />
@@ -206,7 +206,7 @@
     </div> #}
 
     {% if config['inventory']['adSpace']['banner'][1] is defined %}
-        <div class="j-adslot advertisment__head u-margin-top-40 u-margin-bottom-40" id="{{config['inventory']['adSpace']['banner'][1]}}" data-adshape="banner"></div>
+        <div class="j-adslot advertisment__footer u-margin-top-40 u-margin-bottom-40" id="{{config['inventory']['adSpace']['banner'][1]}}" data-adshape="banner"></div>
     {% endif %}
 
 
