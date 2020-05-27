@@ -54,9 +54,10 @@
             font-weight: normal;
             font-stretch: normal;
             font-style: normal;
-            line-height: 2.5;
+            line-height: 1.5;
             letter-spacing: 1px;
             color: $gblue;
+            margin-bottom: 10px;
             @include transition(all 0.3s ease);
 
             @media #{$mobile} {
