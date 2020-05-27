@@ -1,5 +1,5 @@
 {% set link = _Blog.getHomeBlogSettings() %}
-{% set logo = networkData.templatePath~'/static/images/logo.svg'%}
+{% set logo = networkData.templatePath~'/static/images/logo.svg?v=1'%}
 {% set connectMenu = _Menu.get({'menuType': 'header', 'menuGroupName': 'connect-menu'}) %}
 {% set policiesMenu = _Menu.get({'menuType': 'header', 'menuGroupName': 'policies-menu'}) %}
 {% set sponsorMenu = _Menu.get({'menuType': 'header', 'menuGroupName': 'sponsor-menu'}) %}
@@ -13,7 +13,7 @@
                     <div class="row">
                         <div class="col-12 col-lg-4 u-margin-top-40">
                             <a href="{{networkData.defaultBlogUrl}}" class="c-footer__logo">
-                                <img src="{{logo}}?v=2" class="image-fluid"/>
+                                <img src="{{logo}}" class="image-fluid"/>
                             </a>
 
                             <div class="c-footer__social">
