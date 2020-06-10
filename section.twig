@@ -7,7 +7,7 @@
 
 
 
-{% set limit = 13 %}
+{% set limit = 14  %}
 
 {% set articlesArr = _Blog.getBlogFeed({'limit': limit, 'offset': 0}) %}
 {% set articles = articlesArr.articles %}
@@ -83,41 +83,49 @@
 
 
         <div class="row u-margin-top-60 u-mobile-margin-top-40">
-            {% if articles[articleCount] %}
-            <div class="col-12 col-lg-8 u-desktop-border-right">
-                <div class="row">
-                    <div class="col-12">
-                        {{this.render('partials/_single-article.twig', {
-                            article: articles[articleCount], 
-                            position: (articleCount+1),
-                            imageSize: {width: 1200, height: 1200},
-                            containerClass: "card-3-mobile card-7-tablet card-3-desktop"
-                        }) | raw}}
-                        {% set articleCount = (dev) ? articleCount : articleCount + 1 %}
-                    </div>
-                    
+            <div class="col-12 col-md-8 u-tablet-border-right u-desktop-border-right">
+                
+                <div class="row justify-content-center">
+                    {% if articles[articleCount] %}
+                        <div class="col-12 u-tablet-margin-bottom-30">
+                            {{this.render('partials/_single-article.twig', {
+                                article: articles[articleCount], 
+                                position: (articleCount+1),
+                                imageSize: {width: 1200, height: 1200},
+                                containerClass: "card-3-mobile card-5-tablet card-5-desktop"
+                            }) | raw}}
+                            {% set articleCount = (dev) ? articleCount : articleCount + 1 %}
+                            <hr class="o-rule d-md-none">
+                        </div>
+                    {% endif %}
+                    {% if articles[articleCount] %}
+                        <div class="col-8 col-md-12 u-desktop-margin-top-40">
+                            {{this.render('partials/_single-article.twig', {
+                                article: articles[articleCount], 
+                                position: (articleCount+1),
+                                imageSize: {width: 640, height: 480},
+                                containerClass: "card-4-mobile card-6-tablet card-6-desktop"
+                            }) | raw}}
+                            {% set articleCount = (dev) ? articleCount : articleCount + 1 %}
+                        </div>
+                    {% endif %}
                 </div>
-                <hr class="o-rule d-lg-none">
+                <hr class="o-rule d-md-none">
             </div>
-            {% endif %}
             
-            <div class="col-12 col-lg-4">
-                <div class="row justify-content-center justify-content-lg-start">
+            <div class="col-12 col-md-4">
+                <div class="row">
                     {% for i in 0..1 if articles[articleCount] %}
-                        <div class="col-8 col-md-12 col-lg-10 offset-lg-1">
+                        <div class="col-8 offset-2 col-md-12 offset-md-0 col-lg-10 offset-lg-1">
                             {{this.render('partials/_single-article.twig', {
                                 article: articles[articleCount], 
                                 position: (articleCount+1),
                                 imageSize: {width: 600, height: 600},
-                                containerClass: "card-4-mobile card-6-tablet card-4-desktop" ~ indexClass[i]
+                                containerClass: "card-4-mobile card-4-tablet card-4-desktop" ~ indexClass[i]
                             }) | raw}}
                             {% set articleCount = (dev) ? articleCount : articleCount + 1 %}
                         </div>
-                        {% if i == 0 %}
-                            <div class="col-12"><hr class="o-rule"></div> 
-                        {% else %}
-                            {# <div class="col-12 d-md-none"><hr class="o-rule"></div> #}
-                        {% endif %} 
+                        {% if i == 0 %}<div class="col-12"><hr class="o-rule"></div>{% endif %} 
                     {% endfor %}  
                 </div>
                 
