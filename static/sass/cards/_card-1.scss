@@ -160,7 +160,7 @@
 .card-1-tablet {
 	@media #{$tablet} {
         @include card-1-tablet-base();
-        @include card-name("C1 desktop");
+        @include card-name("C1 tablet");
         .c-cards-view {
             
             &__media {
@@ -196,7 +196,8 @@
                 margin-left: 0;
                 width:100%;
                 right: 0;
-                padding: 0 20% 60px 35px;
+                padding: 0 20% 20px 35px;
+                height: unset;
             }
 
             &__description{
@@ -207,8 +208,9 @@
                 padding-top: 25px;
                 margin-top: 25px;
                 border-top: 1px solid $grey-4;
-                max-height: 100px;
+                min-height: 100px;
                 display: block;
+                max-height: 150px;
             }
 
             &__time{
