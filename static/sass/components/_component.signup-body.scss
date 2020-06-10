@@ -25,10 +25,10 @@
             width: 285px;
         }
         @media #{$tablet}{
-            width: 285px;
+            width: 250px;
             position: absolute;
             display: block;
-            top: 0;
+            top: 10px;
             right: 0;
         }
         @media #{$desktop-up}{

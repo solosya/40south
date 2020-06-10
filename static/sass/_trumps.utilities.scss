@@ -587,6 +587,11 @@ hr.divide {
             @include font-size(40);
         }
 
+        @media #{$tablet}{
+            @include font-size(26);
+            letter-spacing: 1.5px;
+        }
+
         @media #{$mobile}{
             @include font-size(22);
             letter-spacing: 1.5px;
