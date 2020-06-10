@@ -29,6 +29,9 @@
         @include margin-bottom(6);
         text-transform: uppercase;
         letter-spacing: 0.9px;
+        @media #{$tablet}{
+            @include font-size(13);
+        }
     }
 
     &__address {
@@ -97,7 +100,12 @@
         @include margin-bottom(30);
         letter-spacing: normal;
 
-        @media #{$tablet-up}{
+        @media #{$tablet}{
+            @include font-size(26);
+        
+        }
+
+        @media #{$desktop-up}{
             @include font-size(40);
         
         }
@@ -145,8 +153,8 @@
         @include margin-bottom(22);
     }
     &__avatar {
-        width: 30px;
-        height: 30px;
+        width: 43px;
+        height: 43px;
         @include border-radius(100%);
         background-position: center center;
         @include background-size(contain);

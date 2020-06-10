@@ -1,6 +1,9 @@
 .c-signup-body {
     padding: 15px 35px;
     position: relative;
+    @media #{$tablet}{
+        padding: 20px 0;
+    }
 
     &__text{
         @include font-size(40);
@@ -11,19 +14,22 @@
         letter-spacing: normal;
         color: $grey-2;
         @media #{$tablet}{
+            @include font-size(26);
             line-height: 0.8;
-            text-align: center;
+            
         }
     }
 
     &__button{
-        @media #{$tablet-up}{
+        @media #{$desktop-up}{
             width: 285px;
         }
         @media #{$tablet}{
-            position: relative;
-            margin: 30px auto 0;
+            width: 285px;
+            position: absolute;
             display: block;
+            top: 0;
+            right: 0;
         }
         @media #{$desktop-up}{
             position: absolute;

@@ -70,6 +70,12 @@
 .card-9-tablet {
     @media #{$tablet} {
         @include card-9-base();
+        .c-cards-view {
+            &__heading {
+                @include font-size(18);
+                
+            }
+        }
     }
 }
 

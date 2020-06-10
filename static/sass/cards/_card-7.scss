@@ -128,7 +128,7 @@
 
         &__heading {
             @include flex-height(40px);
-            @include font-size(32);
+            @include font-size(30);
             font-weight: $weightUltrabold;
         }
 

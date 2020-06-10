@@ -10,7 +10,9 @@
         padding-bottom: 25px;
         // margin-bottom: 25px;
         text-align: center;
-
+        @media #{$tablet}{
+            @include font-size(26);
+        }
         &--before{
             &:before {
                 content: '';
