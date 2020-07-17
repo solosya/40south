@@ -24406,7 +24406,12 @@ Acme.templates.mailChimpSignup =
                         var self = data[k];
                         keys = self.keywords.split(',');
                         if (self.media.path){
-                            $("#"+keys[0]).html("<div class='advertisment advertisment__"+keys[0]+" advertisment__"+keys[1]+"'><a href='"+self.button.url+"'><img src='"+self.media.path+"'></a></div>");
+                            var settings = self.button.url.split(' ');
+                            var extras = " ";
+                            for (i=1;i<settings.length;i++){
+                                extras = extras + ' ' + settings[i]
+                            }
+                            $("#"+keys[0]).html("<div class='advertisment advertisment__"+keys[0]+" advertisment__"+keys[1]+"'><a href='"+settings[0]+"'"+extras+"><img src='"+self.media.path+"'></a></div>");
                         } else if (self.description){
                             $("#"+keys[0]).html("<div class='advertisment advertisment__"+keys[0]+" advertisment__"+keys[1]+"'>"+self.description+"</div>");
                         }
@@ -28226,6 +28231,11 @@ $('document').ready(function() {
         if (!(figureStyle) && !(figureClassLeft) && !(figureClassRight)) {
             $(this).after('<div class="clearfix"></div>');
         }
+    });
+
+    $('.j-description-more').click(function(){
+        $(this).addClass('d-none');
+        $('#j-description').removeClass('u-heading__description--coverup');
     });
 
 

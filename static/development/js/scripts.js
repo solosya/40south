@@ -280,6 +280,11 @@ $('document').ready(function() {
         }
     });
 
+    $('.j-description-more').click(function(){
+        $(this).addClass('d-none');
+        $('#j-description').removeClass('u-heading__description--coverup');
+    });
+
 
 
     var truncate = '';
