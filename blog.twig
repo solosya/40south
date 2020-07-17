@@ -38,12 +38,14 @@
     <div class="container">
 
         <div class="row">
-            <div class="col-12 u-mobile-no-padding">
+            <div class="col-12 u-mobile-no-padding u-margin-bottom-40">
                 <div class="c-page-head c-page-head-xs">
                     <div class="u-heading__large u-heading__large-xs u-pr--6">{{blogData.title}}</div>
-                    <div class="u-heading__description u-heading__description--coverup u-margin-bottom-20" id="j-description">{{blogData.shortDescription}}</div>
-                    <div class="d-block d-md-none u-heading__description--more j-description-more">READ MORE</div>
                 </div>
+                {% if blogData.shortDescription != '' %}
+                    <div class="u-heading__description u-heading__description--coverup" id="j-description">{{blogData.shortDescription}}</div>
+                    <div class="d-md-none u-heading__description--more j-description-more">READ MORE</div>
+                {% endif %}
             </div>
             <div class="col-12">
                 {% if articles[articleCount] %}
