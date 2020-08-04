@@ -101,17 +101,24 @@
 
                                         {% set contactDetails = "" %}
 
-                                        {% if event.contactNumber != "" %}
-                                            {% set contactDetails = event.contactNumber %}
+                                        {% if event.website != "" %}
+                                            {% set contactDetails = event.website %}
+                                            {% if event.contactNumber != "" %}
+                                                {% set contactDetails = contactDetails ~ '<br>Call ' ~ event.contactNumber %}
+                                            {% endif %}
+                                        {% else if event.contactNumber != "" %}
+                                            {% set contactDetails = 'Call ' ~ event.contactNumber %}
                                         {% endif %}
 
-                                        {% if event.contactEmail != "" %}
+                                        
+
+                                        {# {% if event.contactEmail != "" %}
                                             {% if contactDetails != "" %}
                                                 {% set contactDetails = contactDetails ~ ", " ~ event.contactEmail %}
                                             {% else %}
                                                 {% set contactDetails = event.contactEmail %}
                                             {% endif %}
-                                        {% endif %}
+                                        {% endif %} #}
 
 
                                         {% if contactDetails != "" %}
@@ -119,7 +126,7 @@
                                                 <div class="c-eventdetail__info-item">
                                                     <span class="c-eventdetail__info-head">Contact</span>
                                                     
-                                                    <span class="c-eventdetail__info-text" >Contact {{event.contactName}} on <br />{{contactDetails}}</span>
+                                                    <span class="c-eventdetail__info-text" >Call {{contactDetails|raw}}</span>
                                                 </div>
                                                 <hr class="o-rule d-block d-md-none">
                                             </div>
