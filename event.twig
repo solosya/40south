@@ -101,12 +101,12 @@
 
                                         {% set contactDetails = "" %}
 
-                                        {% if event.website != "" %}
-                                            {% set contactDetails = event.website %}
+                                        {% if event.websiteUrl != "" %}
+                                            {% set contactDetails = event.websiteUrl %}
                                             {% if event.contactNumber != "" %}
                                                 {% set contactDetails = contactDetails ~ '<br>Call ' ~ event.contactNumber %}
                                             {% endif %}
-                                        {% else if event.contactNumber != "" %}
+                                        {% elseif event.contactNumber != "" %}
                                             {% set contactDetails = 'Call ' ~ event.contactNumber %}
                                         {% endif %}
 
@@ -126,7 +126,7 @@
                                                 <div class="c-eventdetail__info-item">
                                                     <span class="c-eventdetail__info-head">Contact</span>
                                                     
-                                                    <span class="c-eventdetail__info-text" >Call {{contactDetails|raw}}</span>
+                                                    <span class="c-eventdetail__info-text" >{{contactDetails|raw}}</span>
                                                 </div>
                                                 <hr class="o-rule d-block d-md-none">
                                             </div>
