@@ -102,7 +102,7 @@
                                         {% set contactDetails = "" %}
 
                                         {% if event.websiteUrl != "" %}
-                                            {% set contactDetails = event.websiteUrl %}
+                                            {% set contactDetails = '<a href="' ~ event.websiteUrl ~ '">' ~ event.websiteUrl ~'</a>' %}
                                             {% if event.contactNumber != "" %}
                                                 {% set contactDetails = contactDetails ~ '<br>Call ' ~ event.contactNumber %}
                                             {% endif %}
