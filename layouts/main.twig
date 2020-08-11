@@ -164,102 +164,115 @@
 <body class="body {{ layout }} {{ pageClass }}" data-class="{{ pageClass | split(' ')[0] }}"  data-networkid="{{networkData['id']}}" data-v="27">
 
 {{ this.beginBody() }}
+
+    {% if 'auth login' not in pageClass %}
     
-    {% if config['inventory']['adSpace']['banner'][0] is defined and (config['inventory']['Under header'] != 1  ) %}
-        <div class="j-adslot advertisment__head u-margin-bottom-25" id="{{config['inventory']['adSpace']['banner'][0]}}" data-adshape="banner"></div>
-    {% endif %}
+        {% if config['inventory']['adSpace']['banner'][0] is defined and (config['inventory']['Under header'] != 1  ) %}
+            <div class="j-adslot advertisment__head u-margin-bottom-25" id="{{config['inventory']['adSpace']['banner'][0]}}" data-adshape="banner"></div>
+        {% endif %}
 
+        
 
+        {% set headerStyle = '0' %}
+        {% if config['header-style'] is defined %}
+            {% set headerStyle = config['header-style'] %}
+        {% endif %}
 
-    {% set headerStyle = '0' %}
-    {% if config['header-style'] is defined %}
-        {% set headerStyle = config['header-style'] %}
-    {% endif %}
-
-    {{ this.render('partials/header/_header_' ~ headerStyle ~ '.twig', {
-        networkData: networkData, 
-        paymeter: paymeter,
-        config: config
-    }) | raw }}
-
-
-
-
-
-    {% if config['inventory']['adSpace']['banner'][0] is defined and (config['inventory']['Under header'] is defined and config['inventory']['Under header'] == 1  ) %}
-        <div class="j-adslot advertisment__head" id="{{config['inventory']['adSpace']['banner'][0]}}" data-adshape="banner"></div>
-    {% endif %}
+        {{ this.render('partials/header/_header_' ~ headerStyle ~ '.twig', {
+            networkData: networkData, 
+            paymeter: paymeter,
+            config: config
+        }) | raw }}
 
 
 
 
-    {% if showPaywall == false %}
-        {{ content | raw }}
-    {% endif %}
+
+        {% if config['inventory']['adSpace']['banner'][0] is defined and (config['inventory']['Under header'] is defined and config['inventory']['Under header'] == 1  ) %}
+            <div class="j-adslot advertisment__head" id="{{config['inventory']['adSpace']['banner'][0]}}" data-adshape="banner"></div>
+        {% endif %}
 
 
 
-    {# <div class="modal" role="dialog">
-        <div class="" role="document">
-            <div class=""></div>
-        </div>
-    </div> #}
 
-    {% if config['inventory']['adSpace']['banner'][1] is defined %}
-        <div class="j-adslot advertisment__footer" id="{{config['inventory']['adSpace']['banner'][1]}}" data-adshape="banner"></div>
-    {% endif %}
+        {% if showPaywall == false %}
+            {{ content | raw }}
+        {% endif %}
 
 
-    {% set footerTemplate = '' %}
-    {% if config['footer-style'] is defined %}
-        {% set footerTemplate = "_" ~ config['footer-style'] %}
-    {% endif %}
 
+        {# <div class="modal" role="dialog">
+            <div class="" role="document">
+                <div class=""></div>
+            </div>
+        </div> #}
+
+        {% if config['inventory']['adSpace']['banner'][1] is defined %}
+            <div class="j-adslot advertisment__footer" id="{{config['inventory']['adSpace']['banner'][1]}}" data-adshape="banner"></div>
+        {% endif %}
+
+
+        {% set footerTemplate = '' %}
+        {% if config['footer-style'] is defined %}
+            {% set footerTemplate = "_" ~ config['footer-style'] %}
+        {% endif %}
+
+        
+
+
+
+        {{ this.render('partials/footer/footer' ~ footerTemplate ~ '.twig', {
+            networkData : networkData,
+            addresses: addresses 
+        }) | raw }}
     
 
 
 
-    {{ this.render('partials/footer/footer' ~ footerTemplate ~ '.twig', {
-        networkData : networkData,
-        addresses: addresses 
-    }) | raw }}
- 
 
-
-
-
-    <div class="SwappingHelper" style="display:none">
-        <div style="width: 270px; height: 105px; padding: 3px; background-color: #FFF; max-width: 270px; max-height: 105px; overflow: hidden; z-index: 999 !important;">
-            <img class="article-image" src="{{networkData.placeHolder100x100}}" style="width:97px; height: 97px; float: left;" />
-            <p class="article-text" style="width: 165px; float: left; padding-left: 3px;color: #394659;font-size: 14px; font-family: Droid Serif,serif; line-height: 20px; margin-top:0px;"></p>
+        <div class="SwappingHelper" style="display:none">
+            <div style="width: 270px; height: 105px; padding: 3px; background-color: #FFF; max-width: 270px; max-height: 105px; overflow: hidden; z-index: 999 !important;">
+                <img class="article-image" src="{{networkData.placeHolder100x100}}" style="width:97px; height: 97px; float: left;" />
+                <p class="article-text" style="width: 165px; float: left; padding-left: 3px;color: #394659;font-size: 14px; font-family: Droid Serif,serif; line-height: 20px; margin-top:0px;"></p>
+            </div>
         </div>
-    </div>
 
 
 
 
 
-    {% for i in 0..(config['inventory']['adSpace']['tag']|length) if config['inventory']['adSpace']['tag'][i] is defined %}
-        <div class="j-adslot" id="{{config['inventory']['adSpace']['tag'][i]}}" data-adshape="tag"></div>
-    {% endfor %}
+        {% for i in 0..(config['inventory']['adSpace']['tag']|length) if config['inventory']['adSpace']['tag'][i] is defined %}
+            <div class="j-adslot" id="{{config['inventory']['adSpace']['tag'][i]}}" data-adshape="tag"></div>
+        {% endfor %}
 
 
 
 
-    {{ this.render('partials/_javascript.twig', {
-        networkData: networkData
-    }) | raw }}
+        {{ this.render('partials/_javascript.twig', {
+            networkData: networkData
+        }) | raw }}
 
 
-    <script>
-        // main script is defered so event listener makes sure
-        // defered script is loaded before this runs
-        document.addEventListener("DOMContentLoaded", function(event) {
-            if (typeof window.Acme === 'undefined') {window.Acme = {};}
-            Acme.templatePath = '" ~ networkData.templatePath ~ "';
-            new Card();
-        });
-    </script>
+        <script>
+            // main script is defered so event listener makes sure
+            // defered script is loaded before this runs
+            document.addEventListener("DOMContentLoaded", function(event) {
+                if (typeof window.Acme === 'undefined') {window.Acme = {};}
+                Acme.templatePath = '" ~ networkData.templatePath ~ "';
+                new Card();
+            });
+        </script>
+
+    {% else %}
+        {% set logo = networkData.templatePath~'/static/images/40logo.svg'%}
+        <div class="c-header-0__logobar">
+            <div class="c-header-0__logo u-desktop-margin-top-40">
+                <img src="{{logo}}" class="image-fluid" />
+            </div>
+            
+        </div>
+
+    {% endif %}
 
 
 {{ this.endBody() }}
