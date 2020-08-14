@@ -475,8 +475,11 @@ hr.divide {
     overflow:hidden;
 }
 .u-ios-noscroll{
-    position:relative;
-    height:100%;
+    // position:relative;
+    // height:100%;
+
+    // everything I've tried so far made it worse - seriously, ios is evil.
+    // *cries in css*
 }
 .clearfix {overflow:auto;overflow-x:hidden}
 .centerContent { display:inline; text-align: center;}

@@ -28140,6 +28140,8 @@ $('document').ready(function() {
     //     // removeMobileMenuStyles();
     // }).resize();
 
+
+    // this function is -wonderful-
     function iOS() {
         return [
           'iPad Simulator',
@@ -28153,17 +28155,19 @@ $('document').ready(function() {
         || (navigator.userAgent.includes("Mac") && "ontouchend" in document)
       }
 
-    function lockBackground(menuOpen) {
-        if (menuOpen) {
-            var offsetY = window.pageYOffset;
-            $('main').style.top = offsetY + 'px';
+    // this script works - ish - fixing the body not such a good idea though
 
-        } else {
-            var offsetY = Math.abs(parseInt($('main').style.top || 0, 10));
-            $('main').style.removeProperty('top');
-            window.scrollTo(0, offsetY || 0);
-        }
-    }
+    // function lockBackground(menuOpen) {
+    //     if (menuOpen) {
+    //         var offsetY = window.pageYOffset;
+    //         $('main').style.top = offsetY + 'px';
+
+    //     } else {
+    //         var offsetY = Math.abs(parseInt($('main').style.top || 0, 10));
+    //         $('main').style.removeProperty('top');
+    //         window.scrollTo(0, offsetY || 0);
+    //     }
+    // }
 
 
 
@@ -28171,7 +28175,10 @@ $('document').ready(function() {
     $('.js-menu').on('click', function (event) {
         event.preventDefault();
         $('body').addClass('u-noscroll');
+        // ALL THE ISSUES ARE IOS BECAUSE APPLE IS THE NEW FZAILURE OF HUMANITY
         if (iOS()){
+            // IOS FUNCTION WORKS WELL
+            // NO STYLES SEEM TO MAKE THE MENU WORK PROPERLY, IM OPEN TO IDEAS
             $('body').addClass('u-ios-noscroll');
             //lockBackground(true);
         }
