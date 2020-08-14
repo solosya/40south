@@ -35,7 +35,17 @@
                         <div class="col-12 col-md-12 offset-lg-1 col-lg-7 u-margin-top-40">
                             <div class="row justify-content-end">
 
-                                <div class="col-12 col-md-4  u-tablet-margin-bottom-40 u-mobile-margin-top-20">
+                                <div class="col-12 col-md-3  u-tablet-margin-bottom-40 u-mobile-margin-top-20">
+                                    <p class="c-footer__navigation__header u-margin-bottom-15">Shop</p>
+                                    <div class="c-footer__navigation c-footer__navigation-sm">
+                                        {{this.render('../_submenu_navigation.twig', {
+                                                items: shopMenu,
+                                                class: '',
+                                            }) | raw}}
+                                    </div>
+                                </div>
+
+                                <div class="col-12 col-md-3  u-tablet-margin-bottom-40 u-mobile-margin-top-20">
                                     <p class="c-footer__navigation__header u-margin-bottom-15">Connect</p>
                                     <div class="c-footer__navigation c-footer__navigation-sm">
                                         {{this.render('../_submenu_navigation.twig', {
@@ -44,7 +54,7 @@
                                             }) | raw}}
                                     </div>
                                 </div>
-                                <div class="col-12 col-md-4  u-tablet-margin-bottom-40 u-mobile-margin-top-20">
+                                <div class="col-12 col-md-3  u-tablet-margin-bottom-40 u-mobile-margin-top-20">
                                     <p class="c-footer__navigation__header u-margin-bottom-15">Policies</p>
                                     <div class="c-footer__navigation c-footer__navigation-sm">
                                         {{this.render('../_submenu_navigation.twig', {
@@ -53,7 +63,7 @@
                                             }) | raw}}
                                     </div>
                                 </div>
-                                <div class="col-12 col-md-4  u-tablet-margin-bottom-40 u-mobile-margin-top-20">
+                                <div class="col-12 col-md-3  u-tablet-margin-bottom-40 u-mobile-margin-top-20">
                                     <p class="c-footer__navigation__header u-margin-bottom-15">Sponsorships</p>
                                     <div class="c-footer__navigation c-footer__navigation-sm">
                                         {{this.render('../_submenu_navigation.twig', {
@@ -68,7 +78,11 @@
                         
                     </div>
                 </div>
-                <div class="c-footer__bottom u-margin-top-80 u-tablet-margin-top-40">
+                 <div class="c-footer__bottom u-margin-top-80 u-tablet-margin-top-40">
+                    <div class="c-footer__bottom__copyright">We pay our respects to the Tasmanian Aboriginal people as the traditional and original owners and continuing custodians of <i>lutruwita</i>, and acknowledge elders past and present.</div>
+                   
+                </div>
+                <div class="c-footer__bottom u-margin-top-30">
                     <div class="c-footer__bottom__copyright">&copy; Copyright {{networkData.title}} {{ "now"|date("Y") }}</div>
                     <a href="https://pagemasters.com.au" class="c-footer__bottom__powered">POWERED BY PAGEMASTERS</a>
                 </div>
@@ -82,10 +96,10 @@
             <div class="row">
                 <div class="col-12 col-md-7 col-lg-3 u-mobile-margin-bottom-15">
                     <div class="c-signup-footer__title">Join our newsletter</div>
-                    <div class="c-signup-footer__text d-none d-md-block d-lg-none u-tablet-margin-top-5">Our love letter – your newsletter on all things Tasmania</div>
+                    <div class="c-signup-footer__text d-none d-md-block d-lg-none u-tablet-margin-top-5">Our love letter – your newsletter — on all things Tasmania</div>
                 </div>
                 <div class="col-12 offset-lg-1 col-lg-4 d-md-none d-lg-block u-mobile-margin-bottom-15">
-                    <div class="c-signup-footer__text">Our love letter – your newsletter on all things Tasmania</div>
+                    <div class="c-signup-footer__text">Our love letter – your newsletter — on all things Tasmania</div>
                 </div>
                 <div class="col-12 col-md-5 col-lg-4">
                     <div class="c-button c-button--wide c-button--white c-signup-footer__button j-insider-signup">sign up</div>

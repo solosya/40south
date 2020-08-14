@@ -5,7 +5,14 @@
             "enabled" : true
         },
         "event" : {
-            "enabled" : true
+            "enabled" : true,
+            "extendedAttributes": [
+                {
+                    "name": "url",
+                    "label": "URL",
+                    "type": "inputbox"
+                }
+            ]
         },
         "blog" : {            
             "endUserAccess" : [

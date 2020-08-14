@@ -11,6 +11,8 @@
     {% elseif behaviour == 'lightbox' %}
         {% set lightbox = behaviour %}
     {% endif %}
+{% elseif event.additionalInfo.url != '' %}
+    {% set event = event | merge({'url' : event.additionalInfo.url}) %}
 {% endif %}
 
 

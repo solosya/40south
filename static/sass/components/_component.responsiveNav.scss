@@ -24,7 +24,7 @@
     position: fixed !important;
     overflow-x: hidden;
     overflow-y: auto;
-    -webkit-overflow-scrolling: touch;
+    -webkit-overflow-scrolling: auto !important;
     height: 100%;
     padding-bottom: 100px;
 
