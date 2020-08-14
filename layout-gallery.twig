@@ -26,15 +26,16 @@
    
     <div class="container ">
 
-        <div class="row" id="loadmore_section">
+        <div class="row">
             <div class="col-12">
                 <div class="c-page-head c-page-head-xs">
                     <div class="u-heading__large u-heading__large-xs u-pr--6">{{blogData.title}}</div>
                     
                 </div>
             </div>
+        </div>
             
-           
+        <div class="row" id="loadmore_section">   
                 {% for i in 0..5 if articles[articleCount] %}
                         {{this.render('partials/_single-article.twig', {
                             article: articles[articleCount], 
