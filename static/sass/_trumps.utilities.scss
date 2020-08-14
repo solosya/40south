@@ -475,7 +475,8 @@ hr.divide {
     overflow:hidden;
 }
 .u-ios-noscroll{
-    position:fixed;
+    position:relative;
+    height:100%;
 }
 .clearfix {overflow:auto;overflow-x:hidden}
 .centerContent { display:inline; text-align: center;}
