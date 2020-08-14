@@ -36,23 +36,17 @@
             
            
                 {% for i in 0..5 if articles[articleCount] %}
-                    <div class="col-12 col-md-4">
                         {{this.render('partials/_single-article.twig', {
                             article: articles[articleCount], 
                             position: (articleCount+1),
                             imageSize: {width: 360, height: 270},
-                            containerClass: "card-4-mobile card-4-tablet card-4-desktop u-margin-bottom-60 u-loadmore-card-3s",
+                            containerClass: "col-12 col-md-4 card-4-mobile card-4-tablet card-4-desktop u-margin-bottom-60 u-loadmore-card-3s",
                             watermark: watermark
                         }) | raw}}
                         {% set articleCount = (dev) ? articleCount : articleCount + 1 %}
-                    </div>
+                 
                 
                 {% endfor %}
-            <div class="col-12">
-                {% if config['inventory']['adSpace']['banner'][1] is defined %}
-                    <div class="j-adslot u-margin-bottom-40 u-mobile-margin-bottom-15" id="{{config['inventory']['adSpace']['banner'][1]}}" data-adshape="banner"></div>
-                {% endif %}
-            </div>
         </div>
 
         {% if articles|length >= limit %}
