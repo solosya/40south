@@ -35,13 +35,13 @@
             </div>
         </div>
             
-        <div class="row" id="loadmore_section">   
+        <div class="row justify-content-center" id="loadmore_section">   
                 {% for i in 0..5 if articles[articleCount] %}
                         {{this.render('partials/_single-article.twig', {
                             article: articles[articleCount], 
                             position: (articleCount+1),
                             imageSize: {width: 360, height: 270},
-                            containerClass: "col-12 col-md-4 card-4-mobile card-4-tablet card-4-desktop u-margin-bottom-60 u-loadmore-card-3s",
+                            containerClass: "col-8  col-md-4 card-4-mobile card-4-tablet card-4-desktop u-margin-bottom-60 u-loadmore-card-3s",
                             watermark: watermark
                         }) | raw}}
                         {% set articleCount = (dev) ? articleCount : articleCount + 1 %}
