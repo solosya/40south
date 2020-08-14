@@ -6,7 +6,11 @@
 {% set shopMenu = _Menu.get({'menuType': 'header', 'menuGroupName': 'shop-menu'}) %}
 
 <footer class="c-footer">
-    <div class="container">
+    <div class="container"> 
+        <div class="c-footer__bottom">
+            <div class="c-footer__bottom__message">We pay our respects to the Tasmanian Aboriginal people as the traditional and original owners and continuing custodians of <i>lutruwita</i>, and acknowledge elders past and present.</div>
+            
+        </div>
         <div class="row">
             <div class="col-12">
 
@@ -79,11 +83,8 @@
                         
                     </div>
                 </div>
-                 <div class="c-footer__bottom u-margin-top-80 u-tablet-margin-top-40">
-                    <div class="c-footer__bottom__message">We pay our respects to the Tasmanian Aboriginal people as the traditional and original owners and continuing custodians of <i>lutruwita</i>, and acknowledge elders past and present.</div>
-                   
-                </div>
-                <div class="c-footer__bottom u-margin-top-30">
+                 
+                <div class="c-footer__bottom u-margin-top-80 u-tablet-margin-top-40">
                     <div class="c-footer__bottom__copyright">&copy; Copyright {{networkData.title}} {{ "now"|date("Y") }}</div>
                     <a href="https://pagemasters.com.au" class="c-footer__bottom__powered">POWERED BY PAGEMASTERS</a>
                 </div>

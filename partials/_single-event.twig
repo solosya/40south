@@ -11,6 +11,7 @@
     {% elseif behaviour == 'lightbox' %}
         {% set lightbox = behaviour %}
     {% endif %}
+{# LEE - ADD WHATEVER ROHIT DOES TO MAKE THE URL WORK BUSINESS HERE #}
 {% elseif event.additionalInfo.url != '' %}
     {% set event = event | merge({'url' : event.additionalInfo.url}) %}
 {% endif %}
