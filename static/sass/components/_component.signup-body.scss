@@ -13,10 +13,15 @@
         line-height: 1.2;
         letter-spacing: normal;
         color: $grey-2;
+        
+        @media #{$desktop}{
+            @include font-size(34);
+            line-height: 0.8;
+        }
+
         @media #{$tablet}{
             @include font-size(26);
             line-height: 0.8;
-            
         }
     }
 
