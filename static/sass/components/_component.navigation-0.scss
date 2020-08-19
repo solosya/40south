@@ -19,6 +19,13 @@
             //margin: 10px 0;
             padding: 0 55px;
             border-right: 1px solid $grey-4;
+
+
+            @media #{$desktop} {
+                padding: 0 35px;
+            }
+
+
             &:last-child{
                 border-right: none;
             }
