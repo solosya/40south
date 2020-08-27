@@ -80,4 +80,11 @@
             width: max-content;
         }
     }
+    &__leftcol{
+        @media #{$desktop}{
+            right: 35px;
+            position: absolute;
+        
+        }
+    }
 }

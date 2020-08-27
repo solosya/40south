@@ -28181,6 +28181,12 @@ $('document').ready(function() {
             // NO STYLES SEEM TO MAKE THE MENU WORK PROPERLY, IM OPEN TO IDEAS
             $('body').addClass('u-ios-noscroll');
             //lockBackground(true);
+            var iOSelements = $($('body').children().not('script, .responsive-standalone, .responsive-standalone-overlay'));
+            console.log(iOSelements);
+            iOSelements.each(function(){
+                $(this).toggleClass('d-none');
+                $(this).toggleClass('j-hidden');
+            });
         }
         if (isDesktop()){
             $('.j-fixed-menu-desk').toggleClass('d-none');
@@ -28203,7 +28209,12 @@ $('document').ready(function() {
         $('body').removeClass('u-noscroll');
         if (iOS()){
             $('body').removeClass('u-ios-noscroll');
-            //lockBackground(true);
+            var iOSelements = $($('body').children('.j-hidden'));
+            console.log(iOSelements);
+            iOSelements.each(function(){
+                $(this).toggleClass('d-none');
+                $(this).toggleClass('j-hidden');
+            });
         }
         $('.responsive-standalone-close').removeClass('open');
         $('.responsive-standalone').removeClass('navigation-active');
