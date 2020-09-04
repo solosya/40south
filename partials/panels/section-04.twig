@@ -12,7 +12,7 @@
 </div>
 
 {% set date = date() %}
-{% set events = _Event.getEvents({"limit": 9, "end_date": date.date | split(" ")[0]}) %}
+{% set events = _Event.getEvents({"limit": 9, "onGoing": true}) %}
 {# {% set events = _Event.getEvents({"limit": 9}) %} #}
 
 
