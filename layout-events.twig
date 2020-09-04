@@ -5,7 +5,7 @@
 
 {% set limit = 50 %}
 {% set date = date() %}
-{% set events = _Event.getEvents({"limit": limit, "start_date": date.date | split(" ")[0]}) %}
+{% set events = _Event.getEvents({"limit": limit, "onGoing": true}) %}
 {# {% set events = _Event.getEvents({"limit": limit}) %} #}
 {% set config       = _Network.getThemeConfig() %}
 

@@ -25,7 +25,7 @@
 {% set endTime = _AppHelper.getDefaultTimezoneDateTime(event.endDate, 'g:ia') %}
 
 {% set date = date() %}
-{% set events = _Event.getEvents({"limit": 4, "start_date": date.date | split(" ")[0]}) %}
+{% set events = _Event.getEvents({"limit": 4, "onGoing": true}) %}
 
 
 <div class="o-body-container o-body-container-md u-margin-top-60 u-mobile-margin-top-35">
