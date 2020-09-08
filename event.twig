@@ -74,6 +74,22 @@
                     
                     </div>
                     
+
+                    {# show start date OR start and end data if different #}
+                    {% set difference = date(event.endDate).diff(date(event.startDate)) %}
+                    {% set leftDays = difference.days %}
+                    {% set endDateString = "" %}
+
+                    {% if event.endDate != "" %}
+                        {% if leftDays > 0 %}
+                            {% set endDateString = " - " ~ endDate ~ " " ~  endTime %}
+                        {% else %}
+                            {% set endDateString = " - " ~ endTime %}
+                        {% endif %}
+                    {% endif %}
+
+
+
                     <div class="c-eventdetail__container">
                         <div class="row">
 
@@ -85,7 +101,7 @@
                                             <div class="c-eventdetail__info-item">
                                                 <span class="c-eventdetail__info-head">When</span>
                                                 <span class="c-eventdetail__info-text">{{ startDate }}</span>
-                                                <span class="c-eventdetail__info-text">{{ startTime }}{% if event.endDate != "" %} - {{endTime}}{% endif %}</span>
+                                                <span class="c-eventdetail__info-text">{{ startTime }}{{endDateString}}</span>
                                             </div>
                                             <hr class="o-rule d-block d-md-none">
                                         </div>
