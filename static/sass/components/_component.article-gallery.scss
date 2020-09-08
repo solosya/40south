@@ -14,13 +14,13 @@
         }
         
         @media #{$tablet} {
-            height:390px;
+            height:430px;
         }
         @media #{$desktop-up} {
-            height:540px;
+            height:700px;
         }
     }
-
+    
     &__img-container {
         background-color: $grey-7;
         @media #{$tablet}{
