@@ -176,7 +176,7 @@
             }
 
             &__category{
-                font-size: rem(12);
+                @include font-size(12);
                 font-weight: $weightUltrabold;
                 margin-bottom: 20px;
             }
@@ -273,7 +273,7 @@
             }
 
             &__category{
-                font-size: rem(16);
+                @include font-size(16);
                 font-weight: $weightUltrabold;
                 margin-bottom: 35px;
             }
@@ -371,7 +371,7 @@
             }
 
             &__category{
-                font-size: rem(16);
+                @include font-size(16);
                 font-weight: $weightUltrabold;
                 margin-bottom: 35px;
             }

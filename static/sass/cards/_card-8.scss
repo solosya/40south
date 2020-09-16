@@ -46,7 +46,7 @@
             display: block;
             max-height: 120px;
             font-family: $font-family-sans-serif;
-            font-size: rem(14);
+            @include font-size(14);
             font-weight: $weightLight;
             font-stretch: normal;
             font-style: normal;
