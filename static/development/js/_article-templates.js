@@ -114,7 +114,7 @@ Acme.templates.systemCardTemplate =
             <h2 class="{{cardType}}c-cards-view__heading js-c-cards-view-heading j-truncate">{{{ params.title }}}</h2>\
             <p class="{{cardType}}c-cards-view__description js-c-cards-view-description j-truncate">{{{ params.content }}}</p>\
             <div class="{{cardType}}c-cards-view__author">\
-                <div class="{{cardType}}c-cards-view__author-name">by {{ params.author }}</div>\
+                <div class="{{cardType}}c-cards-view__author-name">{{ params.author }}</div>\
                 <time class="{{cardType}}c-cards-view__time" datetime="{{params.publishDate}}">{{params.publishDate}}</time>\
             </div>\
         </div>'+ 

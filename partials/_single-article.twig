@@ -1,6 +1,7 @@
 {% import "quotes.twig" as quotes %}
 
 {% set imageSuppress = imageSuppress is defined and imageSuppress == true   ? true      : false   %}
+{% set cardParams    = params        is defined                             ? params    : {}      %}
 {% set lazyload      = lazyload      is defined and lazyload == false       ? false     : false    %}
 {% set template      = template      is defined and template != ''          ? template  : 'main'  %}
 {% set swap          = swap          is defined and swap == 'false'         ? ''        : 'swap'  %}
@@ -118,6 +119,7 @@
         videoClass      : article.featuredMedia['type'] == 'video' ? 'c-cards-view__media--video' : '',
         imageSmall      : _Media.getMediaUrl(article.featuredMedia,768, 768, imageparams ),
         profileImg      : profileImg,
+        cardParams      : cardParams,
         imgHeight       : imgHeight,
         hasMedia        : (displayMedia) ? 'True' : 'False',
         blogguid        : article.blog.guid,

@@ -129,6 +129,7 @@ Acme.View.articleFeed = function(options)
     this.button_label = options.label    || false;
     this.cardType   = options.cardType   || "";
     this.lightbox   = options.lightbox   || null;
+    this.cardParams = options.cardParams || {};
 
     // when clicking less, reset the original offset count
     this.originalCount = options.non_pinned;
@@ -198,8 +199,8 @@ Acme.View.articleFeed.prototype.render = function(data)
                 "cardClass": self.cardClass, 
                 "template": self.template,
                 "type": self.cardType,
-                "lightbox": self.lightbox || null
-
+                "lightbox": self.lightbox || null,
+                "cardParams": self.cardParams
             }));
         }
         if (self.before ) {

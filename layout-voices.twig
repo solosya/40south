@@ -1,0 +1,99 @@
+{{ set(this, 'title', _Blog.getBlogTitle()) }}
+{% set networkData = _Network.getNetworkData() %}
+{% set site        = networkData.title | lower | split(" ")[0]%}
+{% set config       = _Network.getThemeConfig() %}
+{% set layoutTitle  = _Page.getLayoutTitle() | lower | replace({' ': '_'}) %}
+
+
+{% set limit = 6 %}
+
+{% set blogData     = _Blog.getBlog() %}
+{% set articlesArr = _Blog.getBlogFeed({'limit': limit, 'offset': 0}) %}
+{% set articles = articlesArr.articles %}
+{% set firstCount = articles | length %}
+
+
+
+<!-- used to index each article as we loop over throughout the template -->
+{% set articleCount = _AppHelper.getApplicationEnv() == 'DEV' ? 0 : 0 %}
+{% set popCount = _AppHelper.getApplicationEnv() == 'DEV' ? 0 : 0 %}
+{% set dev = _AppHelper.getApplicationEnv() == 'DEV' ? false : false %}
+
+
+
+
+<main id="main" class="site-main u-margin-top-60 u-mobile-margin-top-35" role="main" data-article-limit="{{limit}}" data-article-count="{{articles | length}}">
+   
+    <div class="container ">
+
+        <div class="row">
+            <div class="col-12">
+                <div class="c-page-head c-page-head-xs">
+                    <div class="u-heading__large u-heading__large-xs u-pr--6">{{blogData.title}}</div>
+                    
+                </div>
+            </div>
+        </div>
+            
+        <div class="row justify-content-center" id="loadmore_section">   
+                {% for i in 0..5 if articles[articleCount] %}
+                        {{this.render('partials/_single-article.twig', {
+                            article: articles[articleCount], 
+                            position: (articleCount+1),
+                            imageSize: {width: 360, height: 270},
+                            containerClass: "col-8  col-md-4 card-4-mobile card-4-tablet card-4-desktop u-margin-bottom-60 u-loadmore-card-3s",
+                            watermark: watermark,
+                            params: {
+                                "author": false
+                            }
+                        }) | raw}}
+                        {% set articleCount = (dev) ? articleCount : articleCount + 1 %}
+                 
+                
+                {% endfor %}
+        </div>
+
+        {% if articles|length >= limit %}
+            <section class="">
+                <div class="row">
+                    <div class="col-12">
+                        {{ this.render('partials/ajaxarticles_new.twig', {
+                            name            : "section-load",
+                            label           : "SEE MORE",
+                            buttonClass     : "c-button c-button--blue-bordered c-button--wide c-button--center c-button-block u-margin-bottom-40",
+                        }) | raw }}
+                    </div>
+                </div>
+            </section>
+        {% endif %}
+
+    </div>
+    <div class="j-keyword-cont" data-keywords="{{blogData.keywords}}"></div>
+</main>
+
+
+
+<script>
+    // main script is defered so event listener makes sure
+    // defered script is loaded before this runs
+    document.addEventListener("DOMContentLoaded", function(event) {
+        
+        Acme.loadMore = new Acme.View.articleFeed({
+            model           : new Card(),
+            container       : 'loadmore_section',
+            infinite        : false,
+            offset          : 6,
+            limit           : 6,
+            label           : "SEE MORE",
+            name            : 'section-load',
+            blogid          : "{{ blogData['guid'] }}",
+            card_class      : 'card-4-mobile card-4-tablet card-4-desktop col-8 col-md-4 u-margin-bottom-60 u-loadmore-card-3s',
+            cardParams      : {"author": false},
+            non_pinned      : {{articleCount}}
+        });
+
+
+    });
+</script>
+
+            {# non_pinned      : {{articlesArr.existingNonPinnedCount}}, #}

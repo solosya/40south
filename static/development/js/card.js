@@ -140,6 +140,13 @@ Card.prototype.renderCard = function(card, options)
     card['pinText']  = (card.isPinned == 1) ? 'Un-Pin' : 'Pin';
     card['promotedClass'] = (card.isPromoted == 1)? 'ad_icon' : '';
     
+
+    var author = "by " + card.createdBy.displayName;
+    if (typeof options.cardParams.author !== 'undefined') {
+        if (options.cardParams.author === false) {
+            author = "";
+        }
+    }
     // mainly for screen to turn off lazyload and loading background img
     // card['imgClass'] = (card.lazyloadImage == false) ? '' : 'lazyload';
     // card['imgBackgroundStyle'] = (card.lazyloadImage == false) ? '' : 'style="background-image:url(https://placeholdit.imgix.net/~text?w=1&h=1)"';
@@ -205,7 +212,7 @@ Card.prototype.renderCard = function(card, options)
             category    : card.label,
             title       : card.title,
             content     : articleContent,
-            author      : card.createdBy.displayName,
+            author      : author,
             publishDate : card.publishDate,
             videoClass  : card.featuredMedia['type'] == 'video' ? 'c-cards-view__media--video' : '',
             hasMedia    : card.hasMedia,

@@ -1,5 +1,15 @@
 {% import "quotes.twig" as quotes %}
 
+{% set showAuthor = true %}
+{% for k,v in params.cardParams %}
+    {% if k == 'author' and v == false %}
+        {% set showAuthor = false %}
+    {% endif %}
+{% endfor %}
+
+
+
+
 {% set imageSize = "" %}
 {% if _User.isAdminUser() %}
     {% set imageSize = "Width: " ~ params.imgWidth ~ " Height: " ~ params.imgHeight %}
@@ -34,7 +44,9 @@
     <h2 class="{{params.cardType}}c-cards-view__heading js-c-cards-view-heading j-truncate j-headline">{{ params.title }}</h2>
 
     <div class="{{params.cardType}}c-cards-view__author">
+    {% if showAuthor %}
         <div class="{{params.cardType}}c-cards-view__author-name">by {{ params.author }}</div>
+    {% endif %}
         <div class="{{params.cardType}}c-cards-view__time">{{params.publishDate}}</div>
     </div>
     
