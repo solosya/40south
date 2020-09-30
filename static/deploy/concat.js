@@ -24023,7 +24023,7 @@ Acme.templates.systemCardTemplate =
             <h2 class="{{cardType}}c-cards-view__heading js-c-cards-view-heading j-truncate">{{{ params.title }}}</h2>\
             <p class="{{cardType}}c-cards-view__description js-c-cards-view-description j-truncate">{{{ params.content }}}</p>\
             <div class="{{cardType}}c-cards-view__author">\
-                <div class="{{cardType}}c-cards-view__author-name">by {{ params.author }}</div>\
+                <div class="{{cardType}}c-cards-view__author-name">{{ params.author }}</div>\
                 <time class="{{cardType}}c-cards-view__time" datetime="{{params.publishDate}}">{{params.publishDate}}</time>\
             </div>\
         </div>'+ 
@@ -24660,6 +24660,7 @@ Acme.View.articleFeed = function(options)
     this.button_label = options.label    || false;
     this.cardType   = options.cardType   || "";
     this.lightbox   = options.lightbox   || null;
+    this.cardParams = options.cardParams || {};
 
     // when clicking less, reset the original offset count
     this.originalCount = options.non_pinned;
@@ -24729,8 +24730,8 @@ Acme.View.articleFeed.prototype.render = function(data)
                 "cardClass": self.cardClass, 
                 "template": self.template,
                 "type": self.cardType,
-                "lightbox": self.lightbox || null
-
+                "lightbox": self.lightbox || null,
+                "cardParams": self.cardParams
             }));
         }
         if (self.before ) {
@@ -25034,6 +25035,13 @@ Card.prototype.renderCard = function(card, options)
     card['pinText']  = (card.isPinned == 1) ? 'Un-Pin' : 'Pin';
     card['promotedClass'] = (card.isPromoted == 1)? 'ad_icon' : '';
     
+
+    var author = "by " + card.createdBy.displayName;
+    if (typeof options.cardParams.author !== 'undefined') {
+        if (options.cardParams.author === false) {
+            author = "";
+        }
+    }
     // mainly for screen to turn off lazyload and loading background img
     // card['imgClass'] = (card.lazyloadImage == false) ? '' : 'lazyload';
     // card['imgBackgroundStyle'] = (card.lazyloadImage == false) ? '' : 'style="background-image:url(https://placeholdit.imgix.net/~text?w=1&h=1)"';
@@ -25099,7 +25107,7 @@ Card.prototype.renderCard = function(card, options)
             category    : card.label,
             title       : card.title,
             content     : articleContent,
-            author      : card.createdBy.displayName,
+            author      : author,
             publishDate : card.publishDate,
             videoClass  : card.featuredMedia['type'] == 'video' ? 'c-cards-view__media--video' : '',
             hasMedia    : card.hasMedia,
