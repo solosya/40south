@@ -102,6 +102,16 @@
     
 {% endif %} #}
 
+
+{% set cropped = true %}
+{% if article.additionalInfo is defined and article.additionalInfo.image_crop is defined and article.additionalInfo.image_crop == 'full' %}
+    {% set cropped = false %}
+{% endif %}
+
+
+
+
+
 {% set recentArticles = _Article.getRecentArticles({ limit: 3, scope: 'network', excludeArticleIds : [article.id] }) %}
 {% set popularArticles = _Article.getPopularArticles({ limit: 3, sortBy: 'VIEWS', scope: 'network', excludeArticleIds : [article.id] }) %}
 
@@ -151,10 +161,9 @@
 
                         <div class="gallery-container relative u-margin-bottom-40 u-desktop-margin-bottom-50">
                             {% set galleryStyle = 'article' %}
-                            {% if article.media|length > 1 %}
+                            {% if article.media|length > 1 or not cropped %}
                                 {% set galleryStyle = 'gallery' %}
                             {% endif %}
-
 
                             {% if article.media|length > 0 %}
                                 {% set imageFeature = featured == 'image' ? true : false %}
