@@ -39,7 +39,7 @@
     &__title {
         color: $grey-1;
         font-family: $primaryFont;
-        @include font-size(40);
+        @include font-size(36);
         line-height: 1.4;
         font-weight: $weightBold;
         @include margin-bottom(20);
@@ -120,6 +120,9 @@
 
         >a{
             color: $main80;
+            @media #{$mobile}{
+                @include font-size(15);
+            }
         }
     }
 
