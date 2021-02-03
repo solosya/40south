@@ -153,7 +153,7 @@
                         article: articles[articleCount], 
                         position: (articleCount+1),
                         imageSize: {width: 600, height: 300},
-                        containerClass: "card-4-mobile card-4-tablet card-4-desktop col-8 col-md-4 u-loadmore-card-3s"
+                        containerClass: "card-8-mobile card-4-tablet card-4-desktop col-10 col-md-4 u-loadmore-card-3s"
                     }) | raw}}
                     {% set articleCount = (dev) ? articleCount : articleCount + 1 %}
                
@@ -199,7 +199,7 @@
             label           : "SEE MORE",
             name            : 'section-load',
             blogid          : "{{ blogData['guid'] }}",
-            card_class      : 'card-4-mobile card-4-tablet card-4-desktop col-8 col-md-4 u-margin-bottom-60 u-loadmore-card-3s',
+            card_class      : 'card-8-mobile card-4-tablet card-4-desktop col-10 col-md-4 u-margin-bottom-60 u-loadmore-card-3s',
             non_pinned      : {{articleCount}}
         });
 
