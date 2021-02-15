@@ -12,12 +12,6 @@
 {% set articleBlog = article.blog.title | lower %}
 {% set publishDate = _AppHelper.getDateTimeBasedOnTimezone(article.publishDate, 'F, Y') %}
 
-{# {% set showPaywall = false %}
-{% if   not _User.isAdminUser()     and
-        article.showPaywall == true  %}
-    
-
-{% endif %} #}
 {% set ArticleContent = article.content %}
 {% set watermark = false %}
 {% if config['watermark']['settings'] is defined and config['watermark']['sections'][articleBlog|lower] is defined %}
@@ -44,8 +38,7 @@
                             type: 'article',
                             default: true,
                             galleryStyle: 'gallery',
-                            watermark: watermark,
-                            showPaywall: showPaywall
+                            watermark: watermark
                         }) | raw}}
                     </div>
                     <div class="col-12">
@@ -67,10 +60,6 @@
                         </div>
 
 
-
-                        {# {% if showPaywall == true %}
-                            {{this.render('partials/article/paywall_article_notice.twig', {networkData:networkData}) | raw}}
-                        {% endif %} #}
 
                     </div>
                 </div>

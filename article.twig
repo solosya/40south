@@ -13,102 +13,12 @@
 {% set articleBlogInfo = _Blog.getBlog({'guid':article.blog['guid']}) %}
 {% set ArticleContent = article.content %}
 
-{# {% set showPaywall = false %}
-
-
-{% set pwstats = {} %}
-{% if not _User.isGuest() %}
-    {% set pwstats = _User.getPaywallStats(false) %}
-{% endif %} #}
-
-
-
-
-
-{# {% set paywallType = "" %}
-{% if not _User.isAdminUser() and article.showPaywall == true %}
-
-    {% set showPaywall = true %}
-    
-    
-    {% if articleBlogInfo['paywallAllowSignupOnly'] == true %}
-        
-        
-        {% if not _User.isGuest() %}
-            {% set showPaywall = false %}
-        {% else %}
-            {% set paywallType = "signup" %}
-        {% endif %}
-
-        
-    {% else %}
-        
-        {% if not _User.isGuest() %}
-
-            {% if pwstats['type'] == 'article' %}
-                {% set paywallType = "topup" %}
-            {% elseif pwstats['type'] == 'time' %}
-                {% set paywallType = "renew" %}
-            {% else %}
-                {% set paywallType = "upgrade" %}
-            {% endif %}
-
-        {% else %}
-            {% set paywallType = "subscribe" %}
-        {% endif %}
-    {% endif %}
-{% endif %}
-
-
-
-
-
-
-
-{% set trialToggle = false %}
-
-{% if showPaywall == true %}
-    {% set storySplit = ArticleContent | split('<p>')  %}
-    {% set para2_words = storySplit[2] | split(' ') | slice(0, 10) %}
-    {% set para2 = para2_words | join(' ') ~ '</p>'  %}
-    {% set ArticleContent = '<p>' ~ [storySplit[1], para2] | join('<p>') %}
-    {% set plans 		= networkData['paywallPlans'] %}
-    {% for plan in plans  %}
-        {% if plan.trial_status == "1" %}
-            {% set trialToggle = true %}
-        {% endif %}
-    {% endfor %}
-
-{% else %}
-    {% if config['inventory']['articleAd'] is defined %}
-        {% set adPos = config['inventory']['articleAd']  %}
-        
-        {% set storySplit = ArticleContent | split('<p>')  %}
-
-        {% if storySplit[(adPos['position'] * 2) - 1] %}
-            {% if adPos['slot'] is defined %}
-                {% set inarticleslot = adPos['slot'] %}
-                {% set ArticleContent = '<p>' %}
-                {% for para in storySplit %}
-                    {% set ArticleContent = ArticleContent ~ '<p>' ~ para %}
-                    {% if loop.index == adPos['position'] %}
-                        {% set ArticleContent = ArticleContent ~ '<div class="u-margin-top-30 u-margin-bottom-30 '~ adPos['class'] ~'"><div class="j-adslot" id="' ~ inarticleslot ~ '" data-adshape="banner"></div></div>' %}
-                    {% endif %}
-                {% endfor %}
-            {% endif %}
-            
-        {% endif %}
-    {% endif %}
-    
-{% endif %} #}
 
 
 {% set cropped = true %}
 {% if article.additionalInfo is defined and article.additionalInfo.image_crop is defined and article.additionalInfo.image_crop == 'full' %}
     {% set cropped = false %}
 {% endif %}
-
-
 
 
 
@@ -150,9 +60,8 @@
 
 
 
-{# {{_AppHelper.printArray(article)}} #}
 
-<main id="main" class="o-body-container o-body-container-md u-mobile-margin-top-35 u-margin-top-60" role="main" {# data-paywall-type="{{paywallType}}" #}>
+<main id="main" class="o-body-container o-body-container-md u-mobile-margin-top-35 u-margin-top-60" role="main" >
     <div class="container">
         {% if articleImg %}
             <div class="row">
@@ -171,8 +80,7 @@
                                     media: article.media,
                                     default: imageFeature,
                                     watermark: watermark,
-                                    galleryStyle: galleryStyle,
-                                    showPaywall: showPaywall
+                                    galleryStyle: galleryStyle
                                 }) | raw}}
                             {% endif %}
 
@@ -188,11 +96,6 @@
                 <div class="c-article c-article-sm" >
 
                     
-                    {# {% if showPaywall == true %}
-                        {% set imageMargin = 'u-tablet-margin-top-60 u-mobile-margin-top-100 u-desktop-margin-top-80' %}
-                    {% else %}
-                        {% set imageMargin = 'u-tablet-margin-top-30 u-desktop-margin-top-80' %}
-                    {% endif %} #}
 
                     <div class="c-article__main {# {{imageMargin}} #}">
                         <div class="c-article__head">
@@ -270,18 +173,8 @@
 
 
 
-                        {# {% if showPaywall == true %}
-                            {{this.render('partials/article/paywall_article_notice.twig', {networkData:networkData, paywallType:paywallType}) | raw}}
-                        {% endif %} #}
 
                     </div>
-
-                    {# {% if showPaywall == false %}
-                        <!-- Disqus Comment Added -->
-                        {% if networkData.thirdPartyIntegrations['disqus'] | length > 0 and networkData.thirdPartyIntegrations['disqus']['shortName'] != '' %}
-                            {{this.render("partials/article/_disqus_comments.twig", {disqus: networkData.thirdPartyIntegrations['disqus'], userId: article.createdBy['id'], url:article.url, articleId: article.id}) | raw}}
-                        {% endif %}
-                    {% endif %} #}
 
 
                 </div>

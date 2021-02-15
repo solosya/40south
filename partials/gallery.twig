@@ -26,11 +26,6 @@ with width taken up with borders on the side #}
 {% set cloudinaryParams = {'crop': 'fill', 'gravity': gravity} %}
 
 
-{# {% if showPaywall is defined and showPaywall == true %}
-    {% set media = [media[0]] %}
-{% endif %}  #}
-
-
 
 {% if ( media | length > 1 ) %}
     {% set gallThumbs = true %}
