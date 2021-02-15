@@ -10,27 +10,6 @@
 {% set config        = _Network.getThemeConfig() %}
 
 
-{# If url uses port numbers append to site url data #}
-{% if url['port'] %}
-    {% set networkData = networkData | merge({ "defaultBlogUrl" : networkData['defaultBlogUrl'] ~ ":" ~ url['port'] }) %}
-{% endif %}
-
-{% set showPaywall = false %}
-{% set paywallOn = blogData['showPaywall'] %}
-{% set paywallType = blogData['paywallType'] %}
-{% set isAdmin = _User.isAdminUser() %}
-
-{% if not _User.isAdminUser() and paywallType == 'section' and paywallOn == 1 %}
-    
-        {% set showPaywall = true %}
-        {% set redir = _Page.setHttpRedirects(
-            {
-                '|^/.*|': networkData.defaultBlogUrl ~ '/subscriptions',
-                
-            }, false) 
-        %} 
-{% endif %}
-
 
 
 
@@ -195,9 +174,7 @@
 
 
 
-        {% if showPaywall == false %}
-            {{ content | raw }}
-        {% endif %}
+        {{ content | raw }}
 
 
 
