@@ -32,6 +32,10 @@
                     <div class="u-heading__large u-heading__large-xs u-pr--6">{{blogData.title}}</div>
                     
                 </div>
+                {% if blogData.shortDescription != '' %}
+                    <div class="u-heading__description {# u-heading__description--coverup #}" id="j-description">{{blogData.shortDescription}}</div>
+                    {# <div class="d-md-none u-heading__description--more j-description-more">READ MORE</div> #}
+                {% endif %}
             </div>
         </div>
             
