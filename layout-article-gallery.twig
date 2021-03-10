@@ -12,6 +12,7 @@
 {% set articleBlog = article.blog.title | lower %}
 {% set publishDate = _AppHelper.getDateTimeBasedOnTimezone(article.publishDate, 'F, Y') %}
 
+{% set recentArticles = _Article.getRecentArticles({ limit: 3, scope: 'network', excludeArticleIds : [article.id] }) %}
 
 {% set popularArticles = _Article.getPopularArticles({ limit: 3, sortBy: 'VIEWS', scope: 'network', excludeArticleIds : [article.id] }) %}
 
@@ -64,19 +65,90 @@
 
 
             <div class="col-12 offset-md-1 offset-lg-0 col-md-10 col-lg-8">
-                {% if _User.isAdminUser() %}
-                    <a href="{{article.editUrl}}" target="_blank" class="c-article__edit-link">Edit article</a>
-                {% endif %}
+                <div class="c-article c-article-sm" >
 
-                <a href="{{blogInfo.url}}"><p class="article-gallery__category">{{article.label}}</p></a>
-                <h1 class="article-gallery__title">{{ quotes.smarten(article.title) }}</h1>
-                {# <time class="article-gallery__date" datetime="{{publishedDate}}">{{article.publishedDate}}</time> #}
+                    
+
+                    <div class="c-article__main {# {{imageMargin}} #}">
+                        <div class="c-article__head">
+                            
+                            {# <a href="{{articleBlogInfo.url}}"><div class="c-article__category">
+                                {{article.label}}
+                            </div></a> #}
+                            <div class="c-article__title">
+                                {{ quotes.smarten(article.title) }}
+                            </div>
+
+                            {% if _User.isAdminUser() %}
+                                    <a href="{{article.editUrl}}" target="_blank" class="c-article__edit-link">Edit article</a>
+                            {% endif %}
+
+                            <div class="c-article__posted-on">
+                                <time class="c-article__published">{{article.publishedDate}}</time>
+                                {% if updated %}
+                                    <time class="c-article__updated">Updated {{ updateDate | capitalize }}</time>
+                                {% endif %}
+
+                            </div>
+
+
+                            
+                            <div class="c-article__posted-by ">
+                                <div class="row">
+                                    <div class="c-article__author col-12 col-md">
+                                        <div class="c-article__avatar" style="background-image: url({{ profileImg }});"></div>
+                                        {% if config['hide-author'] is defined and config['hide-author'] %}
+                                            <p class="c-article__author-name">{{ article.createdBy['displayName'] }}</p>
+                                        {% else %}
+                                            <a class="c-article__author-name" href="{{_AppHelper.getUserProfileUrl(article.createdBy['username'])}}/posts">{{ article.createdBy['displayName'] }}</a>
+                                        {% endif %}
+
+                                       
+                                    </div>
+
+                                    {% if article['createdBy']['coauthors'] %}
+                                        {% for author in article['createdBy']['coauthors'] %}
+                                            <div class="c-article__author col-12 col-md">
+                                                <div class="c-article__avatar" style="background-image: url({{ _Media.getMediaUrl(author['media'], 100, 100, {radius: 'max', gravity: 'face', 'crop': 'thumb', type: 'user'}) }});"></div>
+                                                {% if config['hide-author'] is defined and config['hide-author'] %}
+                                                    <p class="c-article__author-name" >{{ author['displayName'] }}</p>
+                                                {% else %}
+                                                    <a class="c-article__author-name" href="{{_AppHelper.getUserProfileUrl(author['username'])}}/posts">{{ author['displayName'] }}</a>
+                                                {% endif %}
+                                            </div>
+                                        {% endfor %}
+                                    {% endif %}
+                                </div>
+                                 <div class="c-article__social">
+                                    <a href="mailto:?subject=Check%20out%20this%20article&body={{article.url}}" class="c-article__social__icon c-article__social__icon--email">
+                                        {{ this.render('partials/icons.twig', {icon: 'email'} ) | raw }}
+                                    </a>
+                                    <a href="https://www.facebook.com/sharer/sharer.php?u={{article.url}}&title={{ article.title|url_encode }}" class="c-article__social__icon c-article__social__icon--facebook">
+                                        {{ this.render('partials/icons.twig', {icon: 'facebook'} ) | raw }}
+                                    </a>
+                                    <a href="https://twitter.com/share?text={{ article.title|url_encode }}&url={{article.url}}" class="c-article__social__icon c-article__social__icon--twitter">
+                                        {{ this.render('partials/icons.twig', {icon: 'twitter'} ) | raw }}
+                                    </a>
+                                    <a href="https://www.linkedin.com/shareArticle?mini=true&url={{article.url}}&title={{article.title|url_encode}}" class="c-article__social__icon c-article__social__icon--linkedin">
+                                        {{ this.render('partials/icons.twig', {icon: 'linkedin'} ) | raw }}
+                                    </a>
+                                </div>
+                            </div>
+                            
+
+
+                        </div>
+
+                        <div class="c-article__container c-article__container-sm">
+                                {{ ArticleContent | _resizeImages({'width': 600}) | raw }}
+                        </div>
 
 
 
 
-                <div class="c-article__container c-article__container-sm u-mobile-margin-top-30 u-tablet-margin-top-40 u-desktop-margin-top-40">
-                        {{ ArticleContent | _resizeImages({'width': 600}) | raw }}
+                    </div>
+
+
                 </div>
 
 
@@ -112,6 +184,29 @@
             </div>
 
 
+        </div>
+
+        <div class="row c-related-articles u-mobile-margin-top-40 u-tablet-margin-top-60 u-desktop-margin-top-100">
+            <div class="col-12">
+                <div class="c-page-head c-page-head-xs">
+                    <div class="u-heading__large u-heading__large-xs u-pr--6">latest stories</div>
+                    {# <a href="{{link}}" class="c-page-head__link">View all</a> #}
+                </div>
+            </div>
+            
+            <div class="col-12 u-margin-top-30">
+                <div class="row justify-content-center justify-content-md-between">
+                    {% for i in 0..2 if recentArticles[i] %}
+                        <div class="col-8 col-md-4">
+                            {{this.render('partials/_single-article.twig', {
+                                article: recentArticles[i], 
+                                imageSize: {width: 300, height: 300},
+                                containerClass: 'card-4-mobile card-4-tablet card-4-desktop'
+                            }) | raw}}
+                        </div>
+                    {% endfor %}
+                </div>
+            </div>
         </div>
 
 
