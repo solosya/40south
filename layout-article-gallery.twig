@@ -27,6 +27,7 @@
 {% if config['watermark']['settings'] is defined and config['watermark']['sections'][articleBlog|lower] is defined %}
     {% set watermark = config['watermark']['settings'] %}
 {% endif %}
+{% set profileImg = _Media.getMediaUrl(article.createdBy['media'], 100, 100, {radius: 'max', gravity: 'face', 'crop': 'thumb', type: 'user'}) %}
 
 
 <main id="main" class="article-gallery u-margin-top-60 u-margin-bottom-100 u-mobile-margin-top-35" role="main">
