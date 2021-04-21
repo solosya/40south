@@ -19,6 +19,12 @@
         @media #{$desktop-up} {
             height:700px;
         }
+        &--varheight{
+            @media #{$desktop-up} {
+                height: auto;
+                max-height: 700px;
+            }
+        }
     }
     
     &__img-container {

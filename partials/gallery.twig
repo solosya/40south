@@ -25,12 +25,13 @@ with width taken up with borders on the side #}
 
 {% set cloudinaryParams = {'crop': 'fill', 'gravity': gravity} %}
 
-
+{% set heightFixed = false %}
 
 {% if ( media | length > 1 ) %}
     {% set gallThumbs = true %}
     {% set owl = "owl-gallery-" ~ type %}
     {% set owlClass = 'owl-carousel owl-pub-theme owl-carousel__base'%}
+    {% set heightFixed = true %}
 {% endif %}
 
 {# {% set defaultClass = default is defined and default == true ? "default" : "" %} #}
@@ -59,7 +60,7 @@ with width taken up with borders on the side #}
         {% set articleImg       = _Media.getMediaUrl(image, imgWidth, imgHeight, cloudinaryParams ) %}
 
 
-        <figure class="article-gallery__image article-gallery__image-{{galleryStyle}}" data-hash="{{loop.index}}">
+        <figure class="article-gallery__image article-gallery__image-{{galleryStyle}}{% if heightFixed == false %} article-gallery__image--varheight{% endif %}" data-hash="{{loop.index}}">
                 
             {% if image.type == 'image' or image.type == 'doc'%} 
                 <div class="article-gallery__img-container article-gallery__img-container-{{galleryStyle}}">
