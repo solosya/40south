@@ -25111,7 +25111,7 @@ Card.prototype.renderCard = function(card, options)
             author      : author,
             publishDate : card.publishDate,
             videoClass  : card.featuredMedia['type'] == 'video' ? 'c-cards-view__media--video' : '',
-            hasMedia    : card.hasMedia,
+            hasMedia    : hasMedia,
             social      : 0
         };
 
