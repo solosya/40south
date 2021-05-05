@@ -203,7 +203,8 @@ Card.prototype.renderCard = function(card, options)
         }
 
     } else {
-        card['hasMediaClass'] = (card.hasMedia == 1)? 'withImage__content' : 'without-image';
+        var hasMedia = (card.hasMedia == 1 || card.hasPreviewMedia);
+        card['hasMediaClass'] = hasMedia ? 'withImage__content' : 'without-image';
 
         card.params = {
             id          : parseInt(card.articleId),

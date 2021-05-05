@@ -117,6 +117,10 @@
                                     <time class="c-article__updated">Updated {{ updateDate | capitalize }}</time>
                                 {% endif %}
 
+                                {% if article.additionalInfo.sponsor is defined and article.additionalInfo.sponsor != '' %}
+                                    <p class="c-article__sponsor">{{article.additionalInfo.sponsor}}</p>
+                                {% endif %}
+
                             </div>
 
 
