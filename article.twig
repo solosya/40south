@@ -118,10 +118,11 @@
                                 {% endif %}
 
                                 {% if article.additionalInfo.sponsor is defined and article.additionalInfo.sponsor != '' %}
-                                    <p class="c-article__sponsor">{{article.additionalInfo.sponsor}}</p>
+                                    <p class="c-article__sponsor d-none d-md-block">{{article.additionalInfo.sponsor}}</p>
                                 {% endif %}
 
                             </div>
+                            <p class="c-article__sponsor d-md-none">{{article.additionalInfo.sponsor}}</p>
 
 
                             
