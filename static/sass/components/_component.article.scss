@@ -153,9 +153,10 @@
     &__sponsor{
         line-height: 1;
         padding: 5px 10px;
-        background-color: $mainColor;
+        background-color: $green;
         color: $white;
         font-size: 13px;
+        letter-spacing: 1.43px;
         text-transform: uppercase;
         margin-top: -5px;
         @media #{$tablet-up} {
