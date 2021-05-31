@@ -16,19 +16,19 @@
 
             <div class="col-12 col-md-12 col-lg-10 offset-lg-1">
                 <div class="c-author">
-                    <div class="c-author-left">  
+                    <div class="c-author-left">
 
                         <div class="c-author__avatar c-author__avatar-xs u-image-covered" style="background-repeat:none;background-image:url({{profileImage}});">&nbsp;</div>
                         
                         <div class="c-author__details c-author__details-xs">
-                            <h3 class="c-author__name c-author__name-xs c-author__name-md">{{Html.encode(user.firstname)}} <br class="d-md-none"> {{Html.encode(user.lastname)}}</h3>
+                            <h3 class="c-author__name c-author__name-xs c-author__name-md">{{user.firstname}} <br class="d-md-none"> {{user.lastname}}</h3>
                             {# <ul class="c-author__social">
                                 <li><a href="#"><i class="fa fa-facebook"></i></a></li>
                                 <li><a href="#"><i class="fa fa-twitter"></i></a></li>
                                 <li><a href="#"><i class="fa fa-instagram"></i></a></li>
                                 <li><a href="#"><i class="fa fa-youtube-play"></i></a></li>
                             </ul> #}
-                            <p class="c-author__text c-author__text-md d-none d-md-block">{{Html.decode(user.bio) | raw}}</p>
+                            <p class="c-author__text c-author__text-md d-none d-md-block">{{user.bio|raw}}</p>
                         </div>
 
                     </div>
@@ -41,7 +41,7 @@
                 <hr class="o-rule d-none d-md-block">
             </div>
             <div class="col-12 d-md-none">
-                <p class="c-author__text c-author__text-md">{{Html.decode(user.bio) | raw}}</p>
+                <p class="c-author__text c-author__text-md">{{user.bio|raw}}</p>
                 <hr class="o-rule">
             </div>
         </div>
