@@ -172,6 +172,11 @@ Card.prototype.renderCard = function(card, options)
         articleContent = '<div class="acme-c-cards-view__articleContent">' + card.content + '</div>';
     }
 
+    var articleTitle = card.title;
+    if (typeof card.titlePreview != "undefined" && card.titlePreview != "") {
+        articleTitle = card.titlePreview;
+    }
+
     
     card['titleString'] = "";
     if (_appJsConfig.isUserLoggedIn === 1 && _appJsConfig.userHasBlogAccess === 1) {
@@ -211,7 +216,7 @@ Card.prototype.renderCard = function(card, options)
             guid        : card.guid,
             image       : $.image({media:card['featuredMedia'], mediaOptions:{width: width ,height:height, crop: 'limit'} }),
             category    : card.label,
-            title       : card.title,
+            title       : articleTitle,
             content     : articleContent,
             author      : author,
             publishDate : card.publishDate,
