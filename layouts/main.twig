@@ -62,7 +62,7 @@
 
 
     {% if _AppHelper.getApplicationEnv() == 'PROD'%}
-        <link rel="stylesheet" href="{{networkData.templatePath}}/static/deploy/concat.min.css?v=ff0dcbcf" type="text/css" media="all">
+        <link rel="stylesheet" href="{{networkData.templatePath}}/static/deploy/concat.min.css?v=2749ea75" type="text/css" media="all">
     {% else %}
 
         <link rel='stylesheet' href='{{networkData.templatePath}}/static/deploy/concat.css' type='text/css' media='all' />
@@ -218,9 +218,9 @@
 
 
 
-        {% for i in 0..(config['inventory']['adSpace']['tag']|length) if config['inventory']['adSpace']['tag'][i] is defined %}
+        {# {% for i in 0..(config['inventory']['adSpace']['tag']|length) if config['inventory']['adSpace']['tag'][i] is defined %}
             <div class="j-adslot" id="{{config['inventory']['adSpace']['tag'][i]}}" data-adshape="tag"></div>
-        {% endfor %}
+        {% endfor %} #}
 
 
 
