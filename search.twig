@@ -22,9 +22,9 @@
                     <div class="c-search__head">
                         {% if firstCount > 0 %}
                             {% set resultString = firstCount < 2 ? 'result' : 'results' %}
-                            Showing {# <span>{{firstCount}}</span> #} {{resultString}} for '<span class="c-search__name">{{search}}</span>'
+                            Showing {# <span>{{firstCount}}</span> #} {{resultString}} for '<span class="c-search__name">{{search | raw}}</span>'
                         {% else %}
-                            No results were found for '<span class="c-search__name">{{search}}</span>'
+                            No results were found for '<span class="c-search__name">{{search | raw}}</span>'
                         {% endif %}
                     </div>
 
