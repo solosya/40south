@@ -8,7 +8,10 @@
   },
   "author": "",
   "license": "ISC",
-  "devDependencies": {},
+  "devDependencies": {
+    "gulp-sass": "^5.0.0",
+    "sass": "^1.30.0"
+  },
   "dependencies": {
     "lodash": "^4.17.21",
     "gulp": "^4.0.2",
@@ -18,10 +21,10 @@
     "gulp-hasher": "^0.1.0",
     "gulp-install": "^1.1.0",
     "gulp-rename": "^1.4.0",
-    "gulp-sass": "^4.1.1",
     "gulp-sourcemaps": "^2.6.5",
     "gulp-uglify": "^3.0.2",
     "gulp-util": "^3.0.8",
-    "gulp-watch": "^5.0.1"
+    "gulp-watch": "^5.0.1",
+    "node-sass": "^6.0.1"
   }
 }
