@@ -75,6 +75,7 @@
         height: inherit;
         max-height: 120px;
         overflow: hidden;
+        line-height: 1.65 !important;
       }
       .c-cards-view__author {
         position: absolute;
@@ -215,6 +216,7 @@
           min-height: inherit;
           max-height: 214px;
           overflow: hidden;
+          line-height: 1.65 !important;
         }
         .c-cards-view__author {
           position: absolute;
