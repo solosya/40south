@@ -235,11 +235,11 @@
     b,
     u,
     a {
-      color: $grey-1 !important;
+      color: $grey-1;
       font-family: $secondaryFont !important;
       font-size: 16px !important;
       line-height: 1.6 !important;
-      font-weight: $weightRegular !important;
+      font-weight: $weightRegular;
       letter-spacing: 0.5px !important;
       margin-bottom: 20px !important;
       word-wrap: break-word;
@@ -266,11 +266,11 @@
     }
 
     blockquote {
-      color: $black !important;
+      color: $black;
       font-family: $primaryFont !important;
       font-size: 26px !important;
       line-height: 1.45 !important;
-      font-weight: $weightMedium !important;
+      font-weight: $weightMedium;
       letter-spacing: 0.5px !important;
       display: block;
       padding: 40px 0 !important;
@@ -278,11 +278,11 @@
       border-top: 1px solid $grey-4;
       border-bottom: 1px solid $grey-4;
       > p {
-        color: $black !important;
+        color: $black;
         font-family: $primaryFont !important;
         font-size: 26px !important;
         line-height: 1.45 !important;
-        font-weight: $weightMedium !important;
+        font-weight: $weightMedium;
         letter-spacing: 0.5px !important;
       }
       // &:after {
@@ -398,7 +398,7 @@
     h4,
     h5,
     h6 {
-      color: $black !important;
+      color: $black;
       font-family: $primaryFont !important;
       margin-bottom: 20px !important;
     }
@@ -441,11 +441,11 @@
         list-style-position: outside;
         padding-left: 7px;
         margin-bottom: 10px;
-        color: $grey-2 !important;
+        color: $grey-2;
         font-family: $secondaryFont !important;
         font-size: 16px !important;
         line-height: 1.6 !important;
-        font-weight: $weightRegular !important;
+        font-weight: $weightRegular;
 
         > p {
           margin-bottom: 0px;
