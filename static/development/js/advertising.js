@@ -6,6 +6,7 @@
         if ($(".j-adslot").length > 0) {
             var adslots = $(".j-adslot");
             var deviceSize = getDeviceForAd();
+            var allAdsKeywords = []
             for (var i=0;i<adslots.length;i++) {
                 var elem = adslots[i];
                 var self = $("#"+elem.id);
@@ -27,12 +28,15 @@
                     keysArray.push('default');
                 }
                 var keysString = keysArray.join(',')
+                allAdsKeywords.push(keysString)
+            }
+            if (allAdsKeywords.length > 0) {
                 $.ajax({
                     type: 'GET',
                     url: _appJsConfig.appHostName + '/api/ad/get-all',
                     dataType: 'json',
                     data: {
-                        'keywords': keysString,
+                        'keywords': allAdsKeywords,
                     },
                     success: function (data, textStatus, jqXHR) {
                         if (data.length < 1 ){

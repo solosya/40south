@@ -90,13 +90,13 @@
                 </div>
             </div>
         {% endif %}
-        <div class="row u-margin-top-30 justify-content-between">
+        <div class="row u-margin-top-30 justify-content-between" >
             <div class="col-12 col-lg-8 j-article-container">
 
-                <div class="c-article c-article-sm" >
-
-                    
-
+                <div class="c-article c-article-sm"  itemprop="image" itemscope itemtype="http://schema.org/NewsArticle">
+                    <meta itemscope itemprop="mainEntityOfPage"  itemType="https://schema.org/WebPage" itemid="{{articleBlogInfo.url}}"/>
+                    <meta itemprop="url" content="{{articleBlogInfo.url}}">
+                    <meta itemprop="dateModified" content="{{Updated}}">
                     <div class="c-article__main {# {{imageMargin}} #}">
                         <div class="c-article__head">
                             
@@ -128,11 +128,16 @@
                             
                             <div class="c-article__posted-by ">
                                 <div class="row">
-                                    <div class="c-article__author col-12 col-md">
+                                    <div class="c-article__author col-12 col-md" itemprop="image" itemscope itemtype="http://schema.org/ImageObject">
+                                        <meta itemprop="url" content="{{ profileImg }}">
+                                        <meta itemprop="height" content="60">
+                                        <meta itemprop="width" content="600">
                                         <div class="c-article__avatar" style="background-image: url({{ profileImg }});"></div>
                                         {% if config['hide-author'] is defined and config['hide-author'] %}
+                                        <meta itemprop="name" content="{{ article.createdBy['displayName'] }}"/>
                                             <p class="c-article__author-name">{{ article.createdBy['displayName'] }}</p>
                                         {% else %}
+                                        <meta itemprop="name" content="{{ article.createdBy['username'] }}"/>
                                             <a class="c-article__author-name" href="{{_AppHelper.getUserProfileUrl(article.createdBy['username'])}}/posts">{{ article.createdBy['displayName'] }}</a>
                                         {% endif %}
 
@@ -141,12 +146,12 @@
 
                                     {% if article['createdBy']['coauthors'] %}
                                         {% for author in article['createdBy']['coauthors'] %}
-                                            <div class="c-article__author col-12 col-md">
-                                                <div class="c-article__avatar" style="background-image: url({{ _Media.getMediaUrl(author['media'], 100, 100, {radius: 'max', gravity: 'face', 'crop': 'thumb', type: 'user'}) }});"></div>
+                                            <div class="c-article__author col-12 col-md" itemprop="author" itemscope itemtype="http://schema.org/Person">
+                                                <div class="c-article__avatar" itemprop="image" style="background-image: url({{ _Media.getMediaUrl(author['media'], 100, 100, {radius: 'max', gravity: 'face', 'crop': 'thumb', type: 'user'}) }});"></div>
                                                 {% if config['hide-author'] is defined and config['hide-author'] %}
-                                                    <p class="c-article__author-name" >{{ author['displayName'] }}</p>
+                                                    <p itemprop="name" class="c-article__author-name" >{{ author['displayName'] }}</p>
                                                 {% else %}
-                                                    <a class="c-article__author-name" href="{{_AppHelper.getUserProfileUrl(author['username'])}}/posts">{{ author['displayName'] }}</a>
+                                                    <a itemprop="url" class="c-article__author-name" href="{{_AppHelper.getUserProfileUrl(author['username'])}}/posts"><p class="c-article__author-name" itemprop="name">{{ author['displayName'] }}</p></a>
                                                 {% endif %}
                                             </div>
                                         {% endfor %}
