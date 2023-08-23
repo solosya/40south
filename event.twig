@@ -1,7 +1,7 @@
 {% import "partials/quotes.twig" as quotes %}
 
 {{ set(this, 'title', event.title) }}
-{{this.registerLinkTag({rel:'amphtml', href:_AppHelper.getServerUrl(false)~'?amp=1'})}}
+{# {{this.registerLinkTag({rel:'amphtml', href:_AppHelper.getServerUrl(false)~'?amp=1'})}} #}
 {% set config       = _Network.getThemeConfig() %}
 
 
