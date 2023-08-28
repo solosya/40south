@@ -136,12 +136,13 @@
                             
                             <div class="c-article__posted-by ">
                                 <div class="row">
-                                    <div class="c-article__author col-12 col-md" itemprop="author">
+                                    <div class="c-article__author col-12 col-md" itemscope itemprop="author" itemtype="https://schema.org/Person">
+                                        <meta itemprop="name" content="{{article.createdBy['displayName']}}">
                                         <div class="c-article__avatar" style="background-image: url({{ profileImg }});"></div>
                                         {% if config['hide-author'] is defined and config['hide-author'] %}
-                                            <p itemprop="name" class="c-article__author-name">{{ article.createdBy['displayName'] }}</p>
+                                            <p class="c-article__author-name">{{ article.createdBy['displayName'] }}</p>
                                         {% else %}
-                                            <a itemprop="name" class="c-article__author-name" href="{{_AppHelper.getUserProfileUrl(article.createdBy['username'])}}/posts">{{ article.createdBy['displayName'] }}</a>
+                                            <a itemprop="url" class="c-article__author-name" href="{{_AppHelper.getUserProfileUrl(article.createdBy['username'])}}/posts">{{ article.createdBy['displayName'] }}</a>
                                         {% endif %}
 
                                        
