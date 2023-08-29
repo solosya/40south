@@ -79,6 +79,13 @@
                             {% endif %}
 
                             {% if article.media|length > 0 %}
+
+                            {% if article.media[0]['type'] != 'video' %}
+                                        <div itemprop="image" itemscope itemtype="https://schema.org/ImageObject" >
+                                            <meta itemprop="url" content="{{ _Media.getMediaUrl(article.media[0], 0, 0, {'crop': 'fill', 'gravity': 'auto'} )}}">
+                                        </div>
+                            {% endif %}
+
                                 {% set imageFeature = featured == 'image' ? true : false %}
                                 {{this.render('partials/gallery.twig', {
                                     media: article.media,
@@ -129,14 +136,14 @@
                             
                             <div class="c-article__posted-by ">
                                 <div class="row">
-                                    <div class="c-article__author col-12 col-md" itemprop="author">
+                                    <div class="c-article__author col-12 col-md" itemscope itemprop="author" itemtype="https://schema.org/Person">
+                                        <meta itemprop="name" content="{{article.createdBy['displayName']}}">
                                         <div class="c-article__avatar" style="background-image: url({{ profileImg }});"></div>
                                         {% if config['hide-author'] is defined and config['hide-author'] %}
                                         <meta itemprop="name" content="{{ article.createdBy['displayName'] }}"/>
                                             <p class="c-article__author-name">{{ article.createdBy['displayName'] }}</p>
                                         {% else %}
-                                        <meta itemprop="name" content="{{ article.createdBy['username'] }}"/>
-                                            <a class="c-article__author-name" href="{{_AppHelper.getUserProfileUrl(article.createdBy['username'])}}/posts">{{ article.createdBy['displayName'] }}</a>
+                                            <a itemprop="url" class="c-article__author-name" href="{{_AppHelper.getUserProfileUrl(article.createdBy['username'])}}/posts">{{ article.createdBy['displayName'] }}</a>
                                         {% endif %}
 
                                        
