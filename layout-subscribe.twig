@@ -61,6 +61,12 @@
     {% set screenImg       = _Media.getMediaUrl(blogData.media.thumb,    0,        0,      {'crop': 'fill', 'gravity': 'faces'} ) %}
 {% endif %}
 
+{% if not _User.isGuest() %}
+    {% set redir = _Page.setHttpRedirects(
+        { '|^/.*|': networkData.defaultBlogUrl, }, false) 
+    %} 
+{% endif %}
+
 
 <main id="main" class="o-body-container o-body-container-md u-margin-top-50" role="main">
     <div id="stripekey" class="hidden" >{{networkData['stripe_publishable_key']}}</div>
