@@ -4,6 +4,12 @@
 {% set blogName      = blogData.title %}
 {% set config       = _Network.getThemeConfig() %}
 
+{% if not _User.isGuest() %}
+    {% set redir = _Page.setHttpRedirects(
+        { '|^/.*|': networkData.defaultBlogUrl, }, false) 
+    %} 
+{% endif %}
+
 {# separate plans by currency #}
 {# {% for plan in plans %}
     {% if plan.currency | lower == 'usd' and 'School' not in plan.name %}
